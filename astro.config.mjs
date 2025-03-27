@@ -96,6 +96,15 @@ export default defineConfig({
           ],
         },
         {
+          label: "SDK",
+          items: [
+            {
+              label: "External wallets",
+              slug: "sdk/wallets",
+            },
+          ],
+        },
+        {
           label: "FAQ",
           slug: "faq",
         },

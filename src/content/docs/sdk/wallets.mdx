@@ -1,0 +1,40 @@
+---
+title: External wallets
+---
+
+import { Code } from "@astrojs/starlight/components";
+import { Aside } from "@astrojs/starlight/components";
+
+Any user in a Ecency system can create/import external tokens to account. It helps different clients and Ecency to operate with these tokens, show overview or detailed view etc.
+
+### Storage
+
+Each token's public information is storing in two places:
+
+1. **Private Ecency API** – uses for Ecency only purposes, strong-safe place;
+2. **Profile metadata** – can be used in any Hive client, weak-safe place, could be overrided by any client.
+
+### Create a wallet
+
+To create a wallet SDK provides mutations and automatically set it to query. No need to handle it automatically.
+
+export const exampleCode = `
+import { useWalletCreate, EcencyWalletCurrency } from '@ecency/sdk';
+
+const username = 'demo.com';
+const currency = EcencyWalletCurrency.BTC;
+
+const { mutateAsync: createWallet } = useWalletCreate(username, currency);
+
+// Wallets contains all wallets in a Record<EcencyWalletCurrency, {...}> format
+const { data: wallets } = useQuery({ queryKey: ["ecency-wallets", "wallets", username] })
+`;
+export const fileName = "create-wallet.ts";
+
+<Code code={exampleCode} lang="ts" title={fileName} />
+
+<Aside type="caution">
+  Created wallets exists only in current session. Wallets haven't published
+  anywhere on this step. Saving to private API or metadata are different
+  mutations.
+</Aside>
