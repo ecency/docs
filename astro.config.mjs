@@ -70,6 +70,10 @@ export default defineConfig({
               label: "Reblog",
               slug: "common/reblog",
             },
+            {
+              label: "Discover",
+              slug: "common/discover",
+            },
           ],
         },
         {
@@ -88,6 +92,10 @@ export default defineConfig({
         {
           label: "Market",
           slug: "market",
+        },
+        {
+          label: "Witnesses",
+          slug: "witnesses",
         },
         {
           label: "Hivesigner",
