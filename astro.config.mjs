@@ -20,12 +20,16 @@ export default defineConfig({
               slug: "get-started/what-is-ecency",
             },
             {
-              label: "What is the difference?",
+              label: "How it is different?",
               slug: "get-started/difference",
             },
             {
-              label: "How it works",
+              label: "How it works?",
               slug: "get-started/how-it-works",
+            },
+            {
+              label: "How to earn?",
+              slug: "get-started/earning",
             },
             {
               label: "Referral system",
