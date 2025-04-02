@@ -42,7 +42,7 @@ export default defineConfig({
           label: "Hive basics",
           items: [
             // Each item here is one entry in the navigation menu.
-            { label: "Keys", slug: "common/keys" },
+            { label: "Account security", slug: "common/keys" },
             { label: "Hive tokens", slug: "common/hive-tokens" },
             { label: "Wallet", slug: "common/wallet" },
             {
