@@ -39,7 +39,7 @@ export default defineConfig({
         },
 
         {
-          label: "Common information",
+          label: "Hive basics",
           items: [
             // Each item here is one entry in the navigation menu.
             { label: "Keys", slug: "common/keys" },
