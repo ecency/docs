@@ -4,8 +4,6 @@ description: Explore the world of Web 3.0 with Ecency
 template: splash
 hero:
   tagline: Explore the world of Web 3.0 with Ecency
-  image:
-    file: ../../assets/logo-circle.svg
   actions:
     - text: Get started
       link: /get-started/what-is-ecency
@@ -17,3 +15,12 @@ hero:
 ---
 
 import { Card, CardGrid } from "@astrojs/starlight/components";
+
+<CardGrid>
+  <Card title="Hive basics" icon="open-book">
+    Check out how Hive blockchain works.
+  </Card>
+  <Card title="Ecency vision" icon="information">
+    Explore vision features and how to utilize them.
+  </Card>
+</CardGrid>
