@@ -63,6 +63,19 @@ export default defineConfig({
               ],
             },
             {
+              label: "Communities",
+              items: [
+                {
+                  label: "Types",
+                  slug: "communities/types",
+                },
+                {
+                  label: "Roles",
+                  slug: "communities/roles",
+                },
+              ],
+            },
+            {
               label: "Voting",
               slug: "common/voting",
             },
