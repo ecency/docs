@@ -73,6 +73,10 @@ export default defineConfig({
                   label: "Roles",
                   slug: "communities/roles",
                 },
+                {
+                  label: "Default beneficiary",
+                  slug: "communities/default-beneficiary",
+                },
               ],
             },
             {
