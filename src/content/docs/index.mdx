@@ -17,13 +17,24 @@ hero:
 import { Card, CardGrid } from "@astrojs/starlight/components";
 
 <CardGrid>
-    <Card title="Hive basics" icon="open-book">
-        Learn how Hive accounts, tokens, rewards, and communities work.
+    <Card
+        title="Hive basics"
+        icon="open-book"
+    >
+        <a href="/hive/what-is-hive">Learn how Hive accounts, tokens, rewards, and communities work.</a>
     </Card>
-    <Card title="Using Ecency" icon="information">
-        Get started with publishing, points, wallet, and the mobile app.
+
+    <Card
+        title="Using Ecency"
+        icon="information"
+    >
+        <a href="/ecency/feed">Get started with publishing, wallet, points, and the mobile app.</a>
     </Card>
-    <Card title="Developer Tools" icon="rocket">
-        Explore SDKs and APIs to build on top of Hive and Ecency.
+
+    <Card
+        title="Developer Tools"
+        icon="rocket"
+    >
+        <a href="/developers/api">Explore Ecency APIs and SDKs to build on Hive.</a>
     </Card>
 </CardGrid>
