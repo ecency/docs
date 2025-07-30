@@ -19,143 +19,82 @@ export default defineConfig({
         {
           label: "Get started",
           items: [
-            {
-              label: "What is Ecency?",
-              slug: "get-started/what-is-ecency",
-            },
-            {
-              label: "How it is different?",
-              slug: "get-started/difference",
-            },
-            {
-              label: "How it works?",
-              slug: "get-started/how-it-works",
-            },
-            {
-              label: "How to earn?",
-              slug: "get-started/earning",
-            },
-            {
-              label: "Referral system",
-              slug: "get-started/referral",
-            },
+            { label: "What is Ecency?", slug: "get-started/what-is-ecency" },
+            { label: "How it works?", slug: "get-started/how-it-works" },
+            { label: "How to earn?", slug: "get-started/earning" },
+            { label: "Referral system", slug: "get-started/referral" },
+            { label: "Ecency vs other socials", slug: "get-started/difference" },
+            { label: "Ecency vs other frontends", slug: "ecency/ecency-vs-others" },
           ],
         },
-
         {
           label: "Hive basics",
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Account security", slug: "common/keys" },
+            { label: "What is Hive?", slug: "hive/what-is-hive" },
+            { label: "Hive accounts", slug: "hive/hive-accounts" },
             { label: "Hive tokens", slug: "common/hive-tokens" },
             { label: "Wallet", slug: "common/wallet" },
             {
-              label: "Resource credits",
+              label: "Resource Credits",
               items: [
-                {
-                  label: "What is it?",
-                  slug: "common/resource-credits/what-is-it",
-                },
-                {
-                  label: "Voting power",
-                  slug: "common/resource-credits/voting-power",
-                },
+                { label: "What is it?", slug: "hive/resource-credits" },
+                { label: "Voting power", slug: "common/resource-credits/voting-power" },
               ],
             },
             {
               label: "Communities",
               items: [
-                {
-                  label: "Types",
-                  slug: "communities/types",
-                },
-                {
-                  label: "Roles",
-                  slug: "communities/roles",
-                },
-                {
-                  label: "Default beneficiary",
-                  slug: "communities/default-beneficiary",
-                },
+                { label: "Overview", slug: "hive/communities" },
+                { label: "Community beneficiary", slug: "hive/community-beneficiary" },
               ],
             },
+            { label: "Curation and rewards", slug: "hive/curation-and-rewards" },
+            { label: "Publishing", slug: "common/posting" },
+            { label: "Reblog", slug: "common/reblog" },
+            { label: "Reputation", slug: "common/reputation" },
+            { label: "Discover", slug: "common/discover" },
+            { label: "Witness voting", slug: "guides/vote-witness" },
             {
-              label: "Curating",
-              slug: "common/voting",
-            },
-            {
-              label: "Reputation",
-              slug: "common/reputation",
-            },
-            {
-              label: "Publishing",
-              slug: "common/posting",
-            },
-            {
-              label: "Reblog",
-              slug: "common/reblog",
-            },
-            {
-              label: "Discover",
-              slug: "common/discover",
+              label: "Hivesigner",
+              items: [{ label: "What is it?", slug: "hive/hivesigner/about" }],
             },
           ],
         },
         {
-          label: "Vision",
+          label: "Using Ecency",
           items: [
-            {
-              label: "Feed",
-              slug: "feed",
-            },
-            {
-              label: "Publish",
-              slug: "publish",
-            },
+            { label: "Feed", slug: "ecency/feed" },
+            { label: "Publish", slug: "ecency/publish" },
             {
               label: "Decks",
-              items: [
-                {
-                  label: "What are Decks?",
-                  slug: "decks/about",
-                },
-              ],
+              items: [{ label: "What are Decks?", slug: "ecency/decks/about" }],
             },
-            {
-              label: "Market",
-              slug: "market",
-            },
-            {
-              label: "Witnesses",
-              slug: "witnesses",
-            },
+            { label: "Market", slug: "ecency/market" },
+            { label: "Mobile App", slug: "guides/use-mobile-app" },
+            { label: "Ecency Wallet", slug: "ecency/wallet" },
+            { label: "Ecency Points", slug: "ecency/ecency-points" },
+            { label: "Boost and Promote", slug: "ecency/boost-and-promote" },
+            { label: "Notifications, Drafts, Bookmarks", slug: "ecency/notifications-drafts-bookmarks" },
           ],
         },
-
         {
-          label: "Hivesigner",
+          label: "Guides",
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "What is it?", slug: "hivesigner/about" },
+            { label: "Create account", slug: "guides/create-account" },
+            { label: "Account recovery", slug: "guides/recovery" },
+            { label: "Power up/down", slug: "guides/power-up-down" },
+            { label: "Delegate Hive Power", slug: "guides/delegate-hp" },
           ],
         },
         {
-          label: "SDK",
+          label: "Developers",
           items: [
-            {
-              label: "External wallets",
-              slug: "sdk/wallets",
-            },
+            { label: "Ecency SDK", slug: "developers/wallets" },
+            { label: "API Reference", slug: "developers/api" }, // if you later add this
           ],
         },
-        {
-          label: "FAQ",
-          slug: "faq",
-        },
-        {
-          label: "Contribution",
-          slug: "contribution",
-        },
+        { label: "FAQ", slug: "faq" },
+        { label: "Contribution", slug: "contribution" },
       ],
       plugins: [
         starlightThemeBlack({
@@ -169,7 +108,7 @@ export default defineConfig({
             },
             {
               label: "Docs",
-              link: "/getting-started/what-is-ecency",
+              link: "/get-started/what-is-ecency",
             },
           ],
           footerText: "",
