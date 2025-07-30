@@ -1,15 +1,19 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import starlightThemeBlack from "starlight-theme-black";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://docs.ecency.com',
+  site: "https://docs.ecency.com",
   integrations: [
     starlight({
       title: "Ecency",
       social: {
         github: "https://github.com/ecency",
+      },
+      logo: {
+        src: "./src/assets/logo-circle.svg",
       },
       sidebar: [
         {
@@ -59,6 +63,23 @@ export default defineConfig({
               ],
             },
             {
+              label: "Communities",
+              items: [
+                {
+                  label: "Types",
+                  slug: "communities/types",
+                },
+                {
+                  label: "Roles",
+                  slug: "communities/roles",
+                },
+                {
+                  label: "Default beneficiary",
+                  slug: "communities/default-beneficiary",
+                },
+              ],
+            },
+            {
               label: "Curating",
               slug: "common/voting",
             },
@@ -81,26 +102,36 @@ export default defineConfig({
           ],
         },
         {
-          label: "Feed",
-          slug: "feed",
-        },
-        {
-          label: "Decks",
+          label: "Vision",
           items: [
             {
-              label: "What are Decks?",
-              slug: "decks/about",
+              label: "Feed",
+              slug: "feed",
+            },
+            {
+              label: "Publish",
+              slug: "publish",
+            },
+            {
+              label: "Decks",
+              items: [
+                {
+                  label: "What are Decks?",
+                  slug: "decks/about",
+                },
+              ],
+            },
+            {
+              label: "Market",
+              slug: "market",
+            },
+            {
+              label: "Witnesses",
+              slug: "witnesses",
             },
           ],
         },
-        {
-          label: "Market",
-          slug: "market",
-        },
-        {
-          label: "Witnesses",
-          slug: "witnesses",
-        },
+
         {
           label: "Hivesigner",
           items: [
@@ -126,6 +157,25 @@ export default defineConfig({
           slug: "contribution",
         },
       ],
+      plugins: [
+        starlightThemeBlack({
+          navLinks: [
+            {
+              label: "Open Ecency",
+              link: "https://ecency.com",
+              attrs: {
+                target: "_blank",
+              },
+            },
+            {
+              label: "Docs",
+              link: "/getting-started/what-is-ecency",
+            },
+          ],
+          footerText: "",
+        }),
+      ],
+      customCss: ["./src/styles/index.css"],
     }),
   ],
 });

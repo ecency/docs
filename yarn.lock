@@ -324,6 +324,16 @@
   dependencies:
     "@expressive-code/core" "^0.40.2"
 
+"@fontsource/geist-mono@^5.1.0", "@fontsource/geist-mono@^5.2.5":
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/geist-mono/-/geist-mono-5.2.5.tgz#4996a19beb74b64418c6ab33f77b73e7971f0c7c"
+  integrity sha512-7/r9opukyQ3jkAqfhIRnhodWlAc8yVkHogDUAFqBeBSYNpvlpouLJysYO5cIpqyB/lHrazxChiC73Oj8K3+sZg==
+
+"@fontsource/geist-sans@^5.1.0", "@fontsource/geist-sans@^5.2.5":
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/geist-sans/-/geist-sans-5.2.5.tgz#025bd279367f7b58c2875d2ef12bd369cbd8602a"
+  integrity sha512-anllOHyJbElRs9fV15TeDRqAeb1IKm4bSknPl6ZMoyPTx1BBy7logudcUwpNjmQLkzn4Q0JGQLRCUKJYoyST6A==
+
 "@img/sharp-darwin-arm64@0.33.5":
   version "0.33.5"
   resolved "https://registry.yarnpkg.com/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.33.5.tgz#ef5b5a07862805f1e8145a377c8ba6e98813ca08"
@@ -1918,6 +1928,11 @@ markdown-table@^3.0.0:
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-3.0.4.tgz#fe44d6d410ff9d6f2ea1797a3f60aa4d2b631c2a"
   integrity sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==
 
+marked@^15.0.6:
+  version "15.0.7"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-15.0.7.tgz#f67d7e34d202ce087e6b879107b5efb04e743314"
+  integrity sha512-dgLIeKGLx5FwziAnsk4ONoGwHwGPJzselimvlVskE9XLN4Orv9u2VA3GWw/lYUqjfA0rUT/6fqKwfZJapP9BEg==
+
 mdast-util-definitions@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/mdast-util-definitions/-/mdast-util-definitions-6.0.0.tgz#c1bb706e5e76bb93f9a09dd7af174002ae69ac24"
@@ -3237,6 +3252,16 @@ space-separated-tokens@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/space-separated-tokens/-/space-separated-tokens-2.0.2.tgz#1ecd9d2350a3844572c3f4a312bceb018348859f"
   integrity sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==
+
+starlight-theme-black@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/starlight-theme-black/-/starlight-theme-black-0.3.0.tgz#1a02203f11607813f608ccfbf79e0e43b65dfdb1"
+  integrity sha512-q6UWx9H5nMitdwRC40LkAaY5REPvfofNhmqtfd6zHpoQyIAeD2poyZO+Lx4iz+howwhyDTc0gvCN6s/+yx0waw==
+  dependencies:
+    "@fontsource/geist-mono" "^5.1.0"
+    "@fontsource/geist-sans" "^5.1.0"
+    "@pagefind/default-ui" "^1.3.0"
+    marked "^15.0.6"
 
 stream-replace-string@^2.0.0:
   version "2.0.0"
