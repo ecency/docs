@@ -59,7 +59,7 @@ export default defineConfig({
               ],
             },
             {
-              label: "Voting",
+              label: "Curating",
               slug: "common/voting",
             },
             {
@@ -67,7 +67,7 @@ export default defineConfig({
               slug: "common/reputation",
             },
             {
-              label: "Posting",
+              label: "Publishing",
               slug: "common/posting",
             },
             {
