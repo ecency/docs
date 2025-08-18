@@ -69,6 +69,10 @@ export default defineConfig({
               label: "Decks",
               items: [{ label: "What are Decks?", slug: "ecency/decks/about" }],
             },
+            {
+              label: "Waves",
+              items: [{ label: "What are Waves?", slug: "ecency/waves/about" }],
+            },
             { label: "Market", slug: "ecency/market" },
             { label: "Mobile App", slug: "guides/use-mobile-app" },
             { label: "Ecency Wallet", slug: "ecency/wallet" },
