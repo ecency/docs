@@ -96,6 +96,14 @@ export default defineConfig({
           items: [
             { label: "Ecency SDK", slug: "developers/wallets" },
             { label: "API Reference", slug: "developers/api" }, // if you later add this
+            {
+              label: "Extra services",
+              items: [
+                { label: "Hivesearcher", slug: "extra-services/hivesearcher" },
+                { label: "Hivesigner", slug: "extra-services/hivesigner" },
+                { label: "Hivexplorer", slug: "extra-services/hivexplorer" },
+              ],
+            },
           ],
         },
         { label: "FAQ", slug: "faq" },
