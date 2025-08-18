@@ -27,7 +27,8 @@ Each frontend uses the same Hive blockchain data — but presents it differently
 | Feature            | Ecency                              |
 |--------------------|--------------------------------------|
 | Platforms          | Web, Desktop, iOS, Android           |
-| Boost/Promote      | ✅ Yes (via Ecency Points)           |
+| Boost+/Promote     | ✅ Yes (via Ecency Points)           |
+| Boost (Account Boost) | ✅ Mobile-only, in-app purchase delegation |
 | Wallet             | ✅ Built-in, with key import support |
 | Notifications      | ✅ Real-time, cross-device           |
 | Multi-account      | ✅ Seamless switching                |
@@ -41,7 +42,7 @@ Each frontend uses the same Hive blockchain data — but presents it differently
 | Feature        | **Ecency** | **PeakD** | **LeoFinance** | **Hive.blog** |
 |----------------|------------|-----------|----------------|---------------|
 | Multi-platform | ✅ Web, Mobile, Desktop | Web only | Web only | Web only |
-| Boost System   | ✅ Yes (Points) | ❌ | ❌ | ❌ |
+| Boost+ System  | ✅ Yes (Points) | ❌ | ❌ | ❌ |
 | Notifications  | ✅ Real-time  | ✅ via browser | ❌ | ❌ |
 | Community UI   | ✅ Yes       | ✅ Yes       | ✅ Focused | Basic         |
 | Editor         | ✍️ Rich + Markdown | Rich + Markdown | Basic | Markdown only |
@@ -53,7 +54,7 @@ Each frontend uses the same Hive blockchain data — but presents it differently
 
 - You want a **modern UI** and mobile support
 - You enjoy **earning extra points** for engagement
-- You want Boost/Promote tools to grow your content reach
+- You want Boost+ or Promote tools, or Boost (Account Boost), to grow your content reach
 - You need a **smooth experience across devices**
 - You’re a beginner and want an easier onboarding
 

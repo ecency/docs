@@ -1,6 +1,6 @@
 ---
 title: Ecency Points
-description: Learn how Ecency Points work and how to use them for Boost and Promote.
+description: Learn how Ecency Points work and how to use them for Boost+ and Promote.
 ---
 
 # Ecency Points
@@ -28,18 +28,18 @@ You can earn Ecency Points by:
 
 Ecency Points can be spent for:
 
-- **Boost**: Promote your posts for more visibility. Uses points to increase chance of getting votes from Ecency-supported accounts.
+- **Boost+**: Request a temporary **Hive Power delegation** to your account.
 - **Promote**: Advertise your post in the promoted section of Ecency.
 - **Gifts**: Send points to other users as a tip or reward.
 - **Future Utilities**: Ecency is continually expanding use-cases for points.
 
 ---
 
-## Boost vs Promote
+## Boost+ vs Promote
 
 | Feature | Description |
 |--------|-------------|
-| **Boost** | Increases visibility by increasing vote chances. Costs more points but can lead to curation rewards. |
+| **Boost+** | Grants temporary Hive Power delegation using your points. Can lead to curation rewards and more Resource Credits. |
 | **Promote** | Lists post in promoted sections (Web, Mobile) with no votes guaranteed. Lower cost. |
 
 ---
@@ -70,6 +70,7 @@ You can send points to other users:
 - They are **not a token** on the Hive blockchain.
 - Ecency regularly supports promotions and airdrops based on activity.
 - Community does create extra utility on various self hosted games.
+- **Boost (Account Boost)** is a separate mobile-only feature purchased via in-app stores that provides a 30-day Hive Power delegation without using points.
 
 ---
 
