@@ -84,6 +84,7 @@ export default defineConfig({
             { label: "Account recovery", slug: "guides/recovery" },
             { label: "Power up/down", slug: "guides/power-up-down" },
             { label: "Delegate Hive Power", slug: "guides/delegate-hp" },
+            { label: "Create community", slug: "guides/create-community" },
           ],
         },
         {
