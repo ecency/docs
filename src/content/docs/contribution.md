@@ -2,6 +2,17 @@
 title: Contribution
 ---
 
-## How to contribute to the Ecency?
+## How to contribute to Ecency?
 
-Our awesome contributors helping us to shape Ecency. You can be part of this great movement, by joining our Translation team: Website, Mobile or by contributing with Ideas, Developing, Designing, Social media outreach skills. We try our best to support our contributors!
+Ecency grows through community effort.  You can help by translating the app, improving documentation, developing new features, designing interfaces, or simply spreading the word.
+
+### Documentation and code
+
+1. Fork this repository and clone it locally.
+2. Create or update Markdown files under `src/content/docs/`.
+3. Preview your changes with `yarn dev`.
+4. Commit your work and open a pull request.
+
+### Translations and ideas
+
+Join our translation teams or share ideas and feedback in the Ecency [Discord server](https://discord.gg/ecency).  We try our best to support all contributors!
