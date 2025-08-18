@@ -2,37 +2,113 @@
 title: Frequently asked questions
 ---
 
-## Can I change my username?
+Below are answers to common questions about Ecency and the Hive blockchain.
 
-Account names on Ecency and Hive blockchain can not be changed. If you would like a new account name, you can create new account.
+## About Ecency
 
-## Can I delete or deactivate my account?
+### What is Ecency?
 
-Accounts on Ecency can not be deactivated or deleted. The account along with all of its activity is permanently stored in the Hive blockchain.
+Ecency is a decentralized social network built on the [Hive blockchain](https://hive.io) where users own their accounts and content. Learn more in [What is Ecency?](/get-started/what-is-ecency/).
 
-## What is Keychain?
+### What is the Hive blockchain?
 
-Hive Keychain is a wallet browser extension for the Hive blockchain and cryptocurrency and allows users to securely log into and access multiple Hive-based platforms. It is available for Chrome, Brave, and Firefox.
+Hive is a fast, feeless blockchain for Web3 applications. See [What is Hive?](/hive/what-is-hive/) for an overview.
 
-## What kind of information is shown on my profile?
+### How does Ecency work?
 
-The initial details displayed alongside your picture include your reputation score, display name, and description. Below that, you can find information about your followers, the accounts you are following, and your registration date on Ecency. In the Ecency settings, you can choose to add additional details such as your bio, profile picture, cover image, and location.
+Ecency reads and writes data to Hive and rewards contributions with blockchain tokens and Ecency Points. The [How it works guide](/get-started/how-it-works/) explains the process.
 
-## What can I do if my HIVE or Hive dollar tokens are stolen or sent to the wrong account?
+### How do I join Ecency?
 
-If your liquid tokens are stolen or sent to the wrong account, there is no action you can take. However, if your tokens are in Hive Power, the chances of being hacked are less than 1/13 per week. Additionally, if your tokens are in savings, there is a three-day waiting period before they can be transferred. It may be safer to stake/power up or transfer funds into savings.
+Create an account on the [signup page](https://ecency.com/signup?referral=ecency) or follow the [account creation guide](/guides/create-account/). Remember to store your master password safely.
 
-## What are the dollar amounts next to posts and comments?
+### What makes Ecency different from other social networks?
 
-The estimated dollar amounts displayed next to posts and comments represent the potential payout that will be received at the end of the payout period. This estimate is based on the current voting activity and price of HIVE. The actual payout may fluctuate until the period ends. Payouts are a combination of Hive Power and Hive Dollars, although in certain cases, HIVE may be used instead of Hive Dollars depending on market conditions.
+Content is stored on a blockchain, making it immutable and censorship resistant. See [why Ecency is different](/get-started/difference/) for more details.
 
-## How DHF works?
+## Accounts and security
 
-Anyone can create a proposal and convince community to vote on their proposal to get funded. Before creating proposal, normal post should be published on blockchain and it is recommended to gather feedback before creating proposal. Proposal creation has fee of 10 HBD + 1 HBD for each day it lasts over 60 days.
+### Can I change or delete my account?
 
-Once proposal reaches certain threshold of tallied votes, it will start receiving funds each hour. If proposal falls below threshold, system will halt funding for that proposal. You can vote as many proposals as you want, there are no limits. Proposal cannot be edited, but can be deleted/withdrawn by creator.
+Hive account names are permanent and accounts cannot be deleted. You can always [create a new account](/guides/create-account/).
 
-## How to vote proposals?
+### How do I sign in?
 
-Go to the Proposals Page there you can see all Proposals that can be voted on. You can click on them to see further information about the proposal before voting or you can click on the voting icon near the proposal without opening.
+Log in with your Hive username and master password, active key, or via [Hivesigner](https://hivesigner.com). For key details see [Account security and keys](/common/keys/).
+
+### How does the referral system work?
+
+Share a signup link like `https://ecency.com/signup?referral=USERNAME`. When a referral earns 250 Points you receive 100 Points. See the [referral program](/get-started/referral/) for more.
+
+### What is Hive Keychain?
+
+[Hive Keychain](https://hive-keychain.com) is a browser extension and mobile app for securely using Hive applications.
+
+### What if my tokens are stolen or sent to the wrong account?
+
+Blockchain transactions are irreversible. Keeping funds in Hive Power or savings offers more protection.
+
+### How can I recover a lost account?
+
+Account recovery is possible within 30 days if you retain your previous owner key. Follow the [account recovery guide](/guides/recovery/).
+
+## Using Ecency
+
+### Is there a mobile app?
+
+Yes, Ecency provides Android and iOS apps. See the [mobile app guide](/guides/use-mobile-app/) for download links.
+
+### What are Ecency Points and how do I earn them?
+
+Points reward engagement and can be spent to boost or promote posts. Earning methods are listed on the [Ecency Points page](/ecency/ecency-points/).
+
+### Why can't I post or comment?
+
+You may be out of [Resource Credits](/common/resource-credits/what-is-it/). RC regenerate over time or with more Hive Power. You can also request temporary delegation via the [boost page](https://ecency.com/purchase?type=boost).
+
+### What is considered spam or abuse?
+
+See the [posting guidelines](/common/posting/#what-is-considered-spam-or-abuse) for examples of behavior that may be downvoted or removed.
+
+### How do I power up or power down HIVE?
+
+Use the wallet options to convert between liquid HIVE and Hive Power. The [power up/down guide](/guides/power-up-down/) covers the steps.
+
+## Content and rewards
+
+### What are the dollar amounts next to posts and comments?
+
+They estimate the pending payout after seven days. Rewards are explained in [Hive curation and rewards](/hive/curation-and-rewards/).
+
+### How are author and curation rewards split?
+
+At payout, authors and curators each receive 50% of the rewards unless beneficiaries are set or rewards are declined.
+
+### What is voting mana?
+
+Voting power decreases with each vote and regenerates by about 20% per day. See [voting power](/common/resource-credits/voting-power/) for details.
+
+### When can I claim my rewards?
+
+Rewards become claimable seven days after the post or comment is published. Use the **Claim Rewards** button in your wallet.
+
+## Wallet and tokens
+
+### What is the difference between HIVE and Hive Dollars (HBD)?
+
+HIVE is the native liquid token; HBD is a stable-value token. Learn more in [Hive tokens](/common/hive-tokens/).
+
+### How do I convert between HIVE and HBD?
+
+Use the **Convert** option in your wallet or trade on a supported market. Converting HBD to HIVE takes about 3.5 days.
+
+## Proposals and governance
+
+### How does the Decentralized Hive Fund (DHF) work?
+
+Anyone can create a proposal for community funding. Once it reaches the required vote threshold it receives hourly payouts until it falls below that level.
+
+### How do I vote on proposals?
+
+Visit the [Proposals page](https://ecency.com/proposals) and use the vote icon next to a proposal you support.
 

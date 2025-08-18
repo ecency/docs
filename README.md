@@ -1,54 +1,37 @@
-# Starlight Starter Kit: Basics
+# Ecency Documentation
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+This repository contains the source for the [Ecency](https://ecency.com) documentation site.  The site is built with [Astro](https://astro.build) using the [Starlight](https://starlight.astro.build) theme.
 
-```
-yarn create astro@latest -- --template starlight
-```
+## Project Structure
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/starlight/tree/main/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/starlight/tree/main/examples/basics)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/withastro/starlight&create_from_path=examples/basics)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwithastro%2Fstarlight%2Ftree%2Fmain%2Fexamples%2Fbasics&project-name=my-starlight-docs&repository-name=my-starlight-docs)
+Documentation content lives in [`src/content/docs`](src/content/docs).  Each Markdown (`.md`/`.mdx`) file in that directory becomes a page in the generated site.  Static assets can be placed in `public/` and referenced with relative links.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Development
 
-## 🚀 Project Structure
+Install dependencies and start a local development server:
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   ├── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+```bash
+yarn install
+yarn dev
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+The site will be available at `http://localhost:4321` and hot–reloads as you edit files.
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+## Build and Preview
 
-Static assets, like favicons, can be placed in the `public/` directory.
+To create a production build, run:
 
-## 🧞 Commands
+```bash
+yarn build
+```
 
-All commands are run from the root of the project, from a terminal:
+The static site is output to the `dist/` folder.  You can preview the build locally with:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `yarn install`             | Installs dependencies                            |
-| `yarn dev`             | Starts local dev server at `localhost:4321`      |
-| `yarn build`           | Build your production site to `./dist/`          |
-| `yarn preview`         | Preview your build locally, before deploying     |
-| `yarn astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `yarn astro -- --help` | Get help using the Astro CLI                     |
+```bash
+yarn preview
+```
 
-## 👀 Want to learn more?
+## Contributing
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+Improvements and additions are welcome!  Fork this repository, create your changes in `src/content/docs`, and open a pull request.  For more information see the [contribution guide](src/content/docs/contribution.md).
+
