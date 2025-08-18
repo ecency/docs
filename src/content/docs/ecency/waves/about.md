@@ -14,3 +14,9 @@ Different communities have their own names for quick posts:
 - **Buzz** – micro posts on D.Buzz.
 
 Waves brings these styles together so you can explore and interact with short content from across Hive in one place.
+
+## Waves Mobile App
+
+Prefer browsing and creating Waves on your phone? The Ecency team maintains a dedicated Waves mobile app for Android and iOS.
+Download it on [Google Play](https://play.google.com/store/apps/details?id=com.ecency.waves) or the
+[Apple App Store](https://apps.apple.com/us/app/waves-short-content-sharing/id6504257744).
