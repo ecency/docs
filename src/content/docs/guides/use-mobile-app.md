@@ -22,7 +22,8 @@ Also available at: [https://github.com/ecency-mobile](https://github.com/ecency-
 
 - Post and edit Hive content
 - Vote, comment, and reply
-- Use Boost/Promote with Ecency Points
+- Use Boost+/Promote with Ecency Points
+- Purchase **Boost (Account Boost)** for 30-day HP delegation
 - View wallet and transaction history
 - Bookmark and draft posts
 - Real-time notifications
@@ -58,6 +59,14 @@ Also available at: [https://github.com/ecency-mobile](https://github.com/ecency-
 - Power up/down, send HIVE or HBD
 - Check Ecency Points, Boosted, and Promoted status
 - Check and enable Layer 2 tokens for quicker access
+
+---
+
+## Boost (Account Boost)
+
+- Available only on the mobile app via **in-app purchase**
+- Grants a **Hive Power delegation** for **30 days**
+- Doesn't spend your Ecency Points
 
 ---
 

@@ -14,7 +14,7 @@ Ecency makes Hive accessible through web, desktop, and mobile apps, offering a m
 - **Accessible**: Use Ecency from anywhere – desktop, mobile app, or browser.
 - **Integrated Wallet**: View balances, send tokens, power up/down.
 - **Content Creation**: Draft, schedule, and publish posts with rich editing tools.
-- **Reward Tools**: Use Boost and Promote features to gain visibility.
+- **Reward Tools**: Use Boost+ (delegations with points) and Promote features to gain visibility.
 - **Points System**: Earn Ecency Points for your activity and engagement.
 
 ## Platforms
@@ -26,7 +26,8 @@ Ecency makes Hive accessible through web, desktop, and mobile apps, offering a m
 
 - **Hive Integration**: Everything you do is stored on Hive.
 - **Ecency Points**: Bonus point system that rewards users for activity.
-- **Boost/Promote**: Gain visibility with on-chain and off-chain promotion tools.
+- **Boost+/Promote**: Gain visibility with on-chain and off-chain promotion tools.
+- **Boost (Account Boost)**: Mobile-only in-app purchase that provides a 30-day Hive Power delegation.
 - **Waves**: Short content creation and engagement.
 - **Communities**: Explore Hive's topic, journal and council based communities.
 - **Multi-Account Support**: Manage multiple Hive accounts with ease.

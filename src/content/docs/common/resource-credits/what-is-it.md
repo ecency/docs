@@ -6,7 +6,7 @@ Transacting on the Hive blockchain has zero fees, transaction rate-limiting is e
 
 Every user has a limited amount of Resource Credits to use each week. The more transactions a user does, the less Resource Credits they will have left (until they recharge). Users with more HIVE POWER will have more Resource Credits.
 
-If you run out of Resource Credits, you will be unable to transact with the blockchain until your Resource Credits recharge (happens automatically) or you acquire additional HIVE POWER to increase your Resource Credit balance or you can request Boosting account from Ecency to receive temporary delegation.
+If you run out of Resource Credits, you will be unable to transact with the blockchain until your Resource Credits recharge (happens automatically), you acquire additional HIVE POWER, **request Boost+** using Ecency Points, or purchase a **Boost (Account Boost)** in the mobile app to receive a temporary delegation.
 
 ## What's possible with my current available RC?
 

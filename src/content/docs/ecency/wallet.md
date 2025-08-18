@@ -87,7 +87,7 @@ Transferring HBD into savings earns you 15-20% (subject to governance settings) 
 |------------|--------------------------------------------------|
 | **Tokens** | View HIVE, HP, HBD, and Points                   |
 | **Activity** | Recent transfers, votes, rewards, boosts       |
-| **Boosts** | View recent Boost/Promote activity               |
+| **Boosts** | View recent Boost+, Boost (Account Boost), and Promote activity |
 | **Savings** | Manage savings balance                          |
 
 ---
