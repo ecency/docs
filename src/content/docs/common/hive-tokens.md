@@ -2,6 +2,8 @@
 title: Hive tokens
 ---
 
+Ecency wallet is a cryptocurrency wallet that lets the community manage their HIVE, HBD, Hive Power, Savings, and other tokens securely.
+
 ## Where do the tokens come from?
 
 The Hive network continually creates new digital tokens to reward content creators and curators. Some of the newly-created tokens are transferred to users who add value to platform by posting, commenting, and voting on other people's posts. The remainder is distributed to holders of HIVE POWER and the witnesses that secures the blockchain.
