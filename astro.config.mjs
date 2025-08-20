@@ -33,7 +33,6 @@ export default defineConfig({
             { label: "What is Hive?", slug: "hive/what-is-hive" },
             { label: "Hive accounts", slug: "hive/hive-accounts" },
             { label: "Hive tokens", slug: "common/hive-tokens" },
-            { label: "Wallet", slug: "common/wallet" },
             {
               label: "Resource Credits",
               items: [
