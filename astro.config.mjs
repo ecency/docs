@@ -54,10 +54,6 @@ export default defineConfig({
             { label: "Reputation", slug: "common/reputation" },
             { label: "Discover", slug: "common/discover" },
             { label: "Witness voting", slug: "guides/vote-witness" },
-            {
-              label: "Hivesigner",
-              items: [{ label: "What is it?", slug: "hive/hivesigner/about" }],
-            },
           ],
         },
         {
