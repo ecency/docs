@@ -43,7 +43,7 @@ export default defineConfig({
               label: "Communities",
               items: [
                 { label: "Overview", slug: "hive/communities" },
-                { label: "Community beneficiary", slug: "hive/community-beneficiary" },
+                { label: "Custom beneficiary", slug: "hive/custom-beneficiary" },
               ],
             },
           ],
