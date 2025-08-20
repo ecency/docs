@@ -1,11 +1,11 @@
 ---
 title: Ecency Wallet
-description: Learn how to manage HIVE, HBD, and Points using Ecency's wallet features.
+description: Learn how to manage multiple tokens, layer-2 assets, and external chain tokens (BTC, ETH, SOL, APT, TRX, ATOM) with full self-custody using Ecency's wallet features.
 ---
 
 # Ecency Wallet
 
-Ecency includes a fully integrated wallet that lets you manage your **Hive account balances**, **transfers**, and **power operations**, all in one place.
+Ecency includes a fully integrated wallet that lets you manage your **Hive account balances**, **transfers**, **layer-2 tokens**, and even **external chain assets** like **BTC**, **ETH**, **SOL**, **APT**, **TRX**, and **ATOM**, all in one place.
 
 The wallet works across **web**, **mobile**, and **desktop** apps.
 
@@ -22,8 +22,13 @@ The wallet provides access to:
 - Hive Engine layer 2 tokens
 - SPK layer 2 tokens
 - Ecency Points
+- External chain tokens (BTC, ETH, SOL, APT, TRX, ATOM)
 
-You can view balances, recent transactions, and perform key actions.
+You can view balances, recent transactions, and perform key actions across these assets.
+
+### External Chain Tokens
+
+Ecency Wallets can generate lightweight wallets for supported blockchains such as **Bitcoin (BTC)**, **Ethereum (ETH)**, **Solana (SOL)**, **Aptos (APT)**, **Tron (TRX)**, and **Cosmos (ATOM)**. These direct integrations give you full control and self custody, letting you track and transfer cross-chain tokens alongside your Hive assets without leaving Ecency.
 
 ---
 
