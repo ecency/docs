@@ -33,13 +33,12 @@ export default defineConfig({
             { label: "What is Hive?", slug: "hive/what-is-hive" },
             { label: "Hive accounts", slug: "hive/hive-accounts" },
             { label: "Hive tokens", slug: "common/hive-tokens" },
-            {
-              label: "Resource Credits",
-              items: [
-                { label: "What is it?", slug: "hive/resource-credits" },
-                { label: "Voting power", slug: "common/resource-credits/voting-power" },
-              ],
-            },
+            { label: "Resource credits", slug: "hive/resource-credits" },
+            { label: "Voting power", slug: "common/resource-credits/voting-power" },
+            { label: "Curation and rewards", slug: "hive/curation-and-rewards" },
+            { label: "Publishing", slug: "common/posting" },
+            { label: "Reblog", slug: "common/reblog" },
+            { label: "Reputation", slug: "common/reputation" },
             {
               label: "Communities",
               items: [
@@ -47,12 +46,6 @@ export default defineConfig({
                 { label: "Community beneficiary", slug: "hive/community-beneficiary" },
               ],
             },
-            { label: "Curation and rewards", slug: "hive/curation-and-rewards" },
-            { label: "Publishing", slug: "common/posting" },
-            { label: "Reblog", slug: "common/reblog" },
-            { label: "Reputation", slug: "common/reputation" },
-            { label: "Discover", slug: "common/discover" },
-            { label: "Witness voting", slug: "guides/vote-witness" },
           ],
         },
         {
@@ -61,6 +54,7 @@ export default defineConfig({
             { label: "Feed", slug: "ecency/feed" },
             { label: "Publish", slug: "ecency/publish" },
             { label: "Market", slug: "ecency/market" },
+            { label: "Discover", slug: "ecency/discover" },
             { label: "Mobile App", slug: "guides/use-mobile-app" },
             { label: "Ecency Points", slug: "ecency/ecency-points" },
             { label: "Boost and Promote", slug: "ecency/boost-and-promote" },
@@ -87,6 +81,7 @@ export default defineConfig({
             { label: "Power up/down", slug: "guides/power-up-down" },
             { label: "Delegate Hive Power", slug: "guides/delegate-hp" },
             { label: "Create community", slug: "guides/create-community" },
+            { label: "Witness voting", slug: "guides/vote-witness" },
           ],
         },
         {
