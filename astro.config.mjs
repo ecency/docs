@@ -61,6 +61,11 @@ export default defineConfig({
           items: [
             { label: "Feed", slug: "ecency/feed" },
             { label: "Publish", slug: "ecency/publish" },
+            { label: "Market", slug: "ecency/market" },
+            { label: "Mobile App", slug: "guides/use-mobile-app" },
+            { label: "Ecency Points", slug: "ecency/ecency-points" },
+            { label: "Boost and Promote", slug: "ecency/boost-and-promote" },
+            { label: "Notifications, Drafts, Bookmarks", slug: "ecency/notifications-drafts-bookmarks" },
             {
               label: "Decks",
               items: [{ label: "What are Decks?", slug: "ecency/decks/about" }],
@@ -69,15 +74,10 @@ export default defineConfig({
               label: "Waves",
               items: [{ label: "What are Waves?", slug: "ecency/waves/about" }],
             },
-            { label: "Market", slug: "ecency/market" },
-            { label: "Mobile App", slug: "guides/use-mobile-app" },
             {
               label: "Wallets",
               items: [{ label: "Ecency Wallet", slug: "ecency/wallets/about" }],
             },
-            { label: "Ecency Points", slug: "ecency/ecency-points" },
-            { label: "Boost and Promote", slug: "ecency/boost-and-promote" },
-            { label: "Notifications, Drafts, Bookmarks", slug: "ecency/notifications-drafts-bookmarks" },
           ],
         },
         {
