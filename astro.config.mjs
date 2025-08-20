@@ -75,7 +75,10 @@ export default defineConfig({
             },
             { label: "Market", slug: "ecency/market" },
             { label: "Mobile App", slug: "guides/use-mobile-app" },
-            { label: "Ecency Wallet", slug: "ecency/wallet" },
+            {
+              label: "Wallets",
+              items: [{ label: "Ecency Wallet", slug: "ecency/wallets/about" }],
+            },
             { label: "Ecency Points", slug: "ecency/ecency-points" },
             { label: "Boost and Promote", slug: "ecency/boost-and-promote" },
             { label: "Notifications, Drafts, Bookmarks", slug: "ecency/notifications-drafts-bookmarks" },
