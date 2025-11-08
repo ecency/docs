@@ -21,6 +21,10 @@ Prefer browsing and creating Waves on your phone? The Ecency team maintains a de
 Download it on [Google Play](https://play.google.com/store/apps/details?id=com.ecency.waves) or the
 [Apple App Store](https://apps.apple.com/us/app/waves-short-content-sharing/id6504257744).
 
+<div style="margin-top: 2.5rem; display: flex; justify-content: center;">
+  <img src="/images/waves-logo.svg" alt="Waves app logo" style="max-width: 180px; width: 100%; height: auto;" />
+</div>
+
 <div style="text-align: center; margin-top: 2.5rem;">
   <img src="/images/waves-logo.svg" alt="Waves app logo" style="max-width: 180px; width: 100%; height: auto;" />
 </div>
