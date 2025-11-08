@@ -24,7 +24,3 @@ Download it on [Google Play](https://play.google.com/store/apps/details?id=com.e
 <div style="margin-top: 2.5rem; display: flex; justify-content: center;">
   <img src="/images/waves-logo.svg" alt="Waves app logo" style="max-width: 180px; width: 100%; height: auto;" />
 </div>
-
-<div style="text-align: center; margin-top: 2.5rem;">
-  <img src="/images/waves-logo.svg" alt="Waves app logo" style="max-width: 180px; width: 100%; height: auto;" />
-</div>
