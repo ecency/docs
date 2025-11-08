@@ -3,7 +3,10 @@ title: What is Ecency?
 description: An introduction to Ecency, a frontend for Hive that makes content creation and curation simple.
 ---
 
-# What is Ecency?
+<div style="margin-top: 2.5rem; display: flex; justify-content: center;">
+  <img src="/images/ecency-logo.svg" alt="Ecency app logo" style="max-width: 180px; width: 100%; height: auto;" />
+</div>
+
 
 Ecency is a powerful, user-friendly platform built on top of the Hive blockchain. It allows users to create, share, discover, and earn from content in a decentralized way.
 
