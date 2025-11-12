@@ -3,7 +3,7 @@ title: Curation and Rewards
 description: Explore how Hive rewards authors and curators through a reward pool.
 ---
 
-Hive is a blockchain that rewards both **content creators** and **curators** through a reward pool system. When you publish content or vote on quality posts, you can earn HIVE and HBD tokens.
+Hive is a blockchain that rewards both **content creators** and **curators** through a shared reward pool system. When you publish content or vote on quality posts, you can **potentially** earn HIVE and HBD tokens from that reward pool.
 
 ---
 
@@ -21,7 +21,8 @@ Every post or comment published on Hive is eligible for **potential** rewards ba
 - **50% to curators** (those who upvoted)
 
 This split applies after the 7-day payout window ends. Remember, rewards are only generated on payout. 
-Your content potentially could earn or not, there is never guarantees, anything you see during 7 day period is estimation and potential reward (not guaranteed).
+Your content potentially could earn or not, it is **never guaranteed**, anything you see during 7-days period is estimation and potential reward (not guaranteed).
+Reward pool allocation of shares constantly changes as more content is created and curated. 
 
 ---
 
