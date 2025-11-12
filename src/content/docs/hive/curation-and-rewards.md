@@ -3,15 +3,13 @@ title: Curation and Rewards
 description: Explore how Hive rewards authors and curators through a reward pool.
 ---
 
-# Curation and Rewards on Hive
-
 Hive is a blockchain that rewards both **content creators** and **curators** through a reward pool system. When you publish content or vote on quality posts, you can earn HIVE and HBD tokens.
 
 ---
 
 ## Content Rewards
 
-Every post or comment published on Hive is eligible for rewards based on:
+Every post or comment published on Hive is eligible for **potential** rewards based on:
 
 - Community votes (curation)
 - Vote weight and Hive Power of voters
@@ -22,7 +20,8 @@ Every post or comment published on Hive is eligible for rewards based on:
 - **50% to the author** (in HBD and/or Hive Power)
 - **50% to curators** (those who upvoted)
 
-This split applies after the 7-day payout window ends.
+This split applies after the 7-day payout window ends. Remember, rewards are only generated on payout. 
+Your content potentially could earn or not, there is never guarantees, anything you see during 7 day period is estimation and potential reward (not guaranteed).
 
 ---
 
