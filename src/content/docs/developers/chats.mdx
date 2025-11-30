@@ -16,7 +16,7 @@ This document explains how Ecency's chat experience works and how other Hive app
 
 ## Using Ecency-hosted chat endpoints
 
-Other Hive apps can call Ecency's `/api/mattermost/*` routes directly—no Mattermost infrastructure required. Key points:
+Other Hive apps can call Ecency's `/api/mattermost/*` routes directly - **no Mattermost infrastructure required**. Key points:
 
 - **Base URL**: Use the deployed Ecency web domain you target (e.g., `https://ecency.com/api/mattermost`). The same routes are available on staging instances for testing.
 - **Cookies required**: The routes rely on an httpOnly `mm_pat` cookie. When calling from a browser, use `credentials: "include"` so the cookie is stored for subsequent requests.
@@ -42,9 +42,9 @@ These are required only when running the Ecency API yourself; consumers of `ecen
 
 ### How Ecency access tokens are issued
 
-Ecency always mints the same JWT `accessToken`/`refreshToken` pair regardless of the login provider. Hivesigner users obtain them via the OAuth callback, while other methods (Keychain, HiveAuth, or manual posting-key sign-in) go through the Ecency auth API, which returns the tokens after verifying a signed login challenge tied to the Hive posting authority. If your app already integrates Ecency login with those providers, reuse the returned tokens directly—they are identical to the ones required by the chat bootstrap endpoint.
+Ecency always mints the same JWT `accessToken`/`refreshToken` pair regardless of the login provider. Hivesigner users obtain them via the OAuth callback, while other methods (Keychain, HiveAuth, or manual posting-key sign-in) go through the Ecency auth API, which returns the tokens after verifying a signed login challenge tied to the Hive posting authority.
 
-Otherwise, you can mint an `accessToken` yourself by signing the standard Hivesigner-style challenge locally with the user's posting private key during your app's login flow. Any app can create the payload, sign it, base64url-encode it, and submit it to Ecency's auth API as the `code` to receive the normal `accessToken`/`refreshToken` pair. A minimal example inspired by our production implementation:
+Otherwise, you can mint an `accessToken` yourself by signing the standard Hivesigner-style challenge locally with the user's posting private key during your app's login flow. Any app can create the payload, sign it, base64url-encode it, and use that as `accessToken`. A minimal example inspired by our production implementation:
 
 ```ts
 import { PrivateKey, cryptoUtils } from "@hiveio/dhive";
