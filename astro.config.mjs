@@ -88,6 +88,7 @@ export default defineConfig({
           label: "Developers",
           items: [
             { label: "Ecency SDK", slug: "developers/wallets" },
+            { label: "Ecency chats", slug: "developers/chats" },
             { label: "API Reference", slug: "developers/api" }, // if you later add this
             {
               label: "Extra services",
