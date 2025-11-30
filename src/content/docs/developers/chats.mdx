@@ -1,0 +1,123 @@
+---
+title: Ecency chats
+description: Integrate Ecency-hosted chat endpoints into Hive applications without running your own Mattermost instance.
+---
+
+# Chat integration guide
+
+This document explains how Ecency's chat experience works and how other Hive applications can integrate with it. It focuses on how to consume the Ecency-hosted chat endpoints so Hive apps can embed chat without running their own Mattermost instance.
+
+## Architecture overview
+
+- **Mattermost as chat backend**: Ecency provisions users, teams, channels, and personal access tokens (PATs) in a Mattermost instance configured through environment variables.
+- **Next.js API wrappers**: The web app exposes `/api/mattermost/*` routes that handle authentication, bootstrap tasks, and proxy calls to Mattermost using user-scoped PATs stored in a secure cookie.
+- **Hive identity**: Users authenticate with their Hive account (access/refresh tokens). The bootstrap API validates those tokens before issuing a Mattermost PAT so the chat identity is bound to the Hive username.
+- **Community mapping**: Hive communities map to public Mattermost channels named after the community id (e.g., `hive-123`). The bootstrap flow can auto-join users to channels for the communities they subscribe to.
+
+## Using Ecency-hosted chat endpoints
+
+Other Hive apps can call Ecency's `/api/mattermost/*` routes directly—no Mattermost infrastructure required. Key points:
+
+- **Base URL**: Use the deployed Ecency web domain you target (e.g., `https://ecency.com/api/mattermost`). The same routes are available on staging instances for testing.
+- **Cookies required**: The routes rely on an httpOnly `mm_pat` cookie. When calling from a browser, use `credentials: "include"` so the cookie is stored for subsequent requests.
+- **Hive access tokens only**: Your app never needs Mattermost credentials. Provide the user's Hive `accessToken`/`refreshToken` and username to bootstrap; the Ecency backend handles PAT creation and all proxying.
+
+If you self-host Ecency, set these variables in your `.env` (see `apps/web/.env.template`):
+
+- `MATTERMOST_BASE_URL`: Mattermost server REST base (e.g., `https://mattermost.example.com/api/v4`).
+- `MATTERMOST_ADMIN_TOKEN`: Admin personal access token used to provision users, teams, and channels.
+- `MATTERMOST_TEAM_ID`: Team id where chat channels live.
+
+These are required only when running the Ecency API yourself; consumers of `ecency.com/api/mattermost` do not need them.
+
+## Quickstart for Hive app integrators
+
+1. **Collect Hive tokens**: Obtain the user's Ecency/Hive `accessToken` or `refreshToken` (JWT) plus the Hive `username` after login in your app.
+2. **Bootstrap against Ecency**:
+   - `POST https://ecency.com/api/mattermost/bootstrap` with JSON `{ username, accessToken, refreshToken, displayName?, community?, communityTitle? }` and `credentials: "include"`.
+   - The route validates the Hive token, creates/ensures the Mattermost user, and joins/creates the team and optional community channel.
+   - Response: `{ ok: true, userId, channelId? }` and an `mm_pat` cookie scoped to Ecency.
+3. **Call chat endpoints with the cookie**: Subsequent requests to `https://ecency.com/api/mattermost/*` automatically include the PAT cookie when `credentials: "include"` is set, enabling channel lists, posting, reactions, searches, and direct messages.
+4. **Link back to your UI**: Use returned `channelId` or search endpoints to deep-link into chat surfaces within your app (e.g., from profiles or community pages).
+
+### How Ecency access tokens are issued
+
+Ecency always mints the same JWT `accessToken`/`refreshToken` pair regardless of the login provider. Hivesigner users obtain them via the OAuth callback, while other methods (Keychain, HiveAuth, or manual posting-key sign-in) go through the Ecency auth API, which returns the tokens after verifying a signed login challenge tied to the Hive posting authority. If your app already integrates Ecency login with those providers, reuse the returned tokens directly—they are identical to the ones required by the chat bootstrap endpoint.
+
+Otherwise, you can mint an `accessToken` yourself by signing the standard Hivesigner-style challenge locally with the user's posting private key during your app's login flow. Any app can create the payload, sign it, base64url-encode it, and submit it to Ecency's auth API as the `code` to receive the normal `accessToken`/`refreshToken` pair. A minimal example inspired by our production implementation:
+
+```ts
+import { PrivateKey, cryptoUtils } from "@hiveio/dhive";
+
+function buildHsCode(
+  hsClientId: string,
+  username: string,
+  postingWif: string
+): string {
+  const timestamp = Math.floor(Date.now() / 1000);
+
+  // Hivesigner-style payload: your app id/account, authors, and a timestamp.
+  const payload = {
+    signed_message: { type: "code", app: hsClientId },
+    authors: [username],
+    timestamp,
+  };
+
+  const message = JSON.stringify(payload);
+  const hash = cryptoUtils.sha256(message);
+
+  // Sign the hashed message with the user's posting key.
+  const signature = PrivateKey.fromString(postingWif).sign(hash).toString();
+
+  // Attach signature and base64url-encode the payload; HiveAuth signers can
+  // also return a pre-built signedToken that you can reuse here.
+  payload.signatures = [signature];
+  return Buffer.from(JSON.stringify(payload)).toString("base64url");
+}
+
+```
+
+## Available chat API routes
+
+All routes live under `/api/mattermost` and expect the `mm_pat` cookie set by the bootstrap step.
+
+### Channel and membership
+- `GET /channels`: Lists channels for the current user, enriched with favorite/mute flags, unread counts, and direct-message partner metadata.
+- `POST /channels/[id]/join`: Joins the user to a channel.
+- `POST /channels/[id]/leave`: Leaves a channel.
+- `POST /channels/[id]/favorite`: `{ favorite: boolean }` toggles favorite state.
+- `POST /channels/[id]/mute`: `{ mute: boolean }` sets mute/mentions-only state.
+- `POST /channels/[id]/view`: Marks the channel as viewed to reset unread counters.
+- `GET /channels/unreads`: Returns aggregate unread/mention counts across channels.
+- `POST /channels/search`: `{ term }` searches channels by name.
+
+### Messaging
+- `GET /channels/[id]/posts`: Fetches posts, user map, member info, and moderation context for a channel.
+- `POST /channels/[id]/posts`: `{ message, rootId? }` sends a message or reply.
+- `PATCH /channels/[id]/posts/[postId]`: `{ message }` edits a post.
+- `DELETE /channels/[id]/posts/[postId]`: Deletes a post (user-scoped; admins can moderate community channels server-side).
+- `POST /channels/[id]/posts/[postId]/reactions`: `{ emoji, add }` toggles a reaction.
+- `POST /search/posts`: `{ term }` searches messages.
+
+### Direct messages and user search
+- `POST /direct`: `{ username }` opens/creates a direct message channel with a user by Hive username.
+- `GET /users/search?q=`: Searches users by username/full name for mentions/DMs.
+- `GET /users/[userId]/image`: Proxies Mattermost profile images using configured base URL (no auth cookie needed).
+
+## Community-specific behavior
+
+- During bootstrap, Ecency pulls the user's Hive community subscriptions and ensures corresponding Mattermost channels exist, adding the user to each. This keeps chat channels aligned with Hive community membership automatically.
+- Moderation context for community channels is resolved via the Hive bridge API so moderators (owner/admin/mod roles) can delete chat posts using server-side admin privileges.
+
+## Integration checklist for other Hive apps
+
+- Use Ecency's production or staging base (`https://ecency.com/api/mattermost`) rather than hosting Mattermost yourself.
+- After Hive login, call the bootstrap endpoint with `credentials: "include"` so the PAT cookie is set in the browser.
+- Issue all chat requests against Ecency's `/api/mattermost/*` routes; they proxy to Mattermost and enforce authorization via the cookie.
+- Use channel search and direct message endpoints to link chat features from profiles, community pages, or content detail screens without handling Mattermost tokens directly.
+- If you manage Hive community subscriptions, pass `community` to the bootstrap call so users land directly in the relevant channel after sign-in.
+
+## Security notes
+
+- PAT cookies are httpOnly, `sameSite=lax`, and secured in production. Avoid exposing admin tokens client-side; all Mattermost admin operations stay server-side.
+- Hive JWT validation ensures only the authenticated Hive account can bootstrap and obtain a chat PAT tied to their username.
