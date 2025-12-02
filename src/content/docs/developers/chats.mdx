@@ -22,14 +22,6 @@ Other Hive apps can call Ecency's `/api/mattermost/*` routes directly - **no Mat
 - **Cookies required**: The routes rely on an httpOnly `mm_pat` cookie. When calling from a browser, use `credentials: "include"` so the cookie is stored for subsequent requests.
 - **Hive access tokens only**: Your app never needs Mattermost credentials. Provide the user's Hive `accessToken`/`refreshToken` and username to bootstrap; the Ecency backend handles PAT creation and all proxying.
 
-If you self-host Ecency, set these variables in your `.env` (see `apps/web/.env.template`):
-
-- `MATTERMOST_BASE_URL`: Mattermost server REST base (e.g., `https://mattermost.example.com/api/v4`).
-- `MATTERMOST_ADMIN_TOKEN`: Admin personal access token used to provision users, teams, and channels.
-- `MATTERMOST_TEAM_ID`: Team id where chat channels live.
-
-These are required only when running the Ecency API yourself; consumers of `ecency.com/api/mattermost` do not need them.
-
 ## Quickstart for Hive app integrators
 
 1. **Collect Hive tokens**: Obtain the user's Ecency/Hive `accessToken` or `refreshToken` (JWT) plus the Hive `username` after login in your app.
@@ -121,3 +113,91 @@ All routes live under `/api/mattermost` and expect the `mm_pat` cookie set by th
 
 - PAT cookies are httpOnly, `sameSite=lax`, and secured in production. Avoid exposing admin tokens client-side; all Mattermost admin operations stay server-side.
 - Hive JWT validation ensures only the authenticated Hive account can bootstrap and obtain a chat PAT tied to their username.
+
+## Self-host / Ecency instances
+
+If you self-host Ecency, set these variables in your `.env` (see `apps/web/.env.template`):
+
+- `MATTERMOST_BASE_URL`: Mattermost server REST base (e.g., `https://mattermost.example.com/api/v4`).
+- `MATTERMOST_ADMIN_TOKEN`: Admin personal access token used to provision users, teams, and channels.
+- `MATTERMOST_TEAM_ID`: Team id where chat channels live.
+
+If you're self-hosting the Mattermost **Team Edition (community edition)** for development, you can start with a simple `docker-compose.yml` like:
+
+```yaml
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: mattermost
+      POSTGRES_PASSWORD: chat_password
+      POSTGRES_DB: mattermost
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  mattermost:
+    image: mattermost/mattermost-team-edition:10.11
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8065:8065"
+    environment:
+      MM_SQLSETTINGS_DRIVERNAME: postgres
+      MM_SQLSETTINGS_DATASOURCE: postgres://mattermost:chat_password@db:5432/mattermost?sslmode=disable&connect_timeout=10
+      MM_SERVICESETTINGS_SITEURL: https://chat.ecency.com
+      MM_SERVICESETTINGS_LISTENADDRESS: :8065
+      MM_LOGSETTINGS_ENABLECONSOLE: "true"
+      MM_FILESETTINGS_DRIVERNAME: local
+      MM_FILESETTINGS_DIRECTORY: /mattermost/data
+      MM_EMAILSETTINGS_SMTPSERVER: mail.ecency.com
+      MM_EMAILSETTINGS_SMTPPORT: "587"
+      MM_EMAILSETTINGS_SMTPUSERNAME: noreply@ecency.com
+      MM_EMAILSETTINGS_SMTPPASSWORD: email_password
+      MM_EMAILSETTINGS_ENABLESMTPAUTH: "true"
+      MM_EMAILSETTINGS_ENABLESECURESMTP: "true"
+      MM_EMAILSETTINGS_REQUIREEMAILVERIFICATION: "false"
+      MM_SERVICESETTINGS_ENABLEGIFS: "false"
+      MM_SERVICESETTINGS_ENABLEOPENGRAPH: "false"
+    volumes:
+      - app_data:/mattermost/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mm.rule=Host(`chat.ecency.com`)"
+      - "traefik.http.routers.mm.entrypoints=websecure"
+      - "traefik.http.routers.mm.tls=true"
+      - "traefik.http.routers.mm.tls.certresolver=le"
+      - "traefik.http.services.mm.loadbalancer.server.port=8065"
+
+  reverse-proxy:
+    image: traefik:v3.0
+    restart: always
+    command:
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.le.acme.httpchallenge=true"
+      - "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.le.acme.email=hello@ecency.com"
+      - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - traefik_data:/letsencrypt
+    labels:
+      - "traefik.enable=true"
+
+volumes:
+  db_data:
+  app_data:
+  traefik_data:
+```
+
+Update `MM_SERVICESETTINGS_SITEURL`, SMTP values, and Traefik host/ACME email to match your environment. The exposed `8065` port allows direct Mattermost access; you can remove it if you only want Traefik handling ingress.
+
+THESE ARE REQUIRED ONLY when running the Ecency API/instance yourself; consumers of `ecency.com/api/mattermost` or **Hive app integrators** DO NOT NEED them.
