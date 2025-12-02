@@ -1,0 +1,72 @@
+---
+title: Ecency analytics
+description: Self-host Plausible Community Edition and connect it to an @ecency/web instance for privacy-friendly metrics.
+---
+
+# Ecency analytics with Plausible
+
+Ecency uses **Plausible Analytics** to track privacy-friendly usage metrics without cookies. This guide shows how to run the Plausible Community Edition and connect it to an `@ecency/web` deployment.
+
+## Quickstart: run Plausible CE
+
+Follow these steps on a host with Docker installed:
+
+1. **Prepare system packages and clone Plausible CE.**
+   ```bash
+   sudo apt update
+   git clone -b v2.1.3 --single-branch https://github.com/plausible/community-edition plausible-ce
+   cd plausible-ce
+   ```
+2. **Create your environment file.** Update the base URL to match the public hostname you will serve Plausible from.
+   ```bash
+   touch .env
+   echo "BASE_URL=https://pl.ecency.com" >> .env
+   echo "SECRET_KEY_BASE=$(openssl rand -base64 48)" >> .env
+   echo "HTTP_PORT=80" >> .env
+   echo "HTTPS_PORT=443" >> .env
+   ```
+3. **Expose Plausible ports locally.**
+   ```bash
+   cat > compose.override.yml << 'YAML'
+   services:
+     plausible:
+       ports:
+         - 80:80
+         - 443:443
+   YAML
+   ```
+4. **Install Docker Compose and launch.**
+   ```bash
+   sudo apt install docker.io
+   sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+   sudo chmod +x /usr/local/bin/docker-compose
+   docker-compose --version
+   docker-compose up -d
+   ```
+
+The Plausible UI will now be reachable at the `BASE_URL` you set (e.g., `https://pl.ecency.com`). Log in, create your site (domain), and note the script URL from the **Settings → Script** page.
+
+## Connect to `@ecency/web`
+
+Add the Plausible script to your `@ecency/web` deployment so page views are sent to your instance:
+
+1. **Set the Plausible environment variables.** In your web environment configuration (e.g., `.env.local`), add:
+   ```bash
+   PLAUSIBLE_API_HOST=https://pl.ecency.com
+   PLAUSIBLE_DOMAIN=ecency.com
+   PLAUSIBLE_API_KEY=your_plausible_api_key
+   ```
+   - Replace `pl.ecency.com` with the host where you run Plausible CE.
+   - Set `PLAUSIBLE_DOMAIN` to the domain you added in Plausible.
+   - Generate the **API key** from Plausible (**Settings → API keys**) so the site can send pageview events.
+2. **Include the tracking script.** Ensure your app template or `_document` injects Plausible:
+   ```html
+   <script
+     defer
+     data-domain="${process.env.PLAUSIBLE_DOMAIN}"
+     src="${process.env.PLAUSIBLE_API_HOST}/js/script.js"
+   ></script>
+   ```
+3. **Deploy and verify.** Redeploy `@ecency/web`, browse a few pages, and confirm events appear in the Plausible dashboard under **Realtime**.
+
+By self-hosting Plausible CE, Ecency analytics stay lightweight, GDPR-friendly, and free from third-party trackers.
