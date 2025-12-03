@@ -1,27 +1,23 @@
 (() => {
-  const storageKey = 'sl-sidebar-state';
   const desktopQuery = '(min-width: 50em)';
 
   const isDesktopSidebar = () => matchMedia(desktopQuery).matches;
 
-  const shouldRestoreFromStorage = (sidebar) => {
-    const persistTarget = sidebar.querySelector('sl-sidebar-state-persist');
-    const hash = persistTarget?.dataset.hash;
+  const isActiveLinkVisible = (sidebar, activeLink) => {
+    const sidebarRect = sidebar.getBoundingClientRect();
+    const linkRect = activeLink.getBoundingClientRect();
 
-    try {
-      const storedState = JSON.parse(sessionStorage.getItem(storageKey) || 'null');
-      return Boolean(hash && storedState?.hash === hash && typeof storedState.scroll === 'number');
-    } catch {
-      return false;
-    }
+    return linkRect.top >= sidebarRect.top && linkRect.bottom <= sidebarRect.bottom;
   };
 
   const centerLinkInSidebar = () => {
     const sidebar = document.getElementById('starlight__sidebar');
-    if (!sidebar || !isDesktopSidebar() || shouldRestoreFromStorage(sidebar)) return true;
+    if (!sidebar || !isDesktopSidebar()) return true;
 
     const activeLink = sidebar.querySelector("a[aria-current='page']");
     if (!activeLink) return false;
+
+    if (isActiveLinkVisible(sidebar, activeLink)) return true;
 
     const sidebarRect = sidebar.getBoundingClientRect();
     const linkRect = activeLink.getBoundingClientRect();
