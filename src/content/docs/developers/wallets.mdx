@@ -1,40 +1,70 @@
 ---
-title: External wallets
+title: Ecency wallets
 ---
 
 import { Code } from "@astrojs/starlight/components";
 import { Aside } from "@astrojs/starlight/components";
 
-Any user in a Ecency system can create/import external tokens to account. It helps different clients and Ecency to operate with these tokens, show overview or detailed view etc.
+Ecency wallets replaces the older Ecency SDK experience and focuses purely on
+wallet-related operations across the Ecency website and mobile app. The new
+`@ecency/wallets` package gives us a single, dedicated layer for creating and
+managing wallets while keeping the rest of the Ecency stack lightweight.
 
-### Storage
+## Standard seed phrase, multi-chain addresses
 
-Each token's public information is storing in two places:
+We utilize a blockchain-standard seed phrase to derive wallet addresses across
+different blockchains. A single mnemonic can be used to:
 
-1. **Private Ecency API** – uses for Ecency only purposes, strong-safe place;
-2. **Profile metadata** – can be used in any Hive client, weak-safe place, could be overrided by any client.
+1. Generate addresses for multiple supported chains without asking the user to
+   juggle several keys.
+2. Keep derivation compatible with common wallet tooling, so the same seed can
+   be recovered in other BIP39-style wallets.
+3. Sync addresses between web and mobile clients while still letting each
+   client enforce its own encryption and secure storage policies.
 
-### Create a wallet
+<Aside type="note">
+  The seed phrase never leaves the client. When a wallet needs to be backed up
+  or restored, the mnemonic is provided by the user, and derived addresses are
+  synced to Ecency services only after local encryption is applied.
+</Aside>
 
-To create a wallet SDK provides mutations and automatically set it to query. No need to handle it automatically.
+## What `@ecency/wallets` handles
+
+`@ecency/wallets` is scoped to wallet functionality so the rest of the Ecency
+codebase can stay focused on social and content features. The package is
+responsible for:
+
+- Generating or importing the mnemonic that seeds all derived addresses.
+- Deriving per-chain addresses from the same seed phrase, so Ecency can surface
+  balances and transactions for multiple blockchains.
+- Publishing public wallet metadata to Ecency services when users choose to
+  make their addresses available.
+
+## Example: derive addresses from a mnemonic
+
+The snippet below shows the general flow for creating a mnemonic and deriving a
+set of addresses. The exact API surface may evolve, but the key steps—create or
+import a seed, derive addresses for requested chains, and persist only the
+public details—remain the same.
 
 export const exampleCode = `
-import { useWalletCreate, EcencyWalletCurrency } from '@ecency/sdk';
+import { createWalletClient } from '@ecency/wallets';
 
-const username = 'demo.com';
-const currency = EcencyWalletCurrency.BTC;
+// Create a client for wallet-only operations in web or mobile apps
+const walletClient = createWalletClient();
 
-const { mutateAsync: createWallet } = useWalletCreate(username, currency);
+// Either generate or import a mnemonic
+const mnemonic = await walletClient.createMnemonic();
 
-// Wallets contains all wallets in a Record<EcencyWalletCurrency, {...}> format
-const { data: wallets } = useQuery({ queryKey: ["ecency-wallets", "wallets", username] })
+// Derive addresses for the chains you need to display in Ecency
+const addresses = await walletClient.deriveAddresses({
+  mnemonic,
+  chains: ['hive', 'bitcoin', 'ethereum'],
+});
+
+// Store only public addresses with Ecency services; keep the mnemonic local
+await walletClient.publishPublicWallets({ addresses });
 `;
-export const fileName = "create-wallet.ts";
+export const fileName = "wallets.ts";
 
 <Code code={exampleCode} lang="ts" title={fileName} />
-
-<Aside type="caution">
-  Created wallets exists only in current session. Wallets haven't published
-  anywhere on this step. Saving to private API or metadata are different
-  mutations.
-</Aside>
