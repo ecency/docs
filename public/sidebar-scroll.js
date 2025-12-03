@@ -1,5 +1,8 @@
 (() => {
   const storageKey = 'sl-sidebar-state';
+  const desktopQuery = '(min-width: 50em)';
+
+  const isDesktopSidebar = () => matchMedia(desktopQuery).matches;
 
   const shouldRestoreFromStorage = (sidebar) => {
     const persistTarget = sidebar.querySelector('sl-sidebar-state-persist');
@@ -13,12 +16,12 @@
     }
   };
 
-  const scrollCurrentSidebarLinkIntoView = () => {
+  const centerLinkInSidebar = () => {
     const sidebar = document.getElementById('starlight__sidebar');
-    if (!sidebar || shouldRestoreFromStorage(sidebar)) return;
+    if (!sidebar || !isDesktopSidebar() || shouldRestoreFromStorage(sidebar)) return true;
 
     const activeLink = sidebar.querySelector("a[aria-current='page']");
-    if (!activeLink) return;
+    if (!activeLink) return false;
 
     const sidebarRect = sidebar.getBoundingClientRect();
     const linkRect = activeLink.getBoundingClientRect();
@@ -26,11 +29,24 @@
     const targetTop = Math.max(linkOffset - sidebar.clientHeight / 2 + linkRect.height / 2, 0);
 
     sidebar.scrollTo({ top: targetTop, behavior: 'auto' });
+    return true;
   };
 
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    scrollCurrentSidebarLinkIntoView();
-  } else {
-    window.addEventListener('DOMContentLoaded', scrollCurrentSidebarLinkIntoView, { once: true });
-  }
+  const scheduleScroll = () => {
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      requestAnimationFrame(() => {
+        if (!centerLinkInSidebar()) {
+          const sidebar = document.getElementById('starlight__sidebar') || document.body;
+          const observer = new MutationObserver(() => {
+            if (centerLinkInSidebar()) observer.disconnect();
+          });
+          observer.observe(sidebar, { childList: true, subtree: true });
+        }
+      });
+    } else {
+      window.addEventListener('DOMContentLoaded', scheduleScroll, { once: true });
+    }
+  };
+
+  scheduleScroll();
 })();
