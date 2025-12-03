@@ -9,15 +9,9 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Ecency",
-      head: [
-        {
-          tag: "script",
-          attrs: {
-            src: "/sidebar-scroll.js",
-            type: "module",
-          },
-        },
-      ],
+      components: {
+        Sidebar: "./src/components/Sidebar.astro",
+      },
       social: {
         github: "https://github.com/ecency",
       },

@@ -1,0 +1,53 @@
+---
+import Default from "@astrojs/starlight/components/Sidebar.astro";
+import type { Props } from "@astrojs/starlight/props";
+
+const props = Astro.props as Props;
+---
+
+<div data-ecency-sidebar>
+  <Default {...props}>
+    <slot />
+  </Default>
+</div>
+
+<script client:load>
+  const ACTIVE_SELECTOR = "[data-ecency-sidebar] a[aria-current='page']";
+
+  const prefersReducedMotion = window.matchMedia?.(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  const scrollActiveLink = (behavior = "auto") => {
+    const activeLink = document.querySelector(ACTIVE_SELECTOR);
+    if (!activeLink || typeof activeLink.scrollIntoView !== "function") return;
+
+    // Scroll the active link into the center of the sidebar
+    activeLink.scrollIntoView({
+      block: "center",
+      inline: "nearest",
+      behavior: prefersReducedMotion ? "auto" : behavior,
+    });
+  };
+
+  const run = () => {
+    // initial attempt
+    scrollActiveLink("smooth");
+
+    // if you want to be extra-safe with late-rendered content, you could
+    // wrap in a small timeout, but often not needed:
+    // setTimeout(() => scrollActiveLink("smooth"), 0);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run, { once: true });
+  } else {
+    run();
+  }
+
+  // Handle Astro/Starlight client-side navigation
+  window.addEventListener("astro:after-swap", () => {
+    // no animation on fast internal nav if you prefer:
+    scrollActiveLink("auto");
+  });
+</script>
