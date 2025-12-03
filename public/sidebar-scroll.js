@@ -1,48 +1,43 @@
 (() => {
-  const desktopQuery = '(min-width: 50em)';
+  const ACTIVE_SELECTOR = "[data-starlight-sidebar] a[aria-current='page']";
 
-  const isDesktopSidebar = () => matchMedia(desktopQuery).matches;
+  const scrollActiveLink = (behavior = 'auto') => {
+    const activeLink = document.querySelector(ACTIVE_SELECTOR);
+    if (!activeLink || typeof activeLink.scrollIntoView !== 'function') return false;
 
-  const isActiveLinkVisible = (sidebar, activeLink) => {
-    const sidebarRect = sidebar.getBoundingClientRect();
-    const linkRect = activeLink.getBoundingClientRect();
-
-    return linkRect.top >= sidebarRect.top && linkRect.bottom <= sidebarRect.bottom;
-  };
-
-  const centerLinkInSidebar = () => {
-    const sidebar = document.getElementById('starlight__sidebar');
-    if (!sidebar || !isDesktopSidebar()) return true;
-
-    const activeLink = sidebar.querySelector("a[aria-current='page']");
-    if (!activeLink) return false;
-
-    if (isActiveLinkVisible(sidebar, activeLink)) return true;
+    const sidebar = activeLink.closest('[data-starlight-sidebar]');
+    if (!sidebar) return false;
 
     const sidebarRect = sidebar.getBoundingClientRect();
     const linkRect = activeLink.getBoundingClientRect();
-    const linkOffset = linkRect.top - sidebarRect.top + sidebar.scrollTop;
-    const targetTop = Math.max(linkOffset - sidebar.clientHeight / 2 + linkRect.height / 2, 0);
+    const isVisible = linkRect.top >= sidebarRect.top && linkRect.bottom <= sidebarRect.bottom;
 
-    sidebar.scrollTo({ top: targetTop, behavior: 'auto' });
+    if (!isVisible) {
+      activeLink.scrollIntoView({ block: 'center', inline: 'nearest', behavior });
+    }
+
     return true;
   };
 
-  const scheduleScroll = () => {
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      requestAnimationFrame(() => {
-        if (!centerLinkInSidebar()) {
-          const sidebar = document.getElementById('starlight__sidebar') || document.body;
-          const observer = new MutationObserver(() => {
-            if (centerLinkInSidebar()) observer.disconnect();
-          });
-          observer.observe(sidebar, { childList: true, subtree: true });
-        }
-      });
+  const runWhenReady = () => {
+    if (scrollActiveLink('smooth')) return;
+
+    const sidebar = document.querySelector('[data-starlight-sidebar]') || document.body;
+    const observer = new MutationObserver(() => {
+      if (scrollActiveLink('smooth')) observer.disconnect();
+    });
+
+    observer.observe(sidebar, { childList: true, subtree: true });
+  };
+
+  const schedule = () => {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', runWhenReady, { once: true });
     } else {
-      window.addEventListener('DOMContentLoaded', scheduleScroll, { once: true });
+      runWhenReady();
     }
   };
 
-  scheduleScroll();
+  schedule();
+  window.addEventListener('astro:after-swap', schedule);
 })();
