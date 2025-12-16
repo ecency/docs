@@ -14,6 +14,12 @@ This document explains how Ecency's chat experience works and how other Hive app
 - **Hive identity**: Users authenticate with their Hive account (access/refresh tokens). The bootstrap API validates those tokens before issuing a Mattermost PAT so the chat identity is bound to the Hive username.
 - **Community mapping**: Hive communities map to public Mattermost channels named after the community id (e.g., `hive-123`). The bootstrap flow can auto-join users to channels for the communities they subscribe to.
 
+### Realtime transport
+
+- **Websocket proxy**: `/api/mattermost/websocket` is a passthrough to Mattermost's websocket upgraded connection. It upgrades on the edge runtime, forwards all frames bi-directionally, and injects the authentication challenge upstream using the `mm_pat` cookie created during bootstrap.
+- **Auth flow**: Clients do **not** need to send the PAT manually; the proxy pulls it from the cookie, opens the upstream websocket derived from `MATTERMOST_BASE_URL`, and immediately sends Mattermost's `authentication_challenge` action with the PAT.
+- **Error handling**: Missing cookies receive `401 Unauthorized`; invalid upgrades respond with `400`; upstream issues (e.g., Mattermost unreachable) respond with `502`.
+
 ## Using Ecency-hosted chat endpoints
 
 Other Hive apps can call Ecency's `/api/mattermost/*` routes directly - **no Mattermost infrastructure required**. Key points:
@@ -31,6 +37,78 @@ Other Hive apps can call Ecency's `/api/mattermost/*` routes directly - **no Mat
    - Response: `{ ok: true, userId, channelId? }` and an `mm_pat` cookie scoped to Ecency.
 3. **Call chat endpoints with the cookie**: Subsequent requests to `https://ecency.com/api/mattermost/*` automatically include the PAT cookie when `credentials: "include"` is set, enabling channel lists, posting, reactions, searches, and direct messages.
 4. **Link back to your UI**: Use returned `channelId` or search endpoints to deep-link into chat surfaces within your app (e.g., from profiles or community pages).
+
+### Realtime websocket usage
+
+Use the websocket proxy to stream reactions, typing events, and post updates without exposing PATs to the browser:
+
+```ts
+// Requires the mm_pat cookie set by the bootstrap call above; same-origin
+// requests automatically include it and allow the edge function to auth upstream.
+const socket = new WebSocket("wss://ecency.com/api/mattermost/websocket");
+
+socket.addEventListener("open", () => {
+  // Mattermost websocket protocol uses typed actions; you can immediately
+  // subscribe to channels or send ping frames after connect.
+  socket.send(JSON.stringify({ seq: 2, action: "ping" }));
+});
+
+socket.addEventListener("message", (event) => {
+  const data = JSON.parse(event.data as string);
+
+  if (data.event === "posted") {
+    // Handle new post payloads and update your UI accordingly.
+  }
+});
+
+socket.addEventListener("close", () => {
+  // Implement your own reconnection strategy as needed.
+});
+```
+
+**Notes**:
+
+- No token needs to be provided in the websocket URL or headers; the proxy pulls it from `mm_pat` and runs the `authentication_challenge` upstream for you.
+- If the PAT cookie is missing or expired, the request returns `401` before upgrading. Re-run the bootstrap route to refresh it.
+- The websocket endpoint is same-origin, so use `wss://<your-ecency-host>/api/mattermost/websocket` for staging or production as appropriate.
+
+#### What websocket events look like
+
+Mattermost emits typed events over the websocket. Each frame is a JSON object with an `event` name, a `data` payload, and per-event metadata (full schema in the [Mattermost websocket reference](https://developers.mattermost.com/api-documentation/#/#websocket-events)). Some of the most useful events for in-app chat surfaces:
+
+- **`posted`**: A new post or reply was created. The payload includes the `post` object (stringified JSON), `channel_display_name`, and `team_id`. Parse the `post` field to get message text, attachments, and `root_id` (thread parent).
+- **`post_edited`**: A user updated an existing message. Merge the `post` JSON with your existing message state.
+- **`post_deleted`**: A message was deleted. The `data` includes `post` and `channel_display_name`; rely on `post.id` to remove it from the UI.
+- **`reaction_added` / `reaction_removed`**: Reaction toggles with `user_id`, `emoji_name`, `post_id`, and `channel_id`.
+- **`typing`**: Indicates a user is typing in a channel. Includes `user_id`, `channel_id`, and `parent_id` for thread typing.
+- **`user_updated`**: Profile or status changes that may affect avatars or presence indicators.
+- **`hello`**: Sent once after authentication; contains server connection info and session id. Useful to confirm the connection succeeded.
+
+Example `posted` event payload structure (fields trimmed for brevity):
+
+```json
+{
+  "event": "posted",
+  "seq": 4,
+  "data": {
+    "channel_display_name": "hive-123",
+    "channel_type": "O",
+    "post": "{\"id\":\"abc123\",\"channel_id\":\"...\",\"message\":\"hello world\",\"root_id\":\"\"}",
+    "sender_name": "alice",
+    "team_id": "team123"
+  },
+  "broadcast": {
+    "channel_id": "CHANNEL_ID",
+    "team_id": "team123"
+  }
+}
+```
+
+Notes when consuming events:
+
+- `data.post` is a JSON string; parse it before use. The `message` and `root_id` fields are where you decide whether to update the main channel timeline or a thread.
+- `broadcast` hints which channel or team should receive the update; you can use it to filter events if you maintain multiple channel tabs.
+- Some events (e.g., `typing`) do not include a `post` body. Handle them separately from message mutations.
 
 ### How Ecency access tokens are issued
 
