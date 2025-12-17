@@ -24,6 +24,7 @@ export default defineConfig({
           items: [
             { label: "What is Ecency?", slug: "get-started/what-is-ecency" },
             { label: "How it works?", slug: "get-started/how-it-works" },
+            { label: "Onboarding checklist", slug: "get-started/onboarding-checklist" },
             { label: "How to earn?", slug: "get-started/earning" },
             { label: "Referral system", slug: "get-started/referral" },
             { label: "Ecency vs other socials", slug: "get-started/difference" },
@@ -37,11 +38,13 @@ export default defineConfig({
             { label: "Hive accounts", slug: "hive/hive-accounts" },
             { label: "Hive tokens", slug: "common/hive-tokens" },
             { label: "Resource credits", slug: "hive/resource-credits" },
+            { label: "Resource credits troubleshooting", slug: "common/resource-credits/troubleshooting" },
             { label: "Voting power", slug: "common/resource-credits/voting-power" },
             { label: "Curation and rewards", slug: "hive/curation-and-rewards" },
             { label: "Publishing", slug: "common/posting" },
             { label: "Reblog", slug: "common/reblog" },
             { label: "Reputation", slug: "common/reputation" },
+            { label: "Governance", slug: "hive/governance" },
             {
               label: "Communities",
               items: [
@@ -59,6 +62,7 @@ export default defineConfig({
             { label: "Market", slug: "ecency/market" },
             { label: "Discover", slug: "ecency/discover" },
             { label: "Mobile App", slug: "guides/use-mobile-app" },
+            { label: "Mobile FAQ", slug: "ecency/mobile-faq" },
             { label: "Ecency Points", slug: "ecency/ecency-points" },
             { label: "Boost and Promote", slug: "ecency/boost-and-promote" },
             { label: "Notifications, Drafts, Bookmarks", slug: "ecency/notifications-drafts-bookmarks" },
@@ -72,7 +76,11 @@ export default defineConfig({
             },
             {
               label: "Wallets",
-              items: [{ label: "Ecency Wallet", slug: "ecency/wallets/about" }],
+              items: [
+                { label: "Ecency Wallet", slug: "ecency/wallets/about" },
+                { label: "Cross-chain wallets", slug: "ecency/wallets/cross-chain-wallets" },
+                { label: "Payouts and conversions", slug: "ecency/wallets/payouts-and-conversions" },
+              ],
             },
           ],
         },
