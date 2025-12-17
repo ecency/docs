@@ -1,11 +1,11 @@
 ---
 title: Ecency Wallet
-description: Learn how to manage multiple tokens, layer-2 assets, and external chain tokens (BTC, ETH, SOL, APT, TRX, ATOM) with full self-custody using Ecency's wallet features.
+description: Learn how to manage multiple tokens, layer-2 assets, and external chain tokens (BTC, ETH, BNB, SOL, APT, TRX, TON) with full self-custody using Ecency's wallet features.
 ---
 
 # Ecency Wallet
 
-Ecency includes a fully integrated wallet that lets you manage your **Hive account balances**, **transfers**, **layer-2 tokens**, and even **external chain assets** like **BTC**, **ETH**, **SOL**, **APT**, **TRX**, and **ATOM**, all in one place.
+Ecency includes a fully integrated wallet that lets you manage your **Hive account balances**, **transfers**, **layer-2 tokens**, and even **external chain assets** like **BTC**, **ETH**, **BNB**, **SOL**, **APT**, **TRX**, and **TON**, all in one place.
 
 The wallet works across **web**, **mobile**, and **desktop** apps.
 
@@ -22,13 +22,13 @@ The wallet provides access to:
 - Hive Engine layer 2 tokens
 - SPK layer 2 tokens
 - Ecency Points
-- External chain tokens (BTC, ETH, SOL, APT, TRX, ATOM)
+- External chain tokens (BTC, ETH, BNB, SOL, APT, TRX, TON)
 
 You can view balances, recent transactions, and perform key actions across these assets.
 
 ### External Chain Tokens
 
-Ecency Wallets can generate lightweight wallets for supported blockchains such as **Bitcoin (BTC)**, **Ethereum (ETH)**, **Solana (SOL)**, **Aptos (APT)**, **Tron (TRX)**, and **Cosmos (ATOM)**. These direct integrations give you full control and self custody, letting you track and transfer cross-chain tokens alongside your Hive assets without leaving Ecency.
+Ecency Wallets can generate lightweight wallets for supported blockchains such as **Bitcoin (BTC)**, **Ethereum (ETH)**, **BNB Chain (BNB)**, **Solana (SOL)**, **Aptos (APT)**, **Tron (TRX)**, and **Ton (TON)**. These direct integrations give you full control and self custody, letting you track and transfer cross-chain tokens alongside your Hive assets without leaving Ecency. See the [cross-chain wallet quickstart](/ecency/wallets/cross-chain-wallets/) for setup steps.
 
 ---
 
@@ -75,13 +75,15 @@ On Ecency Web, you can request conversions between:
 - HBD → HIVE (via 3.5-day conversion process or instantly via market)
 - HIVE → HBD (instantly via market, if liquidity is available)
 
+If conversions or claims seem delayed, check [payouts and conversions troubleshooting](/ecency/wallets/payouts-and-conversions/).
+
 ---
 
 ### ✅ Use Savings
 
 Move HIVE or HBD into **savings** for extra security.
 
-Withdrawals from savings take **3 days** to complete. 
+Withdrawals from savings take **3 days** to complete.
 Transferring HBD into savings earns you 15-20% (subject to governance settings) annual rewards claimable monthly.
 
 ---
@@ -102,11 +104,13 @@ Transferring HBD into savings earns you 15-20% (subject to governance settings) 
 - Always store your **active key** securely (required for transfers).
 - Use **Hive Keychain** or **Ecency mobile app** for safer transactions.
 - Never share your **owner key**.
+- For cross-chain wallets, back up any **seed phrases** shown during address generation.
 
 ---
 
 ## Learn More
 
 - [Ecency.com/wallet](https://ecency.com/wallet)
-- [Hive Whitepaper](https://hive.io/whitepaper.pdf)
-- [Support on Discord](https://discord.me/ecency)
+- [Cross-chain wallet quickstart](/ecency/wallets/cross-chain-wallets/)
+- [Payouts and conversions troubleshooting](/ecency/wallets/payouts-and-conversions/)
+- [Support in Ecency Help chat](https://ecency.com/chats/hive-125126/channel)

@@ -18,6 +18,10 @@ Hive is a fast, feeless blockchain for Web3 applications. See [What is Hive?](/h
 
 Ecency reads and writes data to Hive and rewards contributions with blockchain tokens and Ecency Points. The [How it works guide](/get-started/how-it-works/) explains the process.
 
+### What do I do in my first week on Ecency?
+
+Follow the [onboarding checklist](/get-started/onboarding-checklist/) for day-by-day steps to secure keys, publish your first post, and start earning.
+
 ### How do I join Ecency?
 
 Create an account on the [signup page](https://ecency.com/signup?referral=ecency) or follow the [account creation guide](/guides/create-account/). Remember to store your master password safely.
@@ -50,13 +54,13 @@ Blockchain transactions are irreversible. Keeping funds in Hive Power or savings
 
 ### How can I recover a lost account?
 
-Account recovery is possible within 30 days if you retain your previous owner key. Follow the [account recovery guide](/guides/recovery/).
+Account recovery is possible within 30 days if you retain your previous owner key. Follow the [account recovery playbook](/guides/recovery/) for step-by-step instructions and verification tips.
 
 ## Using Ecency
 
 ### Is there a mobile app?
 
-Yes, Ecency provides Android and iOS apps. See the [mobile app guide](/guides/use-mobile-app/) for download links.
+Yes, Ecency provides Android and iOS apps. See the [mobile app guide](/guides/use-mobile-app/) for download links and the [mobile FAQ](/ecency/mobile-faq/) for common questions.
 
 ### What are Ecency Points and how do I earn them?
 
@@ -64,15 +68,19 @@ Points reward engagement and can be spent to boost or promote posts. Earning met
 
 ### Why can't I post or comment?
 
-You may be out of [Resource Credits](/common/resource-credits/what-is-it/). RC regenerate over time or with more Hive Power. You can also request temporary delegation via the [boost page](https://ecency.com/purchase?type=boost).
+You may be out of [Resource Credits](/common/resource-credits/what-is-it/). RC regenerate over time or with more Hive Power. For fixes and estimates see the [RC troubleshooting guide](/common/resource-credits/troubleshooting/). You can also request temporary delegation via the [boost page](https://ecency.com/purchase?type=boost).
 
 ### What is considered spam or abuse?
 
-See the [posting guidelines](/common/posting/#what-is-considered-spam-or-abuse) for examples of behavior that may be downvoted or removed.
+See the [content quality and abuse guidance](/common/posting/) for examples of behavior that may be downvoted or removed.
 
 ### How do I power up or power down HIVE?
 
 Use the wallet options to convert between liquid HIVE and Hive Power. The [power up/down guide](/guides/power-up-down/) covers the steps.
+
+### How do I manage tokens from other chains?
+
+Use Ecency’s wallet to generate addresses for BTC, ETH, BNB, SOL, APT, TRX, and TON. Follow the [cross-chain wallet quickstart](/ecency/wallets/cross-chain-wallets/).
 
 ## Content and rewards
 
@@ -90,7 +98,7 @@ Voting power decreases with each vote and regenerates by about 20% per day. See 
 
 ### When can I claim my rewards?
 
-Rewards become claimable seven days after the post or comment is published. Use the **Claim Rewards** button in your wallet.
+Rewards become claimable seven days after the post or comment is published. Use the **Claim Rewards** button in your wallet. If claims or conversions look stuck, see [payouts and conversions troubleshooting](/ecency/wallets/payouts-and-conversions/).
 
 ## Wallet and tokens
 
@@ -100,7 +108,7 @@ HIVE is the native liquid token; HBD is a stable-value token. Learn more in [Hiv
 
 ### How do I convert between HIVE and HBD?
 
-Use the **Convert** option in your wallet or trade on a supported market. Converting HBD to HIVE takes about 3.5 days.
+Use the **Convert** option in your wallet or trade on a supported market. Converting HBD to HIVE takes about 3.5 days. Troubleshooting steps are in [payouts and conversions troubleshooting](/ecency/wallets/payouts-and-conversions/).
 
 ## Proposals and governance
 
@@ -112,3 +120,6 @@ Anyone can create a proposal for community funding. Once it reaches the required
 
 Visit the [Proposals page](https://ecency.com/proposals) and use the vote icon next to a proposal you support.
 
+### How do I participate in governance overall?
+
+Use the [governance participation guide](/hive/governance/) to learn how to vote for witnesses and DHF proposals and how powering up affects your influence.

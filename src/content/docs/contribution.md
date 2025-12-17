@@ -16,10 +16,10 @@ Ecency grows through community effort across our website, mobile apps, and backe
 
 ### Share ideas, feedback, and translations
 
-Join our translation teams or share ideas and feedback in the Ecency [Discord server](https://discord.me/ecency). We try our best to support all contributors!
+Join our translation teams or share ideas and feedback in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel). We try our best to support all contributors!
 
 ### Recognizing contributors
 
-We celebrate community members on [ecency.com/contributors](https://ecency.com/contributors). If you contributed but do not see your name, reach out to the team on Discord or update the relevant open-source repository directly.
+We celebrate community members on [ecency.com/contributors](https://ecency.com/contributors). If you contributed but do not see your name, reach out to the team in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel) or update the relevant open-source repository directly.
 
 Thank you for helping Ecency grow!

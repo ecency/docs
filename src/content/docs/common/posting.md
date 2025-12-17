@@ -1,27 +1,57 @@
 ---
-title: Posting
+title: Content quality and abuse guidance
+description: Practical tips to publish great posts on Hive and avoid spam, plagiarism, and misuse of tags.
 ---
 
-Ecency is a platform that promotes freedom, allowing users to share a wide range of content they have created, such as phrases, quotes, blogs, anecdotes, photos, videos, memes, songs, and more. It encourages users to unleash their creativity!Just be careful of spam or abuse
+# Content quality and abuse guidance
 
-#### What is considered spam or abuse?
+Ecency is a place to share original ideas, stories, photos, videos, and art on the Hive blockchain. High-quality, well-tagged posts attract more readers and avoid downvotes or moderation.
 
-Plagiarized posts or copied content.
-Leaving nearly identical or materially similar comments on multiple posts.
-Using tags that are unrelated to the post.
-Threatening users with any type of physical violence.
-Not citing sources when using someone else’s material.
-Posting ‘not safe for work’ content without using the “nsfw” tag.
-Scams or Fraudulent offers.
+---
 
-## What are tags or topics?
+## What is considered spam or abuse?
 
-A tag is a description of the assigned content, used by search engines to identify and provide accurate search results. Tags must be in lowercase letters and cannot contain spaces, but hyphenated words with a single dash are acceptable.
+- **Plagiarism**: Copying text or media without crediting the source.
+- **Repeated/identical comments** across multiple posts.
+- **Tag misuse**: Using unrelated or misleading tags to gain visibility.
+- **Threats or harassment** against other users.
+- **Unlabeled NSFW**: Posting sensitive content without the `nsfw` tag.
+- **Scams and fraudulent offers**.
 
-## How to use tags?
+Downvotes or moderation actions may follow these behaviors. Repeat offenders can damage their reputation score and be muted by communities.
 
-Users have the freedom to create their own tags, but it is important to choose a relevant and useful tag in order to make your post easily discoverable. For instance, using the 'introduction' tag can make your first introduction post popular. It is crucial to use tags that are related to your post to avoid receiving downvotes for mislabeling.
+---
 
-## How to search content by tags?
+## Publish with quality
 
-On the left side of your feed there are mostly used tags shown for fasten your search. By clicking on the tag you can see posts that used this tag.
+- **Be original**: Add your own commentary, photos, or insights.
+- **Cite sources**: Link to references when quoting or using others’ work.
+- **Use relevant tags**: Pick 1–5 tags that match your topic (e.g., `travel`, `photography`, `introduction`). Keep them lowercase; hyphens are allowed.
+- **Format for readability**: Use headings, lists, and images to break up text.
+- **Set fair beneficiaries** if sharing rewards with collaborators.
+- **Respect community rules**: Many communities have their own posting standards — read them before submitting.
+
+---
+
+## Safe tagging practices
+
+- Choose tags that accurately describe the content so readers and curators can find it.
+- Avoid trending tags unrelated to your post; mislabeling can lead to downvotes.
+- Add `nsfw` for adult or graphic content to warn viewers.
+
+---
+
+## Commenting etiquette
+
+- Add value with feedback or questions; avoid one-word replies.
+- Do not paste the same link or promotion across many posts.
+- If you spot abuse, downvote politely or report it in the relevant community rather than starting a flame war.
+
+---
+
+## Protect your reputation
+
+- Your **reputation score** rises with constructive engagement and falls with abuse or downvotes.
+- Consistent quality posting, thoughtful comments, and helpful curation are the best ways to grow reputation.
+
+For more detail on key security practices, see [keys and permissions](/common/keys/) and the [account recovery playbook](/guides/recovery/).
