@@ -17,7 +17,7 @@ This document explains how Ecency's chat experience works and how other Hive app
 ### Realtime transport
 
 - **Websocket proxy**: `/api/mattermost/websocket` is a passthrough to Mattermost's websocket upgraded connection. It upgrades on the edge runtime, forwards all frames bi-directionally, and injects the authentication challenge upstream using the `mm_pat` cookie created during bootstrap.
-- **Auth flow**: Clients do **not** need to send the PAT manually; the proxy pulls it from the cookie, opens the upstream websocket derived from `MATTERMOST_BASE_URL`, and immediately sends Mattermost's `authentication_challenge` action with the PAT.
+- **Auth flow**: The proxy authenticates using the PAT created during bootstrap. Cookies work for same-site contexts, and external clients can now pass the PAT via `Authorization: Bearer <token>` or `?token=<mm_pat>` if cookies are unavailable.
 - **Error handling**: Missing cookies receive `401 Unauthorized`; invalid upgrades respond with `400`; upstream issues (e.g., Mattermost unreachable) respond with `502`.
 
 ## Using Ecency-hosted chat endpoints
@@ -34,7 +34,7 @@ Other Hive apps can call Ecency's `/api/mattermost/*` routes directly - **no Mat
 2. **Bootstrap against Ecency**:
    - `POST https://ecency.com/api/mattermost/bootstrap` with JSON `{ username, accessToken, refreshToken, displayName?, community?, communityTitle? }` and `credentials: "include"`.
    - The route validates the Hive token, creates/ensures the Mattermost user, and joins/creates the team and optional community channel.
-   - Response: `{ ok: true, userId, channelId? }` and an `mm_pat` cookie scoped to Ecency.
+   - Response: `{ ok: true, userId, channelId?, token }` and an `mm_pat` cookie scoped to Ecency. The `token` mirrors the PAT for clients that cannot use cookies.
 3. **Call chat endpoints with the cookie**: Subsequent requests to `https://ecency.com/api/mattermost/*` automatically include the PAT cookie when `credentials: "include"` is set, enabling channel lists, posting, reactions, searches, and direct messages.
 4. **Link back to your UI**: Use returned `channelId` or search endpoints to deep-link into chat surfaces within your app (e.g., from profiles or community pages).
 
@@ -68,9 +68,10 @@ socket.addEventListener("close", () => {
 
 **Notes**:
 
-- No token needs to be provided in the websocket URL or headers; the proxy pulls it from `mm_pat` and runs the `authentication_challenge` upstream for you.
-- If the PAT cookie is missing or expired, the request returns `401` before upgrading. Re-run the bootstrap route to refresh it.
-- The websocket endpoint is same-origin, so use `wss://<your-ecency-host>/api/mattermost/websocket` for staging or production as appropriate.
+- Preferred same-site flow: rely on the `mm_pat` cookie and let the proxy run the `authentication_challenge` upstream for you.
+- External-origin flow: call `POST /api/mattermost/bootstrap`, read `token` from the JSON response, then connect to `wss://ecency.com/api/mattermost/websocket?token=<mm_pat>` (or send `Authorization: Bearer <token>`) so browsers without cookie access can still authenticate.
+- If the PAT cookie or token is missing or expired, the request returns `401` before upgrading. Re-run the bootstrap route to refresh it.
+- The websocket endpoint is same-origin, so use `wss://<your-ecency-host>/api/mattermost/websocket` for staging or production as appropriate. Third-party origins should keep using the Ecency host while passing the token explicitly.
 
 #### What websocket events look like
 
