@@ -36,6 +36,10 @@ Content is stored on a blockchain, making it immutable and censorship resistant.
 
 Hive account names are permanent and accounts cannot be deleted. You can always [create a new account](/guides/create-account/).
 
+### How can I verify I own a Hive account?
+
+Sign a short message with your Hive account using [HiveSigner’s Sign Message page](https://hivesigner.com/signmessage). Copy the signed message output and confirm it on the **Verify** tab of the same page (or go directly to [hivesigner.com/verifymessage](https://hivesigner.com/verifymessage)). Sharing that verified signature lets support confirm ownership for GDPR or account deletion requests without exposing your keys. Account deletion on Ecency applies to front-end data only—blockchain content remains immutable.
+
 ### How do I sign in?
 
 Log in with your Hive username and master password, active key, or via [Hivesigner](https://hivesigner.com). For key details see [Account security and keys](/common/keys/).
