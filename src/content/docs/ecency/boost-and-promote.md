@@ -47,17 +47,17 @@ Ecency offers tools like **Boost+**, **Boost (Account Boost)**, and **Promote** 
 
 ## What is Promote?
 
-**Promote** adds your post to a **promoted section** on Ecency’s web and mobile apps. This increases **visibility**, but does **not involve voting**.
+**Promote** helps to increase visibility and engagement on your content. Select content and a promotion period of **1, 2, 3, 7, or 14 days** to get more exposure. Promoted posts are shuffled across the feeds to all users in Ecency mobile app and website. There are no limits or restrictions, any post can be promoted to get more exposure and engagement. Ecency has the right to remove posts from the promotion list if they violate certain internet etiquette and norms.
 
 ### Key Features
-- Advertises your post in a visible spot.
+- Advertises your post in a visible spot across feeds.
 - Costs fewer points than Boost.
-- No curation rewards involved.
+- Does not guarantee influence or change monetary rewards.
 
 ### How to Use Promote
 1. After publishing, click the **“Promote”** button.
-2. Select the number of points.
-3. Your post will appear in the promoted feed.
+2. Select the number of points and period of promotion.
+3. Your post will appear in the promoted feed as well as across feeds to everyone.
 
 ---
 
