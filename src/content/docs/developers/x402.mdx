@@ -1,0 +1,299 @@
+---
+title: x402 Payments
+description: Monetize APIs and content with zero-fee HBD micropayments using the x402 payment protocol.
+---
+
+# x402 Payments
+
+The [`@hiveio/x402`](https://www.npmjs.com/package/@hiveio/x402) package brings the [x402 payment protocol](https://www.x402.org/) to Hive. It lets any API or content endpoint accept **HBD micropayments** — zero fees, 3-second finality, no credit cards.
+
+Published on [npm](https://www.npmjs.com/package/@hiveio/x402) under the MIT license. Source on [GitHub](https://github.com/ecency/hive-x402).
+
+## How it works
+
+The x402 protocol uses HTTP status code **402 Payment Required** to negotiate payments between clients and servers:
+
+1. Client requests a protected resource
+2. Server responds with **402** and payment requirements (amount, recipient, network)
+3. Client signs an HBD transfer transaction (without broadcasting)
+4. Client retries the request with the signed transaction in the `x-payment` header
+5. Server's middleware sends the transaction to a **facilitator** for verification and settlement
+6. Facilitator broadcasts the transaction on-chain and confirms payment
+7. Server delivers the content
+
+```
+Client                    Server                   Facilitator
+  │                         │                          │
+  │──── GET /premium ──────▶│                          │
+  │◀─── 402 + requirements ─│                          │
+  │                         │                          │
+  │  (sign HBD transfer)    │                          │
+  │                         │                          │
+  │──── GET /premium ──────▶│                          │
+  │     x-payment: <signed> │──── POST /verify ───────▶│
+  │                         │◀─── { isValid: true } ───│
+  │                         │──── POST /settle ───────▶│
+  │                         │◀─── { success, txId } ───│
+  │◀─── 200 + content ──────│                          │
+```
+
+## At a glance
+
+| Feature | Details |
+|---|---|
+| Currency | HBD (Hive Backed Dollars) — pegged to ~$1 USD |
+| Transaction fees | **Zero** |
+| Finality | ~3 seconds (1 Hive block) |
+| Middleware | Express, Next.js App Router, Hono |
+| Client | Auto-pay fetch wrapper + standalone signing |
+| Facilitator | Hosted at `https://x402.ecency.com` |
+| Nonce storage | Redis (production) or SQLite (development) |
+| Node.js | >= 20 |
+
+## Installation
+
+```sh
+npm install @hiveio/x402
+# or
+pnpm add @hiveio/x402
+```
+
+The package uses **subpath exports** — import only what you need:
+
+```ts
+import { ... } from "@hiveio/x402/types";
+import { ... } from "@hiveio/x402/client";
+import { ... } from "@hiveio/x402/middleware";
+import { ... } from "@hiveio/x402/middleware/nextjs";
+import { ... } from "@hiveio/x402/middleware/hono";
+import { ... } from "@hiveio/x402/facilitator";
+```
+
+## Protect an API endpoint
+
+### Express
+
+```ts
+import express from "express";
+import { paywall } from "@hiveio/x402/middleware";
+
+const app = express();
+
+app.get(
+  "/premium",
+  paywall({
+    amount: "0.050 HBD",
+    receivingAccount: "your-hive-account",
+    facilitatorUrl: "https://x402.ecency.com",
+    description: "Premium API access",
+  }),
+  (req, res) => {
+    // req.payer  — the Hive account that paid
+    // req.txId   — the on-chain transaction ID
+    res.json({ message: "Premium content", payer: req.payer });
+  }
+);
+```
+
+### Next.js App Router
+
+```ts
+// app/api/premium/route.ts
+import { withPaywall } from "@hiveio/x402/middleware/nextjs";
+
+async function handler(
+  req: Request,
+  context: { payer: string; txId: string }
+) {
+  return Response.json({
+    message: "Premium content",
+    payer: context.payer,
+  });
+}
+
+export const GET = withPaywall(
+  {
+    amount: "0.050 HBD",
+    receivingAccount: "your-hive-account",
+    facilitatorUrl: "https://x402.ecency.com",
+  },
+  handler
+);
+```
+
+### Hono
+
+```ts
+import { Hono } from "hono";
+import { honoPaywall } from "@hiveio/x402/middleware/hono";
+
+const app = new Hono();
+
+app.get(
+  "/premium",
+  honoPaywall({
+    amount: "0.050 HBD",
+    receivingAccount: "your-hive-account",
+    facilitatorUrl: "https://x402.ecency.com",
+  }),
+  (c) => {
+    const payer = c.get("payer");
+    const txId = c.get("txId");
+    return c.json({ message: "Premium content", payer });
+  }
+);
+```
+
+## Pay for a resource (client)
+
+### Auto-pay client
+
+The `HiveX402Client` is a fetch wrapper that automatically handles 402 responses:
+
+```ts
+import { HiveX402Client } from "@hiveio/x402/client";
+
+const client = new HiveX402Client({
+  account: "alice",
+  activeKey: "5K...", // WIF-format active key
+  maxPayment: 1.0, // max HBD per request (default: 1.000)
+});
+
+// Transparently pays if the server returns 402
+const response = await client.fetch("https://api.example.com/premium");
+const data = await response.json();
+```
+
+### Manual signing
+
+For more control, sign the payment yourself:
+
+```ts
+import { signPayment } from "@hiveio/x402/client";
+import { HEADER_PAYMENT } from "@hiveio/x402/types";
+
+// 1. Make initial request
+const res = await fetch("https://api.example.com/premium");
+
+if (res.status === 402) {
+  // 2. Parse requirements from 402 response
+  const { accepts } = await res.json();
+  const requirements = accepts[0];
+
+  // 3. Sign payment
+  const paymentHeader = await signPayment({
+    account: "alice",
+    activeKey: "5K...",
+    requirements,
+  });
+
+  // 4. Retry with payment
+  const paid = await fetch("https://api.example.com/premium", {
+    headers: { [HEADER_PAYMENT]: paymentHeader },
+  });
+}
+```
+
+## Facilitator
+
+The facilitator is a standalone service that verifies and settles payments on behalf of resource servers. Ecency hosts a public facilitator at **https://x402.ecency.com**.
+
+### API
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/verify` | POST | Verify a signed transaction without broadcasting |
+| `/settle` | POST | Verify and broadcast the transaction on-chain |
+| `/health` | GET | Health check |
+
+### Self-hosting
+
+To run your own facilitator:
+
+```ts
+import { createFacilitator } from "@hiveio/x402/facilitator";
+
+const app = createFacilitator({
+  // Optional: provide a custom Hive client
+  // hiveClient: new Client(["https://api.hive.blog"]),
+
+  // Optional: Redis URL for production nonce storage
+  // redisUrl: "redis://localhost:6379",
+});
+
+app.listen(4020);
+```
+
+Or use Docker Compose:
+
+```yaml
+services:
+  facilitator:
+    build: .
+    ports:
+      - "4020:4020"
+    environment:
+      - REDIS_URL=redis://redis:6379
+  redis:
+    image: redis:7-alpine
+```
+
+## Types reference
+
+Key types exported from `@hiveio/x402/types`:
+
+```ts
+interface PaymentRequirements {
+  x402Version: number;
+  scheme: "exact";
+  network: "hive:mainnet";
+  maxAmountRequired: string; // e.g. "0.050 HBD"
+  resource: string;
+  payTo: string; // Hive account
+  validBefore: string; // ISO 8601
+  description?: string;
+  mimeType?: string;
+}
+
+interface PaymentPayload {
+  x402Version: number;
+  scheme: "exact";
+  network: "hive:mainnet";
+  payload: {
+    signedTransaction: SignedTransaction;
+    nonce: string;
+  };
+}
+
+interface SettleResponse {
+  success: boolean;
+  txId?: string;
+  blockNum?: number;
+  errorReason?: string;
+  payer?: string;
+}
+```
+
+### Utility functions
+
+```ts
+import {
+  encodePayment,
+  decodePayment,
+  formatHBD,
+  parseHBD,
+} from "@hiveio/x402/types";
+
+formatHBD(0.05); // "0.050 HBD"
+parseHBD("0.050 HBD"); // 0.05
+```
+
+## Why HBD?
+
+HBD (Hive Backed Dollars) is ideal for micropayments:
+
+- **Zero transaction fees** — unlike EVM chains, Hive transfers cost nothing
+- **~$1 USD peg** — algorithmic stablecoin, no wrapping or bridging needed
+- **3-second finality** — one block confirmation
+- **No gas estimation** — predictable, simple transfers
+- **3-second block time** — fast enough for real-time API access

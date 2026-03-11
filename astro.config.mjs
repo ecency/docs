@@ -102,6 +102,7 @@ export default defineConfig({
             { label: "Ecency chats", slug: "developers/chats" },
             { label: "Ecency analytics", slug: "developers/analytics" },
             { label: "Ecency SDK", slug: "developers/sdk" },
+            { label: "x402 Payments", slug: "developers/x402" },
             {
               label: "Extra services",
               items: [
