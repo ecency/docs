@@ -1,6 +1,6 @@
 ---
 title: What is Hive?
-description: Learn the basics of the Hive blockchain — a decentralized social platform powering dApps like Ecency.
+description: Learn the basics of the Hive blockchain - a decentralized social platform powering dApps like Ecency.
 ---
 
 # What is Hive?

@@ -53,7 +53,7 @@ Works on:
 ## 🔐 Key Tips
 
 - Use **active key** (not posting key) for delegation
-- Never delegate your entire HP — leave some for your own activity
+- Never delegate your entire HP - leave some for your own activity
 - Delegated HP does **not earn interest or rewards** directly
 
 ---

@@ -58,7 +58,7 @@ Use bookmarks to **save posts** for later reading or reference. You can also boo
 - Great for tutorials, inspiration, or curating
 - Bookmark any post with the 🔖 icon
 - Bookmark or Favorite any author with ❤️ icon and get notified when they publish new content 
-- Bookmarks are **private** — only you can see them
+- Bookmarks are **private** - only you can see them
 
 ### Accessing Bookmarks
 

@@ -68,8 +68,8 @@ Your ability to influence rewards depends on your **Hive Power**:
 
 ## Reward Types
 
-- **HBD** (Hive Backed Dollars) — stable value token
-- **Hive Power** — staked influence (non-liquid)
+- **HBD** (Hive Backed Dollars) - stable value token
+- **Hive Power** - staked influence (non-liquid)
 - You can choose your preferred payout mode when posting
 
 ### How curator rewards are split

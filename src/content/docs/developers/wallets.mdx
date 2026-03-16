@@ -10,10 +10,20 @@ wallet-related operations across the Ecency website and mobile app. The new
 `@ecency/wallets` package gives us a single, dedicated layer for creating and
 managing wallets while keeping the rest of the Ecency stack lightweight.
 
-## Standard seed phrase, multi-chain addresses
+## Multi-chain addresses
 
-We utilize a blockchain-standard seed phrase to derive wallet addresses across
-different blockchains. A single mnemonic can be used to:
+<Aside type="caution">
+  The seed-phrase-based wallet creation flow is being discontinued. Managing
+  a separate seed phrase added complexity to signups and transaction signing.
+  Ecency is integrating **MetaMask** to handle external chain wallets instead.
+  If your application generated wallets using the mnemonic flow described below,
+  guide users to the [seed phrase migration guide](/guides/seed-phrase-migration/)
+  so they can move funds to an external wallet.
+</Aside>
+
+The `@ecency/wallets` package previously used a blockchain-standard seed phrase
+to derive wallet addresses across different blockchains. A single mnemonic
+could:
 
 1. Generate addresses for multiple supported chains without asking the user to
    juggle several keys.
@@ -23,9 +33,9 @@ different blockchains. A single mnemonic can be used to:
    client enforce its own encryption and secure storage policies.
 
 <Aside type="note">
-  The seed phrase never leaves the client. When a wallet needs to be backed up
-  or restored, the mnemonic is provided by the user, and derived addresses are
-  synced to Ecency services only after local encryption is applied.
+  The seed phrase never left the client. When a wallet needed to be backed up
+  or restored, the mnemonic was provided by the user, and derived addresses were
+  synced to Ecency services only after local encryption was applied.
 </Aside>
 
 ## What `@ecency/wallets` handles
@@ -40,12 +50,15 @@ responsible for:
 - Publishing public wallet metadata to Ecency services when users choose to
   make their addresses available.
 
-## Example: derive addresses from a mnemonic
+## Example: derive addresses from a mnemonic (legacy)
 
-The snippet below shows the general flow for creating a mnemonic and deriving a
-set of addresses. The exact API surface may evolve, but the key steps—create or
-import a seed, derive addresses for requested chains, and persist only the
-public details—remain the same.
+<Aside type="caution">
+  This mnemonic-based flow is being phased out. The example below is kept for
+  reference only. New integrations should not rely on seed phrase generation.
+</Aside>
+
+The snippet below shows the legacy flow for creating a mnemonic and deriving a
+set of addresses.
 
 export const exampleCode = `
 import { createWalletClient } from '@ecency/wallets';

@@ -5,7 +5,7 @@ description: Learn how to convert between liquid HIVE and Hive Power to gain or 
 
 # Power Up and Power Down
 
-Hive uses a system called **Hive Power (HP)** — staked HIVE tokens that give you influence, voting power, and resource credits on the blockchain.
+Hive uses a system called **Hive Power (HP)** - staked HIVE tokens that give you influence, voting power, and resource credits on the blockchain.
 
 You can convert between **liquid HIVE** and **Hive Power** using the Power Up and Power Down functions.
 

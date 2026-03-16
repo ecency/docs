@@ -16,7 +16,7 @@ Witnesses produce blocks and keep the network running.
 1. Go to the [Witnesses page](https://ecency.com/witnesses).
 2. Search or scroll to a witness and click the **vote** icon.
 3. You can vote for up to **30 witnesses**; votes are weighted by your **HP**.
-4. Reorder votes anytime — changes apply immediately.
+4. Reorder votes anytime - changes apply immediately.
 
 ### Tips
 

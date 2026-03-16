@@ -7,7 +7,7 @@ description: Framework-agnostic data layer for Hive apps with first-class React 
 
 The Ecency SDK (`@ecency/sdk`) is a framework-agnostic data layer for Hive applications with
 first-class **React Query** support. It provides **165+ query option builders**, **76+ mutation
-hooks**, and a shared configuration layer — all with **zero runtime dependencies**.
+hooks**, and a shared configuration layer - all with **zero runtime dependencies**.
 
 Published on [npm](https://www.npmjs.com/package/@ecency/sdk) under the MIT license.
 
@@ -17,10 +17,10 @@ Published on [npm](https://www.npmjs.com/package/@ecency/sdk) under the MIT lice
 |---|---|
 | Query builders | 165+ composable query option builders |
 | Mutation hooks | 76+ hooks for all blockchain write operations |
-| Cache keys | Centralized `QueryKeys` — single source of truth |
+| Cache keys | Centralized `QueryKeys` - single source of truth |
 | Auth methods | Private key, Keychain, HiveSigner, HiveAuth |
 | Platform support | Web, React Native, Node.js (SSR) |
-| Runtime deps | **Zero** — only peer dependencies |
+| Runtime deps | **Zero** - only peer dependencies |
 | Bundle size | ~182 KB |
 | Build targets | Browser ESM + Node ESM/CJS (dual builds via tsup) |
 
@@ -32,9 +32,9 @@ Published on [npm](https://www.npmjs.com/package/@ecency/sdk) under the MIT lice
   promotions, games, ai, integrations, auth, bridge, core, private-api
 - **Central configuration** via `ConfigManager` (RPC nodes, QueryClient, DMCA filtering, image host)
 - **Platform adapter pattern** for cross-platform auth and broadcasting
-- **Smart auth fallback** — automatically tries alternative signing methods on failure
-- **RPC node failover** — multi-node configuration with automatic failover
-- **Blockchain error parsing** — user-friendly error messages with typed error categories
+- **Smart auth fallback** - automatically tries alternative signing methods on failure
+- **RPC node failover** - multi-node configuration with automatic failover
+- **Blockchain error parsing** - user-friendly error messages with typed error categories
 
 ## Why React Query?
 
@@ -183,21 +183,21 @@ The Ecency SDK with React Query solves all of these:
 
 - Reduced API calls by 70-90% through intelligent caching
 - Instant UI updates with optimistic mutations
-- Zero manual cache management — React Query handles invalidation
+- Zero manual cache management - React Query handles invalidation
 - Better UX with background updates and retry logic
 - Faster perceived performance with prefetching and SSR
-- Less code — no custom loading/error/caching logic needed
+- Less code - no custom loading/error/caching logic needed
 
 ### How other apps can benefit
 
 Any Hive application can leverage this SDK to:
 
-1. **Drop custom data fetching code** — use pre-built query options for all common Hive
+1. **Drop custom data fetching code** - use pre-built query options for all common Hive
    operations
-2. **Share cache across features** — one query for account data serves entire app
+2. **Share cache across features** - one query for account data serves entire app
 3. **Add real-time features** easily with `refetchInterval` and optimistic updates
 4. **Improve SEO** with SSR-ready queries that prefetch on server
-5. **Reduce bundle size** — share the SDK's type-safe queries instead of custom fetch logic
+5. **Reduce bundle size** - share the SDK's type-safe queries instead of custom fetch logic
 
 **Example: Building a Hive blog reader**
 
@@ -266,7 +266,7 @@ npm install @hiveio/dhive hivesigner
 npm install react @tanstack/react-query
 ```
 
-React and React Query are optional — the SDK's query option builders and utility functions
+React and React Query are optional - the SDK's query option builders and utility functions
 work without them in server-side or non-React contexts.
 
 ## Quick start
@@ -301,7 +301,7 @@ import { ConfigManager, makeQueryClient } from "@ecency/sdk";
 // Set QueryClient (required for React Query integration)
 ConfigManager.setQueryClient(makeQueryClient());
 
-// Custom RPC nodes (optional — defaults to 6 public nodes)
+// Custom RPC nodes (optional - defaults to 6 public nodes)
 ConfigManager.setHiveNodes([
   "https://api.hive.blog",
   "https://api.deathwing.me",
@@ -315,14 +315,14 @@ ConfigManager.setDmcaLists({
   posts: ["@author/permlink"],
 });
 
-// Custom image CDN host (optional — defaults to images.ecency.com)
+// Custom image CDN host (optional - defaults to images.ecency.com)
 ConfigManager.setImageHost("https://images.ecency.com");
 ```
 
-The SDK includes **automatic RPC node failover** — if the primary node fails, requests are
+The SDK includes **automatic RPC node failover** - if the primary node fails, requests are
 retried on alternate nodes from the configured list.
 
-## QueryKeys — centralized cache management
+## QueryKeys - centralized cache management
 
 All cache keys are defined in a single `QueryKeys` export, organized by domain. Use these
 as the single source of truth for cache invalidation.
@@ -408,13 +408,13 @@ automatic fallback between signing methods:
 import type { AuthContextV2, PlatformAdapter } from "@ecency/sdk";
 
 const adapter: PlatformAdapter = {
-  // Storage — retrieve credentials from your platform's storage
+  // Storage - retrieve credentials from your platform's storage
   getUser: async (username) => getUserFromStore(username),
   getPostingKey: async (username) => getKeyFromStorage(username),
   getAccessToken: async (username) => getTokenFromStorage(username),
   getLoginType: async (username) => getAuthMethod(username),
 
-  // UI feedback — show messages in your platform's style
+  // UI feedback - show messages in your platform's style
   showError: (msg) => toast.error(msg),
   showSuccess: (msg) => toast.success(msg),
 
@@ -426,7 +426,7 @@ const adapter: PlatformAdapter = {
     return showHiveAuthModal(username, ops, keyType);
   },
 
-  // Auth upgrade UI — shown when posting-key user attempts an active-key operation
+  // Auth upgrade UI - shown when posting-key user attempts an active-key operation
   showAuthUpgradeUI: async (authority, operation) => {
     return showUpgradeDialog(authority, operation);
     // Returns: 'key' | 'keychain' | 'hivesigner' | 'hiveauth' | false
@@ -442,7 +442,7 @@ const auth: AuthContextV2 = {
 const { mutateAsync } = useVote(username, auth);
 ```
 
-**Smart auth fallback** — when `enableFallback` is true, the SDK automatically:
+**Smart auth fallback** - when `enableFallback` is true, the SDK automatically:
 
 1. Detects the user's login method via `adapter.getLoginType()`
 2. Attempts to broadcast with that method
@@ -471,7 +471,7 @@ await mutateAsync({
 });
 ```
 
-With a platform adapter, the SDK handles active operations automatically —
+With a platform adapter, the SDK handles active operations automatically -
 prompting the user to upgrade auth if needed.
 
 ## Error handling
@@ -496,9 +496,9 @@ try {
     showMessage("Not enough Resource Credits to broadcast this transaction.");
   } else if (shouldTriggerAuthFallback(error)) {
     // SDK handles this automatically with adapter, but you can customize
-    showMessage("Authentication failed — trying alternative method...");
+    showMessage("Authentication failed - trying alternative method...");
   } else if (isNetworkError(error)) {
-    showMessage("Network error — please check your connection.");
+    showMessage("Network error - please check your connection.");
   } else {
     const [message, type] = formatError(error);
     showMessage(message);
@@ -544,18 +544,18 @@ src/modules/
 | posts | 30 | 20 | Post/comment CRUD, voting, drafts, schedules, images |
 | accounts | 26 | 19 | Account data, relationships, profile, bookmarks |
 | wallet | 23 | 25 | Balances, delegations, transfers, conversions |
-| hive-engine | 10 | — | Hive Engine token queries |
+| hive-engine | 10 | - | Hive Engine token queries |
 | market | 9 | 3 | Prices, order book, trade history |
-| search | 7 | — | Topic, account, post search |
+| search | 7 | - | Topic, account, post search |
 | communities | 7 | 8 | Community data, subscriptions, mutations |
-| spk | 6 | — | SPK wallet, market, rewards |
+| spk | 6 | - | SPK wallet, market, rewards |
 | notifications | 5 | 3 | Notification lists, settings |
 | proposals | 5 | 3 | Governance proposals, voting |
 | core | 4 | 3 | Chain properties, dynamic props, broadcasting |
 | analytics | 4 | 2 | Curation, leaderboard, page stats |
 | promotions | 4 | 2 | Promotion pricing, Boost+ |
 | points | 4 | 2 | Points balance, transactions |
-| resource-credits | 3 | — | RC stats |
+| resource-credits | 3 | - | RC stats |
 | witnesses | 2 | 3 | Witness voting, proxy |
 | operations | 2 | 4 | Operation signing |
 | ai | 2 | 2 | Image generation pricing |
@@ -563,8 +563,8 @@ src/modules/
 
 ## SSR / RSC notes
 
-- Query option builders are safe to use on the server — they return plain objects.
-- Mutation hooks (`use*`) are client-only — they use React hooks internally.
+- Query option builders are safe to use on the server - they return plain objects.
+- Mutation hooks (`use*`) are client-only - they use React hooks internally.
 - If you use Next.js App Router, keep hook usage in `"use client"` components.
 - Use `queryClient.prefetchQuery()` on the server to hydrate data for instant client rendering.
 

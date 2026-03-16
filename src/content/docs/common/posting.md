@@ -29,7 +29,7 @@ Downvotes or moderation actions may follow these behaviors. Repeat offenders can
 - **Use relevant tags**: Pick 1–5 tags that match your topic (e.g., `travel`, `photography`, `introduction`). Keep them lowercase; hyphens are allowed.
 - **Format for readability**: Use headings, lists, and images to break up text.
 - **Set fair beneficiaries** if sharing rewards with collaborators.
-- **Respect community rules**: Many communities have their own posting standards — read them before submitting.
+- **Respect community rules**: Many communities have their own posting standards - read them before submitting.
 
 ---
 

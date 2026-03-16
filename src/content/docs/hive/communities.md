@@ -101,7 +101,7 @@ Some communities auto-moderate with posting guidelines or curation queues.
 ## Tips
 
 - Read community rules before posting
-- Engage with other posts — comments and votes matter
+- Engage with other posts - comments and votes matter
 - Support your favorite communities by voting their posts or admins
 
 ---

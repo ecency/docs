@@ -38,7 +38,7 @@ Hive account names are permanent and accounts cannot be deleted. You can always 
 
 ### How can I verify I own a Hive account?
 
-Sign a short message with your Hive account using [HiveSigner’s Sign Message page](https://hivesigner.com/signmessage). Copy the signed message output and confirm it on the **Verify** tab of the same page (or go directly to [hivesigner.com/verifymessage](https://hivesigner.com/verifymessage)). Sharing that verified signature lets support confirm ownership for GDPR or account deletion requests without exposing your keys. Account deletion on Ecency applies to front-end data only—blockchain content remains immutable.
+Sign a short message with your Hive account using [HiveSigner’s Sign Message page](https://hivesigner.com/signmessage). Copy the signed message output and confirm it on the **Verify** tab of the same page (or go directly to [hivesigner.com/verifymessage](https://hivesigner.com/verifymessage)). Sharing that verified signature lets support confirm ownership for GDPR or account deletion requests without exposing your keys. Account deletion on Ecency applies to front-end data only-blockchain content remains immutable.
 
 ### How do I sign in?
 
@@ -84,7 +84,7 @@ Use the wallet options to convert between liquid HIVE and Hive Power. The [power
 
 ### How do I manage tokens from other chains?
 
-Use Ecency’s wallet to generate addresses for BTC, ETH, BNB, SOL, APT, TRX, and TON. Follow the [cross-chain wallet quickstart](/ecency/wallets/cross-chain-wallets/).
+Ecency supports cross-chain wallets for BTC, ETH, BNB, SOL, APT, TRX, and TON. External chain wallets are being upgraded to use **MetaMask** for simpler seed management and transaction signing - see [cross-chain wallets](/ecency/wallets/cross-chain-wallets/) for details. If you have funds in a wallet created with a seed phrase, follow the [seed phrase migration guide](/guides/seed-phrase-migration/) to move them.
 
 ## Content and rewards
 

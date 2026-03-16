@@ -5,7 +5,7 @@ description: Get started with the Ecency app on iOS and Android to interact with
 
 # Using the Ecency Mobile App
 
-The Ecency mobile app brings Hive to your fingertips. Available for **Android** and **iOS**, the app makes it easy to post, vote, comment, and manage your wallet — all on the go.
+The Ecency mobile app brings Hive to your fingertips. Available for **Android** and **iOS**, the app makes it easy to post, vote, comment, and manage your wallet - all on the go.
 
 ---
 

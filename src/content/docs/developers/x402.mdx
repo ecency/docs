@@ -5,7 +5,7 @@ description: Monetize APIs and content with zero-fee HBD micropayments using the
 
 # x402 Payments
 
-The [`@hiveio/x402`](https://www.npmjs.com/package/@hiveio/x402) package brings the [x402 payment protocol](https://www.x402.org/) to Hive. It lets any API or content endpoint accept **HBD micropayments** — zero fees, 3-second finality, no credit cards.
+The [`@hiveio/x402`](https://www.npmjs.com/package/@hiveio/x402) package brings the [x402 payment protocol](https://www.x402.org/) to Hive. It lets any API or content endpoint accept **HBD micropayments** - zero fees, 3-second finality, no credit cards.
 
 Published on [npm](https://www.npmjs.com/package/@hiveio/x402) under the MIT license. Source on [GitHub](https://github.com/ecency/hive-x402).
 
@@ -41,7 +41,7 @@ Client                    Server                   Facilitator
 
 | Feature | Details |
 |---|---|
-| Currency | HBD (Hive Backed Dollars) — pegged to ~$1 USD |
+| Currency | HBD (Hive Backed Dollars) - pegged to ~$1 USD |
 | Transaction fees | **Zero** |
 | Finality | ~3 seconds (1 Hive block) |
 | Middleware | Express, Next.js App Router, Hono |
@@ -58,7 +58,7 @@ npm install @hiveio/x402
 pnpm add @hiveio/x402
 ```
 
-The package uses **subpath exports** — import only what you need:
+The package uses **subpath exports** - import only what you need:
 
 ```ts
 import { ... } from "@hiveio/x402/types";
@@ -88,8 +88,8 @@ app.get(
     description: "Premium API access",
   }),
   (req, res) => {
-    // req.payer  — the Hive account that paid
-    // req.txId   — the on-chain transaction ID
+    // req.payer  - the Hive account that paid
+    // req.txId   - the on-chain transaction ID
     res.json({ message: "Premium content", payer: req.payer });
   }
 );
@@ -292,8 +292,8 @@ parseHBD("0.050 HBD"); // 0.05
 
 HBD (Hive Backed Dollars) is ideal for micropayments:
 
-- **Zero transaction fees** — unlike EVM chains, Hive transfers cost nothing
-- **~$1 USD peg** — algorithmic stablecoin, no wrapping or bridging needed
-- **3-second finality** — one block confirmation
-- **No gas estimation** — predictable, simple transfers
-- **3-second block time** — fast enough for real-time API access
+- **Zero transaction fees** - unlike EVM chains, Hive transfers cost nothing
+- **~$1 USD peg** - algorithmic stablecoin, no wrapping or bridging needed
+- **3-second finality** - one block confirmation
+- **No gas estimation** - predictable, simple transfers
+- **3-second block time** - fast enough for real-time API access

@@ -54,7 +54,7 @@ Follow this checklist to set up your Hive identity, secure your keys, and start 
 ## Day 5–7: Mobile and cross-chain
 
 - Install and sign in on the [Ecency mobile app](/guides/use-mobile-app/) to enable push notifications and quick posting.
-- If you hold other assets, generate cross-chain addresses in the [Ecency Wallet](/ecency/wallets/about/) and review the [cross-chain quickstart](/ecency/wallets/cross-chain-wallets/).
+- If you hold other assets, check your cross-chain addresses in the [Ecency Wallet](/ecency/wallets/about/) and review the [cross-chain wallets guide](/ecency/wallets/cross-chain-wallets/).
 
 ---
 

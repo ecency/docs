@@ -28,7 +28,7 @@ You can view balances, recent transactions, and perform key actions across these
 
 ### External Chain Tokens
 
-Ecency Wallets can generate lightweight wallets for supported blockchains such as **Bitcoin (BTC)**, **Ethereum (ETH)**, **BNB Chain (BNB)**, **Solana (SOL)**, **Aptos (APT)**, **Tron (TRX)**, and **Ton (TON)**. These direct integrations give you full control and self custody, letting you track and transfer cross-chain tokens alongside your Hive assets without leaving Ecency. See the [cross-chain wallet quickstart](/ecency/wallets/cross-chain-wallets/) for setup steps.
+Ecency Wallets support lightweight wallets for blockchains such as **Bitcoin (BTC)**, **Ethereum (ETH)**, **BNB Chain (BNB)**, **Solana (SOL)**, **Aptos (APT)**, **Tron (TRX)**, and **Ton (TON)**. These direct integrations give you full control and self custody, letting you track and transfer cross-chain tokens alongside your Hive assets without leaving Ecency. The cross-chain wallet structure is being upgraded - see [cross-chain wallets](/ecency/wallets/cross-chain-wallets/) for details and the [seed phrase migration guide](/guides/seed-phrase-migration/) if you have funds in a wallet created with a seed phrase.
 
 ---
 
@@ -54,7 +54,7 @@ Convert Hive Power back into liquid HIVE over a 13-week period (weekly payouts).
 - Transfer it to others
 - Use it outside Hive ecosystem
 
-> Be mindful — powering down reduces your voting and RC capacity.
+> Be mindful - powering down reduces your voting and RC capacity.
 
 ---
 
@@ -104,7 +104,7 @@ Transferring HBD into savings earns you 15-20% (subject to governance settings) 
 - Always store your **active key** securely (required for transfers).
 - Use **Hive Keychain** or **Ecency mobile app** for safer transactions.
 - Never share your **owner key**.
-- For cross-chain wallets, back up any **seed phrases** shown during address generation.
+- If you have a cross-chain wallet created with a seed phrase, keep the phrase safe until you have [migrated your funds](/guides/seed-phrase-migration/).
 
 ---
 

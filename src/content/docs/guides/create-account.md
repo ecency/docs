@@ -43,7 +43,7 @@ There are multiple ways to create an account.
 
 ## Tips
 
-- Hive accounts are permanent — you cannot delete or rename them
+- Hive accounts are permanent - you cannot delete or rename them
 - You’ll receive 4 keys (posting, active, owner, memo)
 - Only use **posting** key for daily activities
 

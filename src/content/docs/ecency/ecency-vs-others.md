@@ -5,7 +5,7 @@ description: Compare Ecency with other Hive frontends like PeakD and Hive.blog.
 
 # Ecency vs Other Hive Frontends
 
-Hive has a rich ecosystem of frontends — apps and websites that let you interact with the blockchain. Ecency is one of the most feature-rich and modern options available, but it’s helpful to understand how it compares to others.
+Hive has a rich ecosystem of frontends - apps and websites that let you interact with the blockchain. Ecency is one of the most feature-rich and modern options available, but it’s helpful to understand how it compares to others.
 
 ---
 
@@ -18,7 +18,7 @@ A **frontend** is an interface that connects to Hive’s decentralized backend. 
 - Manage their Hive account
 - Interact with communities
 
-Each frontend uses the same Hive blockchain data — but presents it differently.
+Each frontend uses the same Hive blockchain data - but presents it differently.
 
 ---
 

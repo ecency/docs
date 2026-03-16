@@ -59,7 +59,7 @@ Every Hive account can vote for up to **30 witnesses**, influencing who secures 
 
 ## How to Unvote
 
-Simply click the ✅ next to a witness you've already voted for — this will remove your vote.
+Simply click the ✅ next to a witness you've already voted for - this will remove your vote.
 
 ---
 
