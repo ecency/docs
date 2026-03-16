@@ -93,6 +93,7 @@ export default defineConfig({
             { label: "Delegate Hive Power", slug: "guides/delegate-hp" },
             { label: "Create community", slug: "guides/create-community" },
             { label: "Witness voting", slug: "guides/vote-witness" },
+            { label: "Seed phrase migration", slug: "guides/seed-phrase-migration" },
           ],
         },
         {
