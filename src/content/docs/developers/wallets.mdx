@@ -5,79 +5,155 @@ title: Ecency wallets
 import { Code } from "@astrojs/starlight/components";
 import { Aside } from "@astrojs/starlight/components";
 
-Ecency wallets replaces the older Ecency SDK experience and focuses purely on
-wallet-related operations across the Ecency website and mobile app. The new
-`@ecency/wallets` package gives us a single, dedicated layer for creating and
-managing wallets while keeping the rest of the Ecency stack lightweight.
+The `@ecency/wallets` package (v2.0) provides wallet-related queries, MetaMask
+integration utilities, and Hive key derivation for the Ecency web and mobile apps.
 
-## Multi-chain addresses
+## What's in v2.0
 
-<Aside type="caution">
-  The seed-phrase-based wallet creation flow is being discontinued. Managing
-  a separate seed phrase added complexity to signups and transaction signing.
-  Ecency is integrating **MetaMask** to handle external chain wallets instead.
-  If your application generated wallets using the mnemonic flow described below,
-  guide users to the [seed phrase migration guide](/guides/seed-phrase-migration/)
-  so they can move funds to an external wallet.
-</Aside>
+Version 2.0 is a major cleanup that removes seed-phrase-based wallet creation
+and replaces external chain signing with MetaMask. The package is now
+significantly smaller (~37 KB vs ~131 KB in v1.x) after dropping all `@okxweb3`
+dependencies.
 
-The `@ecency/wallets` package previously used a blockchain-standard seed phrase
-to derive wallet addresses across different blockchains. A single mnemonic
-could:
+### Kept
 
-1. Generate addresses for multiple supported chains without asking the user to
-   juggle several keys.
-2. Keep derivation compatible with common wallet tooling, so the same seed can
-   be recovered in other BIP39-style wallets.
-3. Sync addresses between web and mobile clients while still letting each
-   client enforce its own encryption and secure storage policies.
+- **External wallet balance queries** — fetch balances for BTC, ETH, BNB, SOL
+  from the Ecency private API.
+- **Token price queries** — market data for supported currencies.
+- **Hive key derivation** — `deriveHiveKeys()` (BIP44) and
+  `deriveHiveMasterPasswordKeys()` for login and permissions flows.
+- **Wallet metadata** — save/read external wallet addresses from Hive account
+  `posting_json_metadata`.
+- **Private API mutations** — create accounts with wallets, update wallet info,
+  check wallet existence.
+
+### Added
+
+- **MetaMask multichain discovery** — `discoverMetaMaskWallets()`,
+  `fetchMultichainAddresses()`, `fetchEvmAddress()` discover ETH, BNB, SOL,
+  BTC addresses from MetaMask via `window.ethereum` and the Wallet Standard
+  protocol.
+- **Hive Snap utilities** — `installHiveSnap()` and `getHivePublicKeys()`
+  interact with the `@hiveio/metamask-snap` for Hive key management inside
+  MetaMask.
+- **EVM transfers** — `sendEvmTransfer()`, `ensureEvmChain()`,
+  `estimateEvmGas()`, `parseToWei()`, `formatWei()` for sending ETH/BNB via
+  MetaMask's `eth_sendTransaction`.
+- **SOL transfers** — `sendSolTransfer()`, `parseToLamports()`,
+  `formatLamports()` for sending SOL via MetaMask's Wallet Standard
+  `solana:signAndSendTransaction` feature.
+- **Transfer mutation hook** — `useExternalTransfer(currency)` React Query
+  mutation that routes to the correct chain signing method.
+
+### Removed
+
+- Mnemonic/seed phrase generation (`useSeedPhrase`, `mnemonicToSeedBip39`)
+- okxweb3 wallet factory and signing (`getWallet`, `signExternalTx`,
+  `buildExternalTx`)
+- Seed-based wallet creation (`useWalletCreate`, `useImportWallet`,
+  `getKeysFromSeed`)
+- Hive keys from seed query (`useHiveKeysQuery`)
+- Wallets cache query (`useWalletsCacheQuery`)
+- Memo encryption/decryption (`encryptMemo`, `decryptMemo`)
+- Direct Hive transaction signing (`signTx`, `signDigest`)
+- TRON, TON, APT currencies and their balance/info queries
+
+### Supported currencies
+
+| Currency | Balance query | Transfer (MetaMask) | Notes |
+|----------|:---:|:---:|-------|
+| BTC | Yes | No | MetaMask BTC support coming soon |
+| ETH | Yes | Yes | Via `eth_sendTransaction` |
+| BNB | Yes | Yes | Via `eth_sendTransaction` + chain switch |
+| SOL | Yes | Yes | Via Wallet Standard `signAndSendTransaction` |
+
+## Installation
+
+```bash
+pnpm add @ecency/wallets
+```
+
+Peer dependencies:
+
+```json
+{
+  "@ecency/sdk": "workspace:*",
+  "@hiveio/dhive": "^1.3.5",
+  "hivesigner": "^3.3.4",
+  "react": ">=18",
+  "@tanstack/react-query": ">=5",
+  "@wallet-standard/app": ">=1",
+  "@solana/web3.js": ">=1"
+}
+```
+
+`@wallet-standard/app` and `@solana/web3.js` are optional — only needed if
+using MetaMask multichain discovery or SOL transfers.
+
+## Example: MetaMask wallet discovery
+
+export const discoveryCode = `
+import {
+  discoverMetaMaskWallets,
+  installHiveSnap,
+  getHivePublicKeys
+} from '@ecency/wallets';
+
+// Discover ETH, BNB, SOL, BTC addresses from MetaMask
+const addresses = await discoverMetaMaskWallets();
+// { ETH: "0x...", BNB: "0x...", SOL: "7xyz...", BTC: "bc1..." }
+
+// Install the Hive Snap and get Hive public keys
+await installHiveSnap();
+const hiveKeys = await getHivePublicKeys();
+// [{ publicKey: "STM...", role: "owner" }, ...]
+`;
+export const discoveryFileName = "discovery.ts";
+
+<Code code={discoveryCode} lang="ts" title={discoveryFileName} />
+
+## Example: send ETH via MetaMask
+
+export const transferCode = `
+import { useExternalTransfer, EcencyWalletCurrency } from '@ecency/wallets';
+
+function SendEthButton() {
+  const transfer = useExternalTransfer(EcencyWalletCurrency.ETH);
+
+  const handleSend = async () => {
+    const result = await transfer.mutateAsync({
+      to: "0xRecipientAddress...",
+      amount: "0.05"
+    });
+    console.log("Tx hash:", result.txHash);
+  };
+
+  return <button onClick={handleSend}>Send 0.05 ETH</button>;
+}
+`;
+export const transferFileName = "send-eth.tsx";
+
+<Code code={transferCode} lang="tsx" title={transferFileName} />
 
 <Aside type="note">
-  The seed phrase never left the client. When a wallet needed to be backed up
-  or restored, the mnemonic was provided by the user, and derived addresses were
-  synced to Ecency services only after local encryption was applied.
+  MetaMask handles gas estimation, signing, and broadcasting. The user sees
+  the standard MetaMask confirmation popup. For SOL, the Wallet Standard
+  protocol is used instead of `window.ethereum`.
 </Aside>
 
-## What `@ecency/wallets` handles
+## Migration from v1.x
 
-`@ecency/wallets` is scoped to wallet functionality so the rest of the Ecency
-codebase can stay focused on social and content features. The package is
-responsible for:
+If you were using the seed-phrase-based wallet creation flow:
 
-- Generating or importing the mnemonic that seeds all derived addresses.
-- Deriving per-chain addresses from the same seed phrase, so Ecency can surface
-  balances and transactions for multiple blockchains.
-- Publishing public wallet metadata to Ecency services when users choose to
-  make their addresses available.
-
-## Example: derive addresses from a mnemonic (legacy)
-
-<Aside type="caution">
-  This mnemonic-based flow is being phased out. The example below is kept for
-  reference only. New integrations should not rely on seed phrase generation.
-</Aside>
-
-The snippet below shows the legacy flow for creating a mnemonic and deriving a
-set of addresses.
-
-export const exampleCode = `
-import { createWalletClient } from '@ecency/wallets';
-
-// Create a client for wallet-only operations in web or mobile apps
-const walletClient = createWalletClient();
-
-// Either generate or import a mnemonic
-const mnemonic = await walletClient.createMnemonic();
-
-// Derive addresses for the chains you need to display in Ecency
-const addresses = await walletClient.deriveAddresses({
-  mnemonic,
-  chains: ['hive', 'bitcoin', 'ethereum'],
-});
-
-// Store only public addresses with Ecency services; keep the mnemonic local
-await walletClient.publishPublicWallets({ addresses });
-`;
-export const fileName = "wallets.ts";
-
-<Code code={exampleCode} lang="ts" title={fileName} />
+1. Remove imports of `useSeedPhrase`, `useWalletCreate`, `useImportWallet`,
+   `getKeysFromSeed`, `useHiveKeysQuery`, `useWalletsCacheQuery`.
+2. Remove imports of `signExternalTx`, `buildExternalTx`, `getWallet`.
+3. Remove `@okxweb3/*` and `bip39` from your dependencies (they are no longer
+   needed by the wallets package).
+4. For external chain transfers, use `useExternalTransfer()` which signs via
+   MetaMask.
+5. For Hive key derivation from seed, `deriveHiveKeys()` and
+   `deriveHiveMasterPasswordKeys()` still work as before — the only change is
+   the BIP32 library switched from `@okxweb3/crypto-lib` to `@scure/bip32`.
+6. Guide users with existing seed-phrase wallets to the
+   [seed phrase migration guide](/guides/seed-phrase-migration/).
