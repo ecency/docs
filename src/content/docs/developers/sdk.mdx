@@ -1,13 +1,14 @@
 ---
 title: Ecency SDK
-description: Framework-agnostic data layer for Hive apps with first-class React Query support.
+description: Full-featured Hive blockchain SDK with built-in transaction signing, RPC failover, and React Query support.
 ---
 
 # Ecency SDK
 
-The Ecency SDK (`@ecency/sdk`) is a framework-agnostic data layer for Hive applications with
-first-class **React Query** support. It provides **165+ query option builders**, **76+ mutation
-hooks**, and a shared configuration layer - all with **zero runtime dependencies**.
+The Ecency SDK (`@ecency/sdk`) is a full-featured Hive blockchain SDK with **built-in transaction
+signing**, **multi-node RPC with health tracking**, and first-class **React Query** support. It
+provides **165+ query option builders**, **76+ mutation hooks**, and a complete blockchain
+transaction engine — everything needed to build Hive applications in a single package.
 
 Published on [npm](https://www.npmjs.com/package/@ecency/sdk) under the MIT license.
 
@@ -15,17 +16,26 @@ Published on [npm](https://www.npmjs.com/package/@ecency/sdk) under the MIT lice
 
 | Feature | Details |
 |---|---|
+| Transaction engine | Built-in signing, serialization, and broadcasting for all 50 Hive operation types |
+| RPC layer | Multi-node failover with per-node health tracking, rate-limit detection, and quorum calls |
+| Cryptography | ECDSA secp256k1 key management, memo encryption/decryption (AES-CBC) |
 | Query builders | 165+ composable query option builders |
 | Mutation hooks | 76+ hooks for all blockchain write operations |
 | Cache keys | Centralized `QueryKeys` - single source of truth |
-| Auth methods | Private key, Keychain, HiveSigner, HiveAuth |
+| Auth methods | Private key, Keychain, HiveSigner, HiveAuth, MetaMask Snap |
 | Platform support | Web, React Native, Node.js (SSR) |
-| Runtime deps | **Zero** - only peer dependencies |
-| Bundle size | ~182 KB |
+| Bundle size | ~228 KB (57 KB gzipped) |
 | Build targets | Browser ESM + Node ESM/CJS (dual builds via tsup) |
 
 ## What's inside
 
+- **Built-in transaction engine** — create, sign, and broadcast Hive transactions with full
+  serialization support for all 50 operation types, multi-signature transactions, and memo
+  encryption (built on an improved version of [hive-tx](https://github.com/mahdiyari/hive-tx)
+  by Mahdi Yari)
+- **Multi-node RPC with health tracking** — automatic failover across Hive API nodes with
+  per-node failure tracking, rate-limit detection (429/503), stale-head awareness, and
+  quorum-based consensus calls for security-sensitive reads
 - **Query and mutation option builders** powered by [@tanstack/react-query](https://tanstack.com/query)
 - **24 domain modules**: accounts, posts, communities, wallet, market, notifications, search,
   analytics, proposals, witnesses, operations, resource-credits, hive-engine, spk, points,
@@ -33,7 +43,6 @@ Published on [npm](https://www.npmjs.com/package/@ecency/sdk) under the MIT lice
 - **Central configuration** via `ConfigManager` (RPC nodes, QueryClient, DMCA filtering, image host)
 - **Platform adapter pattern** for cross-platform auth and broadcasting
 - **Smart auth fallback** - automatically tries alternative signing methods on failure
-- **RPC node failover** - multi-node configuration with automatic failover
 - **Blockchain error parsing** - user-friendly error messages with typed error categories
 
 ## Why React Query?
@@ -254,10 +263,10 @@ yarn add @ecency/sdk
 pnpm add @ecency/sdk
 ```
 
-**Peer dependencies** (required):
+**Peer dependency** (required):
 
 ```sh
-npm install @hiveio/dhive hivesigner
+npm install hivesigner
 ```
 
 **Optional peer dependencies** (for React hooks):
@@ -266,8 +275,9 @@ npm install @hiveio/dhive hivesigner
 npm install react @tanstack/react-query
 ```
 
-React and React Query are optional - the SDK's query option builders and utility functions
-work without them in server-side or non-React contexts.
+React and React Query are optional — the SDK's query option builders, transaction engine,
+and utility functions work without them in server-side or non-React contexts. Transaction
+signing and RPC calls are built in with no additional dependencies.
 
 ## Quick start
 
@@ -511,6 +521,8 @@ try {
 The SDK is organized into 24 domain modules:
 
 ```text
+src/hive-tx/            Built-in transaction engine (signing, serialization, RPC, cryptography)
+
 src/modules/
   accounts/           Account data, follow/mute, profile updates, bookmarks, favorites
   ai/                 AI image generation pricing and mutations
