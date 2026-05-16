@@ -11,7 +11,7 @@ This document explains how Ecency's chat experience works and how other Hive app
 
 - **Mattermost as chat backend**: Ecency provisions users, teams, channels, and personal access tokens (PATs) in a Mattermost instance configured through environment variables.
 - **Next.js API wrappers**: The web app exposes `/api/mattermost/*` routes that handle authentication, bootstrap tasks, and proxy calls to Mattermost using user-scoped PATs stored in a secure cookie.
-- **Hive identity**: Users authenticate with their Hive account (access/refresh tokens). The bootstrap API validates those tokens before issuing a Mattermost PAT so the chat identity is bound to the Hive username.
+- **Hive identity**: Users authenticate with their Hive account. The bootstrap API validates the Hive **`accessToken`** (the `refreshToken` is **not** consumed by bootstrap — your app refreshes its own `accessToken` and retries) before issuing a Mattermost PAT, so the chat identity is bound to — and must match — the Hive username.
 - **Community mapping**: Hive communities map to public Mattermost channels named after the community id (e.g., `hive-123`). The bootstrap flow can auto-join users to channels for the communities they subscribe to.
 
 ### Realtime transport
@@ -25,16 +25,22 @@ This document explains how Ecency's chat experience works and how other Hive app
 Other Hive apps can call Ecency's `/api/mattermost/*` routes directly - **no Mattermost infrastructure required**. Key points:
 
 - **Base URL**: Use the deployed Ecency web domain you target (e.g., `https://ecency.com/api/mattermost`). The same routes are available on staging instances for testing.
-- **Cookies required**: The routes rely on an httpOnly `mm_pat` cookie. When calling from a browser, use `credentials: "include"` so the cookie is stored for subsequent requests.
-- **Hive access tokens only**: Your app never needs Mattermost credentials. Provide the user's Hive `accessToken`/`refreshToken` and username to bootstrap; the Ecency backend handles PAT creation and all proxying.
+- **Cookies vs token**: The routes use an httpOnly `mm_pat` cookie. From a same-origin browser context, use `credentials: "include"`. **Cross-origin clients (e.g. browser extensions) cannot rely on the cookie** — capture `token` from the bootstrap JSON response and send it as `Authorization: Bearer <token>` (or `?token=<token>` for the websocket) on subsequent `/api/mattermost/*` calls.
+- **Hive access tokens only**: Your app never needs Mattermost credentials. Provide the user's Hive `accessToken` and `username` to bootstrap (a `refreshToken` field is accepted for forward-compatibility but **not consumed** — bootstrap validates `accessToken` only); the Ecency backend handles PAT creation and all proxying.
 
 ## Quickstart for Hive app integrators
 
-1. **Collect Hive tokens**: Obtain the user's Ecency/Hive `accessToken` or `refreshToken` (JWT) plus the Hive `username` after login in your app.
+1. **Collect Hive tokens**: Obtain the user's Ecency/Hive `accessToken` (JWT) plus the Hive `username` after login in your app. (Keep your `refreshToken` to mint a fresh `accessToken` when it expires — bootstrap itself only consumes `accessToken`.)
 2. **Bootstrap against Ecency**:
-   - `POST https://ecency.com/api/mattermost/bootstrap` with JSON `{ username, accessToken, refreshToken, displayName?, community?, communityTitle? }` and `credentials: "include"`.
-   - The route validates the Hive token, creates/ensures the Mattermost user, and joins/creates the team and optional community channel.
-   - Response: `{ ok: true, userId, channelId?, token }` and an `mm_pat` cookie scoped to Ecency. The `token` mirrors the PAT for clients that cannot use cookies.
+   - `POST https://ecency.com/api/mattermost/bootstrap` with JSON `{ username, accessToken, displayName?, community?, communityTitle? }` and `credentials: "include"`. (A `refreshToken` field is accepted but ignored — bootstrap validates `accessToken` only.)
+   - The route validates the Hive `accessToken`, checks it belongs to `username`, creates/ensures the Mattermost user, and joins/creates the team and optional community channel.
+   - **Response (`200`)**: `{ ok: true, userId, channelId?, token }` and an `mm_pat` cookie scoped to Ecency. The `token` mirrors the PAT for clients that cannot use cookies.
+   - **Idempotent**: bootstrap is safe to call repeatedly and tolerates concurrent calls, but call it **once per session** then cache and reuse the `token`/cookie. Re-bootstrap only when the token is missing/expired. Firing parallel/repeat bootstraps per page-load is unnecessary and wasteful.
+   - **Status codes**:
+     - `400` — missing `username` or invalid JSON body.
+     - `401` — missing/invalid/expired `accessToken`, or the token's Hive account does not match `username`. Refresh your `accessToken` and retry.
+     - `503` — Ecency auth (HiveSigner) is temporarily unavailable. **Retryable** — back off and retry; do not force the user to re-login.
+     - `502` / `504` — the Mattermost backend is unreachable or timed out. Transient; retry with backoff.
 3. **Call chat endpoints with the cookie**: Subsequent requests to `https://ecency.com/api/mattermost/*` automatically include the PAT cookie when `credentials: "include"` is set, enabling channel lists, posting, reactions, searches, and direct messages.
 4. **Link back to your UI**: Use returned `channelId` or search endpoints to deep-link into chat surfaces within your app (e.g., from profiles or community pages).
 
