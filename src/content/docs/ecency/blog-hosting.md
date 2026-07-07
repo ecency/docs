@@ -5,7 +5,16 @@ description: Host your Hive blog on your own Ecency subdomain with a simple mont
 
 # Blog hosting
 
-Ecency blog hosting gives you your own hosted blog at `yourname.blogs.ecency.com`, powered by your Hive account and content. It is a fast way to run a clean, standalone blog without managing any servers yourself.
+Ecency blog hosting gives you your own hosted blog at `yourname.blogs.ecency.com` (or your own custom domain), powered by your Hive account and content. It is a fast way to run a clean, standalone site that is yours, without managing any servers yourself.
+
+## Why a hosted blog?
+
+Your Ecency profile at `ecency.com/@username` lives inside the main Ecency site, alongside everyone else's content and under Ecency's branding. A hosted blog is the opposite: it is **your own space**.
+
+- **Only your content.** Readers see your posts on a page dedicated to you, with nothing else competing for attention.
+- **Your brand.** Your name, title, theme, and layout, instead of the shared Ecency shell.
+- **Your address.** A memorable `yourname.blogs.ecency.com`, or your own domain like `blog.yoursite.com`.
+- **Still on Hive.** Your posts stay on the Hive blockchain, so you keep your audience, rewards, and portability. The blog is simply a nicer front door to the same content.
 
 ## What you get
 
