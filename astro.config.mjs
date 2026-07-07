@@ -64,6 +64,8 @@ export default defineConfig({
             { label: "Mobile App", slug: "guides/use-mobile-app" },
             { label: "Mobile FAQ", slug: "ecency/mobile-faq" },
             { label: "Ecency Points", slug: "ecency/ecency-points" },
+            { label: "Ecency Pro", slug: "ecency/ecency-pro" },
+            { label: "Blog hosting", slug: "ecency/blog-hosting" },
             { label: "Boost and Promote", slug: "ecency/boost-and-promote" },
             { label: "Notifications, Drafts, Bookmarks", slug: "ecency/notifications-drafts-bookmarks" },
             {
