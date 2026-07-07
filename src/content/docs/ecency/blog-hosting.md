@@ -54,6 +54,16 @@ Want your blog on your own domain, like `blog.yoursite.com`? Add the **Custom do
 
 Custom domains need the Custom domain plan; standard blogs use the `blogs.ecency.com` subdomain. Custom-domain checkout is a one-step card payment.
 
+## Community hosting
+
+Hosting is not only for personal blogs. You can host a whole Hive community as its own branded site, showing the community's posts, subscribers, and about, at `hive-NNNNN.blogs.ecency.com` or your own custom domain. It gives a community a home that looks and feels like its own, while every post stays on Hive.
+
+- **You control it, not the community account.** The instance is owned by the account that creates it (you), separate from the community itself. You never need the community's keys to run or customize the site.
+- **Members post into the community.** From the hosted site, a logged-in member can publish straight into the community, and normal Hive community moderation still applies.
+- **Same customization.** Choose a theme, a style template, a title, and branding, and add a custom domain just like a personal blog.
+
+To set one up, go to `ecency.com/hosting`, choose **Community**, and enter the community id (it looks like `hive-125125`). You must be logged in, since your account becomes the owner. Pick a term and pay by HBD or card. The community activates as soon as the payment is confirmed.
+
 ## Frequently asked
 
 **Whose content appears on the blog?** Your Hive posts. Because your content lives on Hive, your blog reflects whatever you publish.
@@ -61,3 +71,5 @@ Custom domains need the Custom domain plan; standard blogs use the `blogs.ecency
 **Can I use my own custom domain?** Yes. Add the Custom domain option for +$1 per month. See the Custom domain section above.
 
 **What happens when the term ends?** Renew to keep your blog active. You can pay for another term at any time.
+
+**Can I host a community instead of a personal blog?** Yes. Choose Community at signup and enter the community id. Your account becomes the owner and controls the site, separate from the community account. See the Community hosting section above.
