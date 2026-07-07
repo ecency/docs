@@ -10,6 +10,7 @@ Ecency Pro is an annual membership that adds a set of premium perks on top of yo
 ## What you get
 
 - **Verified Pro badge.** A checkmark shown next to your name across Ecency on both web and mobile, so readers can recognize you as a Pro member.
+- **A free blog.** Your own hosted blog at `yourname.blogs.ecency.com`, included with Pro. Claim it from the Perks page after you upgrade. See [Blog hosting](/ecency/blog-hosting).
 - **Insights for any creator.** View traffic insights (views, unique views, time on page) for any profile, not just your own. This is a handy way to research what topics and formats perform well.
 - **A larger AI free allowance.** Extra daily free uses of Ecency's AI features, including the writing assistant and the AI image generator, on top of what regular accounts get.
 - **Free streak freezes.** Protect your daily activity streak without spending Points.
