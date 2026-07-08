@@ -1,11 +1,11 @@
 ---
 title: New user onboarding checklist
-description: A first-week checklist for new Ecency users to set up Hive accounts, secure keys, and start earning.
+description: A first-week checklist for new Ecency users, from securing keys to your first Wave, first post, and first earnings.
 ---
 
 # New user onboarding checklist
 
-Follow this checklist to set up your Hive identity, secure your keys, and start participating on Ecency in your first week.
+Follow this checklist to set up your Hive identity, secure your keys, and start participating on Ecency in your first week. The fastest way to feel at home is to say something small today, not to write a perfect post next week.
 
 ---
 
@@ -18,11 +18,23 @@ Follow this checklist to set up your Hive identity, secure your keys, and start 
 
 ---
 
+## Day 0: Post your first Wave
+
+Your first action on Ecency should take less than a minute. [Waves](/ecency/waves/about/) are short posts, like a quick status update: no title, no formatting pressure, just a sentence or two.
+
+- Open [Waves](https://ecency.com/waves) and **post your first Wave**: who you are, what you are into, or what brought you to Ecency.
+- **Vote on a few Waves** you enjoy and reply to one. Conversations start faster in Waves than anywhere else.
+- **Follow a handful of people** whose Waves you like, so your feed has life in it from day one.
+- Do a **daily check-in** on the [Perks page](https://ecency.com/perks) to start your streak and earn [Ecency Points](/ecency/ecency-points/).
+
+---
+
 ## Day 1–2: Learn how Ecency works
 
 - Read [How Ecency works](/get-started/how-it-works/) and [What is Hive?](/hive/what-is-hive/).
 - Review [keys and permissions](/common/keys/) so you know which key to use for each action.
-- Set up **profile and avatar** so people recognize you.
+- Set up your **profile and avatar** so people recognize you.
+- Keep the Wave habit going: one Wave and a few votes a day builds your network quickly.
 
 ---
 
@@ -60,6 +72,8 @@ Follow this checklist to set up your Hive identity, secure your keys, and start 
 
 ## Ongoing habits
 
+- **Wave daily, post weekly**: short Waves keep you visible and connected between longer posts.
+- Keep your **daily check-in streak** alive on the [Perks page](https://ecency.com/perks); streaks compound into Points and habits.
 - Claim rewards weekly and consider **powering up** a portion for more RC and influence.
 - Vote on **witnesses** and **DHF proposals** using the [governance participation guide](/hive/governance/).
 - Back up your keys any time you rotate them, and bookmark the [account recovery playbook](/guides/recovery/).
