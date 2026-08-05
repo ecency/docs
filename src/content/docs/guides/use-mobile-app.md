@@ -14,7 +14,7 @@ The Ecency mobile app brings Hive to your fingertips. Available for **Android** 
 - [Ecency on Android (Play Store)](https://android.ecency.com)
 - [Ecency on iOS (App Store)](https://ios.ecency.com)
 
-Also available at: [https://github.com/ecency-mobile](https://github.com/ecency-mobile/releases)
+Also available at: [https://github.com/ecency/vision-mobile](https://github.com/ecency/vision-mobile/releases)
 
 ---
 

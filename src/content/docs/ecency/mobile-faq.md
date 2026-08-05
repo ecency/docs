@@ -13,7 +13,7 @@ Answers to the most common questions about installing, signing in, and using Ece
 
 - **Android**: [Play Store](https://android.ecency.com)
 - **iOS**: [App Store](https://ios.ecency.com)
-- You can also download releases from [GitHub](https://github.com/ecency/ecency-mobile/releases).
+- You can also download releases from [GitHub](https://github.com/ecency/vision-mobile/releases).
 
 ---
 
@@ -74,4 +74,4 @@ Multiple accounts stay saved; no need to log out.
 ## How can I report a bug or get support?
 
 - From the app: **Menu → Help**.
-- Ask in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel) or open an issue on [GitHub](https://github.com/ecency/ecency-mobile/issues).
+- Ask in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel) or open an issue on [GitHub](https://github.com/ecency/vision-mobile/issues).
