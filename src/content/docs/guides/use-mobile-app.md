@@ -49,7 +49,7 @@ Describe the image you want and the app creates it for you, paid with Points. In
 
 ## Listen to posts
 
-Tap **Listen** on a post to unlock an audio version of it with Points. See [Listen](/ecency/listen/).
+Listening to posts as audio is available on the web today and is coming to the mobile app in an upcoming release. See [Listen](/ecency/listen/).
 
 ## Wallet and Points
 
