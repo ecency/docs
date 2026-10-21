@@ -1,67 +1,63 @@
 ---
 title: Hive tokens
+description: Learn about HIVE, Hive Power, Hive Backed Dollars (HBD), savings and staking, and what you can do with them in the Ecency wallet.
 ---
 
-Ecency wallet is a cryptocurrency wallet that lets the community manage their HIVE, HBD, Hive Power, Savings, and other tokens securely.
+The Ecency wallet lets you manage your HIVE, Hive Power, Hive Backed Dollars (HBD), savings and other tokens. This page explains each token and what you can do with it.
 
 ## Where do the tokens come from?
 
-The Hive network continually creates new digital tokens to reward content creators and curators. Some of the newly-created tokens are transferred to users who add value to platform by posting, commenting, and voting on other people's posts. The remainder is distributed to holders of HIVE POWER and the witnesses that secures the blockchain.
+The Hive network continually creates new tokens. Most of them reward people who add value: authors who post, and curators who vote on posts. The rest goes to Hive Power holders, to the witnesses that secure the blockchain, and to the Decentralized Hive Fund.
 
-## What can I do with my Hive tokens?
+## HIVE
 
-In the Ecency wallet, you can perform various operations on your Hives:
+HIVE is the main liquid token of the Hive blockchain. You can transfer it at any time, trade it on markets and exchanges, or stake it as Hive Power (powering up). Its value comes from supply and demand on the market.
 
-Transfer- If you want to Transfer your Hive to someone, you can select Transfer and fill in the account
-name and amount of Hives to Transfer it.
+## Hive Power (HP)
 
-Transfer to Savings- By transferring your Hive to Savings, you will get annual Interest from them.
+Hive Power is staked HIVE. It gives you:
 
-Power Up- When powered up, your HIVE becomes staked and converts to HIVE Power, which increases your
-voting power and resource credits on the blockchain. You can Power Up Hive and Save it in your Account or Transfer it to other accounts as Hive Power through filling account name field.
+- More influence when you vote on content, and bigger curation rewards
+- More [Resource Credits](/hive/resource-credits/), so you can make more transactions
+- More weight in [governance](/hive/governance/) votes for witnesses and proposals
+- A small share of newly created HIVE, paid to Hive Power holders
 
-Trade Token- Clicking on it redirects you the Ecency Market Page where you can exchange tokens. Hive can be Swapped to HBD wihtout waiting period 3,5 days.
+To turn Hive Power back into liquid HIVE, you power down. A power down pays out in 13 equal weekly parts, and the first part arrives one week after you start. See [power up and down](/guides/power-up-down/).
 
-## What determines the value of HIVE and HBD?
+## Hive Backed Dollars (HBD)
 
-The value of HIVE comes from the demand and supply of the token. HIVE will always be in demand based on the way the system is designed and there will always be supply for HIVE. As long as the Hive blockchain exists with continuous development and users being active, there will always be demand and supply for HIVE, adding value to the token.
+Hive Backed Dollars (HBD) are designed to stay close to **1 US dollar**. The blockchain keeps HBD near its peg through conversions:
 
-## What are HIVE tokens?
+- You can convert HBD into about $1 worth of HIVE. This takes **3.5 days** and uses the average price over that time.
+- You can also convert HIVE into HBD. You get the HBD right away, and the extra HIVE held as collateral is settled after 3.5 days.
 
-HIVE tokens are tradable and can be transferred at any time. They can also be converted into Hive Power through a process known as powering up or staking HIVE. HIVE is a type of cryptocurrency token, similar to Bitcoin.
+HBD can be transferred to other accounts, traded on the market and held in savings to earn interest.
 
-## What is HIVE POWER?
+## Savings
 
-Hive Power refers to tokens of influence that increase in value when held for a longer period and used for voting on content. The greater the amount of Hive Power one possesses, the greater their ability to impact the rewards of others and earn rewards through accurate voting. Hive Power is obtained by staking HIVE tokens, which can be withdrawn after a 13-week period.
+You can move HIVE or HBD into savings. Savings are protected by a **3-day waiting period**: when you withdraw, the funds arrive after 3 days. This gives you time to react if your account is compromised.
 
-## What are HIVE DOLLARS or HBD?
+Only **HBD in savings earns interest**. The interest rate is set by witnesses, currently about **10% APR**. HIVE in savings does not earn interest. See [HBD savings interest](/guides/hbd-savings-interest/).
 
-Hive Dollars, often shortened as HBD, are tokens equivalent to approximately $1.00 worth of HIVE. These tokens can be exchanged for HIVE and can be transferred to other accounts for commercial purposes or trading. Additionally, Hive Dollars can be converted into HIVE, but this conversion process takes around 3.5 days.
+## Delegated Hive Power
 
-## What is delegated Hive Power?
+You can delegate Hive Power to another account. The receiver gets the benefits of that Hive Power, like Resource Credits and vote strength, but can't power it down or transfer it. It still belongs to you, and you can remove the delegation at any time. When you remove it, the Hive Power returns to you after 5 days. See [delegate HP](/guides/delegate-hp/).
 
-Users can delegate Hive Power to other users, allowing them to have the same benefits and privileges as if they had their own Hive Power. This includes having their Resource Credits, content votes, and curation rewards calculated based on the delegated Hive Power. However, users who receive delegated Hive Power cannot power down or withdraw it as it still belongs to the original owner.
+## What can I do with my tokens?
 
-## What is powering up?
+In the Ecency wallet you can:
 
-You have the option to increase the power of your earned Hive tokens by converting them into Hive Power. This process involves keeping your HIVE tokens in your wallet and converting them into HIVE Power, which in turn boosts your voting power and resource credits on the blockchain. By having more Hive Power, you can earn higher curation rewards and receive additional vested tokens. Additionally, possessing more HP gives you greater influence in approving Hive witnesses.
+- **Transfer**: send HIVE or HBD to another account. Enter the account name, the amount and an optional memo.
+- **Transfer to savings**: move HIVE or HBD into savings. HBD in savings earns interest.
+- **Power up**: stake HIVE as Hive Power, for your own account or for another account.
+- **Trade**: open the [market](/ecency/market/) to swap HIVE and HBD right away at the market price, without waiting 3.5 days for a conversion.
 
-## What is powering down?
+For claims, conversions and timelines, see [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
 
-You can both power up and power down Hive Power using the same wallets. However, when you choose to power down, your Hive Power will not be immediately accessible as Hive. Instead, it will be converted into 13 equal parts and transferred to your Hive wallet on a weekly basis. The first portion will only be available one week after the power down process has been initiated.
+## Hive Engine tokens
 
-## What does the Savings mean in my wallet?
+Hive Engine is a sidechain for the Hive blockchain that runs smart contracts. It lets people create and trade custom tokens, run liquidity pools, mint NFTs and build tokenized communities. You can see and manage Hive Engine tokens in the Ecency wallet. See [Engine tokens](/ecency/wallets/engine-tokens/).
 
-You have the option to generate income from your current Hive or HBD holdings without needing to convert them into Hive Power. By moving Hive or HBD from your balance to Savings, you can receive an annual interest rate of 20% APR. Although you can withdraw it whenever you want, there is a 3-day waiting period for balance withdrawals.
+## Staking
 
-## What is the HIVE engine?
-
-Hive Engine is a platform that operates as smart contracts side-chain for the Hive blockchain. It serves as a decentralized marketplace for the trading of tokens on the Hive blockchain and other cryptocurrency networks. Users have the ability to perform various functions on Hive Engine, such as generating and distributing custom tokens, establishing liquidity pools with integrated rewards, forming tokenized communities known as outposts with built-in token reward systems, producing NFTs, creating decentralized autonomous organizations (DAOs) called Decentralized Token Fund (DTF), initiating airdrops, claiming drops, engaging in token mining, and more.
-
-## What is staking?
-
-Staking is depositing a token in your wallet and receiving rewards for not selling it while it is staked. It is a process that involves committing your tokens to support a blockchain network. Staking is an easy way to earn interest on your cryptocurrency holdings. If a token you own allows staking you can “stake” some of your holdings and earn a percentage-rate reward over time.
-
-## How to stake tokens?
-
-Details regarding your tokens, including the types and quantities, as well as their potential uses, are available in your wallet. It's important to note that not all tokens are eligible for staking. If you're interested in staking, make sure to verify the staking eligibility of a specific token by selecting it in your wallet. If it can be staked, there should be a staking option available. Simply click on it and input the desired amount of tokens to be staked in your wallet.
+Staking means locking up tokens to support a network or project, usually in return for rewards. On Hive, powering up HIVE into Hive Power is a form of staking. Some Hive Engine tokens can be staked too. To check whether a token can be staked, select it in your wallet. If staking is available, you'll see a stake option: click it and enter the amount.

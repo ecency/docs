@@ -1,5 +1,6 @@
 ---
 title: Frequently asked questions
+description: Answers to common questions about Ecency and the Hive blockchain, from signing in to rewards, wallets and governance.
 ---
 
 Below are answers to common questions about Ecency and the Hive blockchain.
@@ -8,122 +9,151 @@ Below are answers to common questions about Ecency and the Hive blockchain.
 
 ### What is Ecency?
 
-Ecency is a decentralized social network built on the [Hive blockchain](https://hive.io) where users own their accounts and content. Learn more in [What is Ecency?](/get-started/what-is-ecency/).
+Ecency is a decentralized social network built on the [Hive blockchain](https://hive.io), where you own your account and content. Learn more in [What is Ecency?](/get-started/what-is-ecency/).
 
 ### What is the Hive blockchain?
 
-Hive is a fast, feeless blockchain for Web3 applications. See [What is Hive?](/hive/what-is-hive/) for an overview.
+Hive is a fast, feeless blockchain for Web3 apps. See [What is Hive?](/hive/what-is-hive/) for an overview.
 
 ### How does Ecency work?
 
-Ecency reads and writes data to Hive and rewards contributions with blockchain tokens and Ecency Points. The [How it works guide](/get-started/how-it-works/) explains the process.
+Ecency reads and writes your data on Hive, and rewards contributions with blockchain tokens and Ecency Points. See [What is Ecency?](/get-started/what-is-ecency/) for how it works.
 
 ### What do I do in my first week on Ecency?
 
-Follow the [onboarding checklist](/get-started/onboarding-checklist/) for day-by-day steps to secure keys, publish your first post, and start earning.
+Follow the [onboarding checklist](/get-started/onboarding-checklist/) for day-by-day steps to secure your keys, publish your first post and start earning.
 
 ### How do I join Ecency?
 
-Create an account on the [signup page](https://ecency.com/signup?referral=ecency) or follow the [account creation guide](/guides/create-account/). Remember to store your master password safely.
+Create an account on the [signup page](https://ecency.com/signup?referral=ecency) or follow the [account creation guide](/guides/create-account/). Store your master password or seed phrase safely.
 
 ### What makes Ecency different from other social networks?
 
-Content is stored on a blockchain, making it immutable and censorship resistant. See [why Ecency is different](/get-started/difference/) for more details.
+Your account is controlled by your keys, and your content is stored on a blockchain, which makes it permanent and censorship resistant. See [Why Ecency](/ecency/ecency-vs-others/) for more.
+
+### Can I install Ecency as an app?
+
+Yes. Besides the [mobile apps](/guides/use-mobile-app/), you can install the Ecency website as an app (PWA) for a faster, full-screen experience:
+
+- **Chrome, Edge and Android**: open [ecency.com/mobile](https://ecency.com/mobile) and click **Install** on the **Install Ecency** banner, or use your browser's own install option.
+- **iPhone and iPad (Safari)**: tap the **Share** button and choose **Add to Home Screen**.
+
+### Does Ecency have RSS feeds?
+
+Yes. Add `/rss` (or `/rss.xml`) to these pages:
+
+- A user's posts: `https://ecency.com/@username/rss`
+- A tag feed: `https://ecency.com/trending/photography/rss`, with `trending`, `hot`, `created` or `payout`
+- A community: `https://ecency.com/trending/hive-125125/rss`, with the community's ID
+
+### Where can I get help?
+
+Ask in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel), where the team and community answer questions. These docs and this FAQ cover most common topics.
 
 ## Accounts and security
 
-### Can I change or delete my account?
+### How do I sign in?
 
-Hive account names are permanent and accounts cannot be deleted. You can always [create a new account](/guides/create-account/).
+Ecency supports several ways to sign in:
+
+- **Browser extensions**: Hive Keeper (by Ecency), Hive Keychain or Peak Vault. On mobile browsers, you can use Keychain Mobile.
+- **MetaMask** with the Hive Snap
+- **HiveSigner**
+- **HiveAuth**, in the mobile app
+- **Your key or password**: your posting key, active key, master password, or a seed file
+
+See [login methods](/guides/login-methods/) for details, and [keys and authorities](/hive/hive-accounts/) to understand which key does what.
+
+### Can I change or delete my account or data?
+
+Hive account names are permanent, and Hive accounts can't be deleted or deactivated. The account and all of its activity are stored on the blockchain permanently, which nobody can change. You can always [create a new account](/guides/create-account/).
+
+Ecency also keeps some data off-chain, outside the blockchain. To access, correct or delete that data, see the [Ecency privacy policy](https://ecency.com/privacy-policy).
 
 ### How can I verify I own a Hive account?
 
-Sign a short message with your Hive account using [HiveSigner’s Sign Message page](https://hivesigner.com/signmessage). Copy the signed message output and confirm it on the **Verify** tab of the same page (or go directly to [hivesigner.com/verifymessage](https://hivesigner.com/verifymessage)). Sharing that verified signature lets support confirm ownership for GDPR or account deletion requests without exposing your keys. Account deletion on Ecency applies to front-end data only-blockchain content remains immutable.
-
-### How do I sign in?
-
-Log in with your Hive username and master password, active key, or via [Hivesigner](https://hivesigner.com). For key details see [Account security and keys](/common/keys/).
+Sign a short message with your Hive account on [HiveSigner's Sign Message page](https://hivesigner.com/signmessage). Copy the signed output and confirm it on the **Verify** tab of the same page (or go directly to [hivesigner.com/verifymessage](https://hivesigner.com/verifymessage)). Sharing that verified signature lets support confirm ownership for privacy or data deletion requests without exposing your keys. Deleting data on Ecency only applies to off-chain data. Blockchain content can't be deleted.
 
 ### How does the referral system work?
 
-Share a signup link like `https://ecency.com/signup?referral=USERNAME`. When a referral earns 250 Points you receive 100 Points. See the [referral program](/get-started/referral/) for more.
+Share a signup link like `https://ecency.com/signup?referral=USERNAME`. When someone you referred earns their first 250 Points, you receive 100 Points. See the [referral program](/get-started/referral/).
 
 ### What is Hive Keychain?
 
-[Hive Keychain](https://hive-keychain.com) is a browser extension and mobile app for securely using Hive applications.
+[Hive Keychain](https://hive-keychain.com) is a browser extension and mobile app for using Hive apps securely. Ecency also has its own extension, Hive Keeper. See [login methods](/guides/login-methods/).
 
 ### What if my tokens are stolen or sent to the wrong account?
 
-Blockchain transactions are irreversible. Keeping funds in Hive Power or savings offers more protection.
+Blockchain transactions can't be reversed. Funds in Hive Power or savings are better protected, because withdrawing them takes time.
 
 ### How can I recover a lost account?
 
-Account recovery is possible within 30 days if you retain your previous owner key. Follow the [account recovery playbook](/guides/recovery/) for step-by-step instructions and verification tips.
+If someone changed your keys, account recovery is possible within 30 days, as long as you still have an owner key that was valid during that time. Follow the [account recovery playbook](/guides/recovery/).
 
 ## Using Ecency
 
 ### Is there a mobile app?
 
-Yes, Ecency provides Android and iOS apps. See the [mobile app guide](/guides/use-mobile-app/) for download links and the [mobile FAQ](/ecency/mobile-faq/) for common questions.
+Yes, Ecency has Android and iOS apps. See the [mobile app guide](/guides/use-mobile-app/) for download links and the [mobile FAQ](/ecency/mobile-faq/) for common questions.
 
 ### What are Ecency Points and how do I earn them?
 
-Points reward engagement and can be spent to boost or promote posts. Earning methods are listed on the [Ecency Points page](/ecency/ecency-points/).
+Points reward activity on Ecency, and you can spend them to promote posts, boost your account and more. Earning methods are listed on the [Ecency Points page](/ecency/ecency-points/) and in [how to earn](/get-started/earning/).
 
 ### Why can't I post or comment?
 
-You may be out of [Resource Credits](/common/resource-credits/what-is-it/). RC regenerate over time or with more Hive Power. For fixes and estimates see the [RC troubleshooting guide](/common/resource-credits/troubleshooting/). You can also request temporary delegation via the [boost page](https://ecency.com/purchase?type=boost).
+You may be out of [Resource Credits](/hive/resource-credits/) (RC). RC regenerates over time, and more Hive Power gives you more RC. You can also **top up RC with Points**, or get a temporary delegation with [Boost+](/ecency/boost-and-promote/). For fixes, see [RC troubleshooting](/common/resource-credits/troubleshooting/).
 
 ### What is considered spam or abuse?
 
-See the [content quality and abuse guidance](/common/posting/) for examples of behavior that may be downvoted or removed.
+See the [content guidelines](/common/posting/) for examples of behavior that may be downvoted or removed.
 
 ### How do I power up or power down HIVE?
 
-Use the wallet options to convert between liquid HIVE and Hive Power. The [power up/down guide](/guides/power-up-down/) covers the steps.
+Use the wallet options to convert between liquid HIVE and Hive Power. The [power up and down guide](/guides/power-up-down/) covers the steps.
 
 ### How do I manage tokens from other chains?
 
-Ecency supports cross-chain wallets for BTC, ETH, BNB, SOL, APT, TRX, and TON. External chain wallets are being upgraded to use **MetaMask** for simpler seed management and transaction signing - see [cross-chain wallets](/ecency/wallets/cross-chain-wallets/) for details. If you have funds in a wallet created with a seed phrase, follow the [seed phrase migration guide](/guides/seed-phrase-migration/) to move them.
+Ecency supports cross-chain wallets for **BTC, ETH, BNB and SOL**. See [cross-chain wallets](/ecency/wallets/cross-chain-wallets/) for details. If you have funds in a wallet created with a seed phrase, follow the [seed phrase migration guide](/guides/seed-phrase-migration/).
 
 ## Content and rewards
 
 ### What are the dollar amounts next to posts and comments?
 
-They estimate the pending payout after seven days. Rewards are explained in [Hive curation and rewards](/hive/curation-and-rewards/).
+They estimate the pending payout, which is paid seven days after publishing. Rewards are explained in [curation and rewards](/hive/curation-and-rewards/).
 
 ### How are author and curation rewards split?
 
-At payout, authors and curators each receive 50% of the rewards unless beneficiaries are set or rewards are declined.
+At payout, authors and curators each receive 50% of the rewards, unless beneficiaries are set or rewards are declined.
 
-### What is voting mana?
+### What is voting power?
 
-Voting power decreases with each vote and regenerates by about 20% per day. See [voting power](/common/resource-credits/voting-power/) for details.
+Voting power (also called voting mana) goes down with each vote and regenerates by about 20% per day. See [curation and rewards](/hive/curation-and-rewards/#voting-power).
 
 ### When can I claim my rewards?
 
-Rewards become claimable seven days after the post or comment is published. Use the **Claim Rewards** button in your wallet. If claims or conversions look stuck, see [payouts and conversions troubleshooting](/ecency/wallets/payouts-and-conversions/).
+Rewards become claimable seven days after the post or comment is published. Use the **Claim rewards** button in your wallet. If claims or conversions look stuck, see [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
 
 ## Wallet and tokens
 
-### What is the difference between HIVE and Hive Dollars (HBD)?
+### What is the difference between HIVE and Hive Backed Dollars (HBD)?
 
-HIVE is the native liquid token; HBD is a stable-value token. Learn more in [Hive tokens](/common/hive-tokens/).
+HIVE is the native liquid token. Hive Backed Dollars (HBD) are designed to stay close to 1 US dollar. Learn more in [Hive tokens](/common/hive-tokens/).
 
 ### How do I convert between HIVE and HBD?
 
-Use the **Convert** option in your wallet or trade on a supported market. Converting HBD to HIVE takes about 3.5 days. Troubleshooting steps are in [payouts and conversions troubleshooting](/ecency/wallets/payouts-and-conversions/).
+Use the **Convert** option in your wallet, or trade on the [market](/ecency/market/). Converting Hive Backed Dollars (HBD) to HIVE takes 3.5 days. See [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
 
 ## Proposals and governance
 
 ### How does the Decentralized Hive Fund (DHF) work?
 
-Anyone can create a proposal for community funding. Once it reaches the required vote threshold it receives hourly payouts until it falls below that level.
+Anyone can create a proposal asking for funding. Hive Power holders vote on proposals. Proposals with more votes than the **return proposal** get paid every hour, until the daily budget runs out. If a proposal falls below the return proposal, its payouts stop. See [governance](/hive/governance/).
 
 ### How do I vote on proposals?
 
-Visit the [Proposals page](https://ecency.com/proposals) and use the vote icon next to a proposal you support.
+Follow [vote on proposals](/guides/vote-proposals/), or visit the [Proposals page](https://ecency.com/proposals) and use the vote button next to a proposal you support.
 
-### How do I participate in governance overall?
+### How do I take part in governance?
 
-Use the [governance participation guide](/hive/governance/) to learn how to vote for witnesses and DHF proposals and how powering up affects your influence.
+See the [governance guide](/hive/governance/) to learn how to vote for witnesses and DHF proposals, and how powering up affects your influence.
