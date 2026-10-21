@@ -14,7 +14,7 @@ Every page starts with frontmatter that has a `title` and a one-sentence `descri
 
 ## Development
 
-You need Node.js 20 (the version the deploy workflow uses) and Yarn.
+You need Node.js 22.22 or newer (the deploy workflow uses Node 22) and Yarn.
 
 ```bash
 yarn install
