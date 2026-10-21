@@ -1,80 +1,72 @@
 ---
-title: Account Recovery
-description: Step-by-step playbook for recovering a lost or compromised Hive account using your owner key and recovery account.
+title: Account recovery
+description: How to secure or recover a lost or compromised Hive account with your owner key and your recovery account.
 ---
 
-# Account Recovery on Hive
+You can recover a Hive account, but only if you still have an **owner key that was valid in the last 30 days** and your **recovery account** can vouch for you. Act as soon as you suspect a problem.
 
-Recovering a Hive account is possible, but only if you retained your **previous owner key** and your **recovery account** can vouch for you. Use this playbook the moment you suspect a compromise.
+## Quick triage
 
----
+- **You still have your current owner key (or master password):** go to [Reset keys with your owner key](#reset-keys-with-your-owner-key).
+- **Someone changed your keys in the last 30 days and you still have the old owner key:** go to [Request a recovery](#request-a-recovery-within-30-days).
+- **The keys changed more than 30 days ago:** recovery is no longer possible. Create a new account and move any funds you can still reach.
 
-## 🔎 Quick Triage
+Keep your owner key offline. Never paste it into chats or screenshots.
 
-- **Did you lose access to keys but still have the previous owner key?** → Go to **Reset keys with your owner key**.
-- **Were your keys changed without permission in the last 30 days?** → Go to **Request a recovery**.
-- **Has it been more than 30 days since the keys changed?** → Recovery is no longer possible; create a new account and move any funds you can still access.
+## Reset keys with your owner key
 
-> Keep your owner key offline. Never paste it into chats or screenshots.
+If you still have your **current owner key** or master password, you can replace all your keys right away:
 
----
+1. Open your Permissions page: `ecency.com/@username/permissions` (replace `username`).
+2. Click **Add/Manage keys**.
+3. Choose **Add New Keys**, and authenticate with your owner key, master password or seed phrase.
+4. Ecency generates a new master password. Review the new keys and confirm.
+5. Back up the new master password and keys in at least two safe places.
+6. Choose **Revoke Keys** to remove the old keys you no longer trust. You must keep at least one key for each authority.
 
-## ✅ Reset keys with your owner key
+This locks out anyone who had your old keys. See [Manage keys](/guides/manage-keys/) for the full walkthrough.
 
-If you still have your **owner key**, you can rotate all other keys immediately:
+## Request a recovery (within 30 days)
 
-1. Open the [Ecency Permissions page](https://ecency.com/@username/permissions) (replace `username`).
-2. Click **Change Keys**.
-3. Paste your **current owner key** when prompted.
-4. Generate new **posting**, **active**, and **memo** keys.
-5. Confirm the transaction.
-6. Back up the new keys in at least two safe places.
+If an attacker changed your keys and you still have an owner key that was valid in the last 30 days:
 
-This restores control and invalidates any compromised keys.
+1. Contact your **recovery account**. This is usually the account that created yours, such as `ecency`. You can see it on your Permissions page under **Account recovery**.
+2. Tell them your username, roughly when you lost control, and that you still have a previous owner key.
+3. Your recovery account checks that you are the real owner, then submits a **recovery request** on the blockchain.
+4. Complete the recovery with your **previous owner key** and a new owner key. Your recovery account will tell you how.
+5. Once it is done, generate new posting, active and memo keys and store them safely.
 
----
+Timing matters:
 
-## 🆘 Request a recovery (within 30 days)
+- You must recover within **30 days** of the unauthorized key change. After that, the blockchain rejects recovery.
+- A recovery request **expires after 24 hours**. If you miss it, ask your recovery account to submit a new one.
 
-If an attacker changed your keys and you still have the **previous owner key**:
+## Verifying ownership
 
-1. Contact your **recovery account** (the account that created yours, often `ecency`, `appreciator`, or a friend/business).
-2. Provide your username, the date/time you lost control, and state that you still possess the previous owner key.
-3. The recovery account submits a **recovery request** on-chain.
-4. Ecency will prompt you to **confirm** the request with your **previous owner key**.
-5. On confirmation, generate new posting/active/memo keys and store them securely.
+Your recovery account may ask for:
 
-> You have **30 days from the unauthorized key change** to complete this process. After that, the blockchain rejects recovery attempts.
+- Proof that you control the email or social accounts linked to your Hive account.
+- Details only you would know, such as recent transfers or memos.
 
----
+Never share your previous owner key in a chat. You only use it to sign the recovery yourself.
 
-## 🧾 Verifying ownership (what to expect)
+## After you regain access
 
-Recovery accounts may ask for:
+- **Review your keys** on the Permissions page and revoke any you didn't create.
+- **Check recent activity** in your wallet. Cancel any delegations, power downs or withdraw routes you didn't start.
+- **Change passwords** on any other sites where you used your keys.
+- Consider **changing your recovery account** to someone you trust and can reach quickly.
 
-- Proof that you control email or socials previously linked to the account.
-- Transaction history only you would know (recent transfers, memos).
-- The **previous owner key** (entered in a secure form, never in chat).
+## Change your recovery account
 
-This protects against fraudulent recovery attempts.
+On your Permissions page, go to **Account recovery** and click **Edit** to set a new recovery account. The change takes effect after **30 days**. Until then, your current recovery account stays in charge, which protects you if an attacker tries to change it.
 
----
+## Prevention checklist
 
-## 🧹 After regaining access
+- Keep your **owner key offline** (on paper or a hardware device) and never use it for daily actions.
+- Use **Hive Keychain** or the Ecency mobile app so you don't paste keys into websites.
+- Know who your **recovery account** is and how to contact them.
+- Turn on **two-factor authentication** for the email and devices tied to your Hive account.
+- Check from time to time that you can find your backups.
 
-- **Rotate keys again** from the Permissions page to ensure only the new set remains valid.
-- **Review recent activity** in your wallet and notifications; revoke any active delegations or power-downs you did not start.
-- **Change passwords** on any third-party sites that stored your keys.
-- Consider updating your **recovery account** to a trusted contact you can reach quickly.
-
----
-
-## 🛡️ Prevention checklist
-
-- Store the **owner key offline** (hardware or paper) and never use it for daily actions.
-- Use **Hive Keychain** or the Ecency mobile app to avoid pasting keys into browsers.
-- Keep a record of your **recovery account** and how to contact them.
-- Enable **two-factor security** on email and devices tied to your Hive activity.
-- Periodically test that you can locate your backups.
-
-If you cannot meet the 30-day window, create a new account via the [account creation guide](/guides/create-account/) and secure it with the practices above.
+If you are past the 30-day window, create a new account with the [account creation guide](/guides/create-account/) and protect it with the steps above.

@@ -1,87 +1,75 @@
 ---
-title: Notifications, Drafts, and Bookmarks
-description: Learn how Ecency helps you stay organized with notifications, drafts, and bookmarks.
+title: Notifications, drafts and bookmarks
+description: Stay on top of your Hive activity with notifications, and keep track of posts, authors and tags with drafts, bookmarks, favorites and followed tags.
 ---
 
-# Notifications, Drafts, and Bookmarks in Ecency
+Ecency gives you a few tools to keep your Hive life organized: **notifications** for what happens to you, **drafts** for posts you're still writing, and **bookmarks**, **favorites** and **followed tags** for things you want to come back to. They are all linked to your account, so they work on the web and in the mobile app.
 
-Ecency provides smart tools to manage your experience on Hive: **notifications**, **drafts**, and **bookmarks**. These features improve productivity and help track your engagement.
+## Notifications
 
----
+Ecency tracks your Hive activity and notifies you about:
 
-## 🔔 Notifications
+- Votes and replies
+- Mentions
+- Follows and reblogs
+- Transfers and delegations
+- Payouts and weekly earnings
+- New posts from your **favorite** authors
+- New replies to posts you **bookmarked**
+- New posts in **tags you follow**
+- Scheduled posts that were published
+- Account updates
 
-Ecency tracks your Hive activity and notifies you in real-time.
+### Where to find them
 
-You get alerts for:
+- **Web:** click the bell icon in the top bar. Filter the list by type, such as votes, replies or mentions.
+- **Mobile:** open the **Notifications** tab. Choose which push notifications you get in **Settings → Push Notification**.
 
-- New upvotes and rewards
-- New comments or replies
-- Transfers (HIVE/HBD received)
-- Mentions in posts or comments
-- Follows,
-- Delegations
-- and more
+You can also get a regular summary by email. See [Settings](/ecency/settings/) for email digests.
 
-### How to Access
+## Drafts
 
-- Web: Click the 🔔 icon in the top bar
-- Mobile: Go to the **Notifications** tab
-
-> Notifications are synced across all platforms/devices.
-
----
-
-## ✍️ Drafts
-
-Drafts help you **start now, post later**.
+Drafts let you start a post now and finish it later. They are saved to your Ecency account on Ecency's servers, not just on your device, so you can start a draft on your phone and finish it on the web.
 
 You can:
 
-- Save a draft of any post (manually or automatically)
-- Access saved drafts from any device
-- Continue editing and publish when ready
+- Save a draft while you write
+- Search your drafts by title
+- Open a draft, keep editing and publish when ready
 
-### Where to Find
+### Where to find them
 
-- Web/Desktop: Go to your profile → **Drafts**
-- Mobile: Tap menu → **Drafts**
+- **Web:** open the user menu (your avatar) and choose **Drafts**.
+- **Mobile:** open the side menu and tap **Drafts**.
 
-> Drafts are saved locally and synced via your Ecency account for multi-device access.
+Want to publish at a set time instead? See [Scheduled posts](/ecency/scheduled-posts/). For reusable pieces of text, see [Snippets and templates](/ecency/snippets-templates/).
 
----
+## Bookmarks
 
-## 📑 Bookmarks
+Bookmark a post to save it for later. You also get notified when it receives a new reply.
 
-Use bookmarks to **save posts** for later reading or reference. You can also bookmark/favorite authors for later checks or notifications.
+- On a post, click the bookmark button.
+- Click it again to remove the bookmark and stop the notifications.
 
-- Great for tutorials, inspiration, or curating
-- Bookmark any post with the 🔖 icon
-- Bookmark or Favorite any author with ❤️ icon and get notified when they publish new content 
-- Bookmarks are **private** - only you can see them
+## Favorites
 
-### Accessing Bookmarks
+Add an author to your favorites to get notified whenever they publish a new post. Use the favorite button on their profile.
 
-- Web: Profile menu → **Bookmarks**
-- Mobile: App menu → **Bookmarks**
+## Followed tags
 
----
+Follow a tag to get notified when new posts are published with it. Open a tag page and click **Follow**. If you're logged out, you can instead get the tag's best posts as a weekly or monthly email.
 
-## Sync Across Devices
+### Where to find bookmarks, favorites and tags
 
-All these features are linked to your Ecency account, so:
-
-- Bookmarks, drafts, and notifications are **available anywhere**
-- Use mobile on the go, and continue from desktop or web
-
----
+- **Web:** open the user menu (your avatar) and choose **Bookmarks**. The dialog has three tabs: **Bookmarks**, **Favorites** and **Tags**.
+- **Mobile:** open the side menu and tap **Bookmarks**.
 
 ## Summary
 
-| Feature     | Purpose                                         |
-|-------------|-------------------------------------------------|
-| Notifications | Stay updated with Hive activity                 |
-| Drafts      | Save unfinished posts                           |
-| Bookmarks   | Store useful posts and authors for later review |
-
-These tools help make your Hive experience smoother and more productive.
+| Feature | What it does |
+|---|---|
+| Notifications | Keep you up to date with your Hive activity |
+| Drafts | Save unfinished posts in your account |
+| Bookmarks | Save posts and get notified about new replies |
+| Favorites | Get notified when an author publishes |
+| Followed tags | Get notified about new posts in a tag |

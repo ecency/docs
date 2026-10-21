@@ -1,73 +1,71 @@
 ---
-title: Power Up and Power Down
-description: Learn how to convert between liquid HIVE and Hive Power to gain or reduce influence on the blockchain.
+title: Power up and power down
+description: How to convert between liquid HIVE and Hive Power on Ecency, and how to route power-down payments to other accounts.
 ---
 
-# Power Up and Power Down
+On Hive, **Hive Power (HP)** is staked HIVE. It gives you voting influence, Resource Credits and a say in governance. You move between **liquid HIVE** and **Hive Power** with Power Up and Power Down.
 
-Hive uses a system called **Hive Power (HP)** - staked HIVE tokens that give you influence, voting power, and resource credits on the blockchain.
+## Power up
 
-You can convert between **liquid HIVE** and **Hive Power** using the Power Up and Power Down functions.
+Powering up turns your **liquid HIVE** into **Hive Power**. It happens instantly.
 
----
-
-## 🔼 Power Up
-
-"Powering up" means converting your **liquid HIVE** into **Hive Power**.
-
-### Benefits of Powering Up:
+### Why power up
 
 - More **voting influence**
 - More **Resource Credits (RC)**
-- Earn **curation rewards**
-- Participate in **witness voting**
+- Earn **curation rewards** when you vote
+- Vote for **witnesses** and **proposals**
 
-### How to Power Up in Ecency:
+### How to power up on Ecency
 
-1. Open your **Wallet** on Ecency Web or Mobile
-2. Click **"Power Up"**
-3. Enter the amount of HIVE you want to stake
-4. Confirm the transaction with your **active key**
+1. Open your **Wallet** on the web or in the mobile app.
+2. Select **HIVE** and choose **Power Up**.
+3. Enter the amount of HIVE you want to stake.
+4. Confirm with your **active key**.
 
-> 🔒 Your HIVE is now staked and can't be instantly withdrawn.
+Your HIVE is now staked. You can't withdraw it instantly; you need to power down.
 
----
+## Power down
 
-## 🔽 Power Down
+Powering down turns your **Hive Power** back into **liquid HIVE**, released over time:
 
-"Powering down" converts your **Hive Power** back into **liquid HIVE**, released over time.
+- It takes **13 weeks**.
+- You receive **1/13** of the amount each week.
 
-- Takes **13 weeks**
-- You receive **1/13** of your powered-down amount each week
+### When to power down
 
-### When to Power Down:
+- You want to **withdraw or trade** HIVE.
+- You need **liquidity** for something else.
 
-- If you want to **withdraw or trade HIVE**
-- If you're **leaving the platform** or need liquidity
+### How to power down
 
-### How to Power Down:
+1. Open your **Wallet** and select **Hive Power**.
+2. Choose **Power Down**.
+3. Enter the amount of HP to convert back to HIVE.
+4. Confirm with your **active key**.
 
-1. Go to **Wallet**
-2. Click **"Power Down"**
-3. Enter the amount of HP to convert back to HIVE
-4. Confirm with your **active key**
+You can **stop** a power down at any time from the same place. Payments already made stay in your liquid balance.
 
-You can **cancel power down** at any time by setting the amount to 0 again.
+## Withdraw routes
 
----
+By default, power-down payments land in your own liquid balance. With **withdraw routes**, you can send a share of each weekly payment to other accounts instead:
 
-## ⚠️ Things to Consider
+1. Open your **Wallet**, select **Hive Power** and choose **Withdraw routes**.
+2. Enter an **account** and the **percent** of each payment it should receive.
+3. Tick **Automatically power up** if that account should receive the payment as Hive Power instead of liquid HIVE.
+4. Confirm with your **active key**.
 
-- While powered down, your **voting power and RC** decrease
-- You don’t lose curation rewards immediately, but your influence drops weekly
-- Frequent power down/up cycles are discouraged
+Routes stay in place until you change them, and the rest of each payment still comes to you. This is handy for moving stake to another account you own without handling the HIVE in between.
 
----
+## Things to consider
+
+- As you power down, your **voting influence and RC** drop week by week.
+- Frequent power up and power down cycles are discouraged.
 
 ## Summary
 
-| Action       | Converts         | Used For                        |
-|--------------|------------------|----------------------------------|
-| Power Up     | HIVE → Hive Power | Influence, voting, RC            |
-| Power Down   | Hive Power → HIVE | Liquidity, trading               |
-
+| Action | Converts | Used for |
+|---|---|---|
+| Power up | HIVE to Hive Power | Influence, voting, RC |
+| Power down | Hive Power to HIVE, over 13 weeks | Liquidity, trading |
+| Withdraw routes | Sends power-down payments to other accounts | Moving stake between accounts |

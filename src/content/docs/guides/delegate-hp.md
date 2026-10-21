@@ -1,66 +1,55 @@
 ---
 title: Delegate Hive Power
-description: Learn how to delegate Hive Power to other accounts for onboarding, voting, or supporting projects.
+description: How to delegate Hive Power to another account on Ecency, what it does, and how to take it back.
 ---
 
-# Delegating Hive Power (HP)
+Hive Power (HP) is staked HIVE. If you have HP you don't need right now, you can **delegate** it to another account. This gives them more **Resource Credits** and **voting influence** without giving away your tokens.
 
-Hive Power (HP) is a staked form of HIVE. If you have extra HP, you can **delegate** it to another user. This gives them more **Resource Credits** and **voting influence**, without giving away your tokens.
+A delegation is **reversible** and **doesn't transfer ownership**.
 
-Delegation is **reversible** and **does not transfer ownership**.
+## Why delegate HP?
 
----
+- Help **new users** who don't have enough Resource Credits (RC)
+- Support **projects, apps or communities**
+- Power **curation accounts**
+- Earn Ecency Points: delegating to @ecency earns about 100 Points per day for each 1,000 HP. See [Ecency Points](/ecency/ecency-points/).
 
-## 🤝 Why Delegate HP?
+## How delegation works
 
-- Help **new users** who lack Resource Credits (RC)
-- Support **projects or dApps**
-- Enable **curation accounts** or **community bots**
-- Temporarily lend influence without losing your stake
+- The recipient gets the RC and voting influence of the delegated HP.
+- The HP stays yours. It still earns the Hive Power inflation rewards you get on all the HP you own.
+- While it is delegated, you lose the voting influence and the curation rewards that come from that HP.
+- You can undelegate at any time. The HP comes back to you after a **5-day** cooldown.
 
----
+## How to delegate HP on Ecency
 
-## 🔧 How Delegation Works
+1. Open your **Wallet** and select **Hive Power**.
+2. Choose **Delegate**.
+3. Enter the recipient's username and the amount of HP.
+4. Confirm with your **active key**.
 
-- Delegated HP gives RC and voting ability to the recipient
-- Your HP remains yours, and you can undelegate at any time
-- Undelegated HP returns after **5 days**
+You can also type "delegate" in the Ecency search bar and pick **Delegate Hive Power**.
 
----
+The same flow works in the Ecency mobile app: open your wallet, tap **Hive Power**, then **Delegate**.
 
-## 📲 How to Delegate HP with Ecency
+## How to undelegate
 
-1. Go to the recipient’s **profile**
-2. Click the **menu icon** or **three dots**
-3. Select **“Delegate HP”**
-4. Enter the amount of HP
-5. Confirm with your **active key**
+1. Open your **Wallet** and select **Hive Power**.
+2. Open your list of outgoing delegations.
+3. Choose **Undelegate** next to the account.
+4. Confirm with your **active key**.
 
-Works on:
-- [Ecency Web](https://ecency.com)
-- Mobile apps (Android, iOS)
+The HP returns to your account after 5 days. During those 5 days, neither you nor the recipient can use it.
 
----
+## Tips
 
-## 🧼 How to Cancel (Undelegate)
-
-1. Follow the same steps
-2. Enter “0” HP to remove delegation
-3. Your HP returns to your account in 5 days
-
----
-
-## 🔐 Key Tips
-
-- Use **active key** (not posting key) for delegation
-- Never delegate your entire HP - leave some for your own activity
-- Delegated HP does **not earn interest or rewards** directly
-
----
+- Delegating needs your **active** key, not your posting key.
+- Don't delegate all your HP. Keep enough for your own activity.
+- To lend only Resource Credits and keep your voting influence, see [Delegate RC](/guides/delegate-rc/).
 
 ## Summary
 
-| Action         | Effect                                      |
-|----------------|---------------------------------------------|
-| Delegate HP    | Temporarily lend HP to another account      |
-| Undelegate HP  | Revoke delegation, HP returns in 5 days     |
+| Action | Effect |
+|---|---|
+| Delegate HP | Lend HP to another account; it keeps earning HP inflation for you |
+| Undelegate HP | Take the delegation back; the HP returns after 5 days |

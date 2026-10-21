@@ -1,77 +1,67 @@
 ---
-title: Voting for Witnesses
-description: Learn how to vote for Hive witnesses and support decentralized governance.
+title: Vote for witnesses
+description: How to vote for Hive witnesses on Ecency and other tools, or set a proxy to vote for you.
 ---
 
-# How to Vote for Witnesses on Hive
+Hive is a **delegated proof-of-stake (DPoS)** blockchain. Its block producers are called **witnesses**. They run the servers that validate transactions, produce blocks and decide which software upgrades the network adopts.
 
-Hive is a **delegated proof-of-stake (DPoS)** blockchain where block producers are called **witnesses**. These witnesses validate transactions, produce blocks, and help run the Hive network.
+Every Hive account can vote for up to **30 witnesses**. The top 20 produce blocks in every round, and the rest act as backups that get a chance to produce blocks too.
 
-Every Hive account can vote for up to **30 witnesses**, influencing who secures the network.
-
----
-
-## Why Witness Voting Matters
+## Why witness voting matters
 
 - Witnesses decide which software version runs on Hive.
-- They manage blockchain upgrades, stability, and decentralization.
-- Your vote helps **keep Hive secure and community-driven**.
+- They set key parameters, such as the HBD savings interest rate.
+- Your vote helps keep Hive secure and community-driven.
 
----
+## How to vote
 
-## How to Vote for Witnesses
+### On Ecency (web)
 
-### Option 1: Via Ecency
+1. Go to [ecency.com/witnesses](https://ecency.com/witnesses) and sign in.
+2. Browse the list. You can sort by rank, name or fee, and search by name.
+3. Click the vote button next to a witness to vote. Click it again to remove your vote.
+4. To vote for a witness outside the top 50, enter their account name in the box below the list.
 
-> 🟡 Witness voting is available on **Ecency Web** and **Mobile**.
+The page shows how many of your 30 votes you have left. Voting needs your **active** key.
 
-1. Visit: [https://ecency.com/witnesses](https://ecency.com/witnesses)
-2. Sign in with your Hive account
-3. Browse top witnesses
-4. Tap or click ✅ to vote
+### On mobile
 
----
+The Ecency mobile app has no separate witness screen. Open **Explore** in the side menu, go to a witness voting page in the dApp browser (such as `ecency.com/witnesses`), and the app signs the vote for you.
 
-### Option 2: Hive.blog
+### On Hive.blog
 
-1. Go to [https://wallets.hive.blog/~witnesses](https://hive.blog/~witnesses)
-2. Connect with Hive Keychain or HiveSigner
-3. Browse the witness list
-4. Click “Vote” next to any witness
+1. Go to [https://wallet.hive.blog/~witnesses](https://wallet.hive.blog/~witnesses).
+2. Sign in with Hive Keychain or HiveSigner.
+3. Click **Vote** next to any witness.
 
----
+### With a HiveSigner link
 
-### Option 3: Other Tools
+You can vote straight from a link. For example, this link votes for @good-karma:
 
-- [PeakD Witness Page](https://peakd.com/me/witnesses)
-- [HiveSigner Voting Link](https://hivesigner.com/sign/account-witness-vote)
+[https://hivesigner.com/sign/account-witness-vote?witness=good-karma&approve=true](https://hivesigner.com/sign/account-witness-vote?witness=good-karma&approve=true)
 
----
+Replace `good-karma` with any witness. Use `approve=false` to remove a vote.
 
-## Tips for Voting
+## Set a proxy
 
-- Research the witness’ **track record** and contributions.
+Don't want to pick witnesses yourself? On the Ecency witnesses page, enter an account under **Set Proxy** to let that account vote for you. Setting a proxy resets your own witness votes. Click **Clear Proxy** to go back to voting manually.
+
+## Tips for voting
+
+- Look at a witness's **track record** and contributions.
+- Check that they are running a recent **version** and have few **missed** blocks.
 - Follow trusted community recommendations.
-- Try to vote for **active and transparent** witnesses.
-- Revisit your votes regularly to adjust or rotate.
+- Revisit your votes from time to time.
 
----
+## Additional notes
 
-## How to Unvote
+- Your witness vote is weighted by your **Hive Power**.
+- You can change your votes at any time. There is no fee, but it uses a little RC.
+- Ecency supports decentralization, and @good-karma runs a witness.
 
-Simply click the ✅ next to a witness you've already voted for - this will remove your vote.
+## Learn more
 
----
-
-## Additional Notes
-
-- Voting power for witnesses depends on **Hive Power** (stake-based).
-- You can change votes at any time, no fee required.
-- Ecency supports decentralization and @good-karma runs witness to show our values.
-
----
-
-## Learn More
-
-- [Hive Witness](https://ecency.com/witnesses)
-- [Block Explorers](https://hivexplorer.com/witnesses) – See which witnesses produce blocks
+- [Ecency witnesses page](https://ecency.com/witnesses)
+- [Hive governance](/hive/governance/)
+- [Vote for proposals](/guides/vote-proposals/)
+- [Hivexplorer witnesses](https://hivexplorer.com/witnesses): see which witnesses produce blocks

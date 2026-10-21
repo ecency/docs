@@ -1,19 +1,27 @@
 ---
-title: Create a Community
-description: Step-by-step guide on how to create a community on Ecency.
+title: Create a community
+description: Step-by-step guide to creating your own Hive community on Ecency.
 ---
 
-# Create a Community
+Communities bring people together around shared interests on Hive. You can create your own on Ecency in a few steps. It costs **3 HIVE**, and the community is yours permanently.
 
-Communities bring people together around shared interests on the Hive blockchain. Follow these steps to create your own community using Ecency.
+## Steps
 
-1. Sign in to [Ecency.com](https://ecency.com) with your Hive account.
-2. Navigate to the [Communities](https://ecency.com/communities) page and click **Create community**.
-3. Fill out the required details such as **name**, **description**, **avatar**, **banner**, and **community type**:
-   - **Topic** – anyone can post or comment
-   - **Journal** – guests can comment but only members can post
-   - **Council** – only members can post or comment
-4. Review the community settings and press **Create**. Creating a community burns a small fee (currently 3 HIVE).
-5. A new account like `hive-123456` will be generated. You are its owner and can manage settings, moderators, and rules from the community page.
+1. Sign in to [Ecency](https://ecency.com) with your Hive account.
+2. Go to [Communities](https://ecency.com/communities) and click **Create community**.
+3. **Details:** enter a **title** and an **about** text, and choose the community type:
+   - **Topic:** anyone can post or comment.
+   - **Journal:** only members can post; guests can only comment.
+   - **Council:** only members can post or comment.
+4. **Account:** Ecency picks a community username in the form `hive-123456` and generates a **community password**. Save the password somewhere safe and tick the box to confirm you did. It controls the community account, and it can't be recovered if you lose it.
+5. **Default beneficiary (optional):** open **Advanced** to set a Hive account and a reward percentage. When someone writes a post in your community on Ecency, this beneficiary is added to it automatically. See [Custom beneficiary](/hive/custom-beneficiary/).
+6. Review the 3 HIVE creation fee and continue to sign the transaction.
+7. Ecency creates the account, sets you as admin and applies the settings. When it's done, click **Open community**.
 
-Your community is now live! Start posting, invite members, and grow conversations around your topic.
+You can now manage the settings, roles and rules from the community page.
+
+## Next steps
+
+- Learn about community types and roles in [Communities](/hive/communities/).
+- Set up moderation with [Moderate a community](/guides/moderate-community/).
+- Start posting, invite members and grow the conversation around your topic.
