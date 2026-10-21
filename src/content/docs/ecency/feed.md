@@ -1,51 +1,47 @@
 ---
 title: Feed
+description: How the Ecency feed works, which sources and sorts are available, and how to filter what you see.
 ---
 
-## What kind of information contain Feed?
+The feed is the list of posts you see on Ecency's home page. Each post shows its title, the community it was published in, its rewards, and its votes and comments. Click the three dots on a post for more actions.
 
-The feed consists of a collection of posts with their titles, the community they were published in, the rewards they received, and the number of upvotes and comments they received. To perform further actions on a post, simply click on the three dots located below it.
+The feed has two parts: a **source** (where posts come from) and a **sort** (how they are ranked).
 
-## What does the Trending feed show?
+## Sources
 
-Trending feed shows widely mentioned or discussed posts of entire platform.
+| Source | What it shows |
+|---|---|
+| **Following** | Posts and reblogs from the people you follow, newest first. Only shown when you are logged in. |
+| **Communities** | Posts from the communities you joined. Only shown when you are logged in. |
+| **Global** | Posts from the whole platform. |
 
-## How to sort Trending feed?
+When you open a tag or topic (for example from a post's tags), that tag shows as the selected source and the sorts below apply to it.
 
-Trending feed can be sorted depending on what information you want to see. For example, you can choose one depending on whether you want to see only posts from My Community or Global posts from the entire platform. If you wan to see Trending feed on specific tag or topic, you can do so here as well by selecting topics from left side.
+If your Following or Communities feed is empty, follow more people or join more communities. See [Discover](/ecency/discover/).
 
-## What does the Hot feed show?
+## Sorts
 
-The Hot Feed displays the most popular posts from the past few hours.
+The Communities and Global sources can be sorted by:
 
-## What does the New feed show?
+| Sort | What it shows |
+|---|---|
+| **Trending** | Posts gaining the most votes and rewards right now. |
+| **Hot** | Popular posts from the past few hours. |
+| **New** | The newest posts, sorted by publish time. |
+| **Payouts** | Posts with the highest pending rewards. |
+| **Promoted** | Posts promoted with Ecency Points. See [Boost and promote](/ecency/boost-and-promote/). |
+| **Muted** | Posts that were muted, for example by community moderators. |
 
-The newest posts sorted by the published time are shown in the New feed.
+The Following feed is always chronological, so it has no sort.
 
-## What does the friends feed show?
+## Show or hide reblogs
 
-Friends feed contains information about posts and reblogs of the accounts you follow.
+On the Following feed, use the **Show reblogs** toggle to include or hide reblogs. Turn it off to see only the posts written by the people you follow.
 
-## What does Rising feed show?
+## Change the layout
 
-Risind feed shows posts that have more comments and votes compare to others on entire platform.
+On community and profile pages, use the layout button next to the menu to switch between **Classic** and **Grid**.
 
-## How to sort Rising feed?
+## On mobile
 
-The rising feed can be sorted by today, this week, this month, this year, and all time posts created during the specific time. Choose one of them and get a chance of seeing posts that become rising you wanted time.
-
-## What does controversial feed show?
-
-Controversial feed shows posts that have a relatively equal number of upvotes and downvotes. Sometimes posts get a lot of upvotes with little rewards.
-
-## How to sort Controversial feed?
-
-Controversial feed can be sorted by today, this week, this month, this year and all the time posts that is created during the specular time.
-
-## How to sort Friends feed?
-
-Your Friends Feed contains posts published by your friends and their reblogs. If you only want to see the posts of your friends, you can select Exclude Reblog through the sorting function.
-
-## How to change feed design?
-
-Click on the grid icon at the top right of the feed. Choose one of the look designs: Classic or Grid.
+The home screen of the Ecency mobile app shows the feed as tabs at the top. By default you see **Following**, **Communities**, **Trending** and **Hot** (or **Trending**, **Hot** and **New** when you're logged out), and you can customize which tabs appear. See [Using the Ecency mobile app](/guides/use-mobile-app/).

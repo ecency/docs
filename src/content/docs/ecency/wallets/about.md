@@ -1,116 +1,85 @@
 ---
-title: Ecency Wallet
-description: Learn how to manage multiple tokens, layer-2 assets, and external chain tokens (BTC, ETH, BNB, SOL, APT, TRX, TON) with full self-custody using Ecency's wallet features.
+title: Ecency wallet
+description: Manage HIVE, Hive Power, HBD, savings, Ecency Points, Hive Engine tokens and BTC, ETH, BNB and SOL wallets in one place on Ecency.
 ---
 
-# Ecency Wallet
+Ecency includes a wallet that lets you manage your **Hive balances**, **transfers**, **Hive Engine tokens**, **Ecency Points** and even **external chain wallets** for **BTC**, **ETH**, **BNB** and **SOL**, all in one place. It works on the [web](https://ecency.com) and in the Ecency mobile app.
 
-Ecency includes a fully integrated wallet that lets you manage your **Hive account balances**, **transfers**, **layer-2 tokens**, and even **external chain assets** like **BTC**, **ETH**, **BNB**, **SOL**, **APT**, **TRX**, and **TON**, all in one place.
+## What's in the wallet
 
-The wallet works across **web**, **mobile**, and **desktop** apps.
+Open your wallet from your profile, or go to `ecency.com/@username/wallet`. You'll see:
 
----
+- **A summary** of your total balance, with what is ready to collect and your potential earnings from active posts and comments. Use **Collect all** to claim everything at once.
+- **A list of your tokens:** HIVE, Hive Power (HP), Hive Backed Dollars (HBD), Ecency Points, plus any Hive Engine tokens and external wallets you've added.
 
-## Wallet Overview
+Click a token to open its page with its balance, a history chart, its transaction history and the actions you can take with it.
 
-The wallet provides access to:
+Use **Manage tokens** to pick which tokens show in your list.
 
-- HIVE (liquid token)
-- Hive Power (HP)
-- Hive Backed Dollars (HBD)
-- Savings balances
-- Hive Engine layer 2 tokens
-- SPK layer 2 tokens
-- Ecency Points
-- External chain tokens (BTC, ETH, BNB, SOL, APT, TRX, TON)
+### Hive Engine tokens
 
-You can view balances, recent transactions, and perform key actions across these assets.
+Hive Engine is a layer 2 on Hive with many community tokens. You can view, transfer, stake and delegate them from your wallet. See [Hive Engine tokens](/ecency/wallets/engine-tokens/).
 
-### External Chain Tokens
+### External chain wallets
 
-Ecency Wallets support lightweight wallets for blockchains such as **Bitcoin (BTC)**, **Ethereum (ETH)**, **BNB Chain (BNB)**, **Solana (SOL)**, **Aptos (APT)**, **Tron (TRX)**, and **Ton (TON)**. These direct integrations give you full control and self custody, letting you track and transfer cross-chain tokens alongside your Hive assets without leaving Ecency. The cross-chain wallet structure is being upgraded - see [cross-chain wallets](/ecency/wallets/cross-chain-wallets/) for details and the [seed phrase migration guide](/guides/seed-phrase-migration/) if you have funds in a wallet created with a seed phrase.
+Ecency can show wallets for **Bitcoin (BTC)**, **Ethereum (ETH)**, **BNB Chain (BNB)** and **Solana (SOL)** next to your Hive assets. You link them through MetaMask, which keeps full control of your keys, or add addresses as view-only wallets. See [Cross-chain wallets](/ecency/wallets/cross-chain-wallets/). If you have funds in an older wallet created with a seed phrase, see the [seed phrase migration guide](/guides/seed-phrase-migration/).
 
----
+## Key actions
 
-## Key Actions
+### Power up
 
-### ✅ Power Up
+Turn liquid HIVE into Hive Power (HP) to:
 
-Convert liquid HIVE into Hive Power (HP) to:
+- Increase your voting influence
+- Get more Resource Credits (RC)
+- Vote for witnesses and proposals
 
-- Increase your voting power
-- Gain Resource Credits (RC)
-- Participate in governance
+See [Power up and power down](/guides/power-up-down/).
 
-> Powering up helps you earn more curation rewards and influence.
+### Power down
 
----
+Turn Hive Power back into liquid HIVE over 13 weeks, with one payment each week. Powering down reduces your voting influence and RC as it goes.
 
-### ✅ Power Down
+### Delegate
 
-Convert Hive Power back into liquid HIVE over a 13-week period (weekly payouts). Useful if you want to:
+Lend Hive Power to another account without giving it away. See [Delegate Hive Power](/guides/delegate-hp/).
 
-- Trade HIVE
-- Transfer it to others
-- Use it outside Hive ecosystem
-
-> Be mindful - powering down reduces your voting and RC capacity.
-
----
-
-### ✅ Transfer Tokens
+### Transfer
 
 Send HIVE or HBD to other users:
 
-1. Tap “Transfer”
-2. Enter recipient name, amount, and optional memo
-3. Confirm with your active key
+1. Open the token and choose **Transfer**.
+2. Enter the recipient, the amount and an optional memo.
+3. Confirm with your active key.
 
----
+To send the same amount on a schedule, see [Recurrent transfers](/guides/recurrent-transfers/).
 
-### ✅ Convert HBD ↔ HIVE
+### Convert and swap
 
-On Ecency Web, you can request conversions between:
+- **HBD to HIVE:** the blockchain conversion takes 3.5 days.
+- **HIVE and HBD, either way:** swap on the [market](/ecency/market/), which fills from the order book.
 
-- HBD → HIVE (via 3.5-day conversion process or instantly via market)
-- HIVE → HBD (instantly via market, if liquidity is available)
+If conversions or claims seem delayed, see [Payouts and conversions](/ecency/wallets/payouts-and-conversions/).
 
-If conversions or claims seem delayed, check [payouts and conversions troubleshooting](/ecency/wallets/payouts-and-conversions/).
+### Savings
 
----
+Move HIVE or HBD into **savings** for extra security. Withdrawals from savings take **3 days** to complete, which gives you time to react if your keys are ever stolen.
 
-### ✅ Use Savings
+HBD in savings earns interest. The rate is set by witnesses, currently about 10% APR. See [HBD savings interest](/guides/hbd-savings-interest/).
 
-Move HIVE or HBD into **savings** for extra security.
+## Security tips
 
-Withdrawals from savings take **3 days** to complete.
-Transferring HBD into savings earns you 15-20% (subject to governance settings) annual rewards claimable monthly.
-
----
-
-## Wallet Tabs Explained
-
-| Tab        | Description                                      |
-|------------|--------------------------------------------------|
-| **Tokens** | View HIVE, HP, HBD, and Points                   |
-| **Activity** | Recent transfers, votes, rewards, boosts       |
-| **Boosts** | View recent Boost+, Boost (Account Boost), and Promote activity |
-| **Savings** | Manage savings balance                          |
-
----
-
-## Tips for Security
-
-- Always store your **active key** securely (required for transfers).
-- Use **Hive Keychain** or **Ecency mobile app** for safer transactions.
+- Keep your **active key** safe. It is required for transfers.
+- Use **Hive Keychain** or the **Ecency mobile app** so you don't have to paste keys into websites.
 - Never share your **owner key**.
 - If you have a cross-chain wallet created with a seed phrase, keep the phrase safe until you have [migrated your funds](/guides/seed-phrase-migration/).
 
----
+## Learn more
 
-## Learn More
-
-- [Ecency.com/wallet](https://ecency.com/wallet)
-- [Cross-chain wallet quickstart](/ecency/wallets/cross-chain-wallets/)
-- [Payouts and conversions troubleshooting](/ecency/wallets/payouts-and-conversions/)
-- [Support in Ecency Help chat](https://ecency.com/chats/hive-125126/channel)
+- [ecency.com/wallet](https://ecency.com/wallet)
+- [Cross-chain wallets](/ecency/wallets/cross-chain-wallets/)
+- [Hive Engine tokens](/ecency/wallets/engine-tokens/)
+- [Payouts and conversions](/ecency/wallets/payouts-and-conversions/)
+- [HBD savings interest](/guides/hbd-savings-interest/)
+- [Recurrent transfers](/guides/recurrent-transfers/)
+- [Ecency Help chat](https://ecency.com/chats/hive-125126/channel)
