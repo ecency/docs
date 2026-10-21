@@ -1,7 +1,7 @@
 // Screenshots used in the docs. Each one is saved as src/assets/screens/<id>.webp.
 //
 //   id         file name, and how a page imports it
-//   path       page on ecency.com
+//   path       page on ecency.com, or (user) => path for the logged-in account
 //   device     "phone" for a 390px phone screen, otherwise a 1280x800 desktop
 //   element    screenshot just this element (Playwright selector)
 //   clip       or just this area: { x, y, width, height } in CSS pixels
@@ -10,6 +10,7 @@
 //   blurImages blur other people's photos and videos
 //   blurPosts  blur other people's post titles and text
 //   blur/hide  CSS selectors to blur or hide
+//   login      needs the test account (see README)
 //   docs       the docs page that shows it (for people updating screenshots)
 const top = (height) => ({ x: 0, y: 0, width: 1280, height });
 
@@ -162,5 +163,52 @@ export const shots = [
     docs: "ecency/profile",
     path: "/@ecency",
     clip: top(640),
+  },
+
+  // Logged-in screens, taken with the test account.
+  {
+    id: "chats",
+    docs: "ecency/chats",
+    path: "/chats",
+    login: true,
+    clip: top(640),
+    // Messages, their authors and conversation names stay private.
+    blur: [
+      "[data-post-id]",
+      ".leading-relaxed",
+      'a[href*="/chats/"]', // chat list rows: avatar and name
+      "main .border-b .truncate", // open conversation title and subtitle
+      "main .border-b img",
+    ],
+  },
+  {
+    id: "settings",
+    docs: "ecency/settings",
+    path: (user) => `/@${user}/settings`,
+    login: true,
+    clip: top(800),
+  },
+  {
+    id: "permissions",
+    docs: "guides/manage-keys",
+    path: (user) => `/@${user}/permissions`,
+    login: true,
+    clip: top(800),
+    highlight: "text=Add/Manage keys",
+  },
+  {
+    id: "setup-external-wallets",
+    docs: "ecency/wallets/cross-chain-wallets",
+    path: "/wallet/setup-external",
+    login: true,
+    clip: top(440),
+  },
+  {
+    id: "decks-add-column",
+    docs: "ecency/decks/about",
+    path: "/decks",
+    login: true,
+    steps: [async (p) => p.getByText("Skip", { exact: true }).first().click().catch(() => {})],
+    clip: { x: 0, y: 0, width: 900, height: 800 },
   },
 ];
