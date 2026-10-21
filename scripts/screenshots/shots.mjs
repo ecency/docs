@@ -173,7 +173,13 @@ export const shots = [
     login: true,
     clip: top(640),
     // Messages, their authors and conversation names stay private.
-    blur: ["[data-post-id]", ".leading-relaxed", 'a[href*="/chats/"] .truncate'],
+    blur: [
+      "[data-post-id]",
+      ".leading-relaxed",
+      'a[href*="/chats/"]', // chat list rows: avatar and name
+      "main .border-b .truncate", // open conversation title and subtitle
+      "main .border-b img",
+    ],
   },
   {
     id: "settings",
