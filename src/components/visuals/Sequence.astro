@@ -1,0 +1,47 @@
+---
+// Who talks to whom, in order. Actors are columns; each message is an arrow
+// between two columns, or a note in one column when `from` equals `to`.
+interface Message {
+  from: number;
+  to: number;
+  label: string;
+  accent?: boolean;
+}
+interface Props {
+  actors: string[];
+  messages: Message[];
+}
+const { actors, messages } = Astro.props;
+const n = actors.length;
+// Keep names like "x-payment" on one line.
+const nobreak = (t: string) => t.replace(/-/g, "\u2011");
+---
+
+<div class="ec-seq" style={`--ec-n:${n}`}>
+  <ol class="ec-seq-actors" aria-label="Participants">
+    {actors.map((a) => <li class="ec-box"><strong>{a}</strong></li>)}
+  </ol>
+  <ol class="ec-seq-msgs">
+    {
+      messages.map((m, i) => {
+        const lo = Math.min(m.from, m.to);
+        const hi = Math.max(m.from, m.to);
+        const span = hi - lo + 1;
+        const self = m.from === m.to;
+        return (
+          <li
+            class:list={["ec-seq-msg", { "is-self": self, "is-left": m.to < m.from, "is-accent": m.accent }]}
+            style={`--ec-start:${lo + 1};--ec-span:${span}`}
+          >
+            <span class="ec-seq-num" aria-hidden="true">{i + 1}</span>
+            <span class="ec-seq-label">
+              <span class="sr-only">{self ? `${actors[m.from]}: ` : `${actors[m.from]} to ${actors[m.to]}: `}</span>
+              {nobreak(m.label)}
+            </span>
+            {!self && <span class="ec-seq-arrow" aria-hidden="true" />}
+          </li>
+        );
+      })
+    }
+  </ol>
+</div>

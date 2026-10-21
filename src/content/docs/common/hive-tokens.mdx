@@ -1,0 +1,79 @@
+---
+title: Hive tokens
+description: Learn about HIVE, Hive Power, Hive Backed Dollars (HBD), savings and staking, plus what you can do with them in the Ecency wallet.
+---
+
+import Figure from "../../../components/visuals/Figure.astro";
+import Routes from "../../../components/visuals/Routes.astro";
+
+The Ecency wallet lets you manage your HIVE, Hive Power, Hive Backed Dollars (HBD), savings and other tokens. This page explains each token and what you can do with it.
+
+## Where do the tokens come from?
+
+The Hive network continually creates new tokens. Most of them reward people who add value: authors who post and curators who vote on posts. The rest goes to Hive Power holders, to the witnesses that secure the blockchain and to the Decentralized Hive Fund.
+
+## HIVE
+
+HIVE is the main liquid token of the Hive blockchain. You can transfer it at any time, trade it on markets and exchanges, or stake it as Hive Power (powering up). Its value comes from supply and demand on the market.
+
+## Hive Power (HP)
+
+Hive Power is staked HIVE. It gives you:
+
+- More influence when you vote on content, plus bigger curation rewards
+- More [Resource Credits](/hive/resource-credits/), so you can make more transactions
+- More weight in [governance](/hive/governance/) votes for witnesses and proposals
+- A small share of newly created HIVE, paid to Hive Power holders
+
+To turn Hive Power back into liquid HIVE, you power down. A power down pays out in 13 equal weekly parts. The first part arrives one week after you start. See [power up and down](/guides/power-up-down/).
+
+## Hive Backed Dollars (HBD)
+
+Hive Backed Dollars (HBD) are designed to stay close to **1 US dollar**. The blockchain keeps HBD near its peg through conversions:
+
+- You can convert HBD into about $1 worth of HIVE. This takes **3.5 days** and uses the average price over that time.
+- The Hive blockchain can also convert HIVE into HBD (a collateralized conversion with a 5% fee: you get the HBD right away and the remaining HIVE collateral settles after 3.5 days). Ecency doesn't offer this conversion in its wallet; use the [market](/ecency/market/) to swap HIVE for HBD instead.
+
+HBD can be transferred to other accounts, traded on the market and held in savings to earn interest.
+
+## Savings
+
+You can move HIVE or HBD into savings. Savings are protected by a **3-day waiting period**: when you withdraw, the funds arrive after 3 days. This gives you time to react if your account is compromised.
+
+Only **HBD in savings earns interest**. The interest rate is set by witnesses, currently about **10% APR**. HIVE in savings does not earn interest. See [HBD savings interest](/guides/hbd-savings-interest/).
+
+## Delegated Hive Power
+
+You can delegate Hive Power to another account. The receiver gets the benefits of that Hive Power, like Resource Credits and vote strength, but can't power it down or transfer it. It still belongs to you and you can remove the delegation at any time. When you remove it, the Hive Power returns to you after 5 days. See [delegate HP](/guides/delegate-hp/).
+
+## What can I do with my tokens?
+
+<Figure caption="How value moves between HIVE, Hive Power, HBD and savings, and how long each move takes.">
+  <Routes
+    routes={[
+      { from: "HIVE", via: "Power up", to: "Hive Power", note: "Right away" },
+      { from: "Hive Power", via: "Power down", to: "HIVE", note: "13 weekly payments" },
+      { from: "HBD", via: "Convert", to: "HIVE", note: "3.5 days, about $1 of HIVE per HBD" },
+      { from: "HIVE or HBD", via: "Swap on the market", to: "HBD or HIVE", note: "Right away, at the market price" },
+      { from: "HBD", via: "Transfer to savings", to: "Savings", note: "HBD in savings earns interest", accent: true },
+      { from: "Savings", via: "Withdraw", to: "HIVE or HBD", note: "Arrives after 3 days" },
+    ]}
+  />
+</Figure>
+
+In the Ecency wallet you can:
+
+- **Transfer**: send HIVE or HBD to another account. Enter the account name, the amount and an optional memo.
+- **Transfer to savings**: move HIVE or HBD into savings. HBD in savings earns interest.
+- **Power up**: stake HIVE as Hive Power, for your own account or for another account.
+- **Trade**: open the [market](/ecency/market/) to swap HIVE and HBD right away at the market price, without waiting 3.5 days for a conversion.
+
+For claims, conversions and timelines, see [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
+
+## Hive Engine tokens
+
+Hive Engine is a sidechain for the Hive blockchain that runs smart contracts. It lets people create and trade custom tokens, run liquidity pools, mint NFTs and build tokenized communities. You can see and manage Hive Engine tokens in the Ecency wallet. See [Engine tokens](/ecency/wallets/engine-tokens/).
+
+## Staking
+
+Staking means locking up tokens to support a network or project, usually in return for rewards. On Hive, powering up HIVE into Hive Power is a form of staking. Some Hive Engine tokens can be staked too. To check whether a token can be staked, select it in your wallet. If staking is available, you'll see a stake option: click it and enter the amount.

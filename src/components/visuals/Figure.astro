@@ -1,0 +1,12 @@
+---
+// A drawn figure (diagram) with a caption that states its one point.
+interface Props {
+  caption: string;
+}
+const { caption } = Astro.props;
+---
+
+<figure class="ec-figure">
+  <div class="ec-figure-body not-content"><slot /></div>
+  <figcaption>{caption}</figcaption>
+</figure>

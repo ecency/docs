@@ -1,0 +1,34 @@
+---
+// Rows of "from, how, to". Good for conversions and token moves.
+interface Route {
+  from: string;
+  via: string;
+  to: string;
+  note?: string;
+  accent?: boolean;
+}
+interface Props {
+  routes: Route[];
+}
+const { routes } = Astro.props;
+---
+
+<ul class="ec-routes">
+  {
+    routes.map((r) => (
+      <li class:list={["ec-route", { "is-accent": r.accent }]}>
+        <span class="ec-box ec-route-end">
+          <strong>{r.from}</strong>
+        </span>
+        <span class="ec-route-link">
+          <span class="ec-route-via">{r.via}</span>
+          <span class="ec-route-line" aria-hidden="true" />
+          {r.note && <span class="ec-route-note">{r.note}</span>}
+        </span>
+        <span class="ec-box ec-route-end">
+          <strong>{r.to}</strong>
+        </span>
+      </li>
+    ))
+  }
+</ul>

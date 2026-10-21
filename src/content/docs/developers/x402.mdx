@@ -3,6 +3,9 @@ title: x402 payments
 description: Charge for APIs and content with fee-free HBD micropayments using the x402 payment protocol on Hive.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Sequence from "../../../components/visuals/Sequence.astro";
+
 The [`@hiveio/x402`](https://www.npmjs.com/package/@hiveio/x402) package brings the [x402 payment protocol](https://www.x402.org/) to Hive. Any API or content endpoint can ask for an **HBD micropayment** before it answers. Hive transfers have no fees and Hive produces a block every 3 seconds, so payments arrive in full and fast.
 
 The package is MIT licensed. The source is on [GitHub](https://github.com/ecency/hive-x402). This page describes version 0.2.x.
@@ -19,22 +22,23 @@ The protocol uses HTTP status **402 Payment Required** to negotiate a payment be
 6. The facilitator checks the signature against the payer's on-chain active key, broadcasts the transfer and marks the nonce as spent.
 7. The server delivers the content and adds an `x-payment-response` header with the settlement result.
 
-```
-Client                    Server                   Facilitator
-  │                         │                          │
-  │──── GET /premium ──────▶│                          │
-  │◀─── 402 + requirements ─│                          │
-  │                         │                          │
-  │  (sign HBD transfer)    │                          │
-  │                         │                          │
-  │──── GET /premium ──────▶│                          │
-  │     x-payment: <signed> │──── POST /verify ───────▶│
-  │                         │◀─── { isValid: true } ───│
-  │                         │──── POST /settle ───────▶│
-  │                         │◀─── { success, txId } ───│
-  │◀─── 200 + content ──────│                          │
-  │     x-payment-response  │                          │
-```
+<Figure caption="One paid request: the client signs an HBD transfer, the server has the facilitator verify and settle it, then serves the content.">
+  <Sequence
+    actors={["Client", "Server", "Facilitator"]}
+    messages={[
+      { from: 0, to: 1, label: "GET /premium" },
+      { from: 1, to: 0, label: "402 + payment requirements" },
+      { from: 0, to: 0, label: "Sign an HBD transfer, don't broadcast" },
+      { from: 0, to: 1, label: "GET /premium with x-payment", accent: true },
+      { from: 1, to: 2, label: "POST /verify" },
+      { from: 2, to: 1, label: "isValid: true" },
+      { from: 1, to: 2, label: "POST /settle" },
+      { from: 2, to: 2, label: "Broadcast, mark nonce spent" },
+      { from: 2, to: 1, label: "success, txId" },
+      { from: 1, to: 0, label: "200 + content, x-payment-response", accent: true },
+    ]}
+  />
+</Figure>
 
 ## At a glance
 

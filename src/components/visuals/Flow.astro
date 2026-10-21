@@ -1,0 +1,33 @@
+---
+// Steps joined by arrows. A row on wide screens, a column on phones.
+// `via` labels the arrow that leads into a step.
+interface Step {
+  title: string;
+  detail?: string;
+  via?: string;
+  accent?: boolean;
+}
+interface Props {
+  steps: Step[];
+  vertical?: boolean;
+}
+const { steps, vertical } = Astro.props;
+---
+
+<ol class:list={["ec-flow", { "is-vertical": vertical }]} style={`--ec-n:${steps.length}`}>
+  {
+    steps.map((s, i) => (
+      <li class="ec-flow-item">
+        {i > 0 && (
+          <span class="ec-flow-arrow">
+            {s.via && <span class="ec-flow-via">{s.via}</span>}
+          </span>
+        )}
+        <span class:list={["ec-box", { "is-accent": s.accent }]}>
+          <strong>{s.title}</strong>
+          {s.detail && <span class="ec-box-detail">{s.detail}</span>}
+        </span>
+      </li>
+    ))
+  }
+</ol>
