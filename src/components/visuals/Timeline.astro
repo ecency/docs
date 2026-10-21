@@ -39,7 +39,7 @@ const pct = (n: number) => `${((n / total) * 100).toFixed(3)}%`;
   <div class="ec-tl-bar" aria-hidden="true">
     {
       spans.map((s) => (
-        <span class:list={["ec-tl-span", `tone-${s.tone ?? "mid"}`]} style={`flex-grow:${s.size}`}>
+        <span class:list={["ec-tl-span", `tone-${s.tone ?? "mid"}`]} style={`flex:${s.size} 1 0`}>
           {s.tag && s.size / total >= 0.12 && <span>{s.tag}</span>}
         </span>
       ))

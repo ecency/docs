@@ -284,12 +284,13 @@
   overflow: hidden;
 }
 .tone-accent {
-  background: var(--ec-accent);
+  /* Fixed blue so white text passes 4.5:1 in both themes */
+  background: #1b68da;
   color: #fff;
 }
 .tone-mid {
   background: var(--ec-mid);
-  color: #fff;
+  color: var(--sl-color-white);
 }
 .tone-low {
   background: var(--ec-low);
