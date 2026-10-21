@@ -37,7 +37,7 @@ Besides Hive tokens, many actions on Ecency earn [Ecency Points](/ecency/ecency-
 | Vote | 0.01 x vote weight |
 | Delegate Hive Power to @ecency | about 100 per day for each 1000 HP |
 | Register your community | 20 for each post published in it with Ecency apps |
-| Daily spin | up to 200 per day |
+| Free daily spin | 1 to 45, higher with more activity in the last 24 hours |
 | Invite friends | see the [referral program](/get-started/referral/) |
 
 Regular use of the app also gives you extra chances to earn bonus Points. Daily check-ins, quests and the spin live on the [daily rewards](/ecency/daily-rewards/) page. You can also [buy Points](/ecency/buy-points/).
