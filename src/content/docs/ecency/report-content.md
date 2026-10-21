@@ -22,7 +22,7 @@ For what counts as spam or abuse, see the FAQ entry "What is considered spam or 
 2. Tap **report**.
 3. Confirm when the app asks "Are you sure you want report?".
 
-The report goes to the Ecency team for review, and you'll see "Reported objectionable content". The app also mutes the author for you, so you stop seeing their content. You can undo that from your muted users list.
+The report goes to the Ecency team for review, and you'll see "Reported objectionable content". The app also mutes the author for you, so you stop seeing their content. You can undo that by opening their profile and choosing **Unmute**.
 
 ## Report a user on mobile
 

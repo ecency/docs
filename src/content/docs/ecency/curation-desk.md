@@ -17,7 +17,7 @@ The desk has a few tabs:
 - **Guide:** "How Ecency curation works", the full guide for curators.
 - **Apply:** the guest curator application, shown to anyone who isn't on the curation team yet.
 
-When a curator votes a post, a small group of Ecency accounts follows that vote together within seconds. This is called the trail. The trail follows only listed curators, and it skips posts that are outside their payout window or have been downvoted by Hivewatchers.
+When a curator votes a post, a small group of Ecency accounts follows that vote together within seconds. This is called the trail. The trail follows only listed curators.
 
 ## How authors get curated
 

@@ -46,7 +46,7 @@ If a request fails, your Points are refunded. If your text is rejected by the co
 
 ## Recap a post you are reading
 
-On the web, logged-in readers see an **AI Recap** box next to a post's word count and read time. Click **Start** to get a short summary of the post. It uses the same Recap action and allowance as the editor, and you can translate the summary from the result window.
+On the web, logged-in readers see a **Recap** box next to a post's word count and read time. Click **Start** to get a short summary of the post. It uses the same Recap action and allowance as the editor, and you can translate the summary from the result window.
 
 ## Dictation
 

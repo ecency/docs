@@ -60,7 +60,7 @@ The **Library** can draft a raid report for your community: a post with the week
 
 ## Seasons
 
-A season has four raid weeks and lasts 28 days. The header shows the season and the day. Days change at 00:00 UTC. After day 28 the game rests until the next season starts.
+A season has 28 raid days (four raid weeks) followed by a 2-day rest. The header shows the season and the day. Days change at 00:00 UTC.
 
 Karma, badges, trophies and your count of pests chased off stay with you. Shards, powers and the town start fresh each season.
 

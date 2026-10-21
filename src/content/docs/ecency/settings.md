@@ -80,7 +80,7 @@ The same two options as on the web: **Share post rewards with Ecency** and **Hol
 
 ## Muted users and bot comments
 
-Muting people is not part of the Settings page. See [Mute users](/ecency/mute-users/) for how to mute someone and where to find your list.
+Muting people is not part of the Settings page. See [Mute users](/ecency/mute-users/) for how to mute and unmute someone.
 
 In the mobile app, comments from known bot accounts are grouped into their own collapsed section under a post, so they do not crowd out human replies. There is no switch for this.
 

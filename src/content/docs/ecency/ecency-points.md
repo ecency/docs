@@ -5,7 +5,7 @@ description: How Ecency Points work, how to earn or buy them, and what you can s
 
 Ecency Points are Ecency's reward system for being active. You earn them by using Ecency apps and spend them on in-app services like Promote, Boost+ and AI tools.
 
-Points are managed by Ecency, off-chain. They are not a token on the Hive blockchain and can't be traded outside Ecency.
+Points are managed by Ecency, off-chain. They are not a token on the Hive blockchain and can't be traded outside Ecency. Transfers between users are still recorded on Hive as a custom_json operation, so they are public.
 
 ## How to earn Points
 
@@ -17,7 +17,7 @@ You earn Points automatically when you use Ecency on the web or the mobile app:
 | Write a comment | 5 |
 | Reblog a post | 1 |
 | Vote | 0.01 x vote weight (100% vote = 1 Point) |
-| Log in | 10 |
+| First login (one-time bonus) | 10 |
 | Check in (stay active in the app) | 0.25 |
 | Usage bonus for consistent use | 10 |
 | Delegate Hive Power to @ecency | about 100 per day for each 1,000 HP |

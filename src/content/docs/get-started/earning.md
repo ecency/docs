@@ -32,7 +32,7 @@ Besides Hive tokens, many actions on Ecency earn [Ecency Points](/ecency/ecency-
 | Publish a post | 15 |
 | Write a comment | 5 |
 | Reblog a post | 1 |
-| Log in | 10 |
+| First login (one-time bonus) | 10 |
 | Check in (stay active in the app) | 0.25 |
 | Vote | 0.01 x vote weight |
 | Delegate Hive Power to @ecency | about 100 per day for each 1000 HP |

@@ -20,7 +20,7 @@ On the web, open the chat list and use the search box (**Search people, channels
 - **New group:** pick 2 to 7 other people and click **Start group**.
 - **Join a channel:** channels you can join appear under **Joinable channels**. Click **Join**.
 
-In the mobile app, use the search bar on the Chats screen to find people and channels, or start a **New group** the same way.
+In the mobile app, use the search bar on the Chats screen to find people and channels. Creating and renaming groups on mobile is coming in an upcoming app release; for now, use the web app for that.
 
 The first time someone new messages you, Ecency shows a "stay safe" warning banner. Never share passwords or private keys in chat, and be careful with links from people you don't know.
 
@@ -33,7 +33,7 @@ Communities can have their own public chat channel. When a community has one, a 
 Hover over a message on the web (or long-press it on mobile) to see its actions:
 
 - **Reply** to a message, or **Open thread** to read and continue a threaded conversation in a side panel.
-- **Add reaction** with an emoji. Click a reaction to add yours, or use **See who reacted** to see the list.
+- **Add reaction** with an emoji. Click a reaction to add yours, or use **See who reacted** on the web to see the list.
 - **Edit** or **Delete** your own messages. Community channel moderators can also delete messages.
 - **Copy link** to a message, or **Translate** it into another language.
 - **Pin message** to keep it at the top. In DMs and groups any member can pin; in public channels only moderators can. Open **Pinned messages** from the channel header to see them.

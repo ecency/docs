@@ -46,7 +46,7 @@ On the web, the player works with your device's media controls, so you can play,
 
 ## On mobile
 
-Recent versions of the Ecency mobile app show the same **Listen to this post** bar on posts, with the same unlock, preparing and refund behavior. Audio keeps playing in the background and shows lock-screen and notification controls. Your unlocks are tied to your account, so a post you unlocked on the web is unlocked in the app too.
+Listen is coming to the Ecency mobile app in an upcoming release, with the same unlock, preparing and refund behavior and background playback. Your unlocks are tied to your account, so a post you unlock on the web will also be unlocked in the app.
 
 ## When a post is edited
 
