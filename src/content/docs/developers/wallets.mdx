@@ -23,8 +23,16 @@ It is published on [npm](https://www.npmjs.com/package/@ecency/wallets) under th
 Install it together with the SDK and HiveSigner:
 
 ```sh
-npm install @ecency/wallets @ecency/sdk hivesigner
+npm install --legacy-peer-deps @ecency/wallets @ecency/sdk hivesigner
 ```
+
+<Aside type="caution" title="Known packaging issue">
+The current release declares its `@ecency/sdk` peer dependency in a form that npm can't resolve, so a plain
+`npm install` stops with `EUNSUPPORTEDPROTOCOL`. Until a future release fixes this, install with `--legacy-peer-deps`
+as shown above. To make later installs in the same project work too, add `legacy-peer-deps=true` to the project's
+`.npmrc`. With this flag npm doesn't add peer dependencies for you, so list the ones you need (from the table below)
+in the install command.
+</Aside>
 
 Peer dependencies:
 
@@ -173,7 +181,7 @@ Payload fields:
 The result is `{ txHash, currency }`. On success, cached external balances are invalidated.
 
 <Aside type="note">
-  MetaMask handles gas, signing and broadcasting, and the user sees the normal MetaMask confirmation. For SOL the
+  MetaMask handles gas, signing and broadcasting. The user sees the normal MetaMask confirmation. For SOL the
   Wallet Standard protocol is used instead of `window.ethereum`.
 </Aside>
 

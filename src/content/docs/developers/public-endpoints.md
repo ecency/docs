@@ -9,7 +9,7 @@ The data comes from the public Hive blockchain. If you need more than these endp
 
 ## Be a good citizen
 
-- **Cache responses.** Posts rarely change after the first hours, and each response carries a `Cache-Control` header you can follow.
+- **Cache responses.** Posts rarely change after the first hours. Each response carries a `Cache-Control` header you can follow.
 - **Set a descriptive `User-Agent`** that names your app and gives a contact URL, for example `MyHiveApp/1.2 (+https://example.com/contact)`.
 - **Don't poll in tight loops.** Use RSS for new posts, or stream blocks from a Hive node.
 
@@ -23,7 +23,7 @@ Append an extension to a post's canonical URL, `https://ecency.com/@author/perml
 | `/@author/permlink.json` | The post as JSON in a small envelope (`application/json`) |
 | `/@author/permlink.discussion.json` | The full comment thread as JSON (`application/json`) |
 
-Only the bare `/@author/permlink` form is an endpoint. A community-style URL such as `/hive-125125/@author/permlink.md` redirects to the bare form first, so follow redirects.
+Only the bare `/@author/permlink` form is an endpoint. A community-style URL such as `/hive-125125/@author/permlink.md` redirects to the bare form first, so follow redirects. Automated clients should request the bare form (for example `/@author/permlink.md`) directly and skip the redirect.
 
 All three responses allow cross-origin requests (`Access-Control-Allow-Origin: *`), so you can call them from a browser.
 
@@ -54,7 +54,7 @@ A new Ecency release is here!
 ...
 ```
 
-The body after the front matter is the raw on-chain Markdown.
+This sample is shortened: the real `tags` list is longer and the body continues. The body after the front matter is the raw on-chain Markdown. `type` is `"post"` for a post and `"comment"` for a comment.
 
 ### JSON
 
@@ -83,6 +83,8 @@ curl https://ecency.com/@ecency/ecency-web-4-4-3.json
 }
 ```
 
+- The sample above is shortened (`"..."` marks the cut fields and array items).
+- `type` is `"post"` for a post and `"comment"` for a comment.
 - `content` is the post record as Hive returns it.
 - `source` names the Hive API that produced it. `hive_condenser` records carry `root_author` and `root_permlink`; `hive_bridge` records carry community and author role fields.
 - `content.json_metadata` is always a JSON object, never a string. It is `{}` when the on-chain metadata is missing, invalid or too large.

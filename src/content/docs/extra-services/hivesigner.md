@@ -4,7 +4,7 @@ description: HiveSigner is an OAuth2 login and signing service for Hive, maintai
 ---
 
 [HiveSigner](https://hivesigner.com) is a secure login and signing service for Hive, co-developed and maintained by
-Ecency. It works like OAuth2: users log in on hivesigner.com and approve what an app may do, and the app never sees
+Ecency. It works like OAuth2: users log in on hivesigner.com and approve what an app may do. The app never sees
 their private keys.
 
 ## For users

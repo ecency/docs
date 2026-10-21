@@ -20,7 +20,7 @@ curl https://api.hivesearcher.com/search \
 ```
 
 To get a key, open the [API docs page](https://hivesearcher.com/api-docs) and use **Get your API key**. Each Hive
-account can have one active key. Keys have a daily request limit, and you can check your usage with `/state`. A key
+account can have one active key. Keys have a daily request limit. You can check your usage with `/state`. A key
 that stays unused for 90 days expires; you can then request a new one the same way.
 
 If you build on the Ecency SDK, use your own HiveSearcher key for search instead of Ecency's app search proxy.
@@ -45,7 +45,7 @@ If you build on the Ecency SDK, use your own HiveSearcher key for search instead
 | Field | Description |
 |---|---|
 | `q` | The query. Required. |
-| `sort` | `relevance` (default), `popularity` or `newest` |
+| `sort` | `relevance` (default), `popularity` or `newest`. `/search` also accepts `children` and `controversial`. |
 | `hide_low` | `1` skips low-value results. Default `0`. |
 | `include_nsfw` | `1` includes NSFW results. Default `0`. |
 | `votes` | Minimum number of votes |
@@ -58,6 +58,8 @@ Sort modes:
 - `relevance`: text relevance, weighted by post value, so useful posts rank above bare keyword matches.
 - `popularity`: relevance combined with payout and recency, for fresh and valuable posts.
 - `newest`: most recent first.
+- `children` (`/search` only): most replies first, then newest.
+- `controversial` (`/search` only): most downvote weight first, then highest payout, then newest.
 
 Grayed and heavily flagged content and NSFW content are filtered out by default.
 
@@ -73,6 +75,8 @@ books category:hive-125125 type:post
 `author:`, `tag:` (comma separated), `category:` (for example a community) and `type:post` narrow the results.
 
 ### Example response
+
+This sample is trimmed to one result with shortened fields:
 
 ```json
 {

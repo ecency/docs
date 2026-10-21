@@ -178,13 +178,13 @@ Under `instanceConfiguration.features`:
 - `likes`, `comments`: let logged-in readers vote and comment.
 - `post.text2Speech`: a "listen" control on posts.
 - `auth`: turn login on and choose methods. `methods` accepts `keychain`, `hivesigner` and `hiveauth`; other names are ignored.
-- `tipping`: a tip button on the site (`general`) and on posts (`post`), with preset `amounts`. Readers can tip in HIVE, HBD or Ecency Points, and see QR codes for the author's external wallet addresses where those exist.
+- `tipping`: a tip button on the site (`general`) and on posts (`post`), with preset `amounts`. Readers can tip in HIVE, HBD or Ecency Points. They also see QR codes for the author's external wallet addresses where those exist.
 - `hive.readerLayer`: how much of Hive the reader sees. `off` hides it, `standard` adds the payout on post pages, a "published on Hive" note and a link to the post on Hive, `full` also shows payouts in the feed. Absent means `off`.
 - `hive.authorRewards`: `author` lets the author pick a rewards option in the editor, `off` hides the control. Optional `hive.payoutLabel` renames the payout figure and `hive.learnMoreUrl` links the Hive note.
 
 ### Login
 
-With `auth.enabled`, readers log in with Hive Keychain, HiveAuth or HiveSigner. Listing `hivesigner` alone isn't enough: the HiveSigner button stays hidden until you set `general.hivesigner.clientId`, because HiveSigner only returns to addresses its app has registered. Register your own app on [HiveSigner](/extra-services/hivesigner/), add your site's `/auth` address as a redirect URI, and put the app id here.
+With `auth.enabled`, readers log in with Hive Keychain, HiveAuth or HiveSigner. Listing `hivesigner` alone isn't enough: the HiveSigner button stays hidden until you set `general.hivesigner.clientId`, because HiveSigner only returns to addresses its app has registered. Register your own app on [HiveSigner](/extra-services/hivesigner/) and add your site's `/auth` address as a redirect URI. Then put the app id here.
 
 ## Theming
 

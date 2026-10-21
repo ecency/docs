@@ -4,7 +4,7 @@ description: Use @ecency/sdk to read Hive data and broadcast transactions with b
 ---
 
 The Ecency SDK (`@ecency/sdk`) is the Hive library that powers the Ecency web and mobile apps. It bundles a
-transaction engine (signing, serialization, broadcasting), a multi-node RPC client with failover, and a large set of
+transaction engine (signing, serialization, broadcasting), a multi-node RPC client with failover plus a large set of
 [React Query](https://tanstack.com/query) option builders and mutation hooks. You can use it in browsers, React
 Native and Node.js.
 
@@ -97,7 +97,7 @@ const result = await tx.broadcast();
 
 Main exports: `Transaction`, `PrivateKey`, `PublicKey`, `Signature`, `Memo`, `callRPC`, `callRPCBroadcast`,
 `callREST`, `callWithQuorum`, `RPCError`, `config`, `setNodes`, `setRestNodes`, `setRestNodesByApi`,
-`setUserAgent`, `setResilience`, `setServerRpcProxy`, `utils`, and the operation types.
+`setUserAgent`, `setResilience`, `setServerRpcProxy`, `utils` and the operation types.
 
 `PrivateKey` can be created with `fromString(wif)`, `fromSeed(seed)`, `fromLogin(username, password, role)` or
 `randomKey()`. `tx.broadcast(true)` waits until the transaction is included in a block or dropped.
@@ -168,7 +168,7 @@ anonymous visitors see your moderation choices instead of Ecency's.
 ### Client id
 
 `setClientId` sets a routing label, not a secret. It lets the server tell Ecency's own apps apart from third-party
-traffic. Set it to a name for your app, and don't reuse Ecency's own labels. If you need search at scale, use a
+traffic. Set it to a name for your app. Don't reuse Ecency's own labels. If you need search at scale, use a
 keyed [HiveSearcher API](/extra-services/hivesearcher/) key instead of Ecency's public search proxy.
 
 ## QueryKeys
@@ -269,7 +269,7 @@ const auth: AuthContextV2 = {
 };
 ```
 
-For real apps, pass a platform adapter. The adapter tells the SDK where keys and tokens live, how to show messages,
+For real apps, pass a platform adapter. The adapter tells the SDK where keys and tokens live, how to show messages
 and how to sign with wallets like Keychain or HiveAuth.
 
 ### PlatformAdapter
@@ -304,7 +304,7 @@ When an adapter is present, fallback is on unless you set `enableFallback: false
 1. Reads the user's login type with `getLoginType`.
 2. For posting ops, if `hasPostingAuthorization` returns `true`, tries the HiveSigner token first.
 3. Broadcasts with the user's login method.
-4. If that fails with an auth error and the op needs active authority, calls `showAuthUpgradeUI`.
+4. If that fails with an auth error and the op needs posting or active authority, calls `showAuthUpgradeUI`.
 
 `fallbackChain` sets the order of methods to try when no login type is known. The default is
 `["key", "hiveauth", "hivesigner", "keychain", "custom"]`. `"custom"` calls the `broadcast` function on the auth
@@ -317,6 +317,7 @@ Here is a minimal adapter that supports Keychain, HiveAuth and HiveSigner.
 
 ```ts
 import type { AuthContextV2, PlatformAdapter, TransactionConfirmation } from "@ecency/sdk";
+import { sendOperations } from "hivesigner";
 
 type Login = {
   username: string;
@@ -357,9 +358,13 @@ export const adapter: PlatformAdapter = {
     return myHiveAuthClient.broadcast(username, ops, keyType);
   },
   broadcastWithHiveSigner: async (username, ops) => {
-    // Hot signing: send the user to hivesigner.com to approve the operations
-    hivesigner.sendOperations(ops, { callback: window.location.href }, () => {});
-    return new Promise(() => {}); // the page navigates away
+    // Hot signing. Without a callback function, sendOperations only builds the
+    // hivesigner.com sign URL (with a function it would open it in a new tab).
+    const signUrl = sendOperations(ops, { callback: window.location.href }, undefined as never) as string;
+    window.location.href = signUrl;
+    // The page unloads here, so this promise never settles. The result comes back
+    // through the redirect to the callback URL (see the note below).
+    return new Promise<TransactionConfirmation>(() => {});
   },
 };
 
@@ -373,8 +378,12 @@ Notes:
 - Browser extensions (Keychain and similar) can't sign owner-authority operations. Use a key for those.
 - A HiveSigner access token only carries posting authority. Active operations need `broadcastWithHiveSigner`
   (hot signing) or another method.
-- See [HiveSigner](/extra-services/hivesigner/) for getting an access token, and the
-  [login methods guide](/guides/login-methods/) for how these methods look to users.
+- Hot signing in this example is a full page redirect. After the user approves, hivesigner.com sends them back to the
+  callback URL with the transaction id added as an `id` query parameter (for example `?id=<transaction id>`). Read it
+  on page load to confirm the result and refresh your data. The mutation that started the redirect never resolves,
+  because the page that called it is gone.
+- See [HiveSigner](/extra-services/hivesigner/) for getting an access token. The
+  [login methods guide](/guides/login-methods/) shows how these methods look to users.
 
 ### Signing one operation with a key
 
@@ -415,7 +424,7 @@ try {
 }
 ```
 
-`parseChainError` returns a typed object with the error category, and `shouldTriggerAuthFallback` tells you if the
+`parseChainError` returns a typed object with the error category. `shouldTriggerAuthFallback` tells you if the
 error means another signing method might succeed.
 
 ## Modules

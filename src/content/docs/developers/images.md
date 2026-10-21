@@ -1,6 +1,6 @@
 ---
 title: Image hosting and proxy
-description: Upload images, proxy and resize remote images, and load Hive avatars and covers through images.ecency.com.
+description: Upload images, proxy and resize remote images and load Hive avatars and covers through images.ecency.com.
 ---
 
 Ecency runs a public image service for Hive. It is available on two hostnames that serve the same API: `https://images.ecency.com` and `https://i.ecency.com`. Ecency's own apps upload to and load from `i.ecency.com`, but you can use either.
@@ -18,7 +18,7 @@ The service is open source: [ecency/imagehoster](https://github.com/ecency/image
 
 Uploads are `multipart/form-data` POST requests with a single file field. The request must carry a `Content-Length` header. You prove the upload comes from a Hive account in one of two ways: a signature over the image, or a HiveSigner style access token.
 
-Accepted formats are JPEG, PNG, GIF, WebP, BMP and APNG. SVG uploads are rejected.
+Accepted formats are JPEG, PNG, GIF, WebP, BMP, APNG, AVIF, HEIC and HEIF. SVG uploads are rejected.
 
 A successful upload returns the permanent URL of the image:
 
@@ -89,11 +89,19 @@ The token is a HiveSigner style login token: a JSON object encoded as URL-safe b
 }
 ```
 
-- `signed_message.type` must be one of `login`, `posting`, `offline`, `code` or `refresh`, and `signed_message.app` must be set.
+- `signed_message.type` must be one of `login`, `posting`, `offline`, `code` or `refresh`. `signed_message.app` must be set.
 - The signature is over `sha256(JSON.stringify({ signed_message, authors, timestamp }))`, with the keys in exactly that order.
-- The signature must verify against one of the account's own public keys.
+- The signature must come from one of these signers:
+  - One of the account's own **posting** or **active** keys. The owner key doesn't count. The key's weight must reach that authority's threshold on its own.
+  - Ecency's app account, when the user has granted it posting or active authority. The app's key must be at the same authority level the user granted.
+- The token must name the account that is uploading (`authors[0]`).
+- A token that is missing any of the required fields gets a plain `404` with no JSON error body. A token that isn't valid URL-safe base64 JSON fails with a `500`.
 
 Tokens that Ecency issues to its signed-in users also work here, which is how the Ecency apps upload. If you build your own token, sign the JSON string with the user's posting key (Hive Keychain's `requestSignBuffer` with the `Posting` key hashes and signs a message this way). This also lets users who signed in with a browser wallet upload without sharing a key.
+
+:::caution[A self-built token doesn't expire]
+The service doesn't check `timestamp`, so a token you sign yourself keeps working until the user changes the key that signed it. Treat the token like a key: never log it, never share it and keep it out of URLs you store. Changing the posting key is the only way to revoke it.
+:::
 
 URL-safe base64 here means `+` becomes `-`, `/` becomes `_` and `=` becomes `.`.
 
@@ -107,9 +115,12 @@ Errors come back as JSON with an HTTP status:
 | 403 | The account does not meet the service's reputation requirement |
 | 404 | The account does not exist |
 | 411 | `Content-Length` header missing |
+| 405 | Wrong HTTP method (uploads must be `POST`) |
 | 413 | File too large |
 | 429 | The account reached its upload quota; try again later |
 | 451 | The account is blocked from uploading |
+| 503 | The account lookup timed out. Temporary, retry the upload. |
+| 504 | Storing the image timed out. Temporary, retry the upload. |
 
 ## Serve an uploaded image
 

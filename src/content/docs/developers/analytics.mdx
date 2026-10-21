@@ -1,9 +1,9 @@
 ---
 title: Ecency analytics
-description: How Ecency uses Plausible for cookie-free analytics, the public post views endpoint, and how to connect your own Plausible instance.
+description: How Ecency uses Plausible for cookie-free analytics, the public post views endpoint and connecting your own Plausible instance.
 ---
 
-Ecency counts page views with [Plausible Analytics](https://plausible.io/), a privacy-friendly tool that doesn't use cookies. This page covers the public endpoint for a post's view stats, and how to connect a self-hosted copy of the Ecency web app to your own Plausible Community Edition (CE) server.
+Ecency counts page views with [Plausible Analytics](https://plausible.io/), a privacy-friendly tool that doesn't use cookies. This page covers the public endpoint for a post's view stats. It also shows how to connect a self-hosted copy of the Ecency web app to your own Plausible Community Edition (CE) server.
 
 ## Post view stats: `POST /api/stats`
 
@@ -20,6 +20,9 @@ const res = await fetch("https://ecency.com/api/stats", {
   }),
 });
 const stats = await res.json();
+if (!res.ok || typeof stats.status === "number") {
+  // Error: see "Errors" below. Some errors come back as HTTP 200 with a status in the body.
+}
 ```
 
 Request body:
@@ -49,6 +52,14 @@ Errors:
 - `400` for invalid JSON, metrics, dimensions or date range.
 - `403` when `url` isn't a single post path (for example `/`, `/trending` or a profile).
 - `502` or `504` when the analytics service fails or times out. Plausible's own error status is passed through too.
+
+Two errors come back with HTTP status `200` and the real status in the body, so check the body too, not just
+`res.ok`:
+
+- `{"status": 400}` when `url` is missing.
+- `{"status": 404}` when stats are turned off on that server (Plausible isn't enabled).
+
+A successful response never has a top-level `status` field.
 
 Results are cached for a few minutes, so cache them on your side as well and don't poll.
 
@@ -123,4 +134,4 @@ Because the script and events go through `/pl/` on your own domain, the browser 
 
 ### 4. Check it works
 
-Redeploy the web app, open a few pages, and watch them appear in your Plausible dashboard's realtime view. Then open a post and call `/api/stats` for it to confirm the Stats API key works.
+Redeploy the web app and open a few pages. Watch them appear in your Plausible dashboard's realtime view. Then open a post and call `/api/stats` for it to confirm the Stats API key works.
