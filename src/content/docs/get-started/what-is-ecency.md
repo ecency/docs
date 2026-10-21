@@ -13,7 +13,7 @@ You can use Ecency on the [web](https://ecency.com) and with the [mobile apps](h
 
 ## How Ecency works
 
-Ecency reads and writes your data on the Hive blockchain, so your content stays accessible and censorship resistant. When you post, comment or vote, the action is signed with your keys and stored on Hive.
+Your posts, comments, votes and wallet actions are recorded on the Hive blockchain, so your content stays accessible and censorship resistant. Some Ecency features, such as Points and chats, store their data off-chain on Ecency's servers. When you post, comment or vote, the action is signed with your keys and stored on Hive.
 
 Hive rewards creators and curators with tokens: HIVE, Hive Power and Hive Backed Dollars (HBD). You can trade HIVE and HBD on cryptocurrency exchanges or on the built-in [market](/ecency/market/). Ecency also rewards activity with [Ecency Points](/ecency/ecency-points/), which you can spend inside Ecency.
 

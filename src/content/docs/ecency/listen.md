@@ -1,6 +1,6 @@
 ---
 title: Listen to posts
-description: Unlock natural-voice audio of a post with Ecency Points and listen to it on the web or in the mobile app.
+description: Unlock natural-voice audio of a post with Ecency Points and listen to it on the web (mobile app support is coming).
 ---
 
 Listen turns a post into natural-sounding audio, so you can hear it instead of reading it. You unlock the audio for a post once with [Ecency Points](/ecency/ecency-points/). Then you can play it whenever you like.

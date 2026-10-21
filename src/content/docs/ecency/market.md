@@ -3,7 +3,7 @@ title: Market
 description: Trade HIVE, HBD and Hive Engine tokens on Ecency's market with Swap, Limit and Advanced modes.
 ---
 
-The Ecency market at [ecency.com/market](https://ecency.com/market) lets you trade on Hive's built-in decentralized exchange. You trade directly with other users through the on-chain order book. Ecency never holds your funds.
+The Ecency market at [ecency.com/market](https://ecency.com/market) lets you trade on two decentralized markets: Hive's built-in HBD/HIVE order book (Layer 1) and the Hive Engine market for Engine tokens (Layer 2). You trade directly with other users through each market's order book. Ecency never holds your funds.
 
 ## Market modes
 
@@ -17,7 +17,7 @@ Swap works between HIVE and HBD. It also works with Hive Engine tokens.
 
 ### Limit
 
-Place an order at the price you choose. Pick a trading pair: the core **HBD/HIVE** market (Layer 1) or a Hive Engine token against SWAP.HIVE (Layer 2). You see the chart, the order book, trade history and your open orders. Your order waits in the order book until someone matches it. You can cancel it at any time.
+Place an order at the price you choose. Pick a trading pair: the core **HBD/HIVE** market (Layer 1) or a Hive Engine token against SWAP.HIVE (Layer 2). You see the chart, the order book, trade history and your open orders. Your order waits in the order book until someone matches it, you cancel it or it expires. Ecency sets HBD/HIVE orders to expire after 27 days.
 
 ### Advanced
 

@@ -25,7 +25,7 @@ If you change your mind, click the reblog button on the same post again and choo
 
 ## Points for reblogging
 
-Each reblog earns you **1 Ecency Point**. See [Ecency Points](/ecency/ecency-points/) for other ways to earn.
+Your first reblog of the day earns up to **1 Ecency Point**; more reblogs on the same UTC day earn less. See [Ecency Points](/ecency/ecency-points/) for other ways to earn.
 
 ## Reblog your community post to your blog
 

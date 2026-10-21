@@ -5,7 +5,7 @@ description: How to use your 12-word seed phrase or seed file from Ecency to mov
 
 Ecency previously generated **12-word seed phrases** (and seed files) when creating cross-chain wallets for BTC, ETH, BNB, SOL, APT, TRX and TON. We are discontinuing this approach for two reasons:
 
-1. **Simplification:** managing a separate seed phrase on top of Hive keys added unnecessary complexity to signup and wallet setup. All Ecency signups now follow the same streamlined flow using the standard Hive master password.
+1. **Simplification:** managing a separate seed phrase on top of Hive keys added unnecessary complexity to signup and wallet setup. Standard Ecency signups now use the regular Hive master password. (The desktop-only Crypto Wallet signup uses MetaMask instead.)
 2. **Better tooling:** seed security and transaction signing are better handled by purpose-built tools. Ecency is integrating **MetaMask**, the popular browser extension, to handle seed generation, key storage and transaction signing for external chains.
 
 If you deposited tokens to a cross-chain wallet created with a seed phrase during wallet signup or external wallet setup, this guide explains how to **import that phrase into an external wallet app** so you can access and move your funds.
@@ -116,7 +116,7 @@ While the cross-chain wallet feature is active, your balance will still appear i
 **Does this affect my Hive account or HIVE/HBD balance?**
 No. This guide only covers funds on other blockchains (BTC, ETH, SOL, etc.). Your Hive account, your HIVE and HBD balances and your Hive keys (master password, owner/active/posting/memo keys) don't change when you move cross-chain funds.
 
-If you log in to Ecency with this seed phrase or seed file, it still works after migration: you can keep using it to log in and to reveal your Hive keys. The cross-chain keys derived from it also keep working in any wallet app you import it into. Keep it private, because anyone who has it controls both.
+If you log in to Ecency with this seed phrase or seed file, it still works after migration: you can keep using it to log in and to reveal your Hive keys. The cross-chain keys derived from it also keep working in a compatible wallet app that uses the same derivation paths (see the tables above). Keep it private, because anyone who has it controls both.
 
 **What is a derivation path?**
 A derivation path tells the wallet which key to generate from your seed phrase. Different chains use different paths. Most wallet apps handle this automatically when you select the correct chain, but if your balance does not appear, enter the exact path from the [derivation paths table](#ecency-derivation-paths) above into the wallet's custom path setting.

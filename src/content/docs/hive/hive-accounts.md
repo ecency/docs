@@ -41,7 +41,7 @@ The owner key is the most powerful key. It can change every other key, including
 
 ### Memo key
 
-The memo key encrypts and decrypts private memos. When you start a transfer memo with `#`, it's encrypted so only you and the receiver can read it.
+The memo key encrypts and decrypts private memos. When you start a transfer memo with `#` in Ecency, the app encrypts it before sending so only you and the receiver can read it. Encryption happens in the wallet, not on the chain: other apps may send a `#` memo as plain public text, so check that your wallet supports encrypted memos before sending anything sensitive.
 
 ### Master password
 

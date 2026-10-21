@@ -3,7 +3,7 @@ title: Curation desk
 description: How the Ecency curation program works, how to recommend posts and how to apply to become a guest curator.
 ---
 
-The curation desk is where Ecency's volunteer curators find good posts to support. @ecency votes with a large amount of Hive Power, most of it delegated by supporters. Every curation reward it earns goes back to those delegators daily. The curators decide where that vote goes, so their job is reading carefully and choosing well.
+The curation desk is where Ecency's volunteer curators find good posts to support. @ecency votes with a large amount of Hive Power, most of it delegated by supporters. The curation rewards it earns go back to those delegators daily, minus any [holdback](/ecency/settings/) a delegator chooses to leave with Ecency. The curators decide where that vote goes, so their job is reading carefully and choosing well.
 
 Open the desk from the side menu (**Curation desk**) or at [ecency.com/curation](https://ecency.com/curation).
 

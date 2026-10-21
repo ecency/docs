@@ -3,7 +3,7 @@ title: Cross-chain wallets
 description: Manage ETH, BNB, SOL and BTC wallets alongside your Hive balances in Ecency using MetaMask.
 ---
 
-Ecency supports external wallets for **BTC**, **ETH**, **BNB** and **SOL** so you can monitor balances and send transfers next to your Hive assets.
+Ecency supports external wallets for **BTC**, **ETH**, **BNB** and **SOL** so you can monitor balances next to your Hive assets. Sending transfers works for ETH, BNB and SOL; BTC transfers are coming soon.
 
 > **What changed:** Ecency previously supported TRON, TON and APT wallets and used seed phrases to generate addresses. The wallet system now uses **MetaMask** for address discovery, key management and transaction signing. If you have funds in a wallet created with a seed phrase, see the [seed phrase migration guide](/guides/seed-phrase-migration/) to move them to an external wallet.
 

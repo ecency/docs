@@ -16,9 +16,9 @@ A delegation is **reversible** and **doesn't transfer ownership**.
 
 ## How delegation works
 
-- The recipient gets the RC and voting influence of the delegated HP.
+- The recipient gets the RC and content voting influence of the delegated HP. Witness and proposal votes stay with you.
 - The HP stays yours. It still earns the Hive Power inflation rewards you get on all the HP you own.
-- While it is delegated, you lose the voting influence and the curation rewards that come from that HP.
+- While it is delegated, you lose the content voting influence and the curation rewards that come from that HP.
 - You can undelegate at any time. The HP comes back to you after a **5-day** cooldown.
 
 ## How to delegate HP on Ecency

@@ -40,5 +40,5 @@ To vote, follow [vote on proposals](/guides/vote-proposals/) or open the [Propos
 
 ## Increase your influence
 
-- Powering up HIVE increases the weight of your witness and proposal votes. See [power up and down](/guides/power-up-down/).
+- Powering up HIVE increases the weight of your witness and proposal votes. Newly powered-up HIVE starts counting toward those votes after 30 days. See [power up and down](/guides/power-up-down/).
 - Follow governance discussions in community posts and in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel).

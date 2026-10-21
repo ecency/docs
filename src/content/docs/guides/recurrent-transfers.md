@@ -48,6 +48,10 @@ Your wallet history, in the app and on the website, shows an entry when you crea
 
 Start a scheduled transfer to the same recipient again. When you enter a recipient you already have a schedule with, the app fills in the current amount, memo, interval and remaining executions. Change what you need and confirm. The new settings replace the old ones.
 
+:::caution
+Hive allows more than one schedule to the same recipient (created in other wallets). Ecency edits the first schedule it finds for that recipient. If you have several, check the list after editing, or manage them in the wallet that created them.
+:::
+
 How the chain handles the timing:
 
 - **Same interval:** the next payment stays on the original schedule.
