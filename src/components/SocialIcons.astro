@@ -9,21 +9,16 @@ import Default from "@astrojs/starlight/components/SocialIcons.astro";
   .ecency-open {
     font-size: var(--sl-text-sm);
     font-weight: 600;
-    color: var(--sl-color-white);
     text-decoration: none;
     white-space: nowrap;
     padding: 0.35rem 0.75rem;
     border-radius: 999px;
-    background: var(--sl-color-accent);
+    /* Fixed blue so white text passes 4.5:1 in both themes */
+    background: #1b68da;
     color: #fff;
   }
   .ecency-open:hover {
     background: var(--sl-color-accent-high);
     color: var(--sl-color-black);
-  }
-  @media (max-width: 50rem) {
-    .ecency-open {
-      display: none;
-    }
   }
 </style>
