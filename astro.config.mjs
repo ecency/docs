@@ -187,6 +187,7 @@ export default defineConfig({
         "@fontsource/geist-sans/700.css",
         "@fontsource/geist-mono/400.css",
         "./src/styles/ecency.css",
+        "./src/styles/visuals.css",
       ],
     }),
   ],

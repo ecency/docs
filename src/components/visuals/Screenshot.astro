@@ -1,0 +1,29 @@
+---
+// A screenshot of the Ecency app. Images live in src/assets/screens and are
+// made by scripts/screenshots (see its README).
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+  // Narrow screenshots (phone, dialogs) look better at their own width.
+  narrow?: boolean;
+}
+const { src, alt, caption, narrow } = Astro.props;
+const widths = [400, 800, 1200, 1600].filter((w) => w < src.width).concat(src.width);
+---
+
+<figure class:list={["ec-figure", "ec-shot", { "is-narrow": narrow }]}>
+  <a href={src.src} class="ec-shot-link" title="Open full size">
+  <Image
+    src={src}
+    alt={alt}
+    widths={widths}
+    sizes={narrow ? "(max-width: 30rem) 100vw, 26rem" : "(max-width: 50rem) 100vw, 46rem"}
+    class="ec-shot-img"
+  />
+  </a>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

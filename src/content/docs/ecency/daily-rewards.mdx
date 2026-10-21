@@ -1,0 +1,97 @@
+---
+title: Daily rewards
+description: How check-ins, streaks, streak freezes, the daily spin and daily quests earn you Ecency Points.
+---
+
+import Figure from "../../../components/visuals/Figure.astro";
+import Flow from "../../../components/visuals/Flow.astro";
+
+Ecency rewards you for coming back. Every day you can check in, keep a streak going, spin the wheel for free Points and work through a short list of quests. All of it lives on the **Perks** page: on the web open [ecency.com/perks](https://ecency.com/perks) (the Perks button in the top bar shows your current streak). In the mobile app tap the Perks icon in the header.
+
+## Check-in
+
+You don't need to press anything to check in. Ecency checks you in while you use it:
+
+- **Web:** while the site is open, you are checked in every 15 minutes or so.
+- **Mobile:** you are checked in when you read posts, comments or Waves.
+
+Each check-in gives 0.25 Points. At most one check-in counts every 15 minutes. After every 48 check-ins you also get a 10 Point **Usage bonus**. Both show up in your Points history.
+
+<Figure caption="Each check-in earns 0.25 Points. After 48 check-ins you also get the 10 Point Usage bonus.">
+  <Flow
+    steps={[
+      { title: "Check in", detail: "0.25 Points each" },
+      { title: "48 check-ins", detail: "At most one per 15 minutes", via: "keep going" },
+      { title: "Usage bonus", detail: "10 Points", via: "then you get", accent: true },
+    ]}
+  />
+</Figure>
+
+## Streaks
+
+Your streak is the number of days in a row with at least one check-in. Days are counted in UTC, so a new day starts at 00:00 UTC.
+
+- On the web, the **Quests** card shows your streak, for example "5-day streak". The Perks button in the top bar shows the same number.
+- If you haven't checked in yet today, the streak turns orange with "Check in today to keep your streak alive!". Open Ecency before 00:00 UTC to keep it.
+
+## Streak freezes
+
+A streak freeze protects your streak if you miss a day.
+
+- A freeze costs **300 Points**. For [Ecency Pro](/ecency/ecency-pro/) members it is free.
+- You can hold up to **2** freezes at a time.
+- You don't use a freeze yourself. If you miss a whole UTC day, one freeze is used automatically the next day and your streak continues.
+- A freeze only kicks in for a streak of at least 2 days. It covers one missed day and earns no Points.
+
+To buy one, open the **Quests** card on the Perks page and select **Protect streak (300 Points)**. The card shows how many you have "in reserve". The button appears once you have a streak. If you don't have enough Points, select **Get more Points** (web) or follow the prompt to buy Points (mobile).
+
+## Daily spin
+
+You get one free spin about every 24 hours. The timer starts from your last free spin, not from midnight.
+
+- **Web:** on the Perks page, select **Spin now** in the spin banner. When the spin isn't ready, the button shows a countdown to the "Next free spin".
+- **Mobile:** open **Perks**, go to **Use your points** and tap **Daily spin**, then **SPIN & WIN**.
+
+The wheel is just the animation. Your prize depends on how many Hive actions (posts, comments, votes and reblogs made with Ecency) were recorded for you in the last 24 hours:
+
+| Actions in the last 24 hours | Points |
+| --- | --- |
+| Fewer than 10 | 1 |
+| 10 or more | 5 |
+| 15 or more | 10 |
+| 25 or more | 20 |
+| 40 or more | 30 |
+| 50 or more | 40 |
+| 60 or more | 45 |
+
+In the mobile app you can also buy a pack of **5 SPINS** with an in-app purchase. Paid spins pay out 125 to 1,000 Points each.
+
+## Daily quests
+
+Quests are small goals that track what you already do on Ecency. Open the **Quests** card on the Perks page and switch between **Daily**, **Weekly** and **Monthly**. On the web, the Daily tab shows when the quests reset ("Resets in ..."). Daily quests reset at 00:00 UTC, weekly quests on Monday at 00:00 UTC and monthly quests on the 1st.
+
+| Daily quest | Goal | Points per action |
+| --- | --- | --- |
+| Check in | 1 | 0.25 |
+| Publish a post | 1 | 15 |
+| Leave comments | 3 | 5 |
+| Curate posts | 10 | Up to about 1 at 100% vote weight |
+| Reblog a post | 1 | 1 |
+| Daily spin (web) | 1 | See the table above |
+
+A few things to know:
+
+- Quests don't pay a separate bonus. The Points come from the activity itself. The quest tracks your progress.
+- Each action pays a little less than the one before on the same day, until it reaches about zero. When that happens the web quest shows "max rewards today".
+- A post or comment must be longer than 25 characters (not counting links) to earn Points and count for a quest.
+- Weekly goals: 5 posts, 15 comments, 50 votes and 5 reblogs. Monthly goal: 20 posts.
+
+When you write a post on the web, a "Daily post" chip in the editor shows your progress on the post quest.
+
+## Related
+
+- [Ecency Points](/ecency/ecency-points/)
+- [Buy and send Points](/ecency/buy-points/)
+- [Ecency Pro](/ecency/ecency-pro/)
+- [Raidstead](/ecency/raidstead/)
+- [Earning on Ecency](/get-started/earning/)

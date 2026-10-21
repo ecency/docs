@@ -1,0 +1,426 @@
+/* Figures and screenshots. Colors come from Starlight theme variables, so
+   every figure follows the light and dark themes. Ecency blue marks the one
+   thing a figure is about. */
+
+:root {
+  --ec-line: var(--sl-color-gray-5);
+  --ec-fill: var(--sl-color-gray-6);
+  --ec-text-muted: var(--sl-color-gray-3);
+  --ec-accent: var(--sl-color-accent);
+  --ec-accent-fill: var(--sl-color-accent-low);
+  --ec-mid: color-mix(in srgb, var(--sl-color-accent) 55%, var(--sl-color-gray-5));
+  --ec-low: color-mix(in srgb, var(--sl-color-accent) 22%, var(--sl-color-gray-5));
+  --ec-stop: var(--sl-color-gray-4);
+}
+
+.ec-figure {
+  margin: 1.75rem 0;
+}
+.ec-figure figcaption {
+  margin-top: 0.75rem;
+  font-size: var(--sl-text-sm);
+  color: var(--ec-text-muted);
+  line-height: 1.5;
+}
+.ec-figure-body {
+  border: 1px solid var(--ec-line);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  font-size: var(--sl-text-sm);
+  line-height: 1.4;
+  color: var(--sl-color-white);
+}
+@media (max-width: 30rem) {
+  .ec-figure-body {
+    padding: 0.875rem;
+  }
+}
+
+/* Screenshots */
+.ec-shot-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--ec-line);
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 24px -12px rgb(0 0 0 / 0.25);
+}
+.ec-shot.is-narrow {
+  max-width: 26rem;
+}
+
+/* Boxes */
+.ec-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--ec-line);
+  border-radius: 0.5rem;
+  background: var(--ec-fill);
+  min-width: 0;
+}
+.ec-box strong {
+  font-weight: 600;
+}
+.ec-box.is-accent,
+.is-accent > .ec-box {
+  border-color: var(--ec-accent);
+  background: var(--ec-accent-fill);
+}
+.ec-box-detail {
+  display: block;
+  color: var(--ec-text-muted);
+  font-size: var(--sl-text-xs);
+  line-height: 1.4;
+}
+
+/* Flow */
+.ec-flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+}
+.ec-flow-item {
+  display: flex;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.ec-flow-item .ec-box {
+  flex: 1 1 auto;
+  align-self: stretch;
+  justify-content: center;
+}
+.ec-flow-arrow {
+  position: relative;
+  flex: 0 0 auto;
+  width: 2.75rem;
+  align-self: center;
+  height: 1px;
+  background: var(--sl-color-gray-3);
+  margin-inline: 0.25rem 0.5rem;
+}
+.ec-flow-arrow::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -4px;
+  border: 4.5px solid transparent;
+  border-left: 7px solid var(--sl-color-gray-3);
+  border-right: 0;
+}
+.ec-flow-via {
+  position: absolute;
+  bottom: 0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--sl-text-xs);
+  color: var(--ec-text-muted);
+  white-space: nowrap;
+}
+.ec-flow.is-vertical,
+.ec-flow.is-vertical .ec-flow-item {
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 50rem) {
+  .ec-flow,
+  .ec-flow-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+.ec-flow.is-vertical .ec-flow-arrow,
+.ec-flow.is-vertical .ec-flow-item .ec-flow-arrow {
+  width: 1px;
+  height: 1.75rem;
+  margin: 0.25rem 0 0.5rem 1.5rem;
+}
+@media (max-width: 50rem) {
+  .ec-flow .ec-flow-arrow {
+    width: 1px;
+    height: 1.75rem;
+    margin: 0.25rem 0 0.5rem 1.5rem;
+  }
+}
+.ec-flow.is-vertical .ec-flow-arrow::after {
+  right: -4px;
+  top: auto;
+  bottom: -1px;
+  border: 4.5px solid transparent;
+  border-top: 7px solid var(--sl-color-gray-3);
+  border-bottom: 0;
+}
+@media (max-width: 50rem) {
+  .ec-flow .ec-flow-arrow::after {
+    right: -4px;
+    top: auto;
+    bottom: -1px;
+    border: 4.5px solid transparent;
+    border-top: 7px solid var(--sl-color-gray-3);
+    border-bottom: 0;
+  }
+}
+.ec-flow.is-vertical .ec-flow-via {
+  bottom: auto;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+}
+@media (max-width: 50rem) {
+  .ec-flow .ec-flow-via {
+    bottom: auto;
+    top: 50%;
+    left: 0.75rem;
+    transform: translateY(-50%);
+  }
+}
+
+/* Routes */
+.ec-routes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.ec-route {
+  display: grid;
+  grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr) minmax(0, 7.5rem);
+  align-items: center;
+  gap: 0.5rem;
+}
+.ec-route-end {
+  text-align: center;
+  align-items: center;
+}
+.ec-route.is-accent .ec-route-end {
+  border-color: var(--ec-accent);
+  background: var(--ec-accent-fill);
+}
+.ec-route-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.3rem;
+  min-width: 0;
+}
+.ec-route-via {
+  font-weight: 600;
+}
+.ec-route-note {
+  font-size: var(--sl-text-xs);
+  color: var(--ec-text-muted);
+}
+.ec-route-line {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--sl-color-gray-3);
+}
+.ec-route.is-accent .ec-route-line,
+.ec-route.is-accent .ec-route-line::after {
+  background: var(--ec-accent);
+  border-left-color: var(--ec-accent);
+}
+.ec-route-line::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -4px;
+  border: 4.5px solid transparent;
+  border-left: 7px solid var(--sl-color-gray-3);
+  border-right: 0;
+}
+.ec-route.is-accent .ec-route-line::after {
+  background: none;
+}
+@media (max-width: 30rem) {
+  .ec-route {
+    grid-template-columns: minmax(0, 5.5rem) minmax(0, 1fr) minmax(0, 5.5rem);
+  }
+}
+
+/* Timeline */
+.ec-tl-ticks {
+  position: relative;
+  height: 1.4rem;
+  margin: 0 0.25rem;
+}
+.ec-tl-tick {
+  position: absolute;
+  bottom: 0.2rem;
+  transform: translateX(-50%);
+  font-size: var(--sl-text-xs);
+  color: var(--ec-text-muted);
+  white-space: nowrap;
+}
+.ec-tl-tick.is-start {
+  transform: none;
+}
+.ec-tl-tick.is-end {
+  transform: translateX(-100%);
+}
+.ec-tl-bar {
+  display: flex;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  gap: 2px;
+}
+.ec-tl-span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0.4rem;
+  font-size: var(--sl-text-xs);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.tone-accent {
+  /* Fixed blue so white text passes 4.5:1 in both themes */
+  background: #1b68da;
+  color: #fff;
+}
+.tone-mid {
+  background: var(--ec-mid);
+  color: var(--sl-color-white);
+}
+.tone-low {
+  background: var(--ec-low);
+  color: var(--sl-color-white);
+}
+.tone-stop {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--ec-stop) 0 4px,
+    transparent 4px 8px
+  );
+  color: var(--sl-color-white);
+}
+.ec-tl-legend {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.75rem 1.25rem;
+}
+.ec-tl-legend li {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+.ec-tl-legend strong {
+  display: block;
+  font-weight: 600;
+}
+.ec-tl-swatch {
+  flex: 0 0 auto;
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-top: 0.15rem;
+  border-radius: 0.2rem;
+}
+.ec-tl-swatch.tone-stop {
+  border: 1px solid var(--ec-stop);
+}
+
+/* Sequence */
+.ec-seq {
+  --ec-col: calc(100% / var(--ec-n));
+}
+.ec-seq-actors,
+.ec-seq-msgs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--ec-n), minmax(0, 1fr));
+}
+.ec-seq-actors {
+  gap: 0.5rem;
+}
+.ec-seq-actors .ec-box {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.ec-seq-msgs {
+  row-gap: 0.4rem;
+  padding: 0.75rem 0 0.25rem;
+  background-image: linear-gradient(
+    to right,
+    transparent calc(50% - 0.5px),
+    var(--ec-line) calc(50% - 0.5px) calc(50% + 0.5px),
+    transparent calc(50% + 0.5px)
+  );
+  background-size: var(--ec-col) 100%;
+}
+.ec-seq-msg {
+  grid-column: var(--ec-start) / span var(--ec-span);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 calc(50% / var(--ec-span));
+  gap: 0.15rem;
+}
+.ec-seq-label {
+  font-size: var(--sl-text-xs);
+  background: var(--sl-color-black);
+  padding: 0 0.3rem;
+  line-height: 1.35;
+}
+.ec-seq-msg.is-accent .ec-seq-label {
+  color: var(--ec-accent);
+  font-weight: 600;
+}
+.ec-seq-num {
+  display: none;
+}
+.ec-seq-arrow {
+  position: relative;
+  display: block;
+  align-self: stretch;
+  height: 1px;
+  background: var(--sl-color-gray-2);
+}
+.ec-seq-msg.is-accent .ec-seq-arrow {
+  background: var(--ec-accent);
+}
+.ec-seq-arrow::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -4px;
+  border: 4.5px solid transparent;
+  border-left: 7px solid var(--sl-color-gray-2);
+  border-right: 0;
+}
+.ec-seq-msg.is-accent .ec-seq-arrow::after {
+  border-left-color: var(--ec-accent);
+}
+.ec-seq-msg.is-left .ec-seq-arrow::after {
+  right: auto;
+  left: -1px;
+  border-left: 0;
+  border-right: 7px solid var(--sl-color-gray-2);
+}
+.ec-seq-msg.is-left.is-accent .ec-seq-arrow::after {
+  border-right-color: var(--ec-accent);
+}
+.ec-seq-msg.is-self {
+  padding: 0 0.25rem;
+}
+.ec-seq-msg.is-self .ec-seq-label {
+  border: 1px dashed var(--ec-line);
+  border-radius: 0.4rem;
+  padding: 0.25rem 0.4rem;
+}

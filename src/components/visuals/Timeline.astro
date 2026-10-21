@@ -1,0 +1,61 @@
+---
+// A time bar split into spans, with tick labels above and a legend below.
+// `size` is the span length in any unit (hours, days); spans fill the bar in order.
+interface Span {
+  size: number;
+  label: string;
+  detail?: string;
+  tag?: string;
+  tone?: "accent" | "mid" | "low" | "stop";
+}
+interface Tick {
+  at: number;
+  label: string;
+}
+interface Props {
+  spans: Span[];
+  ticks?: Tick[];
+}
+const { spans, ticks = [] } = Astro.props;
+const total = spans.reduce((a, s) => a + s.size, 0);
+const pct = (n: number) => `${((n / total) * 100).toFixed(3)}%`;
+---
+
+<div class="ec-timeline">
+  {
+    ticks.length > 0 && (
+      <div class="ec-tl-ticks" aria-hidden="true">
+        {ticks.map((t) => (
+          <span
+            class:list={["ec-tl-tick", { "is-start": t.at === 0, "is-end": t.at === total }]}
+            style={`left:${pct(t.at)}`}
+          >
+            {t.label}
+          </span>
+        ))}
+      </div>
+    )
+  }
+  <div class="ec-tl-bar" aria-hidden="true">
+    {
+      spans.map((s) => (
+        <span class:list={["ec-tl-span", `tone-${s.tone ?? "mid"}`]} style={`flex:${s.size} 1 0`}>
+          {s.tag && s.size / total >= 0.12 && <span>{s.tag}</span>}
+        </span>
+      ))
+    }
+  </div>
+  <ul class="ec-tl-legend">
+    {
+      spans.map((s) => (
+        <li>
+          <span class:list={["ec-tl-swatch", `tone-${s.tone ?? "mid"}`]} aria-hidden="true" />
+          <span>
+            <strong>{s.label}</strong>
+            {s.detail && <span class="ec-box-detail">{s.detail}</span>}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</div>

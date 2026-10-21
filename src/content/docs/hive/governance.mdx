@@ -1,0 +1,57 @@
+---
+title: Governance participation
+description: How witness votes and Decentralized Hive Fund proposals work and how your Hive Power affects your influence.
+---
+
+import Figure from "../../../components/visuals/Figure.astro";
+import Routes from "../../../components/visuals/Routes.astro";
+
+Hive is governed by its community. Your **Hive Power (HP)** sets how much influence you have when you vote for witnesses and for Decentralized Hive Fund (DHF) proposals. Both kinds of votes use your active key.
+
+<Figure caption="Your Hive Power backs both kinds of vote. Newly powered-up HIVE starts counting after 30 days.">
+  <Routes
+    routes={[
+      { from: "Your HP", via: "Up to 30 votes", to: "Witnesses", note: "Each vote counts your full HP", accent: true },
+      { from: "Your HP", via: "Any number of votes", to: "Proposals", note: "Paid while above the return proposal" },
+      { from: "New HP", via: "After 30 days", to: "Counts in votes", note: "Witness and proposal votes" },
+    ]}
+  />
+</Figure>
+
+## Witnesses
+
+Witnesses run the servers that produce blocks and keep the network running. They also set some network parameters, like the HBD savings interest rate.
+
+- You can vote for up to **30 witnesses**.
+- Each witness vote counts with your full Hive Power. Your votes have no order or ranking, so every witness you vote for gets the same weight from you.
+- You can add or remove witness votes at any time.
+- Instead of voting yourself, you can set a **proxy**: another account whose witness votes count for you. Setting a proxy resets your own witness votes.
+
+To vote, follow [vote for witnesses](/guides/vote-witness/) or open the [Witnesses page](https://ecency.com/witnesses).
+
+### Tips
+
+- Vote for reliable witnesses who keep their nodes up to date and communicate with the community.
+- Review your witness votes from time to time and remove witnesses who are no longer active.
+
+## Decentralized Hive Fund (DHF)
+
+The **Decentralized Hive Fund** pays for community projects through proposals. Anyone can create a proposal and ask for funding.
+
+- You can approve as many proposals as you like.
+- Each proposal's votes are the total Hive Power of the accounts that approved it.
+- There is a special **return proposal**, which sends funds back to the DHF. Proposals that have more votes than the return proposal get paid, in order of votes, until the daily budget runs out. Proposals with fewer votes than the return proposal get nothing.
+- Payouts happen every hour while a proposal is active and above the return proposal.
+- You can remove your approval at any time. If a proposal falls below the return proposal, its payouts stop.
+
+To vote, follow [vote on proposals](/guides/vote-proposals/) or open the [Proposals page](https://ecency.com/proposals).
+
+### Tips
+
+- Vote based on delivery history, transparency and value for Hive.
+- Revisit your votes periodically.
+
+## Increase your influence
+
+- Powering up HIVE increases the weight of your witness and proposal votes. Newly powered-up HIVE starts counting toward those votes after 30 days. See [power up and down](/guides/power-up-down/).
+- Follow governance discussions in community posts and in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel).
