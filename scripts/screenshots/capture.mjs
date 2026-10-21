@@ -69,7 +69,9 @@ for (const shot of list) {
   const page = await context.newPage();
   if (shot.login) await page.setViewportSize(shot.viewport ?? { width: 1280, height: 800 });
   try {
-    const res = await page.goto(base + shot.path, { waitUntil: shot.waitUntil ?? "networkidle", timeout: 60_000 });
+    // A path can be a function of the logged-in user, for pages like /@user/settings.
+    const route = typeof shot.path === "function" ? shot.path(loginUser) : shot.path;
+    const res = await page.goto(base + route, { waitUntil: shot.waitUntil ?? "networkidle", timeout: 60_000 });
     if (!res || res.status() >= 400) throw new Error(`HTTP ${res?.status()} (blocked? set ECENCY_CAPTURE_UA)`);
     if (shot.waitFor) await page.waitForSelector(shot.waitFor, { timeout: 30_000 });
     if (shot.login) await dismiss(page, "Later");

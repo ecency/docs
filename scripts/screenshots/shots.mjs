@@ -1,7 +1,7 @@
 // Screenshots used in the docs. Each one is saved as src/assets/screens/<id>.webp.
 //
 //   id         file name, and how a page imports it
-//   path       page on ecency.com
+//   path       page on ecency.com, or (user) => path for the logged-in account
 //   device     "phone" for a 390px phone screen, otherwise a 1280x800 desktop
 //   element    screenshot just this element (Playwright selector)
 //   clip       or just this area: { x, y, width, height } in CSS pixels
@@ -172,18 +172,20 @@ export const shots = [
     path: "/chats",
     login: true,
     clip: top(640),
+    // Messages, their authors and conversation names stay private.
+    blur: ["[data-post-id]", ".leading-relaxed", 'a[href*="/chats/"] .truncate'],
   },
   {
     id: "settings",
     docs: "ecency/settings",
-    path: "/@testers/settings",
+    path: (user) => `/@${user}/settings`,
     login: true,
     clip: top(800),
   },
   {
     id: "permissions",
     docs: "guides/manage-keys",
-    path: "/@testers/permissions",
+    path: (user) => `/@${user}/permissions`,
     login: true,
     clip: top(800),
     highlight: "text=Add/Manage keys",
