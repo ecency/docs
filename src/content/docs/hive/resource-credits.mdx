@@ -3,6 +3,9 @@ title: Resource Credits (RC)
 description: Learn how Hive uses Resource Credits instead of transaction fees, how they regenerate and how to get more.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Flow from "../../../components/visuals/Flow.astro";
+
 Hive has no transaction fees. Instead, it uses **Resource Credits (RC)** to share the network fairly and prevent spam. Every action you take on the blockchain, like posting, commenting, voting or transferring tokens, uses a small amount of RC. Reading content does not use any RC.
 
 ## How RC works
@@ -11,6 +14,17 @@ Hive has no transaction fees. Instead, it uses **Resource Credits (RC)** to shar
 - The more **Hive Power (HP)** you have, the more RC you get.
 - RC regenerates automatically by about **20% per day**, so an empty RC pool is full again in about **5 days**.
 - Each action costs RC. Bigger transactions, like a long post, cost more than a vote.
+
+<Figure caption="RC is spent by actions and refills on its own, about 20% per day. An empty pool is full again in about 5 days.">
+  <Flow
+    steps={[
+      { title: "Full RC", detail: "More Hive Power means more RC" },
+      { title: "You act", detail: "Post, comment, vote, transfer", via: "Spend RC", accent: true },
+      { title: "RC drops", detail: "Bigger actions cost more", via: "Each action" },
+      { title: "RC refills", detail: "About 20% per day", via: "Automatic" },
+    ]}
+  />
+</Figure>
 
 ## Check your RC
 

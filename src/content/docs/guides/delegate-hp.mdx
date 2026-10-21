@@ -3,6 +3,9 @@ title: Delegate Hive Power
 description: How to delegate Hive Power to another account on Ecency, what it does and how to take it back.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Routes from "../../../components/visuals/Routes.astro";
+
 Hive Power (HP) is staked HIVE. If you have HP you don't need right now, you can **delegate** it to another account. This gives them more **Resource Credits** and **voting influence** without giving away your tokens.
 
 A delegation is **reversible** and **doesn't transfer ownership**.
@@ -20,6 +23,16 @@ A delegation is **reversible** and **doesn't transfer ownership**.
 - The HP stays yours. It still earns the Hive Power inflation rewards you get on all the HP you own.
 - While it is delegated, you lose the content voting influence and the curation rewards that come from that HP.
 - You can undelegate at any time. The HP comes back to you after a **5-day** cooldown.
+
+<Figure caption="A delegation lends what the HP does. It does not move ownership. Governance votes stay with you.">
+  <Routes
+    routes={[
+      { from: "Your HP", via: "Delegate", to: "Recipient", note: "Gets the RC and content voting influence", accent: true },
+      { from: "Your HP", via: "Stays with you", to: "You", note: "Witness and proposal votes" },
+      { from: "Recipient", via: "Undelegate", to: "You", note: "HP returns after 5 days" },
+    ]}
+  />
+</Figure>
 
 ## How to delegate HP on Ecency
 

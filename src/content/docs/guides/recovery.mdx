@@ -3,6 +3,9 @@ title: Account recovery
 description: How to secure or recover a lost or compromised Hive account with your owner key and your recovery account.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Sequence from "../../../components/visuals/Sequence.astro";
+
 You can recover a Hive account, but only if you still have an **owner key that was valid in the last 30 days** and your **recovery account** can vouch for you. Act as soon as you suspect a problem.
 
 ## Quick triage
@@ -40,6 +43,21 @@ Timing matters:
 
 - You must recover within **30 days** of the unauthorized key change. After that, the blockchain rejects recovery.
 - A recovery request **expires after 24 hours**. If you miss it, ask your recovery account to submit a new one.
+
+<Figure caption="Your recovery account submits the request. You finish it with your previous owner key. The whole thing must happen within 30 days of the key change.">
+  <Sequence
+    actors={["You", "Recovery account", "Hive blockchain"]}
+    messages={[
+      { from: 2, to: 2, label: "Keys changed without you" },
+      { from: 0, to: 1, label: "Say you have a previous owner key" },
+      { from: 1, to: 1, label: "Checks you are the real owner" },
+      { from: 1, to: 2, label: "Submit recovery request", accent: true },
+      { from: 2, to: 2, label: "Request expires after 24 hours" },
+      { from: 0, to: 2, label: "Finish with previous owner key", accent: true },
+      { from: 0, to: 0, label: "Set new posting, active, memo keys" },
+    ]}
+  />
+</Figure>
 
 ## Verifying ownership
 
