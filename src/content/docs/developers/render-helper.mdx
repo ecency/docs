@@ -1,6 +1,6 @@
 ---
 title: Render helper
-description: Render Hive post Markdown into safe HTML, extract cover images and summaries, and build proxied image URLs with @ecency/render-helper.
+description: Render Hive post Markdown into safe HTML, extract cover images and summaries and build proxied image URLs with @ecency/render-helper.
 ---
 
 `@ecency/render-helper` is the library Ecency uses to turn a Hive post body (Markdown mixed with HTML) into sanitized HTML. It also finds a post's cover image, builds a plain text summary and creates proxied, resized image URLs. The web app, the mobile app and the self-hosted blog all use it, so your app renders posts the same way Ecency does.
@@ -39,7 +39,7 @@ const post = {
 
 const html = renderPostBody(post, false);        // sanitized HTML for a website
 const cover = catchPostImage(post, 600, 0);      // proxied cover URL, 600px wide
-const summary = postBodySummary(post, 160);      // plain text, up to 160 chars
+const summary = postBodySummary(post, 160);      // plain text, about 160 chars (whole words)
 ```
 
 Always insert the output of `renderPostBody` as HTML (for example with `dangerouslySetInnerHTML` in React). It is already sanitized, so don't run it through Markdown again.
@@ -76,7 +76,7 @@ function renderPostBody(
 Converts Markdown and HTML into sanitized HTML. Along the way it:
 
 - strips scripts, styles, event handlers and unsafe URL schemes,
-- proxies and resizes images (adding `srcset`, and `<picture>` sources with AVIF and WebP for static images),
+- proxies and resizes images (adding `srcset` plus `<picture>` sources with AVIF and WebP for static images),
 - turns links to known Hive frontends into internal post, profile and tag links,
 - turns supported video, audio and social links into embeds (see [supported embeds](#supported-embeds)).
 
@@ -141,6 +141,8 @@ function postBodySummary(
 ```
 
 Returns a plain text summary of the body with Markdown, HTML and links removed. Use it for card previews and meta descriptions. Use `"ios"` or `"android"` in React Native.
+
+The summary never cuts a word in half. It keeps the last word whole, so the result can run a few characters (up to 9) past `length`. If you need a hard limit, trim the result yourself.
 
 ```ts
 postBodySummary("## Title\n\nSome **bold** text and a [link](https://example.com).", 40);

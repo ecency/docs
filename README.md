@@ -5,7 +5,7 @@ built with [Astro](https://astro.build) and the [Starlight](https://starlight.as
 
 ## Project structure
 
-- `src/content/docs/`: the pages. Each `.md` or `.mdx` file becomes a page, and its path is its URL
+- `src/content/docs/`: the pages. Each `.md` or `.mdx` file becomes a page. Its path is its URL
   (for example `src/content/docs/developers/sdk.mdx` is `/developers/sdk/`).
 - `astro.config.mjs`: site config, sidebar and redirects.
 - `public/`: static files served as is.
@@ -35,5 +35,5 @@ The static site is written to `dist/`. Pushes to `main` are built and deployed t
 
 ## Contributing
 
-Fork the repository, edit or add pages under `src/content/docs/`, and open a pull request. See the
+Fork the repository and edit or add pages under `src/content/docs/`. Then open a pull request. See the
 [contribution guide](https://docs.ecency.com/contribution/) for more.

@@ -21,7 +21,7 @@ The app is registered for these `https://ecency.com` paths (Android App Links an
 | `/hive-123456/@alice/my-post` | The same post, linked through its community or tag |
 | `/trending`, `/hot` | The feed with that sort |
 | `/trending/photography`, `/hot/photography`, `/created/photography` | The tag feed with that sort |
-| `/trending/hive-123456` (any community id) | The community screen |
+| `/trending/hive-123456` (any community id: `hive-` followed by a 5 to 7 digit number starting with 1, 2 or 3) | The community screen |
 | `/waves` | The Waves tab |
 | `/waves?text=Hello` | The Waves tab with the composer open and the text filled in |
 | `/waves/alice/wave-permlink` | That wave as a thread |
@@ -81,7 +81,7 @@ ecency://transfer?to=bob&amount=1.5&asset=HIVE&memo=Thanks
 | `callback` | Optional URL the app opens when it is done |
 | `request_id` | Optional id echoed back to your callback |
 
-Without `amount` and `asset`, the app opens the transfer screen with the recipient filled in. With both, the app shows the transaction for the user to confirm and sign.
+Without `amount` or `asset` (either one missing), the app opens the transfer screen with the recipient filled in. With both, the app shows the transaction for the user to confirm and sign.
 
 ## Signing requests: hive://
 
@@ -91,7 +91,7 @@ The app handles [hive-uri](https://www.npmjs.com/package/hive-uri) signing links
 hive://sign/op/<base64url encoded operation>
 ```
 
-The app shows the operation, the user approves or cancels, and the app broadcasts it with the signed-in account. `ecency://sign/...` is accepted as an alias. One operation per link is supported. Supported operations include transfers, savings and conversions, power up and down, delegations, votes, comments, custom JSON, witness and proxy votes, proposal votes, limit orders, reward claims and account updates.
+The app shows the operation and the user approves or cancels. If approved, the app broadcasts it with the signed-in account. `ecency://sign/...` is accepted as an alias. One operation per link is supported. Supported operations include transfers, savings, conversions, power up and down, delegations, votes, comments, custom JSON, witness and proxy votes, proposal votes, limit orders, reward claims and account updates.
 
 If the link carries a `callback`, the app opens it when it finishes, adding these query parameters:
 
@@ -122,7 +122,7 @@ The user sees your callback as the requester and must approve. The answer is sen
 <callback>?status=error&error=<code>&request_id=<id>
 ```
 
-The proof is a HiveSigner style login message, signed with the account's key and naming your callback's scheme and host as its audience. Verify the signature against the account's public keys on chain, and check the timestamp yourself.
+The proof is a HiveSigner style login message, signed with the account's key and naming your callback's scheme and host as its audience. Verify the signature against the account's public keys on chain. Check the timestamp yourself too.
 
 Possible errors are `user_cancelled`, `not_logged_in`, `pin_required`, `use_hivesigner` (the account signed in through HiveSigner or HiveAuth, so the app holds no key to sign a proof) and `internal_error`. Refusals never name an account.
 

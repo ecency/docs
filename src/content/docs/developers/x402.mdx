@@ -262,7 +262,12 @@ import {
   buildPaymentTransaction,
   encodePaymentPayload,
 } from "@hiveio/x402/client";
-import { HEADER_PAYMENT, isV1Requirements } from "@hiveio/x402/types";
+import {
+  HEADER_PAYMENT,
+  HIVE_NETWORK,
+  isV1Requirements,
+  type PaymentRequired,
+} from "@hiveio/x402/types";
 
 function signWithKeychain(username: string, tx: object): Promise<object> {
   return new Promise((resolve, reject) => {
@@ -279,11 +284,27 @@ function signWithKeychain(username: string, tx: object): Promise<object> {
   });
 }
 
+// parseRequirements reads only the x-payment header. Cross-origin, the browser hides
+// that header unless the server exposes it, so fall back to the 402 JSON body,
+// which carries the same requirements.
+async function readRequirements(res: Response): Promise<ReturnType<typeof parseRequirements>> {
+  const fromHeader = parseRequirements(res);
+  if (fromHeader.requirements) return fromHeader;
+
+  const body = (await res.json().catch(() => null)) as PaymentRequired | null;
+  if (!body || (body.x402Version !== 1 && body.x402Version !== 2)) return fromHeader;
+  return {
+    requirements: body.accepts.find((r) => r.network === HIVE_NETWORK) ?? null,
+    x402Version: body.x402Version,
+    resource: body.x402Version === 2 ? body.resource : undefined,
+  };
+}
+
 export async function payAndFetch(url: string, username: string) {
   const first = await fetch(url);
   if (first.status !== 402) return first;
 
-  const { requirements, x402Version, resource } = parseRequirements(first);
+  const { requirements, x402Version, resource } = await readRequirements(first);
   if (!requirements) throw new Error("No Hive payment option offered");
 
   // 1. Unsigned HBD transfer with a random nonce in the memo (x402:<nonce>)
@@ -309,6 +330,10 @@ export async function payAndFetch(url: string, username: string) {
 
 A few things to know:
 
+- If your page and the paid API are on different origins, the API must send
+  `Access-Control-Expose-Headers: x-payment, x-payment-response`. Otherwise the browser hides those headers from
+  your code: `parseRequirements` finds nothing (hence the body fallback above) and you can't read the settlement
+  result from `x-payment-response`.
 - The signer must return the **exact** transaction it was given, plus signatures. Hive Keychain and Keychain compatible extensions do this with `requestSignTx`. Extensions without `requestSignTx` cannot be used.
 - HiveAuth is not supported by the Ecency blog app for x402: its protocol accepts operations, not a prebuilt transaction, so the signed result would not match the transaction built for the payment.
 - The transaction expires after 60 seconds, or earlier if the requirements say so, so sign promptly.
@@ -348,7 +373,7 @@ const app = createFacilitator({
   // hiveClient: new Client([...]), // a dhive Client; by default a node pool with failover
   rateLimit: { max: 60, windowMs: 60_000 }, // per IP; false disables it
   // enableMetrics: true,       // adds /metrics (JSON) and /stats (HTML)
-  // metricsToken: "secret",    // Bearer token for those routes (or METRICS_TOKEN env)
+  // metricsToken: "secret",    // Bearer token for those routes (or METRICS_TOKEN env); without it they are open
 });
 
 app.listen(Number(process.env.FACILITATOR_PORT ?? 4020));
@@ -361,7 +386,10 @@ app.listen(Number(process.env.FACILITATOR_PORT ?? 4020));
 | `hiveClient` | built-in node pool | A `@hiveio/dhive` `Client` to use instead |
 | `rateLimit` | `{ max: 60, windowMs: 60000 }` | In-memory per-IP limit, or `false` to disable |
 | `enableMetrics` | `false` | Serve `/metrics` and `/stats` |
-| `metricsToken` | `METRICS_TOKEN` env | Bearer token required for the metrics routes |
+| `metricsToken` | `METRICS_TOKEN` env | Bearer token for the metrics routes. If neither is set, the routes are open to anyone. |
+
+If you enable metrics, also set `metricsToken` (or `METRICS_TOKEN`). Only then do `/metrics` and `/stats` require
+`Authorization: Bearer <token>` (other requests get `403`). Without a token they are public.
 
 When you run the facilitator module directly (`node node_modules/@hiveio/x402/dist/facilitator/index.js`), it listens on `FACILITATOR_PORT`, default **4020**.
 

@@ -25,12 +25,12 @@ All of Ecency's main projects are on [github.com/ecency](https://github.com/ecen
      languages come from translators. Changes to the shared packages are released with
      [Changesets](https://github.com/changesets/changesets).
    - vision-mobile: follow the setup steps in its README.
-4. Open a pull request with a clear description, linked issue, and screenshots or a short video for UI changes.
+4. Open a pull request with a clear description and a linked issue. For UI changes, add screenshots or a short video.
 
 ## Improving these docs
 
 The docs are Markdown files under `src/content/docs/` in [ecency/docs](https://github.com/ecency/docs). Fork the repo,
-edit or add a page, preview it with `yarn dev`, and open a pull request.
+edit or add a page and preview it with `yarn dev`. Then open a pull request.
 
 ## Translations
 
@@ -40,7 +40,7 @@ Translations for the web and mobile apps are managed on Crowdin:
 - Mobile app: [crowdin.com/project/esteem-mobile](https://crowdin.com/project/esteem-mobile)
 
 Create a free Crowdin account, join the project and pick your language. New strings from the apps show up there
-automatically, and approved translations flow back into the apps.
+automatically. Approved translations flow back into the apps.
 
 ## Reporting bugs
 
@@ -49,7 +49,7 @@ Open an issue on GitHub in the right repository:
 - Problems on ecency.com: [vision-web issues](https://github.com/ecency/vision-web/issues)
 - Problems in the mobile app: [vision-mobile issues](https://github.com/ecency/vision-mobile/issues)
 
-Include what you did, what you expected, what happened instead, your browser or device, and a screenshot if you can.
+Include what you did, what you expected, what happened instead and your browser or device. Add a screenshot if you can.
 Please report security issues privately to security@ecency.com instead of in a public issue.
 
 ## Ideas and feedback
