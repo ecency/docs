@@ -28,12 +28,6 @@ The page shows how many of your 30 votes you have left. Voting needs your **acti
 
 The Ecency mobile app has no separate witness screen. Open **Explore** in the side menu, go to a witness voting page in the dApp browser (such as `ecency.com/witnesses`), and the app signs the vote for you.
 
-### On Hive.blog
-
-1. Go to [https://wallet.hive.blog/~witnesses](https://wallet.hive.blog/~witnesses).
-2. Sign in with Hive Keychain or HiveSigner.
-3. Click **Vote** next to any witness.
-
 ### With a HiveSigner link
 
 You can vote straight from a link. For example, this link votes for @good-karma:

@@ -29,7 +29,7 @@ To turn Hive Power back into liquid HIVE, you power down. A power down pays out 
 Hive Backed Dollars (HBD) are designed to stay close to **1 US dollar**. The blockchain keeps HBD near its peg through conversions:
 
 - You can convert HBD into about $1 worth of HIVE. This takes **3.5 days** and uses the average price over that time.
-- You can also convert HIVE into HBD. You get the HBD right away, and the extra HIVE held as collateral is settled after 3.5 days.
+- The Hive blockchain can also convert HIVE into HBD (a collateralized conversion with a 5% fee, settled after 3.5 days). Ecency doesn't offer this conversion in its wallet; use the [market](/ecency/market/) to swap HIVE for HBD instead.
 
 HBD can be transferred to other accounts, traded on the market and held in savings to earn interest.
 

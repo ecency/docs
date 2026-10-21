@@ -64,7 +64,7 @@ On your Permissions page, go to **Account recovery** and click **Edit** to set a
 ## Prevention checklist
 
 - Keep your **owner key offline** (on paper or a hardware device) and never use it for daily actions.
-- Use **Hive Keychain** or the Ecency mobile app so you don't paste keys into websites.
+- Use a wallet extension such as **Hive Keeper** or **Hive Keychain**, or HiveAuth on mobile, so you don't paste keys into websites. See [login methods](/guides/login-methods/).
 - Know who your **recovery account** is and how to contact them.
 - Turn on **two-factor authentication** for the email and devices tied to your Hive account.
 - Check from time to time that you can find your backups.

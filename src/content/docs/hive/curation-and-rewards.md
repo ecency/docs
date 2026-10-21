@@ -38,6 +38,8 @@ Curators are people who **vote** on content. You earn curation rewards when you:
 
 If no one votes during the first 24 hours, then votes placed during the second window earn the same return they would have received in the first. The same principle applies if both the first and second windows are empty: third-window voters earn as if they voted in the earliest window.
 
+In the **last 12 hours** before payout, new upvotes (or raising an existing vote) are no longer accepted. Downvotes still are, so a post can't be pushed up at the last minute.
+
 ### How curation rewards are split
 
 - Each vote adds **reward shares (rshares)** based on your Hive Power and vote weight.
@@ -81,7 +83,7 @@ Downvotes use a separate pool called **downvote mana**. It's **25%** of your vot
 
 - A post or comment is open for votes for **7 days**.
 - At the end of the window, rewards are calculated and paid to the author, beneficiaries and curators.
-- Claim your rewards in your wallet with **Claim rewards**. See [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
+- Claim your rewards with **Collect all** in your web wallet, or **Claim Reward** in the mobile app. See [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
 
 ## Summary
 

@@ -12,7 +12,7 @@ A delegation is **reversible** and **doesn't transfer ownership**.
 - Help **new users** who don't have enough Resource Credits (RC)
 - Support **projects, apps or communities**
 - Power **curation accounts**
-- Earn Ecency Points: delegating to @ecency earns about 100 Points per day for each 1,000 HP. See [Ecency Points](/ecency/ecency-points/).
+- Earn Ecency Points: delegating to @ecency earns about 100 Points per day for each 1,000 HP. Delegation Points pause if your account has been inactive on Ecency for 90 days. See [Ecency Points](/ecency/ecency-points/).
 
 ## How delegation works
 

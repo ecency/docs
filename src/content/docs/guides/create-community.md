@@ -3,7 +3,7 @@ title: Create a community
 description: Step-by-step guide to creating your own Hive community on Ecency.
 ---
 
-Communities bring people together around shared interests on Hive. You can create your own on Ecency in a few steps. It costs **3 HIVE**, and the community is yours permanently.
+Communities bring people together around shared interests on Hive. You can create your own on Ecency in a few steps. It currently costs **3 HIVE** (the account creation fee set by witnesses), and the community is yours permanently.
 
 ## Steps
 

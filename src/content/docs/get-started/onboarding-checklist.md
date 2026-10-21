@@ -19,7 +19,7 @@ Your first action on Ecency should take less than a minute. [Waves](/ecency/wave
 - Open [Waves](https://ecency.com/waves) and **post your first Wave**: who you are, what you are into, or what brought you to Ecency.
 - **Vote on a few Waves** you enjoy and reply to one. Conversations start faster in Waves than anywhere else.
 - **Follow a handful of people** whose Waves you like, so your feed has life in it from day one.
-- Do a **daily check-in** on the [Perks page](https://ecency.com/perks) to start your streak and earn [Ecency Points](/ecency/ecency-points/).
+- Use Ecency on any day to check in automatically and start your streak. Check-ins earn [Ecency Points](/ecency/ecency-points/).
 
 ## Day 1 to 2: Learn how Ecency works
 
@@ -55,7 +55,7 @@ Your first action on Ecency should take less than a minute. [Waves](/ecency/wave
 ## Ongoing habits
 
 - **Wave daily, post weekly**: short Waves keep you visible and connected between longer posts.
-- Keep your **daily check-in streak** alive on the [Perks page](https://ecency.com/perks). Streaks compound into Points and habits. See [daily rewards](/ecency/daily-rewards/).
+- Keep your **daily streak** alive by using Ecency every day (check-ins are automatic). Streaks compound into Points and habits. See [daily rewards](/ecency/daily-rewards/).
 - Claim rewards weekly and consider **powering up** a portion for more RC and influence.
 - Vote on **witnesses** and **DHF proposals** using the [governance participation guide](/hive/governance/).
 - Back up your keys any time you rotate them, and bookmark the [account recovery playbook](/guides/recovery/).

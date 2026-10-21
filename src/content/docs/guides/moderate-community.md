@@ -13,7 +13,7 @@ Every account in a community has one role. Ecency shows this summary when you as
 
 | Role | What it can do |
 | --- | --- |
-| Owner | Assign admins |
+| Owner (the community account, `hive-xxxxxx`) | Assign admins |
 | Admin | Edit settings, assign mods |
 | Moderator | Mute, pin, set user titles |
 | Member | Listed on the leadership team |
@@ -81,7 +81,7 @@ Ecency runs a community rewards program that pays **Ecency Points** to registere
 
 To register:
 
-1. Log in as the **owner** of the community. Only the owner sees the **Community Rewards** button on the community card.
+1. Log in as the **community account itself** (the `hive-xxxxxx` account, using its own keys). Only the owner role sees the **Community Rewards** button on the community card. If you created the community on Ecency, your personal account is an admin, so it won't see this button.
 2. Click **Community Rewards**, then **Register**.
 3. Sign the transaction with your active key.
 

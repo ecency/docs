@@ -35,7 +35,7 @@ Your account is controlled by your keys, and your content is stored on a blockch
 
 Yes. Besides the [mobile apps](/guides/use-mobile-app/), you can install the Ecency website as an app (PWA) for a faster, full-screen experience:
 
-- **Chrome, Edge and Android**: open [ecency.com/mobile](https://ecency.com/mobile) and click **Install** on the **Install Ecency** banner, or use your browser's own install option.
+- **Chrome, Edge and Android**: click **Install** on the **Install Ecency** banner when it appears, or use your browser's own install option.
 - **iPhone and iPad (Safari)**: tap the **Share** button and choose **Add to Home Screen**.
 
 ### Does Ecency have RSS feeds?
@@ -132,7 +132,7 @@ Voting power (also called voting mana) goes down with each vote and regenerates 
 
 ### When can I claim my rewards?
 
-Rewards become claimable seven days after the post or comment is published. Use the **Claim rewards** button in your wallet. If claims or conversions look stuck, see [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
+Rewards become claimable seven days after the post or comment is published. Use **Collect all** in your web wallet, or **Claim Reward** in the mobile app. If claims or conversions look stuck, see [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
 
 ## Wallet and tokens
 

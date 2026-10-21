@@ -35,12 +35,13 @@ Besides Hive tokens, many actions on Ecency earn [Ecency Points](/ecency/ecency-
 | First login (one-time bonus) | 10 |
 | Check in (stay active in the app) | 0.25 |
 | Vote | 0.01 x vote weight |
-| Delegate Hive Power to @ecency | about 100 per day for each 1000 HP |
+| Delegate Hive Power to @ecency | about 100 per day for each 1000 HP (paused after 90 days of inactivity) |
 | Register your community | 20 for each post published in it with Ecency apps |
+| Usage bonus | 10 after every 48 check-ins |
 | Free daily spin | 1 to 45, higher with more activity in the last 24 hours |
 | Invite friends | see the [referral program](/get-started/referral/) |
 
-Regular use of the app also gives you extra chances to earn bonus Points. Daily check-ins, quests and the spin live on the [daily rewards](/ecency/daily-rewards/) page. You can also [buy Points](/ecency/buy-points/).
+The post, comment, reblog and vote amounts are the maximum for your first action of the day; repeats on the same UTC day earn gradually less. Regular use of the app also gives you extra chances to earn bonus Points. Daily check-ins, quests and the spin live on the [daily rewards](/ecency/daily-rewards/) page. You can also [buy Points](/ecency/buy-points/).
 
 ## Rewards in your wallet
 
@@ -58,4 +59,4 @@ You can view the same information for other users by visiting their wallet.
 
 ## When can I claim my rewards?
 
-Posts and comments stay open for votes for 7 days. During that time, the amount shown is only an estimate (pending payout), because votes and the token price can change. After 7 days, the pending payout becomes an actual reward. Click **Claim rewards** in your wallet to add the tokens to your account. If something looks stuck, see [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
+Posts and comments stay open for votes for 7 days. During that time, the amount shown is only an estimate (pending payout), because votes and the token price can change. After 7 days, the pending payout becomes an actual reward. Click **Collect all** in your web wallet (or **Claim Reward** in the mobile app) to add the tokens to your account. If something looks stuck, see [payouts and conversions](/ecency/wallets/payouts-and-conversions/).

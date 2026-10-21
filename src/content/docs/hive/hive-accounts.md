@@ -23,7 +23,7 @@ Every Hive account has four keys. Each key gives a different level of access, ca
 | Key | What it can do | How to treat it |
 | --- | --- | --- |
 | **Owner** | Change any key, including the owner key, and recover the account | Keep it offline. Use it only when needed. |
-| **Active** | Transfers, power up and down, conversions, savings, market orders, delegations, witness and proposal votes | Use it only for wallet and governance actions. |
+| **Active** | Transfers, power up and down, conversions, savings, market orders, Hive Power delegations, witness and proposal votes | Use it only for wallet and governance actions. |
 | **Posting** | Post, comment, edit, vote, reblog, follow, mute and update your profile | Use it for everyday activity. |
 | **Memo** | Encrypt and decrypt private memos in transfers | Needed only to read or send encrypted memos. |
 

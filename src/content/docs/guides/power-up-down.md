@@ -40,7 +40,7 @@ Powering down turns your **Hive Power** back into **liquid HIVE**, released over
 ### How to power down
 
 1. Open your **Wallet** and select **Hive Power**.
-2. Choose **Power Down**.
+2. Choose **Power Down** (called **Unstake** in the mobile app).
 3. Enter the amount of HP to convert back to HIVE.
 4. Confirm with your **active key**.
 
