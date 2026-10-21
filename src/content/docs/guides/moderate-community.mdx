@@ -25,16 +25,16 @@ Every account in a community has one role. Ecency shows this summary when you as
 
 You can only assign roles below your own. An owner can set admin, mod, member, guest or muted. An admin can set mod, member, guest or muted. A moderator can set member, guest or muted.
 
-<Figure caption="Each role can set roles below its own. Muted is the bottom of the ladder.">
+<Figure caption="Community roles from the most power to the least. You can only assign roles below your own.">
   <Flow
     vertical
     steps={[
       { title: "Owner", detail: "Assigns admins" },
-      { title: "Admin", detail: "Edit settings, assign mods", via: "sets" },
-      { title: "Moderator", detail: "Mute, pin, set user titles", via: "sets" },
-      { title: "Member", detail: "Listed on the leadership team", via: "sets" },
-      { title: "Guest", detail: "The default; can post and comment", via: "sets" },
-      { title: "Muted", detail: "New posts are automatically muted", via: "sets", accent: true },
+      { title: "Admin", detail: "Edit settings, assign mods" },
+      { title: "Moderator", detail: "Mute, pin, set user titles" },
+      { title: "Member", detail: "Listed on the leadership team" },
+      { title: "Guest", detail: "The default; can post and comment" },
+      { title: "Muted", detail: "New posts are automatically muted" },
     ]}
   />
 </Figure>
