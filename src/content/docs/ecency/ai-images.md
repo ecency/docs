@@ -3,7 +3,7 @@ title: AI image generator
 description: Create images from text prompts with Ecency's AI image generator and insert them into your posts, paid with Ecency Points.
 ---
 
-The AI image generator turns a short text description into an image you can use in your posts. Each image is paid with [Ecency Points](/ecency/ecency-points/), and you need to be logged in.
+The AI image generator turns a short text description into an image you can use in your posts. Each image is paid with [Ecency Points](/ecency/ecency-points/) and you need to be logged in.
 
 ## Where to find it
 
@@ -21,7 +21,7 @@ Generation can take a little while. If the image is ready but still finishing it
 
 ## Cost
 
-The price depends on the quality level. At the time of writing a 1x image costs 150 Points, and each level multiplies that:
+The price depends on the quality level. At the time of writing a 1x image costs 150 Points. Each level multiplies that:
 
 | Quality boost | Cost |
 | --- | --- |
@@ -45,7 +45,7 @@ When the image is ready you can:
 - **Share** it (mobile).
 - **Generate Again** with the same or a changed prompt.
 
-On the web, each new image is also added to your Ecency image gallery, and the **History** tab lists your recent generations so you can insert or download them later.
+On the web, each new image is also added to your Ecency image gallery. The **History** tab lists your recent generations so you can insert or download them later.
 
 ## Disclose AI images
 

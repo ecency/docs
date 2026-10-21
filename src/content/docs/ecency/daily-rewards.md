@@ -3,7 +3,7 @@ title: Daily rewards
 description: How check-ins, streaks, streak freezes, the daily spin and daily quests earn you Ecency Points.
 ---
 
-Ecency rewards you for coming back. Every day you can check in, keep a streak going, spin the wheel for free Points and work through a short list of quests. All of it lives on the **Perks** page: on the web open [ecency.com/perks](https://ecency.com/perks) (the Perks button in the top bar shows your current streak), and in the mobile app tap the Perks icon in the header.
+Ecency rewards you for coming back. Every day you can check in, keep a streak going, spin the wheel for free Points and work through a short list of quests. All of it lives on the **Perks** page: on the web open [ecency.com/perks](https://ecency.com/perks) (the Perks button in the top bar shows your current streak). In the mobile app tap the Perks icon in the header.
 
 ## Check-in
 
@@ -12,7 +12,7 @@ You don't need to press anything to check in. Ecency checks you in while you use
 - **Web:** while the site is open, you are checked in every 15 minutes or so.
 - **Mobile:** you are checked in when you read posts, comments or Waves.
 
-Each check-in gives 0.25 Points, and at most one check-in counts every 15 minutes. After every 48 check-ins you also get a 10 Point **Usage bonus**. Both show up in your Points history.
+Each check-in gives 0.25 Points. At most one check-in counts every 15 minutes. After every 48 check-ins you also get a 10 Point **Usage bonus**. Both show up in your Points history.
 
 ## Streaks
 
@@ -68,7 +68,7 @@ Quests are small goals that track what you already do on Ecency. Open the **Ques
 
 A few things to know:
 
-- Quests don't pay a separate bonus. The Points come from the activity itself, and the quest tracks your progress.
+- Quests don't pay a separate bonus. The Points come from the activity itself. The quest tracks your progress.
 - Each action pays a little less than the one before on the same day, until it reaches about zero. When that happens the web quest shows "max rewards today".
 - A post or comment must be longer than 25 characters (not counting links) to earn Points and count for a quest.
 - Weekly goals: 5 posts, 15 comments, 50 votes and 5 reblogs. Monthly goal: 20 posts.

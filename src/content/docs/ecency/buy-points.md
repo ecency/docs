@@ -67,7 +67,7 @@ You can buy Points for anyone on Hive, even someone who has never used Ecency.
 
 You can also give Points you already own.
 
-- **Web:** open your wallet, select **Points**, then **Gift**. Enter the username and amount, and confirm.
+- **Web:** open your wallet, select **Points**, then **Gift**. Enter the username and amount, then confirm.
 - **Mobile:** open **Wallet**, tap **Points** and use its transfer action.
 
 A Points transfer is recorded on the Hive blockchain, so it is signed with your active key.

@@ -1,9 +1,9 @@
 ---
 title: Translation
-description: Translate posts into your language, change the Ecency interface language, and help translate Ecency on Crowdin.
+description: Translate posts into your language, change the Ecency interface language and help translate Ecency on Crowdin.
 ---
 
-Hive is used by people all over the world, so posts come in many languages. Ecency can machine-translate posts for you, lets you use the app in your own language, and welcomes help from volunteer translators.
+Hive is used by people all over the world, so posts come in many languages. Ecency can machine-translate posts for you, lets you use the app in your own language and welcomes help from volunteer translators.
 
 ## Translate a post
 

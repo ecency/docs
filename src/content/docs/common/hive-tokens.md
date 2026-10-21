@@ -1,13 +1,13 @@
 ---
 title: Hive tokens
-description: Learn about HIVE, Hive Power, Hive Backed Dollars (HBD), savings and staking, and what you can do with them in the Ecency wallet.
+description: Learn about HIVE, Hive Power, Hive Backed Dollars (HBD), savings and staking, plus what you can do with them in the Ecency wallet.
 ---
 
 The Ecency wallet lets you manage your HIVE, Hive Power, Hive Backed Dollars (HBD), savings and other tokens. This page explains each token and what you can do with it.
 
 ## Where do the tokens come from?
 
-The Hive network continually creates new tokens. Most of them reward people who add value: authors who post, and curators who vote on posts. The rest goes to Hive Power holders, to the witnesses that secure the blockchain, and to the Decentralized Hive Fund.
+The Hive network continually creates new tokens. Most of them reward people who add value: authors who post and curators who vote on posts. The rest goes to Hive Power holders, to the witnesses that secure the blockchain and to the Decentralized Hive Fund.
 
 ## HIVE
 
@@ -17,12 +17,12 @@ HIVE is the main liquid token of the Hive blockchain. You can transfer it at any
 
 Hive Power is staked HIVE. It gives you:
 
-- More influence when you vote on content, and bigger curation rewards
+- More influence when you vote on content, plus bigger curation rewards
 - More [Resource Credits](/hive/resource-credits/), so you can make more transactions
 - More weight in [governance](/hive/governance/) votes for witnesses and proposals
 - A small share of newly created HIVE, paid to Hive Power holders
 
-To turn Hive Power back into liquid HIVE, you power down. A power down pays out in 13 equal weekly parts, and the first part arrives one week after you start. See [power up and down](/guides/power-up-down/).
+To turn Hive Power back into liquid HIVE, you power down. A power down pays out in 13 equal weekly parts. The first part arrives one week after you start. See [power up and down](/guides/power-up-down/).
 
 ## Hive Backed Dollars (HBD)
 
@@ -41,7 +41,7 @@ Only **HBD in savings earns interest**. The interest rate is set by witnesses, c
 
 ## Delegated Hive Power
 
-You can delegate Hive Power to another account. The receiver gets the benefits of that Hive Power, like Resource Credits and vote strength, but can't power it down or transfer it. It still belongs to you, and you can remove the delegation at any time. When you remove it, the Hive Power returns to you after 5 days. See [delegate HP](/guides/delegate-hp/).
+You can delegate Hive Power to another account. The receiver gets the benefits of that Hive Power, like Resource Credits and vote strength, but can't power it down or transfer it. It still belongs to you and you can remove the delegation at any time. When you remove it, the Hive Power returns to you after 5 days. See [delegate HP](/guides/delegate-hp/).
 
 ## What can I do with my tokens?
 

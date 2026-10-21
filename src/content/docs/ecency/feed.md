@@ -1,9 +1,9 @@
 ---
 title: Feed
-description: How the Ecency feed works, which sources and sorts are available, and how to filter what you see.
+description: How the Ecency feed works, which sources and sorts are available and how to filter what you see.
 ---
 
-The feed is the list of posts you see on Ecency's home page. Each post shows its title, the community it was published in, its rewards, and its votes and comments. Click the three dots on a post for more actions.
+The feed is the list of posts you see on Ecency's home page. Each post shows its title, the community it was published in, its rewards and its votes and comments. Click the three dots on a post for more actions.
 
 The feed has two parts: a **source** (where posts come from) and a **sort** (how they are ranked).
 
@@ -44,4 +44,4 @@ On community and profile pages, use the layout button next to the menu to switch
 
 ## On mobile
 
-The home screen of the Ecency mobile app shows the feed as tabs at the top. By default you see **Following**, **Communities**, **Trending** and **Hot** (or **Trending**, **Hot** and **New** when you're logged out), and you can customize which tabs appear. See [Using the Ecency mobile app](/guides/use-mobile-app/).
+The home screen of the Ecency mobile app shows the feed as tabs at the top. By default you see **Following**, **Communities**, **Trending** and **Hot** (or **Trending**, **Hot** and **New** when you're logged out). You can customize which tabs appear. See [Using the Ecency mobile app](/guides/use-mobile-app/).

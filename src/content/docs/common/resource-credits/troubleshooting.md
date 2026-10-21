@@ -1,6 +1,6 @@
 ---
 title: Resource Credits troubleshooting
-description: Diagnose low Resource Credits, restore your ability to post, and estimate RC needs for common actions.
+description: Diagnose low Resource Credits, restore your ability to post and estimate RC needs for common actions.
 ---
 
 Resource Credits (RC) power every Hive transaction. When they run low, you may be unable to post, comment, vote or claim rewards. Use this guide to recover quickly. For the basics, see [Resource Credits](/hive/resource-credits/).
@@ -8,7 +8,7 @@ Resource Credits (RC) power every Hive transaction. When they run low, you may b
 ## Check your RC status
 
 1. Open your profile on Ecency. Your RC level is shown on your profile card, under your avatar and username.
-2. Click **Resource Credits** to see your available and used RC, your delegations in and out, and how many posts or comments, votes, transfers, and reblogs or follows you can still make.
+2. Click **Resource Credits** to see your available and used RC, your delegations in and out, plus how many posts or comments, votes, transfers and reblogs or follows you can still make.
 3. If your RC is low, check whether you recently made many transactions, like a lot of edits or comments in a short time.
 
 Ecency also shows a warning next to the publish, comment and vote buttons when your RC is probably too low for that action to go through.
@@ -32,7 +32,7 @@ You can only have one active top-up at a time. If you don't have enough Points, 
 ## Reduce RC usage
 
 - Limit **edits** until your RC recovers. Every edit is a new transaction.
-- Avoid posting many times in a short period, and comment and vote more sparingly.
+- Avoid posting many times in a short period. Comment and vote more sparingly.
 - Turn off automatic posting from third-party apps if they are using up your RC.
 
 ## Estimate RC needs (typical ranges)

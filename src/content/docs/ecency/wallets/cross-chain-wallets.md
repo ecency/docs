@@ -1,11 +1,11 @@
 ---
 title: Cross-chain wallets
-description: Manage ETH, BNB, SOL, and BTC wallets alongside your Hive balances in Ecency using MetaMask.
+description: Manage ETH, BNB, SOL and BTC wallets alongside your Hive balances in Ecency using MetaMask.
 ---
 
-Ecency supports external wallets for **BTC**, **ETH**, **BNB**, and **SOL** so you can monitor balances and send transfers next to your Hive assets.
+Ecency supports external wallets for **BTC**, **ETH**, **BNB** and **SOL** so you can monitor balances and send transfers next to your Hive assets.
 
-> **What changed:** Ecency previously supported TRON, TON, and APT wallets and used seed phrases to generate addresses. The wallet system now uses **MetaMask** for address discovery, key management, and transaction signing. If you have funds in a wallet created with a seed phrase, see the [seed phrase migration guide](/guides/seed-phrase-migration/) to move them to an external wallet.
+> **What changed:** Ecency previously supported TRON, TON and APT wallets and used seed phrases to generate addresses. The wallet system now uses **MetaMask** for address discovery, key management and transaction signing. If you have funds in a wallet created with a seed phrase, see the [seed phrase migration guide](/guides/seed-phrase-migration/) to move them to an external wallet.
 
 ---
 
@@ -17,11 +17,11 @@ There are two ways to add external wallet addresses to your Ecency account:
 
 1. Go to **Wallet** and click **Setup External Wallets**.
 2. Choose **Link MetaMask**.
-3. MetaMask will discover your ETH, BNB, and SOL addresses automatically.
+3. MetaMask will discover your ETH, BNB and SOL addresses automatically.
 4. The Hive Snap is installed to derive Hive keys inside MetaMask, enabling MetaMask login.
 5. Your wallet addresses are stored in your Hive account metadata.
 
-After linking, you can **send ETH, BNB, and SOL** directly from your wallet page. MetaMask handles signing.
+After linking, you can **send ETH, BNB and SOL** directly from your wallet page. MetaMask handles signing.
 
 ### Watch Wallet (view-only)
 
@@ -71,7 +71,7 @@ MetaMask users can transfer their web session to the Ecency mobile app:
 1. Open the user menu and click **Log in to Mobile**.
 2. Read the security warning and click **Reveal QR code**.
 3. Open the Ecency mobile app and tap the QR scanner.
-4. Scan the QR code, and you're logged in on mobile.
+4. Scan the QR code and you're logged in on mobile.
 
 > The QR code contains your session credentials. Do not share it, screenshot it, or scan it in public spaces.
 

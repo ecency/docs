@@ -20,7 +20,7 @@ Very short waves don't earn Points. The form tells you when a wave is too short.
 
 ### Tags
 
-Add hashtags like `#photography` in your text. Click a hashtag on any wave to see the waves that use it, and check **What's happening** for the trending hashtags of the last few hours.
+Add hashtags like `#photography` in your text. Click a hashtag on any wave to see the waves that use it. Check **What's happening** for the trending hashtags of the last few hours.
 
 ### Images, videos and memes
 
@@ -32,7 +32,7 @@ Use the poll button to attach a poll to your wave. It works the same way as poll
 
 ## Reply to a wave
 
-Click **Reply** under a wave to answer it. Open a wave to see the full conversation, and use **Hide replies** to fold it again.
+Click **Reply** under a wave to answer it. Open a wave to see the full conversation and use **Hide replies** to fold it again.
 
 ## Feeds and sources
 

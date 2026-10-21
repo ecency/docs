@@ -31,7 +31,7 @@ These rules come from the Hive blockchain itself:
 6. Add an optional **Memo**.
 7. Tap **Next**, check the details and confirm.
 
-The app warns you if the recipient is an exchange. Exchanges may not support recurring transfers, and funds sent to them on a schedule can be lost. Use a one-time transfer for exchange deposits.
+The app warns you if the recipient is an exchange. Exchanges may not support recurring transfers. Funds sent to them on a schedule can be lost. Use a one-time transfer for exchange deposits.
 
 ## See your recurrent transfers
 

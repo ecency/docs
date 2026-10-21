@@ -1,6 +1,6 @@
 ---
 title: Curation and rewards
-description: How Hive rewards authors and curators, how to vote on Ecency, and how voting power and downvote mana work.
+description: How Hive rewards authors and curators, how to vote on Ecency and how voting power and downvote mana work.
 ---
 
 Hive rewards both **content creators** and **curators** from a shared reward pool. When you publish content or vote on posts, you can **potentially** earn HIVE, HBD or Hive Power from that pool.
@@ -20,7 +20,7 @@ Every post and comment on Hive can earn rewards based on:
 
 The author half is normally paid half in HBD and half in Hive Power. The blockchain lowers the HBD print rate when there is a lot of HBD compared to the value of HIVE. When the print rate is reduced, part or all of the HBD half is paid as liquid HIVE instead. The print rate is currently 0, so that half is currently paid in HIVE. When you publish, you can choose the default 50% / 50% split, 100% Hive Power (shown as **Stake 100%**) or **Decline earnings**.
 
-Rewards are only paid at the end of the 7-day payout window. Until then, every amount you see is an estimate and can go up or down. Rewards are **never guaranteed**, and the reward pool changes constantly as more content is created and voted on.
+Rewards are only paid at the end of the 7-day payout window. Until then, every amount you see is an estimate and can go up or down. Rewards are **never guaranteed**. The reward pool changes constantly as more content is created and voted on.
 
 ## Curation rewards
 

@@ -3,16 +3,16 @@ title: Honeyback
 description: Honeyback is a kind little flying game for phones by the Ecency team, with optional Hive account linking.
 ---
 
-Honeyback is "a kind little flying game by Ecency". You fly a bee through gates, rewind when you crash, send honey to a stranger once a day, and restore a garden that faded. Its tagline is "Kindness comes back."
+Honeyback is "a kind little flying game by Ecency". You fly a bee through gates, rewind when you crash, send honey to a stranger once a day and restore a garden that faded. Its tagline is "Kindness comes back."
 
 Learn more on the [Honeyback page](https://ecency.com/honeyback-about).
 
 ## How it plays
 
-- **Fly:** one tap keeps the bee in the air. Gates come faster the further you go, and every gate is a point.
+- **Fly:** one tap keeps the bee in the air. Gates come faster the further you go. Every gate is a point.
 - **Rewind:** a crash is not the end. Rewind a few seconds and take the gate again. Three rewinds a run are free.
-- **Send honey:** once a day, send honey to another player. It costs you nothing, they get coins, and kindness comes back as karma.
-- **Restore the garden:** pieces you gather restore a faded garden, stage by stage, and each stage dresses the bee and the world.
+- **Send honey:** once a day, send honey to another player. It costs you nothing and they get coins. Kindness comes back as karma.
+- **Restore the garden:** pieces you gather restore a faded garden, stage by stage. Each stage dresses the bee and the world.
 
 ## How it connects to Hive and Ecency
 
@@ -31,7 +31,7 @@ Honeyback is a mobile game. It is available on Google Play; search for "Honeybac
 
 ## Privacy
 
-Honeyback keeps an anonymous install id and your play data, and your Hive name only if you link it. It uses rewarded ads only when you choose to watch one. In the game's Settings you can reopen "Privacy choices", unlink your Hive account, or use "Delete my data". Read the full [Honeyback privacy policy](https://ecency.com/honeyback-privacy).
+Honeyback keeps an anonymous install id and your play data, plus your Hive name only if you link it. It uses rewarded ads only when you choose to watch one. In the game's Settings you can reopen "Privacy choices", unlink your Hive account, or use "Delete my data". Read the full [Honeyback privacy policy](https://ecency.com/honeyback-privacy).
 
 ## Related
 

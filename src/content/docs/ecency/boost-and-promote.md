@@ -1,6 +1,6 @@
 ---
 title: Boost and promote
-description: Compare Boost+, Account Boost, RC top-up and Promote, and pick the right one for more resources or more readers.
+description: Compare Boost+, Account Boost, RC top-up and Promote, then pick the right one for more resources or more readers.
 ---
 
 Ecency has four ways to give an account or a post a lift. **Boost+**, **RC top-up** and **Promote** are paid with Ecency Points. **Account Boost** is an in-app purchase in the Ecency mobile app. You can get Points by [buying them](/ecency/buy-points/) or by [earning them](/ecency/daily-rewards/).
@@ -24,14 +24,14 @@ Account Boost is an **in-app purchase** in the Ecency mobile app. It gives an ac
 
 ### How to use Account Boost
 
-- **Mobile:** open **Perks** and choose **Account boost**, pick the account, and complete the purchase.
+- **Mobile:** open **Perks** and choose **Account boost**, pick the account and complete the purchase.
 - **Web:** on **Perks**, choose **Out of Resource credits? Get more using Ecency mobile app**. Select the account and scan the QR code with the Ecency mobile app to finish the purchase there.
 
 Ecency can revoke a boost if the stake is used improperly.
 
 ## RC top-up
 
-An RC top-up spends Points on a short-term, RC-only delegation so you can keep posting when your Resource Credits run low. Ecency offers it when you try to publish with low RC (look for **Top up RC**). Pick a duration, confirm, and the top-up appears shortly. You can only have one active top-up at a time.
+An RC top-up spends Points on a short-term, RC-only delegation so you can keep posting when your Resource Credits run low. Ecency offers it when you try to publish with low RC (look for **Top up RC**). Pick a duration and confirm. The top-up appears shortly. You can only have one active top-up at a time.
 
 ## Promote
 

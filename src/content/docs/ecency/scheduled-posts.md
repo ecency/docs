@@ -7,7 +7,7 @@ You can write a post now and let Ecency publish it for you later. This is handy 
 
 ## Before you start: posting authority
 
-A scheduled post is published by Ecency on your behalf at the time you choose, while you may be offline. For that, your Hive account must give the **ecency.app** account posting authority. Posting authority only allows posting-type actions such as posts, comments and votes. It cannot move funds or change your keys, and you can remove it at any time.
+A scheduled post is published by Ecency on your behalf at the time you choose, while you may be offline. For that, your Hive account must give the **ecency.app** account posting authority. Posting authority only allows posting-type actions such as posts, comments and votes. It cannot move funds or change your keys. You can remove it at any time.
 
 - If you logged in to the web app with HiveSigner, or with your active key or master password, Ecency usually has this permission already. A posting key or Keychain login does not add it.
 - The mobile app checks when you schedule. If the permission is missing, it asks you to grant it before the post is scheduled.
@@ -57,7 +57,7 @@ To cancel a scheduled post completely, use **Delete**. On the web, both actions 
 
 ## If a scheduled post fails
 
-If a post shows **Error**, it was not published. Check that ecency.app still has posting authority on your account (see above), and that your account has enough [Resource Credits](/hive/resource-credits/). Then move the post to drafts and publish or schedule it again.
+If a post shows **Error**, it was not published. Check that ecency.app still has posting authority on your account (see above) and that your account has enough [Resource Credits](/hive/resource-credits/). Then move the post to drafts and publish or schedule it again.
 
 ## Related
 

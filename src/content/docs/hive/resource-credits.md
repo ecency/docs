@@ -1,6 +1,6 @@
 ---
 title: Resource Credits (RC)
-description: Learn how Hive uses Resource Credits instead of transaction fees, how they regenerate, and how to get more.
+description: Learn how Hive uses Resource Credits instead of transaction fees, how they regenerate and how to get more.
 ---
 
 Hive has no transaction fees. Instead, it uses **Resource Credits (RC)** to share the network fairly and prevent spam. Every action you take on the blockchain, like posting, commenting, voting or transferring tokens, uses a small amount of RC. Reading content does not use any RC.
@@ -18,7 +18,7 @@ On Ecency, open your profile. Your RC level is shown on your profile card under 
 
 - How much RC is available and how much is used
 - RC delegations you have sent and received
-- An estimate of how many posts or comments, votes, transfers, and reblogs or follows you can still make
+- An estimate of how many posts or comments, votes, transfers and reblogs or follows you can still make
 
 When you are writing a post or comment, or voting, Ecency also warns you if your RC is probably too low for the action to go through.
 
@@ -45,7 +45,7 @@ You can have one active top-up at a time. If you need more Points, see [buy Poin
 
 ## Delegating RC
 
-If you have more RC than you use, you can delegate some of it to another account. This helps friends or new users who have little Hive Power. Delegated RC still belongs to you, and you can change or remove the delegation at any time. You can't delegate all of your RC, so you always keep enough to transact yourself.
+If you have more RC than you use, you can delegate some of it to another account. This helps friends or new users who have little Hive Power. Delegated RC still belongs to you. You can change or remove the delegation at any time. You can't delegate all of your RC, so you always keep enough to transact yourself.
 
 To delegate RC on Ecency:
 

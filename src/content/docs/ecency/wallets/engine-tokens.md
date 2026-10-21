@@ -5,7 +5,7 @@ description: How to show, send, stake, delegate, trade and claim Hive Engine tok
 
 Hive Engine is a second-layer token platform on Hive. Communities and projects use it to issue their own tokens. The Ecency wallet lets you hold and manage these tokens next to HIVE, HBD and Points.
 
-SPK Network tokens (SPK, LARYNX and LP) are no longer supported in the Ecency wallet, and they are hidden from it.
+SPK Network tokens (SPK, LARYNX and LP) are no longer supported in the Ecency wallet and are hidden from it.
 
 ## Show tokens in your wallet
 
@@ -29,7 +29,7 @@ Select a token to open its page with your balances, its history and the availabl
 
 ## Token actions
 
-Open a token from your own wallet to see its actions. Which ones appear depends on the token, because each token sets its own rules (for example, whether it can be staked or delegated, and how long unstaking takes).
+Open a token from your own wallet to see its actions. Which ones appear depends on the token, because each token sets its own rules (for example, whether it can be staked or delegated and how long unstaking takes).
 
 | Action | What it does |
 | --- | --- |
@@ -41,7 +41,7 @@ Open a token from your own wallet to see its actions. Which ones appear depends 
 
 To use an action:
 
-- **Web:** select the action card, fill in the account and amount, and confirm.
+- **Web:** select the action card, fill in the account and amount, then confirm.
 - **Mobile:** tap the action button on the token page, fill in the form and confirm.
 
 Transfer, stake, unstake and delegate are Hive Engine transactions on the Hive chain, so they need your active key. See [Hive accounts and keys](/hive/hive-accounts/).

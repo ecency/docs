@@ -1,9 +1,9 @@
 ---
 title: Vote on proposals
-description: How to browse, read and vote on Decentralized Hive Fund (DHF) proposals on Ecency, and how the return proposal decides what gets funded.
+description: How to browse, read and vote on Decentralized Hive Fund (DHF) proposals on Ecency, plus how the return proposal decides what gets funded.
 ---
 
-The Decentralized Hive Fund (DHF) is an on-chain treasury. Anyone can submit a proposal asking for funding, and Hive Power holders vote on which proposals get paid. Your vote weight is your Hive Power, so even a small account helps. For the bigger picture, see [Governance](/hive/governance/).
+The Decentralized Hive Fund (DHF) is an on-chain treasury. Anyone can submit a proposal asking for funding. Hive Power holders vote on which proposals get paid. Your vote weight is your Hive Power, so even a small account helps. For the bigger picture, see [Governance](/hive/governance/).
 
 ## Open the proposals page
 
@@ -32,7 +32,7 @@ Each proposal shows its creator, the receiving account, its status (active, upco
 
 Every proposal links to a Hive post that explains the work. Click the proposal title to open its own page with the full post, or click the post link under the title.
 
-To see who supports a proposal, click **Votes**. The dialog lists each voter with their own Hive Power and any Hive Power proxied to them, and you can sort by **Hive Power** or **Reputation**.
+To see who supports a proposal, click **Votes**. The dialog lists each voter with their own Hive Power and any Hive Power proxied to them. You can sort by **Hive Power** or **Reputation**.
 
 ## Vote or remove your vote
 
@@ -55,7 +55,7 @@ When the daily budget runs out before the return proposal is reached, Ecency mar
 
 ## Governance proxy
 
-If you set a governance proxy on the [witness voting](/guides/vote-witness/) page, your proxy votes for you, and your Hive Power counts toward their choices. To vote on proposals yourself, clear the proxy there first.
+If you set a governance proxy on the [witness voting](/guides/vote-witness/) page, your proxy votes for you and your Hive Power counts toward their choices. To vote on proposals yourself, clear the proxy there first.
 
 ## On mobile
 
@@ -63,7 +63,7 @@ The mobile app doesn't have a proposals list. It may show a banner asking you to
 
 ## Create a proposal
 
-Logged-in users can open **New** on the proposals page to submit their own. Ecency notes that creating a proposal costs **10 HBD** plus **1 HBD** for each day over 60, and you should publish a Hive post describing the work first.
+Logged-in users can open **New** on the proposals page to submit their own. Ecency notes that creating a proposal costs **10 HBD** plus **1 HBD** for each day over 60. You should also publish a Hive post describing the work first.
 
 ## Related
 

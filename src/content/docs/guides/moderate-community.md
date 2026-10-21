@@ -22,7 +22,7 @@ Every account in a community has one role. Ecency shows this summary when you as
 
 You can only assign roles below your own. An owner can set admin, mod, member, guest or muted. An admin can set mod, member, guest or muted. A moderator can set member, guest or muted.
 
-The community type also matters. In a **Topic** community anyone can post or comment. In a **Journal** only members can post, and guests can only comment. In a **Council** only members can post or comment. Muted accounts can't post or comment in any type.
+The community type also matters. In a **Topic** community anyone can post or comment. In a **Journal** only members can post. Guests can only comment. In a **Council** only members can post or comment. Muted accounts can't post or comment in any type.
 
 ### Set a role
 

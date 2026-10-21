@@ -37,7 +37,7 @@ Learn more in [Hive tokens](/common/hive-tokens/).
 Each Hive account has four keys:
 
 - **Owner**: the most powerful key, used to change other keys and recover the account.
-- **Active**: for wallet actions like transfers, and for governance votes.
+- **Active**: for wallet actions like transfers and for governance votes.
 - **Posting**: for social actions like posting, commenting, voting and profile updates.
 - **Memo**: for encrypting and decrypting private memos in transfers.
 

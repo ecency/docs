@@ -1,15 +1,15 @@
 ---
 title: Why Ecency
-description: How Ecency differs from traditional social networks, how Hive frontends work, and what Ecency offers.
+description: How Ecency differs from traditional social networks, how Hive frontends work and what Ecency offers.
 ---
 
 Ecency is a social app built on the Hive blockchain. Unlike traditional social networks, your account and content live on a public blockchain, not on a company's servers. This page explains what that means and what Ecency offers.
 
 ## How Ecency differs from traditional social networks
 
-- **You own your account.** Your Hive account is controlled by your keys. Only you, and apps you have authorized, can post for you, and nobody can take your account away.
+- **You own your account.** Your Hive account is controlled by your keys. Only you and apps you have authorized can post for you. Nobody can take your account away.
 - **Your content is on the blockchain.** Posts are stored on Hive, so they stay accessible and censorship resistant.
-- **You can earn.** Posts, comments and votes can earn Hive tokens from the reward pool, and activity on Ecency earns [Ecency Points](/ecency/ecency-points/).
+- **You can earn.** Posts, comments and votes can earn Hive tokens from the reward pool. Activity on Ecency earns [Ecency Points](/ecency/ecency-points/).
 - **It's open source.** Ecency's apps are developed in the open on [GitHub](https://github.com/ecency).
 
 ## What is a frontend?

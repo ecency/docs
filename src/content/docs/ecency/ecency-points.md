@@ -1,6 +1,6 @@
 ---
 title: Ecency Points
-description: How Ecency Points work, how to earn or buy them, and what you can spend them on.
+description: How Ecency Points work, how to earn or buy them and what you can spend them on.
 ---
 
 Ecency Points are Ecency's reward system for being active. You earn them by using Ecency apps and spend them on in-app services like Promote, Boost+ and AI tools.
@@ -24,7 +24,7 @@ You earn Points automatically when you use Ecency on the web or the mobile app:
 | Publish in a registered community with Ecency apps | 20 per post (for the community) |
 | Invite friends | Referral reward, see [Referral](/get-started/referral/) |
 
-Post, comment, reblog and vote rewards get a little smaller with each repeat on the same day (UTC), so steady daily activity earns more than bursts. Delegation rewards pause if you haven't been active on Ecency for 90 days, and resume when you come back.
+Post, comment, reblog and vote rewards get a little smaller with each repeat on the same day (UTC), so steady daily activity earns more than bursts. Delegation rewards pause if you haven't been active on Ecency for 90 days and resume when you come back.
 
 ### Other ways to get Points
 

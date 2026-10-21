@@ -1,6 +1,6 @@
 ---
 title: Ecency Pro
-description: What Ecency Pro includes, how much it costs, and how to subscribe.
+description: What Ecency Pro includes, how much it costs and how to subscribe.
 ---
 
 Ecency Pro is an annual membership that adds premium perks to your regular Ecency account. It is a simple way to support Ecency while unlocking extra tools and recognition.
@@ -11,7 +11,7 @@ Ecency Pro is an annual membership that adds premium perks to your regular Ecenc
 - **A free blog.** Your own hosted blog at `yourname.blogs.ecency.com`, included with Pro. Claim it from the Ecency Pro card on the Perks page after you upgrade. See [Blog hosting](/ecency/blog-hosting/).
 - **Email newsletters to your readers.** Send one of your own posts to the readers who subscribed to your posts by email, using **Send to email subscribers** on the post.
 - **Insights for any creator.** View traffic insights (views, unique views, time on page) for any profile, not just your own. Your own Insights are always free.
-- **A larger AI free allowance.** Five free uses per day of each [AI assist](/ecency/ai-assist/) action (regular accounts get one), one free standard-tier [AI image](/ecency/ai-images/) per day, and one free 30-second block of dictation per day.
+- **A larger AI free allowance.** Five free uses per day of each [AI assist](/ecency/ai-assist/) action (regular accounts get one), one free standard-tier [AI image](/ecency/ai-images/) per day, plus one free 30-second block of dictation per day.
 - **Free streak freezes.** Protect your daily check-in streak without spending Points.
 - **Early access** to new features.
 
@@ -25,7 +25,7 @@ Ecency Pro is **$19.99 per year**. You are charged once for a 12-month membershi
 2. Choose **Ecency Pro** and continue to checkout.
 3. Pay by card. Your Pro badge and perks activate as soon as the payment is confirmed.
 
-Payments are handled by our payment provider, and your membership is tied to your Hive username.
+Payments are handled by our payment provider. Your membership is tied to your Hive username.
 
 ## Frequently asked
 

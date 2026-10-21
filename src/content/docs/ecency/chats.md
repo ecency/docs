@@ -22,7 +22,7 @@ On the web, open the chat list and use the search box (**Search people, channels
 
 In the mobile app, use the search bar on the Chats screen to find people and channels. Creating and renaming groups on mobile is coming in an upcoming app release; for now, use the web app for that.
 
-The first time someone new messages you, Ecency shows a "stay safe" warning banner. Never share passwords or private keys in chat, and be careful with links from people you don't know.
+The first time someone new messages you, Ecency shows a "stay safe" warning banner. Never share passwords or private keys in chat and be careful with links from people you don't know.
 
 ## Community channels
 
@@ -67,7 +67,7 @@ If someone's settings don't allow your message, Ecency tells you, for example "O
 
 ## Posting pauses
 
-To protect everyone from spam, chat can pause an account from posting for a while if it sees unusual activity. During a pause you can still read chat, and the notice tells you roughly when posting unlocks again.
+To protect everyone from spam, chat can pause an account from posting for a while if it sees unusual activity. During a pause you can still read chat. The notice tells you roughly when posting unlocks again.
 
 ## For developers
 

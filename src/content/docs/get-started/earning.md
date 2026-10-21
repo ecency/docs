@@ -1,6 +1,6 @@
 ---
 title: How to earn rewards on Ecency
-description: The ways you can earn Hive tokens and Ecency Points on Ecency, and how and when rewards are paid.
+description: The ways you can earn Hive tokens and Ecency Points on Ecency, plus how and when rewards are paid.
 ---
 
 Ecency is built on the [Hive blockchain](https://hive.io), so your activity can earn real tokens. You can also earn Ecency Points for using the app.

@@ -1,14 +1,14 @@
 ---
 title: New user onboarding checklist
-description: A first-week checklist for new Ecency users, from securing keys to your first Wave, first post, and first earnings.
+description: A first-week checklist for new Ecency users, from securing keys to your first Wave, first post and first earnings.
 ---
 
-Follow this checklist to set up your Hive identity, secure your keys, and start participating on Ecency in your first week. The fastest way to feel at home is to say something small today, not to write a perfect post next week.
+Follow this checklist to set up your Hive identity, secure your keys and start participating on Ecency in your first week. The fastest way to feel at home is to say something small today, not to write a perfect post next week.
 
 ## Day 0: Create and secure your account
 
 - **Create an account** via [Ecency signup](https://ecency.com/signup?referral=ecency) or the [account creation guide](/guides/create-account/).
-- Save your **owner**, **active**, **posting**, and **memo** keys in at least two offline places.
+- Save your **owner**, **active**, **posting** and **memo** keys in at least two offline places.
 - For safer logins, install a signing extension like **Hive Keeper** (by Ecency) or **Hive Keychain**, or use the **Ecency mobile app**. See [login methods](/guides/login-methods/).
 - Note your **recovery account** (often `ecency` if created through Ecency) and how to contact them.
 
@@ -43,7 +43,7 @@ Your first action on Ecency should take less than a minute. [Waves](/ecency/wave
 
 ## Day 4 to 5: Wallet basics
 
-- Learn the differences between **HIVE**, **HBD**, and **Hive Power** in [Hive tokens](/common/hive-tokens/).
+- Learn the differences between **HIVE**, **HBD** and **Hive Power** in [Hive tokens](/common/hive-tokens/).
 - Try a small **power up** or **transfer** to understand signing transactions.
 - Review **savings** and **conversion** timelines in [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
 
@@ -58,5 +58,5 @@ Your first action on Ecency should take less than a minute. [Waves](/ecency/wave
 - Keep your **daily streak** alive by using Ecency every day (check-ins are automatic). Streaks compound into Points and habits. See [daily rewards](/ecency/daily-rewards/).
 - Claim rewards weekly and consider **powering up** a portion for more RC and influence.
 - Vote on **witnesses** and **DHF proposals** using the [governance participation guide](/hive/governance/).
-- Back up your keys any time you rotate them, and bookmark the [account recovery playbook](/guides/recovery/).
+- Back up your keys any time you rotate them and bookmark the [account recovery playbook](/guides/recovery/).
 - Stay connected via the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel) for support and updates.

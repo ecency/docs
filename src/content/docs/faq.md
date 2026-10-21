@@ -17,7 +17,7 @@ Hive is a fast, feeless blockchain for Web3 apps. See [What is Hive?](/hive/what
 
 ### How does Ecency work?
 
-Ecency reads and writes your data on Hive, and rewards contributions with blockchain tokens and Ecency Points. See [What is Ecency?](/get-started/what-is-ecency/) for how it works.
+Ecency reads and writes your data on Hive and rewards contributions with blockchain tokens and Ecency Points. See [What is Ecency?](/get-started/what-is-ecency/) for how it works.
 
 ### What do I do in my first week on Ecency?
 
@@ -29,7 +29,7 @@ Create an account on the [signup page](https://ecency.com/signup?referral=ecency
 
 ### What makes Ecency different from other social networks?
 
-Your account is controlled by your keys, and your content is stored on a blockchain, which makes it permanent and censorship resistant. See [Why Ecency](/ecency/ecency-vs-others/) for more.
+Your account is controlled by your keys. Your content is stored on a blockchain, which makes it permanent and censorship resistant. See [Why Ecency](/ecency/ecency-vs-others/) for more.
 
 ### Can I install Ecency as an app?
 
@@ -62,11 +62,11 @@ Ecency supports several ways to sign in:
 - **HiveAuth**, in the mobile app
 - **Your key or password**: your posting key, active key, master password, or a seed file
 
-See [login methods](/guides/login-methods/) for details, and [keys and authorities](/hive/hive-accounts/) to understand which key does what.
+See [login methods](/guides/login-methods/) for details and [keys and authorities](/hive/hive-accounts/) to understand which key does what.
 
 ### Can I change or delete my account or data?
 
-Hive account names are permanent, and Hive accounts can't be deleted or deactivated. The account and all of its activity are stored on the blockchain permanently, which nobody can change. You can always [create a new account](/guides/create-account/).
+Hive account names are permanent. Hive accounts can't be deleted or deactivated. The account and all of its activity are stored on the blockchain permanently, which nobody can change. You can always [create a new account](/guides/create-account/).
 
 Ecency also keeps some data off-chain, outside the blockchain. To access, correct or delete that data, see the [Ecency privacy policy](https://ecency.com/privacy-policy).
 
@@ -98,11 +98,11 @@ Yes, Ecency has Android and iOS apps. See the [mobile app guide](/guides/use-mob
 
 ### What are Ecency Points and how do I earn them?
 
-Points reward activity on Ecency, and you can spend them to promote posts, boost your account and more. Earning methods are listed on the [Ecency Points page](/ecency/ecency-points/) and in [how to earn](/get-started/earning/).
+Points reward activity on Ecency. You can spend them to promote posts, boost your account and more. Earning methods are listed on the [Ecency Points page](/ecency/ecency-points/) and in [how to earn](/get-started/earning/).
 
 ### Why can't I post or comment?
 
-You may be out of [Resource Credits](/hive/resource-credits/) (RC). RC regenerates over time, and more Hive Power gives you more RC. You can also **top up RC with Points**, or get a temporary delegation with [Boost+](/ecency/boost-and-promote/). For fixes, see [RC troubleshooting](/common/resource-credits/troubleshooting/).
+You may be out of [Resource Credits](/hive/resource-credits/) (RC). RC regenerates over time. More Hive Power gives you more RC. You can also **top up RC with Points**, or get a temporary delegation with [Boost+](/ecency/boost-and-promote/). For fixes, see [RC troubleshooting](/common/resource-credits/troubleshooting/).
 
 ### What is considered spam or abuse?
 
@@ -156,4 +156,4 @@ Follow [vote on proposals](/guides/vote-proposals/), or visit the [Proposals pag
 
 ### How do I take part in governance?
 
-See the [governance guide](/hive/governance/) to learn how to vote for witnesses and DHF proposals, and how powering up affects your influence.
+See the [governance guide](/hive/governance/) to learn how to vote for witnesses and DHF proposals, plus how powering up affects your influence.

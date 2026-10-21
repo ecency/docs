@@ -1,6 +1,6 @@
 ---
 title: Power up and power down
-description: How to convert between liquid HIVE and Hive Power on Ecency, and how to route power-down payments to other accounts.
+description: How to convert between liquid HIVE and Hive Power on Ecency, plus how to route power-down payments to other accounts.
 ---
 
 On Hive, **Hive Power (HP)** is staked HIVE. It gives you voting influence, Resource Credits and a say in governance. You move between **liquid HIVE** and **Hive Power** with Power Up and Power Down.
@@ -55,7 +55,7 @@ By default, power-down payments land in your own liquid balance. With **withdraw
 3. Tick **Automatically power up** if that account should receive the payment as Hive Power instead of liquid HIVE.
 4. Confirm with your **active key**.
 
-Routes stay in place until you change them, and the rest of each payment still comes to you. This is handy for moving stake to another account you own without handling the HIVE in between.
+Routes stay in place until you change them. The rest of each payment still comes to you. This is handy for moving stake to another account you own without handling the HIVE in between.
 
 ## Things to consider
 

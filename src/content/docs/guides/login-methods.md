@@ -1,9 +1,9 @@
 ---
 title: Login methods
-description: Every way to log in to Ecency on the web and in the mobile app, what each method keeps on your device, and which one to choose.
+description: Every way to log in to Ecency on the web and in the mobile app, what each method keeps on your device and which one to choose.
 ---
 
-You can log in to Ecency with a signer (a browser extension, wallet app or HiveSigner) or by typing a key. **We recommend a signer** such as Hive Keeper, Hive Keychain or HiveSigner: your private keys stay in the signer, and Ecency only asks it to approve each action.
+You can log in to Ecency with a signer (a browser extension, wallet app or HiveSigner) or by typing a key. **We recommend a signer** such as Hive Keeper, Hive Keychain or HiveSigner: your private keys stay in the signer. Ecency only asks it to approve each action.
 
 ## Log in on the web
 
@@ -25,7 +25,7 @@ Extensions only work in desktop browsers. In a mobile browser the button becomes
 
 ### HiveSigner
 
-Click **Hivesigner**, approve the login on [hivesigner.com](https://hivesigner.com), and you are sent back to Ecency.
+Click **Hivesigner**, approve the login on [hivesigner.com](https://hivesigner.com). You are then sent back to Ecency.
 
 ### MetaMask (Hive Snap)
 
@@ -60,7 +60,7 @@ If you are already logged in on the web, you can move that login to your phone:
 3. In the mobile app, open the side menu, tap **QR Scan** and scan the code.
 4. Confirm the account switch in the app.
 
-The QR code carries your login session, not your private keys. Still, treat it like a password: don't scan it in public, don't screenshot or share it, and turn off screen recording first.
+The QR code carries your login session, not your private keys. Still, treat it like a password: don't scan it in public, don't screenshot or share it. Turn off screen recording first.
 
 ## What each method keeps
 

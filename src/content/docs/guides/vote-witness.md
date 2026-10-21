@@ -5,7 +5,7 @@ description: How to vote for Hive witnesses on Ecency and other tools, or set a 
 
 Hive is a **delegated proof-of-stake (DPoS)** blockchain. Its block producers are called **witnesses**. They run the servers that validate transactions, produce blocks and decide which software upgrades the network adopts.
 
-Every Hive account can vote for up to **30 witnesses**. The top 20 produce blocks in every round, and the rest act as backups that get a chance to produce blocks too.
+Every Hive account can vote for up to **30 witnesses**. The top 20 produce blocks in every round. The rest act as backups that get a chance to produce blocks too.
 
 ## Why witness voting matters
 
@@ -18,7 +18,7 @@ Every Hive account can vote for up to **30 witnesses**. The top 20 produce block
 ### On Ecency (web)
 
 1. Go to [ecency.com/witnesses](https://ecency.com/witnesses) and sign in.
-2. Browse the list. You can sort by rank, name or fee, and search by name.
+2. Browse the list. You can sort by rank, name or fee. You can also search by name.
 3. Click the vote button next to a witness to vote. Click it again to remove your vote.
 4. To vote for a witness outside the top 50, enter their account name in the box below the list.
 
@@ -26,7 +26,7 @@ The page shows how many of your 30 votes you have left. Voting needs your **acti
 
 ### On mobile
 
-The Ecency mobile app has no separate witness screen. Open **Explore** in the side menu, go to a witness voting page in the dApp browser (such as `ecency.com/witnesses`), and the app signs the vote for you.
+The Ecency mobile app has no separate witness screen. Open **Explore** in the side menu, go to a witness voting page in the dApp browser (such as `ecency.com/witnesses`). The app signs the vote for you.
 
 ### With a HiveSigner link
 
@@ -51,7 +51,7 @@ Don't want to pick witnesses yourself? On the Ecency witnesses page, enter an ac
 
 - Your witness vote is weighted by your **Hive Power**.
 - You can change your votes at any time. There is no fee, but it uses a little RC.
-- Ecency supports decentralization, and @good-karma runs a witness.
+- Ecency supports decentralization and @good-karma runs a witness.
 
 ## Learn more
 

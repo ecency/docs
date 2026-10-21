@@ -25,7 +25,7 @@ A paid account with a few extras:
 - 3x the Resource Credits of a normal new account for 90 days
 - 300 Ecency Points to help you get started
 
-Choose **Premium Account**, pick a username, and pay by card. The current price is shown on the button. If card payment isn't available, you can scan a QR code and finish the purchase in the Ecency mobile app.
+Choose **Premium Account**, pick a username and pay by card. The current price is shown on the button. If card payment isn't available, you can scan a QR code and finish the purchase in the Ecency mobile app.
 
 ### Crypto wallet
 
@@ -35,7 +35,7 @@ Create your account using **MetaMask**, with no seed phrase to manage. This opti
 
 A friend who already has a Hive account can create one for you at no cost to you.
 
-- **If you don't have an account:** choose **Invited by a Friend**, pick a username, and send the link or code to your friend.
+- **If you don't have an account:** choose **Invited by a Friend**, pick a username and send the link or code to your friend.
 - **If you have an account and want to onboard a friend:** open the link your friend sent you and pay the account fee with HIVE or with account creation credits.
 
 ## Save your keys

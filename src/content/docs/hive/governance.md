@@ -1,6 +1,6 @@
 ---
 title: Governance participation
-description: How witness votes and Decentralized Hive Fund proposals work, and how your Hive Power affects your influence.
+description: How witness votes and Decentralized Hive Fund proposals work and how your Hive Power affects your influence.
 ---
 
 Hive is governed by its community. Your **Hive Power (HP)** sets how much influence you have when you vote for witnesses and for Decentralized Hive Fund (DHF) proposals. Both kinds of votes use your active key.

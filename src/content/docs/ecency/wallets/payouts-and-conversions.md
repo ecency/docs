@@ -1,6 +1,6 @@
 ---
 title: Payouts and conversions troubleshooting
-description: Understand seven-day payouts, claiming rewards, and conversions between HIVE and HBD on Ecency.
+description: Understand seven-day payouts, claiming rewards and conversions between HIVE and HBD on Ecency.
 ---
 
 If rewards or conversions look stuck, use this guide to understand the timelines and fix the most common issues.
@@ -18,8 +18,8 @@ The HBD half of author rewards depends on the chain's HBD print rate. While that
 
 ### Troubleshooting payouts
 
-- **I don't see anything to claim:** wait until the post is at least 7 days old, and check that you're signed in with the right account.
-- **Claim failed:** claiming rewards needs your **posting** authority. Sign in again with your posting key, Keychain, HiveSigner or the mobile app, and try again.
+- **I don't see anything to claim:** wait until the post is at least 7 days old. Check that you're signed in with the right account.
+- **Claim failed:** claiming rewards needs your **posting** authority. Sign in again with your posting key, Keychain, HiveSigner or the mobile app, then try again.
 - **Rewards are lower than expected:** late downvotes or a lower token price reduce the payout. Check the post's votes.
 - **Not enough RC:** claiming is a blockchain transaction and needs Resource Credits. See [RC troubleshooting](/common/resource-credits/troubleshooting/).
 
@@ -34,7 +34,7 @@ The HBD half of author rewards depends on the chain's HBD print rate. While that
 - **Still pending after a day:** HBD to HIVE conversions always take 3.5 days.
 - **Wrong amount received:** the price used is the median price feed when the conversion completes, not the price when you asked. It can differ from the market price at the time of your request.
 - **Need it faster:** use a market swap instead of a conversion.
-- **No balance change after the request:** refresh, and make sure you converted from your liquid HBD balance, not from savings.
+- **No balance change after the request:** refresh and make sure you converted from your liquid HBD balance, not from savings.
 
 ## Related actions
 

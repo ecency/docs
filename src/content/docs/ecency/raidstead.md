@@ -3,7 +3,7 @@ title: Raidstead
 description: How to play Raidstead, the community strategy game on Ecency where your Hive community raids a weekly pest and builds a town together.
 ---
 
-Raidstead is a browser game on Ecency: "Communities against the swarm". Your Hive community is your alliance. Every week a pest drifts into town. You scout its weakness, hit it together with your alliance, and build your town between raids.
+Raidstead is a browser game on Ecency: "Communities against the swarm". Your Hive community is your alliance. Every week a pest drifts into town. You scout its weakness, hit it together with your alliance and build your town between raids.
 
 Play at [ecency.com/raidstead](https://ecency.com/raidstead). You can also open it from **Raidstead** in the Ecency menu or from the Raidstead card on the Perks page.
 
@@ -18,7 +18,7 @@ Your keys never go to the game. You can sign out from the menu with **Sign out o
 
 ## Pick your alliance
 
-Your alliance is one of the Hive [communities](/hive/communities/) you have joined on Ecency. Pick it in **Pick your alliance** at the start. It stays the same until the season ends. If you haven't joined any communities yet, use **Browse communities**, join one, and come back.
+Your alliance is one of the Hive [communities](/hive/communities/) you have joined on Ecency. Pick it in **Pick your alliance** at the start. It stays the same until the season ends. If you haven't joined any communities yet, use **Browse communities**, join one and come back.
 
 Everyone in a community plays on the same team, faces the same pest and builds the same town.
 
@@ -42,7 +42,7 @@ A season has four weekly pests, each with a trick:
 
 - **Spam Beetle:** copies itself overnight if nobody attacks all day. Hit it at least once every day.
 - **Doomscroll Slug:** heals overnight if nobody keeps it busy. Show up a little every day.
-- **Echo Twins:** a hit only counts when the other twin is hit within 6 seconds. Alternate, and anyone in your alliance can finish the pair.
+- **Echo Twins:** a hit only counts when the other twin is hit within 6 seconds. Take turns: anyone in your alliance can finish the pair.
 - **Copycat Queen** (season finale): changes her weakness 20 seconds after every scout. Scout, then hit hard with the right type.
 
 ## Your town
@@ -56,7 +56,7 @@ Buildings go through stages (Blueprint, Foundation, Half built, Finished) and co
 - **Walls:** fewer gnats.
 - **Library:** town news and the raid report.
 
-The **Library** can draft a raid report for your community: a post with the week's top raiders and your town's status. Select **Open in the editor**, edit it, and publish if you like.
+The **Library** can draft a raid report for your community: a post with the week's top raiders and your town's status. Select **Open in the editor**, edit it and publish if you like.
 
 ## Seasons
 
@@ -70,7 +70,7 @@ Karma, badges, trophies and your count of pests chased off stay with you. Shards
 - **Alliance leaderboard** ranks alliances for the season in Small, Medium and Large leagues.
 - Your **Profile and badges** page shows your karma, badges and season trophies.
 
-Raidstead pays no Points, HIVE or tokens. The rewards are badges, trophies and karma. Points are only spent in the game (on rallies and the alliance war chest), and every Point spent is burned. When an alliance's war chest reaches 1,000 Points, everyone in it gets +1 damage for 24 hours. There is a daily limit on how many Points you can spend in the game.
+Raidstead pays no Points, HIVE or tokens. The rewards are badges, trophies and karma. Points are only spent in the game (on rallies and the alliance war chest). Every Point spent is burned. When an alliance's war chest reaches 1,000 Points, everyone in it gets +1 damage for 24 hours. There is a daily limit on how many Points you can spend in the game.
 
 ## Feedback
 

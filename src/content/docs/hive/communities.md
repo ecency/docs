@@ -1,9 +1,9 @@
 ---
 title: Hive communities
-description: Learn how Hive communities work, how to post and cross-post in them, and what each role can do.
+description: Learn how Hive communities work, how to post and cross-post in them and what each role can do.
 ---
 
-Hive communities are topic, journal and council based groups where users can publish content, connect, and moderate discussions. Communities create smaller ecosystems within Hive for specific interests like photography, crypto, fitness or parenting.
+Hive communities are topic, journal and council based groups where users can publish content, connect and moderate discussions. Communities create smaller ecosystems within Hive for specific interests like photography, crypto, fitness or parenting.
 
 ## Why use communities?
 
@@ -47,11 +47,11 @@ You can share a community post in another community you are subscribed to:
 3. Pick one of the communities you are subscribed to and add a short message.
 4. Click **Confirm**.
 
-Earnings are automatically declined for cross posts, and discussions under a cross post follow the host community's rules.
+Earnings are automatically declined for cross posts. Discussions under a cross post follow the host community's rules.
 
 ## Community roles
 
-Each community has an owner (the community account itself), admins, moderators, members and guests. Admins manage settings and moderators, while moderators pin and mute posts and set user roles. Members can post in journals and councils, and guests can post and comment in topics unless they are muted. For the full role table and how to assign roles on Ecency, see [moderate a community](/guides/moderate-community/).
+Each community has an owner (the community account itself), admins, moderators, members and guests. Admins manage settings and moderators, while moderators pin and mute posts and set user roles. Members can post in journals and councils. Guests can post and comment in topics unless they are muted. For the full role table and how to assign roles on Ecency, see [moderate a community](/guides/moderate-community/).
 
 Some communities auto-moderate with posting guidelines or curation queues. If you run a community, see [moderate a community](/guides/moderate-community/) and [create a community](/guides/create-community/). Community owners can also set a [custom beneficiary](/hive/custom-beneficiary/).
 

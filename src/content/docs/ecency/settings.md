@@ -26,7 +26,7 @@ Edit your display name, about text, profile image, cover image, website and loca
 
 Two optional ways to support Ecency, both **Off** by default:
 
-- **Post beneficiary**: adds @ecency as a beneficiary on your new posts at 1%, 5%, 10% or 25%. It is added automatically when you start a new post, and you can remove it from any single post.
+- **Post beneficiary**: adds @ecency as a beneficiary on your new posts at 1%, 5%, 10% or 25%. It is added automatically when you start a new post. You can remove it from any single post.
 - **Curation reward holdback**: if you delegate Hive Power to @ecency, Ecency pays you a daily share of curation rewards. Here you choose what percent (5%, 10%, 25%, 50% or 100%) of that payout Ecency keeps as support.
 
 ### Chat Privacy

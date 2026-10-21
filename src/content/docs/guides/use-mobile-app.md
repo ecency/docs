@@ -54,7 +54,7 @@ Listening to posts as audio is available on the web today and is coming to the m
 ## Wallet and Points
 
 - Open the **Wallet** tab to see your balances.
-- Power up or down, and send HIVE or HBD.
+- Power up or down and send HIVE or HBD.
 - Check your Ecency Points and add Hive Engine tokens for quick access.
 
 ## Perks

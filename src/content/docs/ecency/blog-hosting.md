@@ -10,7 +10,7 @@ Ecency blog hosting turns your Hive account into a standalone blog at `yourname.
 Your Ecency profile at `ecency.com/@username` sits inside the main Ecency site, next to everyone else's content. A hosted blog is your own space:
 
 - **Only your content.** Readers see your posts and nothing else competing for attention.
-- **Your look.** Pick a style, an accent color and fonts, and set your own title and tagline.
+- **Your look.** Pick a style, an accent color and fonts. Set your own title and tagline.
 - **Your address.** A memorable `yourname.blogs.ecency.com`, or your own domain like `blog.yoursite.com`.
 - **Still on Hive.** You keep your audience, rewards and portability.
 
@@ -38,8 +38,8 @@ Hosted blogs cost **$2 by card or 2 HBD per month**. You can pay for **1, 3, 6 o
 
 1. Go to `ecency.com/hosting`.
 2. Choose **Personal blog** and enter your Hive username. This becomes `yourname.blogs.ecency.com`.
-3. Customize it: pick a style, an accent color and fonts, and add a title and description (both optional). You can change all of this later.
-4. Choose **Hosted by Ecency**, pick a term, and pay by card or HBD.
+3. Customize it: pick a style, an accent color and fonts, then add a title and description (both optional). You can change all of this later.
+4. Choose **Hosted by Ecency**, pick a term and pay by card or HBD.
 5. Your blog goes live as soon as the payment is confirmed.
 
 After activation, open your site and sign in with the owner account using Keychain or HiveSigner. The round settings button in the bottom-right corner opens the configuration editor, where you can change the title, theme, layout and post filters.
@@ -63,10 +63,10 @@ To connect the domain:
 You can also host a whole Hive community as its own branded site, showing the community's posts, subscribers and about page, at `hive-NNNNN.blogs.ecency.com` or your own domain.
 
 - **You own the site, not the community account.** The site belongs to the account that creates it. You never need the community's keys to run or customize it.
-- **Members post into the community.** A logged-in member can publish straight into the community from the site, and normal Hive community moderation still applies.
-- **Same customization.** Choose a style, a title and branding, and add a custom domain just like a personal blog.
+- **Members post into the community.** A logged-in member can publish straight into the community from the site. Normal Hive community moderation still applies.
+- **Same customization.** Choose a style, a title and branding, then add a custom domain just like a personal blog.
 
-To set one up, go to `ecency.com/hosting`, choose **Community**, and enter the community ID (it looks like `hive-125125`). You must be logged in, because your account becomes the owner. Pick a term and pay by card or HBD.
+To set one up, go to `ecency.com/hosting`, choose **Community** and enter the community ID (it looks like `hive-125125`). You must be logged in, because your account becomes the owner. Pick a term and pay by card or HBD.
 
 ## Frequently asked
 

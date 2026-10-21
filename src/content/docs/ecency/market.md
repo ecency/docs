@@ -11,13 +11,13 @@ Pick a mode at the top of the market page.
 
 ### Swap
 
-The simplest way to trade. Choose the token you have and the token you want, and enter an amount. Ecency calculates a price from the current order book and places the order for you. You see the rate, the fee and the order book impact before you sign. The order usually fills right away. If the market moves first, the rest stays open as an order you can see and cancel.
+The simplest way to trade. Choose the token you have and the token you want, then enter an amount. Ecency calculates a price from the current order book and places the order for you. You see the rate, the fee and the order book impact before you sign. The order usually fills right away. If the market moves first, the rest stays open as an order you can see and cancel.
 
-Swap works between HIVE and HBD, and also with Hive Engine tokens.
+Swap works between HIVE and HBD. It also works with Hive Engine tokens.
 
 ### Limit
 
-Place an order at the price you choose. Pick a trading pair: the core **HBD/HIVE** market (Layer 1) or a Hive Engine token against SWAP.HIVE (Layer 2). You see the chart, the order book, trade history and your open orders. Your order waits in the order book until someone matches it, and you can cancel it at any time.
+Place an order at the price you choose. Pick a trading pair: the core **HBD/HIVE** market (Layer 1) or a Hive Engine token against SWAP.HIVE (Layer 2). You see the chart, the order book, trade history and your open orders. Your order waits in the order book until someone matches it. You can cancel it at any time.
 
 ### Advanced
 
@@ -25,7 +25,7 @@ A full trading view with a price chart, order book, trade history, an order form
 
 ## Fees and timing
 
-Trading on Hive's internal HIVE/HBD market has no fee. A trade is not the same as an instant conversion, though: a swap is filled from whatever orders are in the order book, and a limit order only fills when another user takes the other side. Large orders can move the price, so the swap form warns you when the order book impact is high.
+Trading on Hive's internal HIVE/HBD market has no fee. A trade is not the same as an instant conversion, though: a swap is filled from whatever orders are in the order book. A limit order only fills when another user takes the other side. Large orders can move the price, so the swap form warns you when the order book impact is high.
 
 If you'd rather convert at the blockchain's median price, use a conversion from your wallet instead. HBD to HIVE conversions take 3.5 days. See [Payouts and conversions](/ecency/wallets/payouts-and-conversions/).
 

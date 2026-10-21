@@ -1,6 +1,6 @@
 ---
 title: Delegate Hive Power
-description: How to delegate Hive Power to another account on Ecency, what it does, and how to take it back.
+description: How to delegate Hive Power to another account on Ecency, what it does and how to take it back.
 ---
 
 Hive Power (HP) is staked HIVE. If you have HP you don't need right now, you can **delegate** it to another account. This gives them more **Resource Credits** and **voting influence** without giving away your tokens.

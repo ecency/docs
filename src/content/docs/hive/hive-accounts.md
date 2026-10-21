@@ -22,7 +22,7 @@ Every Hive account has four keys. Each key gives a different level of access, ca
 
 | Key | What it can do | How to treat it |
 | --- | --- | --- |
-| **Owner** | Change any key, including the owner key, and recover the account | Keep it offline. Use it only when needed. |
+| **Owner** | Change any key (including the owner key) and recover the account | Keep it offline. Use it only when needed. |
 | **Active** | Transfers, power up and down, conversions, savings, market orders, Hive Power delegations, witness and proposal votes | Use it only for wallet and governance actions. |
 | **Posting** | Post, comment, edit, vote, reblog, follow, mute and update your profile | Use it for everyday activity. |
 | **Memo** | Encrypt and decrypt private memos in transfers | Needed only to read or send encrypted memos. |
@@ -33,11 +33,11 @@ The posting key covers social actions: posting, commenting, editing, voting, reb
 
 ### Active key
 
-The active key is for sensitive actions that involve funds or governance: transfers, powering up and down, HBD conversions, savings, market orders, delegations, and votes for witnesses and proposals. Only enter it when an action needs it.
+The active key is for sensitive actions that involve funds or governance: transfers, powering up and down, HBD conversions, savings, market orders, delegations and votes for witnesses and proposals. Only enter it when an action needs it.
 
 ### Owner key
 
-The owner key is the most powerful key. It can change every other key, including itself, and is used to recover a compromised account. Store it offline and use it only when necessary. Browser extensions can't sign owner-level changes, so for those you enter your owner key or master password directly.
+The owner key is the most powerful key. It can change every other key, including itself. It is also used to recover a compromised account. Store it offline and use it only when necessary. Browser extensions can't sign owner-level changes, so for those you enter your owner key or master password directly.
 
 ### Memo key
 
@@ -49,7 +49,7 @@ Ecency signup generates your keys for you. The master password (or seed phrase) 
 
 - Save it somewhere safe and offline, like a password manager, an encrypted drive and a printed copy.
 - Never share it or paste it into a site you don't trust.
-- Log in with your posting key or a signing app for daily use, and keep the master password for emergencies.
+- Log in with your posting key or a signing app for daily use. Keep the master password for emergencies.
 
 To change or back up your keys, see [manage keys](/guides/manage-keys/).
 
@@ -65,7 +65,7 @@ You can create a Hive account with [Ecency signup](https://ecency.com/signup) or
 
 If you lose your master password and owner key, nobody can recover your account. Keep offline backups in more than one place.
 
-If someone steals your account and changes your keys, your **recovery account** can help you get it back. This only works within **30 days** of the change, and you need an owner key that was valid during those 30 days. Act quickly. See the [account recovery playbook](/guides/recovery/).
+If someone steals your account and changes your keys, your **recovery account** can help you get it back. This only works within **30 days** of the change. You also need an owner key that was valid during those 30 days. Act quickly. See the [account recovery playbook](/guides/recovery/).
 
 ## Summary
 

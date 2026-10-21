@@ -1,9 +1,9 @@
 ---
 title: Notifications, drafts and bookmarks
-description: Stay on top of your Hive activity with notifications, and keep track of posts, authors and tags with drafts, bookmarks, favorites and followed tags.
+description: Stay on top of your Hive activity with notifications and keep track of posts, authors and tags with drafts, bookmarks, favorites and followed tags.
 ---
 
-Ecency gives you a few tools to keep your Hive life organized: **notifications** for what happens to you, **drafts** for posts you're still writing, and **bookmarks**, **favorites** and **followed tags** for things you want to come back to. They are all linked to your account, so they work on the web and in the mobile app.
+Ecency gives you a few tools to keep your Hive life organized: **notifications** for what happens to you, **drafts** for posts you're still writing, plus **bookmarks**, **favorites** and **followed tags** for things you want to come back to. They are all linked to your account, so they work on the web and in the mobile app.
 
 ## Notifications
 

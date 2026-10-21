@@ -19,7 +19,7 @@ If you still have your **current owner key** or master password, you can replace
 
 1. Open your Permissions page: `ecency.com/@username/permissions` (replace `username`).
 2. Click **Add/Manage keys**.
-3. Choose **Add New Keys**, and authenticate with your owner key, master password or seed phrase.
+3. Choose **Add New Keys**, then authenticate with your owner key, master password or seed phrase.
 4. Ecency generates a new master password. Review the new keys and confirm.
 5. Back up the new master password and keys in at least two safe places.
 6. Choose **Revoke Keys** to remove the old keys you no longer trust. You must keep at least one key for each authority.
@@ -31,7 +31,7 @@ This locks out anyone who had your old keys. See [Manage keys](/guides/manage-ke
 If an attacker changed your keys and you still have an owner key that was valid in the last 30 days:
 
 1. Contact your **recovery account**. This is usually the account that created yours, such as `ecency`. You can see it on your Permissions page under **Account recovery**.
-2. Tell them your username, roughly when you lost control, and that you still have a previous owner key.
+2. Tell them your username, roughly when you lost control and that you still have a previous owner key.
 3. Your recovery account checks that you are the real owner, then submits a **recovery request** on the blockchain.
 4. Complete the recovery with your **previous owner key** and a new owner key. Your recovery account will tell you how.
 5. Once it is done, generate new posting, active and memo keys and store them safely.

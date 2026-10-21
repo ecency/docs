@@ -7,7 +7,7 @@ Your reputation score shows how the community has received your work. Every new 
 
 ## How do I improve my reputation score?
 
-Earn upvotes by adding value to the community. Upvotes from accounts with more Hive Power have more effect on your score. Votes from accounts with a negative reputation have no effect, and a downvote only lowers your score if the voter's reputation is higher than yours. Consistent, original posts, helpful comments and good curation are the best ways to grow. See the [content guidelines](/common/posting/).
+Earn upvotes by adding value to the community. Upvotes from accounts with more Hive Power have more effect on your score. Votes from accounts with a negative reputation have no effect. A downvote only lowers your score if the voter's reputation is higher than yours. Consistent, original posts, helpful comments and good curation are the best ways to grow. See the [content guidelines](/common/posting/).
 
 ## Why is my reputation score going down?
 

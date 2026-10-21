@@ -3,7 +3,7 @@ title: Curation desk
 description: How the Ecency curation program works, how to recommend posts and how to apply to become a guest curator.
 ---
 
-The curation desk is where Ecency's volunteer curators find good posts to support. @ecency votes with a large amount of Hive Power, most of it delegated by supporters, and every curation reward it earns goes back to those delegators daily. The curators decide where that vote goes, so their job is reading carefully and choosing well.
+The curation desk is where Ecency's volunteer curators find good posts to support. @ecency votes with a large amount of Hive Power, most of it delegated by supporters. Every curation reward it earns goes back to those delegators daily. The curators decide where that vote goes, so their job is reading carefully and choosing well.
 
 Open the desk from the side menu (**Curation desk**) or at [ecency.com/curation](https://ecency.com/curation).
 
@@ -31,7 +31,7 @@ There is no form to submit your own post. Curators read the queue and pick posts
 
 Posts that are plagiarised, recycled, image only, tag or community abuse, or part of reward farming are red flags. Posts tagged NSFW, deleted posts and authors on the abuse list are kept out of the public queue.
 
-The best thing you can do is write well, publish in the right [community](/hive/communities/), and reply to your readers. The [content guidelines](/common/posting/) apply as usual.
+The best thing you can do is write well, publish in the right [community](/hive/communities/) and reply to your readers. The [content guidelines](/common/posting/) apply as usual.
 
 ## Recommend a post to the curators
 
@@ -41,9 +41,9 @@ Anyone can point the curators to a post they liked, as long as it isn't their ow
 2. Pick a reason: **Quality**, **Underrated**, **Newcomer** or **Other**.
 3. Select **Recommend**.
 
-The recommendation is written to the Hive chain with your posting key, so it is public. It costs only Resource Credits (about as much as two votes), and there is no daily quota. You can **Withdraw** it later.
+The recommendation is written to the Hive chain with your posting key, so it is public. It costs only Resource Credits (about as much as two votes). There is no daily quota. You can **Withdraw** it later.
 
-Each recommender has a weight based on the last 90 days. Recommendations that curators curate raise it, and ones they dismiss lower it. Everyone starts at x1.0. Ten or more recommendations at x1.2 or better earn a **Trusted recommender** chip. Weight only changes the order of the Recommended list; it never hides a post. Curators count networks, not accounts, so recommending from several accounts doesn't help.
+Each recommender has a weight based on the last 90 days. Recommendations that curators curate raise it and ones they dismiss lower it. Everyone starts at x1.0. Ten or more recommendations at x1.2 or better earn a **Trusted recommender** chip. Weight only changes the order of the Recommended list; it never hides a post. Curators count networks, not accounts, so recommending from several accounts doesn't help.
 
 ## Apply to be a guest curator
 
@@ -52,12 +52,12 @@ Seats are open to anyone while applications are open.
 1. Open the **Apply** tab (log in first).
 2. Read the curation guide.
 3. Check "How your account looks from here": your account age, reputation and your record as a recommender. None of this is a rule.
-4. Answer three questions: why you want to curate, how much time you can give and when, and a post by someone else that you would have curated.
+4. Answer three questions: why you want to curate, how much time you can give and when, plus a post by someone else that you would have curated.
 5. Tick "I have read the curation guide." and select **Send application**.
 
 The tab then shows your application status: waiting to be read, shortlisted, accepted or not this time. You can **Withdraw** it while it's open. If applications are closed, the page says so.
 
-The curation team decides together. Once enough of them endorse you and nobody objects, you join as a guest curator. A guest seat runs for about a month, and the trail follows your votes from the first day. At the end the seat ends on its own and you can apply again, or the team can make it permanent. A few hours a week is enough; there is no shift and no quota.
+The curation team decides together. Once enough of them endorse you and nobody objects, you join as a guest curator. A guest seat runs for about a month. The trail follows your votes from the first day. At the end the seat ends on its own and you can apply again, or the team can make it permanent. A few hours a week is enough; there is no shift and no quota.
 
 Recommending a few posts first is the easiest way to show how you read.
 

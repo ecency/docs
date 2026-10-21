@@ -1,6 +1,6 @@
 ---
 title: Snippets and templates
-description: Save reusable pieces of text as snippets and whole post setups as templates, and use them in the Ecency editor on web and mobile.
+description: Save reusable pieces of text as snippets and whole post setups as templates, then use them in the Ecency editor on web and mobile.
 ---
 
 Ecency has two ways to reuse what you write often:
@@ -18,7 +18,7 @@ Both are saved to your Ecency account, not to the blockchain, so they are privat
 2. Click **Add** (or **Create your first snippet** if you have none).
 3. Enter a **Title** and a **Body**, then save with **Add**.
 
-In the same window you can search snippets by title (**Search by title**), and use the menu on each snippet to **Edit** or **Delete** it.
+In the same window you can search snippets by title (**Search by title**) and use the menu on each snippet to **Edit** or **Delete** it.
 
 ### Use a snippet on the web
 

@@ -7,9 +7,9 @@ description: An introduction to Ecency, a social app on the Hive blockchain wher
   <img src="/images/ecency-logo.svg" alt="Ecency app logo" style="max-width: 180px; width: 100%; height: auto;" />
 </div>
 
-Ecency is a user-friendly social app built on the [Hive blockchain](/hive/what-is-hive/). You can create, share, discover and earn from content, and you own your account and everything you publish.
+Ecency is a user-friendly social app built on the [Hive blockchain](/hive/what-is-hive/). You can create, share, discover and earn from content. You own your account and everything you publish.
 
-You can use Ecency on the [web](https://ecency.com), which you can also install as an app (PWA), and with the [mobile apps](https://ecency.com/mobile) for Android and iOS.
+You can use Ecency on the [web](https://ecency.com) and with the [mobile apps](https://ecency.com/mobile) for Android and iOS. You can also install the web version as an app (PWA).
 
 ## How Ecency works
 
@@ -32,7 +32,7 @@ Learn more about the tokens in [Hive tokens](/common/hive-tokens/) and about rew
 
 **Create**
 
-- [Publish](/ecency/publish/): a rich editor with drafts, [scheduled posts](/ecency/scheduled-posts/), and [snippets and templates](/ecency/snippets-templates/).
+- [Publish](/ecency/publish/): a rich editor with drafts, [scheduled posts](/ecency/scheduled-posts/) and [snippets and templates](/ecency/snippets-templates/).
 - [AI assist](/ecency/ai-assist/) and [AI images](/ecency/ai-images/): help with writing and images, paid with Points.
 - [Listen](/ecency/listen/): unlock an audio version of a post with Points.
 
@@ -46,7 +46,7 @@ Learn more about the tokens in [Hive tokens](/common/hive-tokens/) and about rew
 
 **Wallet and account**
 
-- [Wallet](/ecency/wallets/about/): view balances, send tokens, power up and down, and manage savings.
+- [Wallet](/ecency/wallets/about/): view balances, send tokens, power up or down and manage savings.
 - Multiple accounts: switch between Hive accounts with ease.
 - [Notifications](/ecency/notifications-drafts-bookmarks/): alerts for votes, replies, mentions, rewards and more.
 

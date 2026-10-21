@@ -17,7 +17,7 @@ You can also go straight to `ecency.com/@yourname/permissions`. You can only ope
 
 ## View your keys
 
-The **Keys & Passwords** section lists your **owner**, **active**, **posting** and **memo** keys. A Hive account can hold more than one key of each type, and all of them are listed. Each key shows a badge for how it was created (master password, BIP44 seed, or the extension you log in with).
+The **Keys & Passwords** section lists your **owner**, **active**, **posting** and **memo** keys. A Hive account can hold more than one key of each type. All of them are listed. Each key shows a badge for how it was created (master password, BIP44 seed or the extension you log in with).
 
 Public keys are always visible. To see a private key, click the eye icon (**Reveal private key**) and enter your master password or seed phrase. Private keys can only be revealed with a master password or seed. Once revealed, you can copy them.
 
@@ -39,7 +39,7 @@ After this you can log in with either the old or the new master password, unless
 2. Select the keys to remove.
 3. Sign with your owner key.
 
-You must keep at least one key for each authority, and Ecency won't let you revoke a key if that would drop an authority below its signing threshold. You can also revoke a single key with the revoke button next to it.
+You must keep at least one key for each authority. Ecency won't let you revoke a key if that would drop an authority below its signing threshold. You can also revoke a single key with the revoke button next to it.
 
 Revoking keys needs owner authority. Browser extensions can't sign owner-level changes, so you need to enter your owner private key or master password for this step.
 
@@ -47,7 +47,7 @@ Revoking keys needs owner authority. Browser extensions can't sign owner-level c
 
 The **Posting active sessions** section lists every account (usually an app) that has posting permission on your account, with its weight. These apps can post, comment and vote for you, but they can't move funds or change keys.
 
-To remove one, click **Revoke** next to it and sign the transaction. Logging in to Ecency with an active key, master password or seed adds posting permission for `ecency.app`, and HiveSigner can add it when you authorize Ecency there. If you revoke it, it may be added again the next time you log in that way.
+To remove one, click **Revoke** next to it and sign the transaction. Logging in to Ecency with an active key, master password or seed adds posting permission for `ecency.app`. HiveSigner can add it when you authorize Ecency there. If you revoke it, it may be added again the next time you log in that way.
 
 ## Account recovery
 

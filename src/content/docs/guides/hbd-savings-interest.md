@@ -1,6 +1,6 @@
 ---
 title: Earn interest with HBD savings
-description: Move HBD into savings on Ecency, see and claim the interest, and withdraw with the 3-day waiting period.
+description: Move HBD into savings on Ecency, see and claim the interest, then withdraw with the 3-day waiting period.
 ---
 
 HBD (Hive Backed Dollars) is Hive's dollar-pegged token. HBD you keep in **savings** earns interest. The rate is set by Hive witnesses and is currently about 10% APR. You can see the live rate in the HBD savings interest card on Ecency.
@@ -19,7 +19,7 @@ Only HBD in savings earns interest. Liquid HBD and HIVE in savings don't.
 1. Log in on [ecency.com](https://ecency.com) and open your **Wallet** from your profile.
 2. Open **HBD**.
 3. Choose **Savings Deposit** ("Protect funds by requiring a 3 day withdraw waiting period").
-4. Enter the amount, an optional memo, and confirm. This needs your active key or a signer such as Hive Keychain.
+4. Enter the amount, an optional memo, then confirm. This needs your active key or a signer such as Hive Keychain.
 
 The HBD moves from your liquid balance into savings right away and starts earning interest.
 
@@ -33,7 +33,7 @@ On the HBD page you'll see the **HBD savings interest** card once you have savin
 - **Next claim**: "Available in ..." or "Ready to claim now".
 - Your **Savings balance**.
 
-When 30 days have passed since your last payment, click **Claim interest** (**Claim HBD Interest**). Ecency then sends a tiny withdrawal of 0.001 HBD from savings and cancels it in the same transaction. That balance change is what makes the chain pay out. Your savings stay where they are, and the interest is added to your savings balance.
+When 30 days have passed since your last payment, click **Claim interest** (**Claim HBD Interest**). Ecency then sends a tiny withdrawal of 0.001 HBD from savings and cancels it in the same transaction. That balance change is what makes the chain pay out. Your savings stay where they are. The interest is added to your savings balance.
 
 You don't have to claim. Any deposit or withdrawal after the 30 days also triggers the payout.
 
@@ -49,7 +49,7 @@ The 3-day wait is a Hive security rule. If someone gets hold of your active key,
 
 ### Cancelling a withdrawal
 
-Hive lets you cancel a pending savings withdrawal during the 3 days, and the funds stay in savings. Ecency's wallet doesn't have a cancel button for this yet. You can do it with any Hive wallet that supports the `cancel_transfer_from_savings` operation, signed with your active key.
+Hive lets you cancel a pending savings withdrawal during the 3 days. The funds stay in savings. Ecency's wallet doesn't have a cancel button for this yet. You can do it with any Hive wallet that supports the `cancel_transfer_from_savings` operation, signed with your active key.
 
 ## Tips
 
