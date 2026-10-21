@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import starlightThemeBlack from "starlight-theme-black";
 import starlightLlmsTxt from "starlight-llms-txt";
 
 // https://astro.build/config
@@ -22,9 +21,6 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Ecency",
-      components: {
-        Sidebar: "./src/components/Sidebar.astro",
-      },
       social: [
         { icon: "github", label: "GitHub", href: "https://github.com/ecency" },
       ],
@@ -180,24 +176,18 @@ export default defineConfig({
           projectName: "Ecency",
           description: "Ecency is a social app on the Hive blockchain. These docs cover using Ecency, Hive basics, guides and the Ecency developer tools.",
         }),
-        starlightThemeBlack({
-          navLinks: [
-            {
-              label: "Open Ecency",
-              link: "https://ecency.com",
-              attrs: {
-                target: "_blank",
-              },
-            },
-            {
-              label: "Docs",
-              link: "/get-started/what-is-ecency",
-            },
-          ],
-          footerText: "",
-        }),
       ],
-      customCss: ["./src/styles/index.css"],
+      components: {
+        SocialIcons: "./src/components/SocialIcons.astro",
+        PageTitle: "./src/components/PageTitle.astro",
+      },
+      customCss: [
+        "@fontsource/geist-sans/400.css",
+        "@fontsource/geist-sans/600.css",
+        "@fontsource/geist-sans/700.css",
+        "@fontsource/geist-mono/400.css",
+        "./src/styles/ecency.css",
+      ],
     }),
   ],
 });

@@ -2959,11 +2959,6 @@ starlight-llms-txt@0.12.0:
     unified "^11.0.5"
     unist-util-remove "^4.0.0"
 
-starlight-theme-black@0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/starlight-theme-black/-/starlight-theme-black-0.7.1.tgz#013b1201ee3262df849e82ca61ca04696ebdefeb"
-  integrity sha512-AWfrsHcPETyDsyMtBLSsUZ4HZMLcsUfF+JGNX4X/zIyOL9eU5cFi/nsJ/rf0CxjPMpe+ljZcrumdefEgQnhSoQ==
-
 std-env@^4.2.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/std-env/-/std-env-4.3.0.tgz#4e7231b61fd83219aa7f76f71fa8818b07e41321"

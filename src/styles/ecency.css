@@ -1,0 +1,77 @@
+/* Ecency look on top of default Starlight. Colors follow the Ecency web app
+   (apps/web/tailwind.config.ts in vision-web): blue #357ce6, night #081c36. */
+
+:root {
+  --sl-font: "Geist Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sl-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ecency-blue: #357ce6;
+}
+
+/* Dark theme */
+:root {
+  --sl-color-accent-low: #0c2448;
+  --sl-color-accent: #357ce6;
+  --sl-color-accent-high: #bdd4f7;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #eceef2;
+  --sl-color-gray-2: #c4c9d3;
+  --sl-color-gray-3: #8f97a6;
+  --sl-color-gray-4: #5b6372;
+  --sl-color-gray-5: #2b313c;
+  --sl-color-gray-6: #171b22;
+  --sl-color-black: #0b0d12;
+}
+
+/* Light theme */
+:root[data-theme="light"] {
+  --sl-color-accent-low: #ebf2fc;
+  --sl-color-accent: #1b68da;
+  --sl-color-accent-high: #0f3c7f;
+  --sl-color-white: #0b0d12;
+  --sl-color-gray-1: #171b22;
+  --sl-color-gray-2: #2b313c;
+  --sl-color-gray-3: #4d5563;
+  --sl-color-gray-4: #7b8494;
+  --sl-color-gray-5: #c4c9d3;
+  --sl-color-gray-6: #eceef2;
+  --sl-color-gray-7: #f6f7f9;
+  --sl-color-black: #ffffff;
+}
+
+/* Clear heading hierarchy */
+.sl-markdown-content :is(h2, h3, h4) {
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.sl-markdown-content h2 {
+  font-size: var(--sl-text-2xl);
+  margin-top: 2.25rem;
+}
+.sl-markdown-content h3 {
+  font-size: var(--sl-text-xl);
+}
+h1#_top {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Sidebar: bold group labels, quieter links, accent for the current page */
+.sidebar-content summary .group-label .large {
+  font-weight: 650;
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-white);
+}
+.sidebar-content a[aria-current="page"] {
+  background: var(--sl-color-accent-low);
+  color: var(--sl-color-accent-high);
+  font-weight: 600;
+}
+:root[data-theme="light"] .sidebar-content a[aria-current="page"] {
+  color: var(--sl-color-accent);
+}
+
+/* Header logo size */
+.site-title img {
+  height: 1.9rem;
+  width: auto;
+}

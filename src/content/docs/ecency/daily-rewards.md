@@ -18,7 +18,7 @@ Each check-in gives 0.25 Points. At most one check-in counts every 15 minutes. A
 
 Your streak is the number of days in a row with at least one check-in. Days are counted in UTC, so a new day starts at 00:00 UTC.
 
-- On the web, the **Quests** card shows "{n}-day streak". The Perks button in the top bar shows the same number.
+- On the web, the **Quests** card shows your streak, for example "5-day streak". The Perks button in the top bar shows the same number.
 - If you haven't checked in yet today, the streak turns orange with "Check in today to keep your streak alive!". Open Ecency before 00:00 UTC to keep it.
 
 ## Streak freezes
