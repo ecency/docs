@@ -212,7 +212,7 @@ Every instance has an in-browser editor behind the floating menu button, with Ap
 
 Point your domain's DNS at your server and put a reverse proxy in front of the container. With [Caddy](https://caddyserver.com/), which gets and renews certificates on its own, the whole config is:
 
-```caddyfile
+```txt
 blog.example.com {
     reverse_proxy 127.0.0.1:3000
 }
