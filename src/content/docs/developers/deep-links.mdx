@@ -3,6 +3,9 @@ title: Mobile app deep links
 description: Open posts, profiles, feeds and signing requests in the Ecency mobile app with ecency.com links and custom URL schemes.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Sequence from "../../../components/visuals/Sequence.astro";
+
 The Ecency mobile app for Android and iOS can be opened from links. You can use regular `https://ecency.com` links, which open the app when it is installed and the website otherwise, or the app's own URL schemes when you know the app is installed.
 
 This page lists the links the app understands and which screen each one opens.
@@ -121,6 +124,19 @@ The user sees your callback as the requester and must approve. The answer is sen
 <callback>?status=success&username=alice&code=<proof>&request_id=<id>
 <callback>?status=error&error=<code>&request_id=<id>
 ```
+
+<Figure caption="Your app opens the Ecency app with a callback. After the user approves, Ecency sends a signed proof to that callback, and you verify it on chain.">
+  <Sequence
+    actors={["Your app", "Ecency app", "Your callback"]}
+    messages={[
+      { from: 0, to: 1, label: "ecency://auth-request?callback=", accent: true },
+      { from: 1, to: 1, label: "User approves" },
+      { from: 1, to: 1, label: "Sign a proof with the account" },
+      { from: 1, to: 2, label: "status=success, username, code", accent: true },
+      { from: 2, to: 2, label: "Verify the proof on chain" },
+    ]}
+  />
+</Figure>
 
 The proof is a HiveSigner style login message, signed with the account's key and naming your callback's scheme and host as its audience. Verify the signature against the account's public keys on chain. Check the timestamp yourself too.
 

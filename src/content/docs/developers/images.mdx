@@ -3,6 +3,9 @@ title: Image hosting and proxy
 description: Upload images, proxy and resize remote images and load Hive avatars and covers through images.ecency.com.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Sequence from "../../../components/visuals/Sequence.astro";
+
 Ecency runs a public image service for Hive. It is available on two hostnames that serve the same API: `https://images.ecency.com` and `https://i.ecency.com`. Ecency's own apps upload to and load from `i.ecency.com`, but you can use either.
 
 You can use it to:
@@ -43,6 +46,19 @@ Build the signature like this:
 3. Send the signature as a 130-character hex string (the recovery byte followed by the 64-byte compact signature, the standard Hive signature format).
 
 The server recovers the public key from the signature and checks that it is one of the account's posting or active keys with enough weight to meet that authority's threshold.
+
+<Figure caption="The app hashes the image with the challenge string and signs the hash. The server checks the signature against the account's keys and returns a URL.">
+  <Sequence
+    actors={["Your app", "Image service"]}
+    messages={[
+      { from: 0, to: 0, label: "sha256 of challenge + image" },
+      { from: 0, to: 0, label: "Sign the hash with your key" },
+      { from: 0, to: 1, label: "POST /username/signature", accent: true },
+      { from: 1, to: 1, label: "Recover key, check account keys" },
+      { from: 1, to: 0, label: "200 with image url", accent: true },
+    ]}
+  />
+</Figure>
 
 Example with [`@ecency/sdk`](/developers/sdk/):
 
