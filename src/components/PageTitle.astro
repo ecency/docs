@@ -1,0 +1,20 @@
+---
+import Default from "@astrojs/starlight/components/PageTitle.astro";
+
+// Show the page description as a short lead under the title.
+const { entry } = Astro.locals.starlightRoute;
+const lead = entry.data.template === "splash" ? undefined : entry.data.description;
+---
+
+<Default />
+{lead && <p class="ecency-lead">{lead}</p>}
+
+<style>
+  .ecency-lead {
+    margin-top: 0.75rem;
+    font-size: var(--sl-text-lg);
+    line-height: 1.5;
+    color: var(--sl-color-gray-2);
+    max-width: 42rem;
+  }
+</style>
