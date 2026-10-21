@@ -3,7 +3,20 @@ title: Governance participation
 description: How witness votes and Decentralized Hive Fund proposals work and how your Hive Power affects your influence.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Routes from "../../../components/visuals/Routes.astro";
+
 Hive is governed by its community. Your **Hive Power (HP)** sets how much influence you have when you vote for witnesses and for Decentralized Hive Fund (DHF) proposals. Both kinds of votes use your active key.
+
+<Figure caption="Your Hive Power backs both kinds of vote. Newly powered-up HIVE starts counting after 30 days.">
+  <Routes
+    routes={[
+      { from: "Your HP", via: "Up to 30 votes", to: "Witnesses", note: "Each vote counts your full HP", accent: true },
+      { from: "Your HP", via: "Any number of votes", to: "Proposals", note: "Paid while above the return proposal" },
+      { from: "New HP", via: "After 30 days", to: "Counts in votes", note: "Witness and proposal votes" },
+    ]}
+  />
+</Figure>
 
 ## Witnesses
 

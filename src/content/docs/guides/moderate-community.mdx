@@ -3,6 +3,9 @@ title: Moderate a community
 description: How to run a Hive community on Ecency, from team roles and settings to pinning, muting and community rewards.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Flow from "../../../components/visuals/Flow.astro";
+
 Once your community exists, you run it from its page on Ecency. This guide covers the team roles, the settings, the day-to-day moderation tools and the Ecency community rewards program. If you haven't created a community yet, start with [Create a community](/guides/create-community/).
 
 Roles, settings, pins and mutes are stored on the Hive blockchain, so other community-aware Hive apps see them too.
@@ -21,6 +24,20 @@ Every account in a community has one role. Ecency shows this summary when you as
 | Muted | New posts are automatically muted |
 
 You can only assign roles below your own. An owner can set admin, mod, member, guest or muted. An admin can set mod, member, guest or muted. A moderator can set member, guest or muted.
+
+<Figure caption="Each role can set roles below its own. Muted is the bottom of the ladder.">
+  <Flow
+    vertical
+    steps={[
+      { title: "Owner", detail: "Assigns admins" },
+      { title: "Admin", detail: "Edit settings, assign mods", via: "sets" },
+      { title: "Moderator", detail: "Mute, pin, set user titles", via: "sets" },
+      { title: "Member", detail: "Listed on the leadership team", via: "sets" },
+      { title: "Guest", detail: "The default; can post and comment", via: "sets" },
+      { title: "Muted", detail: "New posts are automatically muted", via: "sets", accent: true },
+    ]}
+  />
+</Figure>
 
 The community type also matters. In a **Topic** community anyone can post or comment. In a **Journal** only members can post. Guests can only comment. In a **Council** only members can post or comment. Muted accounts can't post or comment in any type.
 

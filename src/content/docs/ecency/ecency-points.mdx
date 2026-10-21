@@ -3,6 +3,8 @@ title: Ecency Points
 description: How Ecency Points work, how to earn or buy them and what you can spend them on.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Flow from "../../../components/visuals/Flow.astro";
 import Screenshot from "../../../components/visuals/Screenshot.astro";
 import shotPointsWallet from "../../../assets/screens/points-wallet.webp";
 
@@ -11,6 +13,16 @@ Ecency Points are Ecency's reward system for being active. You earn them by usin
 Points are managed by Ecency, off-chain. They are not a token on the Hive blockchain and can't be traded outside Ecency. Transfers between users are still recorded on Hive as a custom_json operation, so they are public.
 
 <Screenshot src={shotPointsWallet} alt="The Ecency Points page in a wallet with the balance and a row of How to earn more Points icons" caption="The Points page in your wallet shows your balance and how to earn more." />
+
+<Figure caption="Points are earned by using Ecency, kept as a balance in your wallet and spent on in-app services.">
+  <Flow
+    steps={[
+      { title: "Earn", detail: "Post 15, comment 5, check in 0.25" },
+      { title: "Balance", detail: "Wallet, Points tab", via: "adds up", accent: true },
+      { title: "Spend", detail: "Promote, Boost+, AI tools", via: "you choose" },
+    ]}
+  />
+</Figure>
 
 ## How to earn Points
 

@@ -3,6 +3,9 @@ title: Power up and power down
 description: How to convert between liquid HIVE and Hive Power on Ecency, plus how to route power-down payments to other accounts.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Timeline from "../../../components/visuals/Timeline.astro";
+
 On Hive, **Hive Power (HP)** is staked HIVE. It gives you voting influence, Resource Credits and a say in governance. You move between **liquid HIVE** and **Hive Power** with Power Up and Power Down.
 
 ## Power up
@@ -31,6 +34,20 @@ Powering down turns your **Hive Power** back into **liquid HIVE**, released over
 
 - It takes **13 weeks**.
 - You receive **1/13** of the amount each week.
+
+<Figure caption="A power down pays out 1/13 of the amount each week, so it takes 13 weeks to finish.">
+  <Timeline
+    spans={[
+      { size: 1, label: "Week 1", detail: "First 1/13 paid", tone: "accent" },
+      { size: 11, label: "Weeks 2 to 12", detail: "1/13 paid each week", tone: "mid" },
+      { size: 1, label: "Week 13", detail: "Last 1/13 paid", tone: "accent" },
+    ]}
+    ticks={[
+      { at: 0, label: "Start" },
+      { at: 13, label: "13 weeks" },
+    ]}
+  />
+</Figure>
 
 ### When to power down
 

@@ -3,6 +3,8 @@ title: Ecency chats
 description: Use Ecency's hosted chat API and websocket from your Hive app, or run the same stack on your own Mattermost server.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Sequence from "../../../components/visuals/Sequence.astro";
 import { Aside } from "@astrojs/starlight/components";
 
 Ecency chat runs on [Mattermost](https://mattermost.com/). The Ecency web app wraps it in a small API under `/api/mattermost/*` and a websocket proxy, so Hive apps can offer chat without running any chat servers. This page explains how to sign a user in and which routes you can call. It also shows how to self-host the same setup.
@@ -117,6 +119,21 @@ const channels = await fetch("https://ecency.com/api/mattermost/channels", {
 ```
 
 A missing or expired token returns `401 { "error": "unauthorized" }`. Bootstrap again to get a new one.
+
+<Figure caption="Sign in once with bootstrap, then send the chat token as X-MM-Token on REST calls and as a Bearer token on the websocket.">
+  <Sequence
+    actors={["Your app", "Chat API", "Websocket"]}
+    messages={[
+      { from: 0, to: 0, label: "Get a Hive access token" },
+      { from: 0, to: 1, label: "POST /bootstrap" },
+      { from: 1, to: 1, label: "Check token with HiveSigner" },
+      { from: 1, to: 0, label: "200 with chat token" },
+      { from: 0, to: 1, label: "REST call + X-MM-Token header", accent: true },
+      { from: 0, to: 2, label: "Connect with Bearer token", accent: true },
+      { from: 2, to: 0, label: "hello event" },
+    ]}
+  />
+</Figure>
 
 ## API routes
 

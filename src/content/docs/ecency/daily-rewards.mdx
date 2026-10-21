@@ -3,6 +3,9 @@ title: Daily rewards
 description: How check-ins, streaks, streak freezes, the daily spin and daily quests earn you Ecency Points.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Flow from "../../../components/visuals/Flow.astro";
+
 Ecency rewards you for coming back. Every day you can check in, keep a streak going, spin the wheel for free Points and work through a short list of quests. All of it lives on the **Perks** page: on the web open [ecency.com/perks](https://ecency.com/perks) (the Perks button in the top bar shows your current streak). In the mobile app tap the Perks icon in the header.
 
 ## Check-in
@@ -13,6 +16,16 @@ You don't need to press anything to check in. Ecency checks you in while you use
 - **Mobile:** you are checked in when you read posts, comments or Waves.
 
 Each check-in gives 0.25 Points. At most one check-in counts every 15 minutes. After every 48 check-ins you also get a 10 Point **Usage bonus**. Both show up in your Points history.
+
+<Figure caption="Each check-in earns 0.25 Points. After 48 check-ins you also get the 10 Point Usage bonus.">
+  <Flow
+    steps={[
+      { title: "Check in", detail: "0.25 Points each" },
+      { title: "48 check-ins", detail: "At most one per 15 minutes", via: "keep going" },
+      { title: "Usage bonus", detail: "10 Points", via: "then you get", accent: true },
+    ]}
+  />
+</Figure>
 
 ## Streaks
 

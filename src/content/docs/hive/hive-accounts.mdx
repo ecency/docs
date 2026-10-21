@@ -3,6 +3,9 @@ title: Hive accounts
 description: Understand how Hive accounts work, including keys, authorities, the master password and account recovery.
 ---
 
+import Figure from "../../../components/visuals/Figure.astro";
+import Flow from "../../../components/visuals/Flow.astro";
+
 A Hive account is your identity on the Hive blockchain. You use it to post, vote, comment, transfer funds and use apps built on Hive, including Ecency. The same account works in every Hive app.
 
 ## Account structure
@@ -26,6 +29,17 @@ Every Hive account has four keys. Each key gives a different level of access, ca
 | **Active** | Transfers, power up and down, conversions, savings, market orders, Hive Power delegations, witness and proposal votes | Use it only for wallet and governance actions. |
 | **Posting** | Post, comment, edit, vote, reblog, follow, mute and update your profile | Use it for everyday activity. |
 | **Memo** | Encrypt and decrypt private memos in transfers | Needed only to read or send encrypted memos. |
+
+<Figure caption="Each key signs less than the one above it. Use the weakest key that can do the job. The memo key is separate and only handles encrypted memos.">
+  <Flow
+    vertical
+    steps={[
+      { title: "Owner", detail: "Changes any key and recovers the account", accent: true },
+      { title: "Active", detail: "Transfers, power up and down, savings, delegations, votes for witnesses and proposals", via: "Weaker key" },
+      { title: "Posting", detail: "Post, comment, vote, reblog, follow", via: "Everyday use" },
+    ]}
+  />
+</Figure>
 
 ### Posting key
 
