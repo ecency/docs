@@ -25,7 +25,7 @@ const baseCss = `
 `;
 
 // Post and wave media, even if it loads after the blur pass.
-const blurCss = `.item-image img, .entry-image img, video, iframe { filter: blur(10px) !important; }`;
+const blurCss = `.item-image img, .entry-image img, main img.object-cover, video, iframe { filter: blur(10px) !important; }`;
 
 const wanted = new Set(process.argv.slice(2));
 const list = shots.filter((s) => wanted.size === 0 || wanted.has(s.id));
@@ -59,11 +59,22 @@ for (const shot of list) {
     await page.evaluate(() => document.querySelectorAll("img[loading=lazy]").forEach((i) => (i.loading = "eager")));
     await page.waitForLoadState("load");
     await page.addStyleTag({ content: baseCss + (shot.blurImages ? blurCss : "") + (shot.css ?? "") });
+    if (shot.highlight) await highlight(page, shot.highlight);
+    await page.waitForTimeout(shot.settle ?? 800);
+    // Blur and hide last, so content that rendered late is caught too.
     await page.evaluate(
-      ({ blur, hide, blurImages }) => {
+      ({ blur, hide, blurImages, blurPosts }) => {
         for (const sel of hide) document.querySelectorAll(sel).forEach((el) => (el.style.visibility = "hidden"));
         for (const sel of blur) document.querySelectorAll(sel).forEach((el) => (el.style.filter = "blur(7px)"));
         // Other people's photos and videos: blur anything bigger than an avatar.
+        // Other people's post titles and text: links to a post, post bodies, summaries.
+        if (blurPosts) {
+          const postLink = /\/@[^/]+\/[^/?#]+$/;
+          document.querySelectorAll("main a[href]").forEach((a) => {
+            if (postLink.test(a.getAttribute("href")) && a.textContent.trim().length > 15) a.style.filter = "blur(6px)";
+          });
+          document.querySelectorAll(".item-summary, .entry-body, .markdown-view").forEach((el) => (el.style.filter = "blur(6px)"));
+        }
         if (blurImages) {
           document.querySelectorAll("img, video, iframe").forEach((el) => {
             if (el.closest("nav, header")) return;
@@ -72,10 +83,8 @@ for (const shot of list) {
           });
         }
       },
-      { blur: shot.blur ?? [], hide: shot.hide ?? [], blurImages: !!shot.blurImages },
+      { blur: shot.blur ?? [], hide: shot.hide ?? [], blurImages: !!shot.blurImages, blurPosts: !!shot.blurPosts },
     );
-    if (shot.highlight) await highlight(page, shot.highlight);
-    await page.waitForTimeout(shot.settle ?? 800);
 
     const target = shot.element ? page.locator(shot.element).first() : page;
     // With fullPage, clip coordinates are page coordinates, so a clip can sit below the fold.

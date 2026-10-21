@@ -8,6 +8,7 @@
 //   steps      functions run before the shot, e.g. to open a dialog
 //   highlight  selector(s) to ring in Ecency blue, optionally { selector, label }
 //   blurImages blur other people's photos and videos
+//   blurPosts  blur other people's post titles and text
 //   blur/hide  CSS selectors to blur or hide
 //   docs       the docs page that shows it (for people updating screenshots)
 const top = (height) => ({ x: 0, y: 0, width: 1280, height });
@@ -32,6 +33,7 @@ export const shots = [
     path: "/trending",
     clip: top(640),
     blurImages: true,
+    blurPosts: true,
     highlight: "xpath=//a[normalize-space()='Hot']/ancestor::*[.//a[normalize-space()='Promoted']][1]",
   },
   {
@@ -42,6 +44,7 @@ export const shots = [
     settle: 4000,
     clip: top(800),
     blurImages: true,
+    blurPosts: true,
   },
   {
     id: "discover",
@@ -68,6 +71,7 @@ export const shots = [
     path: "/created/hive-125125",
     clip: top(640),
     blurImages: true,
+    blurPosts: true,
   },
   {
     id: "search",
@@ -75,6 +79,7 @@ export const shots = [
     path: "/search?q=hive",
     clip: top(640),
     blurImages: true,
+    blurPosts: true,
     highlight: "text=Advanced",
   },
   {
@@ -132,6 +137,7 @@ export const shots = [
     path: "/curation",
     clip: top(640),
     blurImages: true,
+    blurPosts: true,
   },
   {
     id: "blog-hosting",
