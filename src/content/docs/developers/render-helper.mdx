@@ -1,0 +1,318 @@
+---
+title: Render helper
+description: Render Hive post Markdown into safe HTML, extract cover images and summaries and build proxied image URLs with @ecency/render-helper.
+---
+
+`@ecency/render-helper` is the library Ecency uses to turn a Hive post body (Markdown mixed with HTML) into sanitized HTML. It also finds a post's cover image, builds a plain text summary and creates proxied, resized image URLs. The web app, the mobile app and the self-hosted blog all use it, so your app renders posts the same way Ecency does.
+
+It is open source (MIT) and lives in the [vision-web monorepo](https://github.com/ecency/vision-web/tree/develop/packages/render-helper). It works in the browser, in Node.js (SSR) and in React Native.
+
+## Install
+
+```sh
+npm install @ecency/render-helper
+# or
+yarn add @ecency/render-helper
+# or
+pnpm add @ecency/render-helper
+```
+
+The package ships a browser ESM build, a Node ESM build and a Node CommonJS build. Your bundler picks the right one through the package `exports`.
+
+## Quick start
+
+```ts
+import {
+  renderPostBody,
+  catchPostImage,
+  postBodySummary,
+} from "@ecency/render-helper";
+
+// A post as returned by Hive (bridge or condenser API)
+const post = {
+  author: "alice",
+  permlink: "hello-hive",
+  last_update: "2026-10-19T05:47:42",
+  body: "Hello **Hive**!\n\n![cover](https://example.com/cover.jpg)",
+  json_metadata: { image: ["https://example.com/cover.jpg"] },
+};
+
+const html = renderPostBody(post, false);        // sanitized HTML for a website
+const cover = catchPostImage(post, 600, 0);      // proxied cover URL, 600px wide
+const summary = postBodySummary(post, 160);      // plain text, about 160 chars (whole words)
+```
+
+Always insert the output of `renderPostBody` as HTML (for example with `dangerouslySetInnerHTML` in React). It is already sanitized, so don't run it through Markdown again.
+
+## The Entry type
+
+Most functions accept either a raw string or an `Entry` object. Passing an `Entry` lets the library cache the result per post version.
+
+```ts
+interface Entry {
+  author?: string
+  permlink?: string
+  last_update?: string
+  body: any
+  json_metadata?: any
+}
+```
+
+`json_metadata` may be an object or a JSON string. Both work.
+
+## renderPostBody
+
+```ts
+function renderPostBody(
+  obj: Entry | string,
+  forApp?: boolean,          // default true
+  _webp?: boolean,           // deprecated, ignored
+  parentDomain?: string,     // default "ecency.com"
+  seoContext?: SeoContext,
+  renderOptions?: RenderOptions
+): string
+```
+
+Converts Markdown and HTML into sanitized HTML. Along the way it:
+
+- strips scripts, styles, event handlers and unsafe URL schemes,
+- proxies and resizes images (adding `srcset` plus `<picture>` sources with AVIF and WebP for static images),
+- turns links to known Hive frontends into internal post, profile and tag links,
+- turns supported video, audio and social links into embeds (see [supported embeds](#supported-embeds)).
+
+**`forApp`** picks the output style:
+
+- `true` (the default) is for native or app hosts that handle link taps themselves. Post, profile and tag links lose their `href` and carry `data-author`, `data-permlink`, `data-tag` and `data-href` attributes instead.
+- `false` is for websites. Internal links become normal relative links such as `/@alice/hello-hive`.
+
+**`parentDomain`** is passed to embeds that need it (Twitch requires a `parent` parameter). Set it to your own domain.
+
+**`seoContext`** controls `rel` on external links. By default every external link gets `rel="nofollow ugc noopener"`. When you pass the author's reputation and the post payout, high quality content can earn followed links.
+
+```ts
+interface SeoContext {
+  authorReputation?: number  // human readable reputation score
+  postPayout?: number        // total post payout in USD
+}
+```
+
+**`renderOptions`** fine-tunes the website output (`forApp: false`):
+
+```ts
+interface RenderOptions {
+  // Render video embeds as iframes right away, with no play button overlay
+  embedVideosDirectly?: boolean
+  // Render @user and #tag chips as inert <span> instead of links
+  // (useful when your site has no profile or tag pages)
+  inertAuthorAndTagChips?: boolean
+  // Absolute origin for profile section links you can't serve yourself,
+  // for example "https://ecency.com" for /@user/wallet
+  externalProfileBase?: string
+  // Keep the author's pixel width/height on <img> to reserve layout space
+  preserveImageDimensions?: boolean
+}
+```
+
+Example for a single-author blog that only serves its own posts:
+
+```ts
+const html = renderPostBody(post, false, false, "blog.example.com", undefined, {
+  inertAuthorAndTagChips: true,
+  externalProfileBase: "https://ecency.com",
+});
+```
+
+## simpleMarkdownToHTML
+
+```ts
+function simpleMarkdownToHTML(input: string): string
+```
+
+A lightweight Markdown to HTML conversion with the same sanitizer, but without the Hive specific transforms (no image proxying, link rewriting or embeds). Use it for short user text such as chat messages, comments in an editor preview or bios.
+
+## postBodySummary
+
+```ts
+function postBodySummary(
+  obj: Entry | string,
+  length?: number,                      // default 200, 0 = no truncation
+  platform?: "ios" | "android" | "web"  // default "web"
+): string
+```
+
+Returns a plain text summary of the body with Markdown, HTML and links removed. Use it for card previews and meta descriptions. Use `"ios"` or `"android"` in React Native.
+
+The summary never cuts a word in half. It keeps the last word whole, so the result can run a few characters (up to 9) past `length`. If you need a hard limit, trim the result yourself.
+
+```ts
+postBodySummary("## Title\n\nSome **bold** text and a [link](https://example.com).", 40);
+// "Title Some bold text and a link."
+```
+
+## catchPostImage
+
+```ts
+function catchPostImage(
+  obj: Entry | string,
+  width?: number,     // default 0 (original size)
+  height?: number,    // default 0
+  format?: string,    // default "match"
+  options?: { fast?: boolean }
+): string | null
+```
+
+Finds the image a post card should show and returns it as a proxied URL, or `null`. The lookup order is:
+
+1. `json_metadata.thumbnails`
+2. `json_metadata.image`
+3. the first image in the body (including a YouTube poster when a video comes first)
+
+Set `options.fast` to `true` on servers that render long feeds. It skips the last, expensive step (a full render of the body) and returns `null` in the rare cases only that step could resolve.
+
+```ts
+catchPostImage(post, 600, 500);
+// "https://i.ecency.com/p/<hash>?format=match&mode=fit&width=600&height=500"
+```
+
+### Raw image URLs
+
+When you need the original URL before proxying (for example to check a file extension or build a preload tag):
+
+```ts
+function getEntryCardImageRawUrl(obj: Entry | string): string | null
+function getEntryImageRawUrl(obj: Entry | string): string | null
+```
+
+- `getEntryCardImageRawUrl` follows the same order as `catchPostImage`, so it returns the file the card will actually load.
+- `getEntryImageRawUrl` skips `thumbnails` and looks at `json_metadata.image`, then the body. It answers "what is the first image of the post itself".
+
+## Image proxy helpers
+
+Images are served through Ecency's image proxy. The default base is `https://i.ecency.com`. See [Images API](/developers/images/) for the URL format.
+
+### setProxyBase
+
+```ts
+function setProxyBase(p: string): void
+```
+
+Points every generated image URL at another proxy base, for example your own [imagehoster](https://github.com/ecency/imagehoster) instance. Call it once at startup.
+
+```ts
+setProxyBase("https://images.example.com");
+```
+
+### proxifyImageSrc
+
+```ts
+function proxifyImageSrc(
+  url?: string,
+  width?: number,     // default 0
+  height?: number,    // default 0
+  _format?: string,   // deprecated, always "match"
+  opts?: ProxifyOptions
+): string
+
+interface ProxifyOptions {
+  blur?: boolean       // tiny blurred placeholder (LQIP)
+  forceProxy?: boolean // go through /p/ even without a size, to get WebP/AVIF
+}
+```
+
+Returns a proxied URL, or an empty string for invalid input. The proxy picks WebP or AVIF from the browser's `Accept` header. Without a size, blur or `forceProxy`, images already on Ecency's host keep their original bytes and format, which is the safest choice for Open Graph and social images.
+
+```ts
+proxifyImageSrc("https://example.com/photo.jpg", 800);
+// "https://i.ecency.com/p/<hash>?format=match&mode=fit&width=800"
+
+proxifyImageSrc("https://example.com/photo.jpg", 0, 0, "match", { blur: true });
+// "https://i.ecency.com/p/<hash>?format=match&mode=fit&blur=1"
+```
+
+### Responsive images
+
+```ts
+function buildSrcSet(url?: string): string
+function buildSrcSetForFormat(url?: string, format?: "avif" | "webp" | "match"): string
+function buildPictureSources(rawUrl?: string): { avif: string; webp: string } | null
+function isPictureEligibleRawUrl(rawUrl?: string): boolean
+function isLegacySizedProxyUrl(url?: string): boolean
+const IMAGE_SIZES: string  // "(max-width: 768px) 100vw, 700px"
+```
+
+- `buildSrcSet` returns a `srcset` with widths 320, 600, 800, 1024 and 1280.
+- `buildSrcSetForFormat` does the same but pins the format in the URL. It returns an empty string when the format can't be honored.
+- `buildPictureSources` returns AVIF and WebP `srcset` strings for a `<picture>` element, or `null` when the image isn't a static JPEG, PNG or WebP (animated and vector images keep a plain `<img>`).
+- `isPictureEligibleRawUrl` is the check `buildPictureSources` uses.
+- `isLegacySizedProxyUrl` detects old sized proxy URLs such as `https://images.hive.blog/0x0/<url>`.
+
+```tsx
+const raw = "https://example.com/photo.jpg";
+const sources = buildPictureSources(raw);
+
+<picture>
+  {sources && <source type="image/avif" srcSet={sources.avif} sizes={IMAGE_SIZES} />}
+  {sources && <source type="image/webp" srcSet={sources.webp} sizes={IMAGE_SIZES} />}
+  <img src={proxifyImageSrc(raw, 800)} srcSet={buildSrcSet(raw)} sizes={IMAGE_SIZES} alt="" />
+</picture>
+```
+
+## Embeds and safety helpers
+
+### isAllowedEmbedSrc
+
+```ts
+function isAllowedEmbedSrc(value?: string | null): boolean
+```
+
+Returns `true` only for an `https://` URL whose host is on the embed allowlist and, for providers with a known embed path, whose path matches it. Use it before you put any URL into an `<iframe src>`. It never throws.
+
+```ts
+isAllowedEmbedSrc("https://www.youtube.com/embed/dQw4w9WgXcQ"); // true
+isAllowedEmbedSrc("https://www.youtube.com/watch?v=dQw4w9WgXcQ"); // false, not an embed path
+isAllowedEmbedSrc("https://play.3speak.tv.evil.com/watch");       // false
+```
+
+### isValidPermlink
+
+```ts
+function isValidPermlink(permlink: string): boolean
+```
+
+`true` for a standard Hive permlink (lowercase letters, digits and hyphens, not ending in an image extension). Query strings and fragments are ignored.
+
+### SECTION_LIST
+
+```ts
+const SECTION_LIST: string[]
+```
+
+The profile sections the renderer treats as profile pages rather than posts: `wallet`, `feed`, `followers`, `following`, `points`, `communities`, `posts`, `blog`, `comments`, `replies`, `settings`, `engine`, `permissions`, `referrals`, `payout`, `activities`, `spk`, `trail`. A link such as `/@alice/wallet` is a profile link, not a post with permlink `wallet`.
+
+## Supported embeds
+
+`renderPostBody` turns links and pasted iframes from these providers into embeds:
+
+| Type | Providers |
+|---|---|
+| Video | YouTube (including Shorts), Vimeo, Twitch, 3Speak, DTube, Rumble, BitChute, Brighteon, Odysee and LBRY, VIMM, Loom, BrandNewTube, archive.org, Dapplr, Truvvl, Skatehive, Skatehype |
+| Audio | 3Speak Audio, Spotify, SoundCloud, Aureal, Liketu audio files (as an `<audio>` player) |
+| Social | X / Twitter posts (as a `twitter-tweet` blockquote; load X's widget script if you want the full card) |
+
+Iframes from any other host are removed.
+
+## Tuning
+
+```ts
+function setCacheSize(size: number): void
+function setSlowRenderThresholdMs(ms: number): void
+```
+
+- Rendered HTML, summaries and images are kept in an in-memory LRU cache keyed by post and version. The default holds 500 entries. Raise it on a busy server, lower it on memory constrained devices.
+- On Node.js, renders slower than 500 ms log a warning. Change the threshold with `setSlowRenderThresholdMs`, or pass `0` to turn the warning off.
+
+## Related
+
+- [Ecency SDK](/developers/sdk/): fetch posts and accounts to render.
+- [Images API](/developers/images/): the image proxy URL format.
+- [Self-hosted blog](/developers/self-hosted-blog/): a full app built on these helpers.

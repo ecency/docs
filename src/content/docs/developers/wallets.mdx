@@ -1,159 +1,220 @@
 ---
 title: Ecency wallets
+description: Use @ecency/wallets for Hive, Hive Engine, Points and external chain asset queries, MetaMask transfers and Hive key derivation.
 ---
 
-import { Code } from "@astrojs/starlight/components";
 import { Aside } from "@astrojs/starlight/components";
 
-The `@ecency/wallets` package (v2.0) provides wallet-related queries, MetaMask
-integration utilities, and Hive key derivation for the Ecency web and mobile apps.
+The `@ecency/wallets` package (currently 6.x) is the wallet layer of the Ecency web and mobile apps. It builds on
+the [Ecency SDK](/developers/sdk/) and gives you:
 
-## What's in v2.0
+- Asset queries for Hive (HIVE, HP, HBD), Hive Engine tokens and Ecency Points, re-exported from the SDK.
+- Token price and token list queries.
+- External chain balances (BTC, ETH, BNB, SOL) and MetaMask transfers for ETH, BNB and SOL.
+- MetaMask multichain discovery and Hive Snap helpers.
+- Hive key derivation from a BIP44 seed or a master password.
+- Helpers to save linked wallet addresses to the Hive profile.
 
-Version 2.0 is a major cleanup that removes seed-phrase-based wallet creation
-and replaces external chain signing with MetaMask. The package is now
-significantly smaller (~37 KB vs ~131 KB in v1.x) after dropping all `@okxweb3`
-dependencies.
-
-### Kept
-
-- **External wallet balance queries** — fetch balances for BTC, ETH, BNB, SOL
-  from the Ecency private API.
-- **Token price queries** — market data for supported currencies.
-- **Hive key derivation** — `deriveHiveKeys()` (BIP44) and
-  `deriveHiveMasterPasswordKeys()` for login and permissions flows.
-- **Wallet metadata** — save/read external wallet addresses from Hive account
-  `posting_json_metadata`.
-- **Private API mutations** — create accounts with wallets, update wallet info,
-  check wallet existence.
-
-### Added
-
-- **MetaMask multichain discovery** — `discoverMetaMaskWallets()`,
-  `fetchMultichainAddresses()`, `fetchEvmAddress()` discover ETH, BNB, SOL,
-  BTC addresses from MetaMask via `window.ethereum` and the Wallet Standard
-  protocol.
-- **Hive Snap utilities** — `installHiveSnap()` and `getHivePublicKeys()`
-  interact with the `@hiveio/metamask-snap` for Hive key management inside
-  MetaMask.
-- **EVM transfers** — `sendEvmTransfer()`, `ensureEvmChain()`,
-  `estimateEvmGas()`, `parseToWei()`, `formatWei()` for sending ETH/BNB via
-  MetaMask's `eth_sendTransaction`.
-- **SOL transfers** — `sendSolTransfer()`, `parseToLamports()`,
-  `formatLamports()` for sending SOL via MetaMask's Wallet Standard
-  `solana:signAndSendTransaction` feature.
-- **Transfer mutation hook** — `useExternalTransfer(currency)` React Query
-  mutation that routes to the correct chain signing method.
-
-### Removed
-
-- Mnemonic/seed phrase generation (`useSeedPhrase`, `mnemonicToSeedBip39`)
-- okxweb3 wallet factory and signing (`getWallet`, `signExternalTx`,
-  `buildExternalTx`)
-- Seed-based wallet creation (`useWalletCreate`, `useImportWallet`,
-  `getKeysFromSeed`)
-- Hive keys from seed query (`useHiveKeysQuery`)
-- Wallets cache query (`useWalletsCacheQuery`)
-- Memo encryption/decryption (`encryptMemo`, `decryptMemo`)
-- Direct Hive transaction signing (`signTx`, `signDigest`)
-- TRON, TON, APT currencies and their balance/info queries
-
-### Supported currencies
-
-| Currency | Balance query | Transfer (MetaMask) | Notes |
-|----------|:---:|:---:|-------|
-| BTC | Yes | No | MetaMask BTC support coming soon |
-| ETH | Yes | Yes | Via `eth_sendTransaction` |
-| BNB | Yes | Yes | Via `eth_sendTransaction` + chain switch |
-| SOL | Yes | Yes | Via Wallet Standard `signAndSendTransaction` |
+It is published on [npm](https://www.npmjs.com/package/@ecency/wallets) under the MIT license. The source is in
+[ecency/vision-web](https://github.com/ecency/vision-web/tree/develop/packages/wallets) under `packages/wallets`.
 
 ## Installation
 
-```bash
-pnpm add @ecency/wallets
+Install it together with the SDK and HiveSigner:
+
+```sh
+npm install --legacy-peer-deps @ecency/wallets @ecency/sdk hivesigner
 ```
+
+<Aside type="caution" title="Known packaging issue">
+The current release declares its `@ecency/sdk` peer dependency in a form that npm can't resolve, so a plain
+`npm install` stops with `EUNSUPPORTEDPROTOCOL`. Until a future release fixes this, install with `--legacy-peer-deps`
+as shown above. To make later installs in the same project work too, add `legacy-peer-deps=true` to the project's
+`.npmrc`. With this flag npm doesn't add peer dependencies for you, so list the ones you need (from the table below)
+in the install command.
+</Aside>
 
 Peer dependencies:
 
-```json
-{
-  "@ecency/sdk": "workspace:*",
-  "@hiveio/dhive": "^1.3.5",
-  "hivesigner": "^3.3.4",
-  "react": ">=18",
-  "@tanstack/react-query": ">=5",
-  "@wallet-standard/app": ">=1",
-  "@solana/web3.js": ">=1"
-}
+| Package | Version | Required |
+|---|---|---|
+| `@ecency/sdk` | latest | Yes, install it alongside |
+| `hivesigner` | `^4.0.0` | Yes |
+| `react` | `>=18` | Optional, needed for the hooks |
+| `@tanstack/react-query` | `>=5` | Optional, needed for the query options and hooks |
+| `@solana/web3.js` | `>=1` | Optional, only for SOL transfers |
+| `@wallet-standard/app` | `>=1` | Optional, only for MetaMask multichain discovery and SOL |
+
+Configure the SDK first (at least `ConfigManager.setQueryClient`), as described on the [SDK page](/developers/sdk/).
+
+## Supported currencies
+
+| Currency | Balance query | Transfer via MetaMask | How it signs |
+|---|:---:|:---:|---|
+| BTC | Yes | No | |
+| ETH | Yes | Yes | `eth_sendTransaction` |
+| BNB | Yes | Yes | `eth_sendTransaction` with chain switch |
+| SOL | Yes | Yes | Wallet Standard `solana:signAndSendTransaction` |
+
+The `EcencyWalletCurrency` enum has the values `BTC`, `ETH`, `BNB` and `SOL`. `EcencyWalletBasicTokens` has
+`POINTS`, `HP`, `HIVE` and `HBD`.
+
+## Asset queries
+
+These query option builders come from the SDK and are re-exported by `@ecency/wallets`, so you can import them from
+either package.
+
+### Hive
+
+| Function | Returns |
+|---|---|
+| `getHiveAssetGeneralInfoQueryOptions(username)` | HIVE balance, savings and price info |
+| `getHbdAssetGeneralInfoQueryOptions(username)` | HBD balance, savings and interest info |
+| `getHivePowerAssetGeneralInfoQueryOptions(username)` | Hive Power, delegations and power down info |
+| `getHiveAssetTransactionsQueryOptions(username, limit?, filters?)` | HIVE history (infinite) |
+| `getHbdAssetTransactionsQueryOptions(...)` / `getHivePowerAssetTransactionsQueryOptions(...)` | HBD and HP history |
+| `getHiveAssetMetricQueryOptions(...)` | HIVE market metrics |
+| `getHiveAssetWithdrawalRoutesQueryOptions(username)` | Power down withdraw routes |
+| `getHivePowerDelegatesInfiniteQueryOptions(...)` | Outgoing HP delegations |
+| `getHivePowerDelegatingsQueryOptions(username)` | Incoming HP delegations |
+| `getAccountWalletAssetInfoQueryOptions(username, asset, { currency? })` | One asset's info for any asset symbol (HIVE, HP, HBD, POINTS or an engine token) |
+
+### Hive Engine
+
+`getAllHiveEngineTokensQueryOptions`, `getHiveEngineTokensBalancesQueryOptions(username)`,
+`getHiveEngineBalancesWithUsdQueryOptions`, `getHiveEngineTokenGeneralInfoQueryOptions(username, symbol)`,
+`getHiveEngineTokensMetadataQueryOptions`, `getHiveEngineTokenTransactionsQueryOptions`,
+`getHiveEngineTokensMetricsQueryOptions`, `getHiveEngineTokensMarketQueryOptions` and
+`getHiveEngineUnclaimedRewardsQueryOptions`.
+
+### Ecency Points
+
+| Function | Returns |
+|---|---|
+| `getPointsQueryOptions(username, filter?)` | Points balance, unclaimed Points and transactions |
+| `getPointsAssetGeneralInfoQueryOptions(username)` | Points as a wallet asset |
+| `getPointsAssetTransactionsQueryOptions(...)` | Points history |
+
+Points mutation: `useClaimPoints(username, accessToken, onSuccess?, onError?)` claims pending Points.
+
+### Wallet operations
+
+`useWalletOperation(username, asset, operation, auth?)` runs a wallet action for an asset. `operation` is an
+`AssetOperation` value such as `Transfer`, `TransferToSavings`, `WithdrawFromSavings`, `Delegate`, `PowerUp`,
+`PowerDown`, `ClaimInterest`, `Convert`, `Gift`, `Claim`, `Stake`, `Unstake` or `Undelegate`.
+
+```tsx
+import { useQuery } from "@tanstack/react-query";
+import { getAccountWalletAssetInfoQueryOptions, useWalletOperation, AssetOperation } from "@ecency/wallets";
+
+const { data: hive } = useQuery(getAccountWalletAssetInfoQueryOptions("alice", "HIVE"));
+
+const transfer = useWalletOperation("alice", "HIVE", AssetOperation.Transfer, auth);
 ```
 
-`@wallet-standard/app` and `@solana/web3.js` are optional — only needed if
-using MetaMask multichain discovery or SOL transfers.
+## Wallet package queries
 
-## Example: MetaMask wallet discovery
+| Function | Returns |
+|---|---|
+| `getTokenPriceQueryOptions(currency)` | Latest USD price for a currency (BTC, ETH, SOL, BNB, HBD, HIVE) |
+| `getAllTokensListQueryOptions(username?)` | `{ basic, external, layer2 }`: the basic tokens, external currencies and Hive Engine tokens |
+| `getAccountWalletListQueryOptions(username, currency?)` | The token symbols the user chose to show in their wallet |
+| `getTokenOperationsQueryOptions(token, username, isForOwner?, currency?)` | The `AssetOperation` values available for a token |
+| `useGetExternalWalletBalanceQuery(currency, address)` | Balance of an external address (`balanceString`, `balanceBigInt`, `unit`) |
 
-export const discoveryCode = `
-import {
-  discoverMetaMaskWallets,
-  installHiveSnap,
-  getHivePublicKeys
-} from '@ecency/wallets';
+```ts
+import { useQuery } from "@tanstack/react-query";
+import { getTokenPriceQueryOptions, useGetExternalWalletBalanceQuery, EcencyWalletCurrency } from "@ecency/wallets";
 
-// Discover ETH, BNB, SOL, BTC addresses from MetaMask
+const { data: ethUsd } = useQuery(getTokenPriceQueryOptions("ETH"));
+const { data: balance } = useGetExternalWalletBalanceQuery(EcencyWalletCurrency.ETH, "0x...");
+```
+
+## MetaMask discovery
+
+```ts
+import { discoverMetaMaskWallets, installHiveSnap, getHivePublicKeys } from "@ecency/wallets";
+
+// Discover ETH, BNB, SOL and BTC addresses from MetaMask
 const addresses = await discoverMetaMaskWallets();
 // { ETH: "0x...", BNB: "0x...", SOL: "7xyz...", BTC: "bc1..." }
 
-// Install the Hive Snap and get Hive public keys
+// Install the Hive Snap and read Hive public keys
 await installHiveSnap();
 const hiveKeys = await getHivePublicKeys();
-// [{ publicKey: "STM...", role: "owner" }, ...]
-`;
-export const discoveryFileName = "discovery.ts";
+// [{ publicKey: "STM...", role: "owner", accountIndex: 0, addressIndex: 0 }, ...]
+```
 
-<Code code={discoveryCode} lang="ts" title={discoveryFileName} />
+Related helpers: `fetchMultichainAddresses()` and `fetchEvmAddress()`.
 
-## Example: send ETH via MetaMask
+## Sending ETH, BNB or SOL
 
-export const transferCode = `
-import { useExternalTransfer, EcencyWalletCurrency } from '@ecency/wallets';
+`useExternalTransfer(currency)` is a mutation that signs with MetaMask. It accepts `ETH`, `BNB` or `SOL`.
 
-function SendEthButton() {
+```tsx
+import { useExternalTransfer, EcencyWalletCurrency } from "@ecency/wallets";
+
+function SendEthButton({ linkedAddress }: { linkedAddress: string }) {
   const transfer = useExternalTransfer(EcencyWalletCurrency.ETH);
 
   const handleSend = async () => {
     const result = await transfer.mutateAsync({
       to: "0xRecipientAddress...",
-      amount: "0.05"
+      amount: "0.05",
+      expectedFrom: linkedAddress,
     });
     console.log("Tx hash:", result.txHash);
   };
 
   return <button onClick={handleSend}>Send 0.05 ETH</button>;
 }
-`;
-export const transferFileName = "send-eth.tsx";
+```
 
-<Code code={transferCode} lang="tsx" title={transferFileName} />
+Payload fields:
+
+| Field | Description |
+|---|---|
+| `to` | Recipient address |
+| `amount` | Amount as a decimal string |
+| `expectedFrom` | EVM only, optional. The address the user linked. If the active MetaMask account is a different address, the send is blocked so funds never leave the wrong account. |
+
+The result is `{ txHash, currency }`. On success, cached external balances are invalidated.
 
 <Aside type="note">
-  MetaMask handles gas estimation, signing, and broadcasting. The user sees
-  the standard MetaMask confirmation popup. For SOL, the Wallet Standard
-  protocol is used instead of `window.ethereum`.
+  MetaMask handles gas, signing and broadcasting. The user sees the normal MetaMask confirmation. For SOL the
+  Wallet Standard protocol is used instead of `window.ethereum`.
 </Aside>
 
-## Migration from v1.x
+Lower-level helpers: `sendEvmTransfer(to, amountWei, currency, expectedFrom?)`, `ensureEvmChain`,
+`estimateEvmGas`, `parseToWei`, `formatWei`, `getEvmChainConfig`, `getEvmExplorerUrl`, `sendSolTransfer(to, amountSol)`,
+`parseToLamports`, `formatLamports` and `getSolExplorerUrl`.
 
-If you were using the seed-phrase-based wallet creation flow:
+## Hive key derivation
 
-1. Remove imports of `useSeedPhrase`, `useWalletCreate`, `useImportWallet`,
-   `getKeysFromSeed`, `useHiveKeysQuery`, `useWalletsCacheQuery`.
-2. Remove imports of `signExternalTx`, `buildExternalTx`, `getWallet`.
-3. Remove `@okxweb3/*` and `bip39` from your dependencies (they are no longer
-   needed by the wallets package).
-4. For external chain transfers, use `useExternalTransfer()` which signs via
-   MetaMask.
-5. For Hive key derivation from seed, `deriveHiveKeys()` and
-   `deriveHiveMasterPasswordKeys()` still work as before — the only change is
-   the BIP32 library switched from `@okxweb3/crypto-lib` to `@scure/bip32`.
-6. Guide users with existing seed-phrase wallets to the
-   [seed phrase migration guide](/guides/seed-phrase-migration/).
+```ts
+import { deriveHiveKeys, deriveHiveMasterPasswordKeys, detectHiveKeyDerivation } from "@ecency/wallets";
+
+// From a BIP44 seed phrase
+const keys = deriveHiveKeys(mnemonic); // { owner, active, posting, memo, ownerPubkey, ... }
+
+// From a classic master password
+const legacy = deriveHiveMasterPasswordKeys("alice", masterPassword);
+
+// Which scheme matches the account on chain?
+const kind = await detectHiveKeyDerivation("alice", seedOrPassword); // "bip44" | "master-password" | "unknown"
+```
+
+Single-role versions are `deriveHiveKey(mnemonic, role, accountIndex?)` and
+`deriveHiveMasterPasswordKey(username, password, role)`. See the [seed phrase migration guide](/guides/seed-phrase-migration/)
+for what this means for users.
+
+## Saving wallet addresses to the profile
+
+`useSaveWalletInformationToMetadata(username, auth?, options?)` writes linked wallet addresses and the wallet token
+list to the user's Hive profile (`profile.tokens`). Ecency's apps read the visible wallet tokens from there.
+
+<Aside type="caution">
+  `profile.tokens` is written as a whole. If you pass a list that includes non-chain entries (for example, the
+  token picker list), any token you leave out is removed from the profile. A list with only external chain
+  entries keeps the other entries.
+</Aside>

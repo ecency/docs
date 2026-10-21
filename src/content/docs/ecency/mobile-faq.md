@@ -1,77 +1,61 @@
 ---
 title: Mobile app FAQ
-description: Quick answers for common questions about the Ecency mobile app on Android and iOS.
+description: Quick answers to common questions about the Ecency mobile app on Android and iOS.
 ---
 
-# Ecency mobile app FAQ
-
-Answers to the most common questions about installing, signing in, and using Ecency on mobile.
-
----
+Answers to the most common questions about installing, signing in to and using Ecency on mobile. For a tour of the app, see [Using the Ecency mobile app](/guides/use-mobile-app/).
 
 ## How do I install the app?
 
-- **Android**: [Play Store](https://android.ecency.com)
-- **iOS**: [App Store](https://ios.ecency.com)
-- You can also download releases from [GitHub](https://github.com/ecency/vision-mobile/releases).
-
----
+- **Android:** [Google Play](https://android.ecency.com)
+- **iOS:** [App Store](https://ios.ecency.com)
+- You can also download Android releases from [GitHub](https://github.com/ecency/vision-mobile/releases).
 
 ## What sign-in options are available?
 
-- Hive username + **posting/active key**
-- **Hive Keychain mobile** (preferred for security)
-- **Hivesigner**
-- **Hiveauth** where supported
+- **Username and password or private key.** Use your posting key for everyday use. The key is stored encrypted on your device.
+- **HiveAuth / Keychain.** Approve the login in a HiveAuth-compatible app such as Hive Keychain mobile. On mobile, Keychain works through HiveAuth.
+- **Hivesigner.** Sign in without saving a key on your device.
+- **QR code from the web.** If you are already logged in on ecency.com, open the menu and choose **Log in to Mobile**, reveal the QR code, then scan it with the QR scanner in the app.
 
-> The **owner key** should never be used to log in.
-
----
+Never use your **owner key** to log in. See [Login methods](/guides/login-methods/) for details.
 
 ## How do push notifications work?
 
-- Enable notifications when prompted at first launch or from **Settings → Notifications**.
-- You can toggle categories such as new replies, mentions, payouts, and boosts.
-- If they stop working, re-open the app while connected, and ensure battery optimizations are disabled for Ecency.
+- Allow notifications when the app asks, or turn them on in **Settings → Push Notification**.
+- Choose which kinds you get, such as votes, comments, mentions, follows, reblogs, transfers, delegations and payouts.
+- If they stop working, open the app while you are online and make sure battery optimization isn't blocking Ecency.
 
----
+## What if I don't have enough Resource Credits?
 
-## What if I don't have enough Resource Credits on mobile?
+- Buy an **Account Boost** (in-app purchase) or use **Boost+** (Points) from **Perks** for a temporary Hive Power delegation.
+- **Power up** a small amount of HIVE if you have some.
+- Wait: RC regenerates by about 20% per day.
 
-- Request a small **Boost+** from **Perks** using Ecency Points to get temporary HP and RC.
-- **Power up** a small amount of HIVE if available.
-- Reduce RC usage by avoiding repeated edits or large uploads until RC regenerates (about 20% per day).
+See [Resource Credits](/hive/resource-credits/) for more.
 
----
+## What is the difference between Boost+, Account Boost and Promote?
 
-## What is the difference between Boost+, Boost, and Promote on mobile?
+- **Boost+:** spends Points on a temporary Hive Power delegation for more RC and voting influence.
+- **Account Boost:** an in-app purchase that gives a 30-day Hive Power delegation without using Points.
+- **Promote:** spends Points to show a post in the Promoted feed. It doesn't guarantee votes.
 
-- **Boost+**: Uses Points to request HP delegations and may improve curation and RC.
-- **Boost (Account Boost)**: Mobile-only **in-app purchase** that grants a 30-day HP delegation without using Points.
-- **Promote**: Uses Points to list a post in the promoted feed; no votes guaranteed.
-
-See the [Boost and Promote guide](/ecency/boost-and-promote/) for a detailed comparison.
-
----
+See [Boost and promote](/ecency/boost-and-promote/) for a detailed comparison.
 
 ## Where can I find drafts and bookmarks?
 
-- Tap your **profile → Drafts/Bookmarks** to edit saved drafts or revisit saved posts.
-- Drafts created offline will sync when you reconnect.
-
----
+Open the side menu and tap **Drafts** or **Bookmarks**. Drafts are saved to your Ecency account, so you can continue them on the web too. See [Notifications, drafts and bookmarks](/ecency/notifications-drafts-bookmarks/).
 
 ## How do I switch accounts?
 
-1. Open the **menu**.
-2. Tap **Switch → Accounts**.
-3. Add another Hive account and pick which one to use.
+1. Open the side menu.
+2. Tap the options icon next to your name at the top.
+3. Pick another account from the list, or tap **Add an existing account** to sign in to a new one.
 
-Multiple accounts stay saved; no need to log out.
-
----
+Your accounts stay saved, so you don't need to log out to switch.
 
 ## How can I report a bug or get support?
 
-- From the app: **Menu → Help**.
+- In the app, open the side menu and tap **Docs** for the documentation.
+- Use **Settings → Send Feedback** to email the team.
 - Ask in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel) or open an issue on [GitHub](https://github.com/ecency/vision-mobile/issues).

@@ -1,17 +1,40 @@
 ---
 title: Market
+description: Trade HIVE, HBD and Hive Engine tokens on Ecency's market with Swap, Limit and Advanced modes.
 ---
 
-The market is a decentralized platform for trading tokens on the Hive blockchain. In the Ecency Market, users can access comprehensive details about Hive sales, purchase history, current price offers, and demands in chart format.
+The Ecency market at [ecency.com/market](https://ecency.com/market) lets you trade on two decentralized markets: Hive's built-in HBD/HIVE order book (Layer 1) and the Hive Engine market for Engine tokens (Layer 2). You trade directly with other users through each market's order book. Ecency never holds your funds.
 
-## How to swap funds?
+## Market modes
 
-You can carry out different tasks with your tokens by selecting the Market option on the main page. Initially, you can convert Hive to HBD or HBD to Hive instantly and without any fees, without having to wait for 3.5 days.
+Pick a mode at the top of the market page.
 
-## Will 1 Hive Dollar always be worth $1.00 USD?
+### Swap
 
-The value of Hive Dollar fluctuates around 1 USD based on the demand and supply in the market. If the price falls below 1 USD, it is recommended to convert HBD to HIVE in order to obtain HIVE tokens worth 1 USD. Conversely, if the price exceeds 1 USD, you can trade them to acquire more HIVE on the market.
+The simplest way to trade. Choose the token you have and the token you want, then enter an amount. Ecency calculates a price from the current order book and places the order for you. You see the rate, the fee and the order book impact before you sign. The order usually fills right away. If the market moves first, the rest stays open as an order you can see and cancel.
 
-## How long does it take to convert Hive Dollars to HIVE?
+Swap works between HIVE and HBD. It also works with Hive Engine tokens.
 
-The conversion of Hive Dollars to HIVE will be processed by the blockchain for a duration of 3.5 days.
+### Limit
+
+Place an order at the price you choose. Pick a trading pair: the core **HBD/HIVE** market (Layer 1) or a Hive Engine token against SWAP.HIVE (Layer 2). You see the chart, the order book, trade history and your open orders. Your order waits in the order book until someone matches it, you cancel it or it expires. Ecency sets HBD/HIVE orders to expire after 27 days.
+
+### Advanced
+
+A full trading view with a price chart, order book, trade history, an order form and your open orders as widgets you can arrange.
+
+## Fees and timing
+
+Trading on Hive's internal HIVE/HBD market has no fee. A trade is not the same as an instant conversion, though: a swap is filled from whatever orders are in the order book. A limit order only fills when another user takes the other side. Large orders can move the price, so the swap form warns you when the order book impact is high.
+
+If you'd rather convert at the blockchain's median price, use a conversion from your wallet instead. HBD to HIVE conversions take 3.5 days. See [Payouts and conversions](/ecency/wallets/payouts-and-conversions/).
+
+## Will 1 HBD always be worth $1?
+
+HBD is designed to track about 1 USD, but its market price moves with supply and demand. When HBD trades below $1, converting HBD to HIVE through the blockchain gives you about $1 worth of HIVE per HBD. When HBD trades above $1, selling it on the market gets you more HIVE.
+
+## Related
+
+- [Ecency wallet](/ecency/wallets/about/)
+- [Hive Engine tokens](/ecency/wallets/engine-tokens/)
+- [Hive tokens](/common/hive-tokens/)

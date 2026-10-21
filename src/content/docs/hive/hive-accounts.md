@@ -1,76 +1,75 @@
 ---
-title: Hive Accounts
-description: Understand how Hive accounts work, including keys, permissions, and account management.
+title: Hive accounts
+description: Understand how Hive accounts work, including keys, authorities, the master password and account recovery.
 ---
 
-# Hive Accounts
+A Hive account is your identity on the Hive blockchain. You use it to post, vote, comment, transfer funds and use apps built on Hive, including Ecency. The same account works in every Hive app.
 
-A Hive account is your identity on the Hive blockchain. It’s used to post content, vote, comment, transfer funds, and interact with decentralized applications (dApps).
+## Account structure
 
-## Account Structure
+Hive accounts have **human-readable usernames**, like `alice` or `bob123`. Each account has:
 
-Unlike traditional blockchains, Hive accounts have **human-readable usernames**, e.g., `alice`, `bob123`.
+- A **unique name** that can't be changed
+- A set of **private and public keys**
+- A **reputation score** (see [reputation](/common/reputation/))
+- **Resource Credits (RC)** for making transactions (see [Resource Credits](/hive/resource-credits/))
 
-Each account has:
+Hive accounts can't be deleted. The account and all of its activity are stored on the blockchain permanently.
 
-- A **unique name**
-- A set of **private/public keys**
-- A **reputation score**
-- Resource credits (RC) to perform actions on the blockchain
+## Keys and authorities
 
----
+Every Hive account has four keys. Each key gives a different level of access, called an authority. Use the weakest key that can do the job.
 
-## Hive Keys and Permissions
+| Key | What it can do | How to treat it |
+| --- | --- | --- |
+| **Owner** | Change any key (including the owner key) and recover the account | Keep it offline. Use it only when needed. |
+| **Active** | Transfers, power up and down, conversions, savings, market orders, Hive Power delegations, witness and proposal votes | Use it only for wallet and governance actions. |
+| **Posting** | Post, comment, edit, vote, reblog, follow, mute and update your profile | Use it for everyday activity. |
+| **Memo** | Encrypt and decrypt private memos in transfers | Needed only to read or send encrypted memos. |
 
-Every Hive account has **four distinct keys** with different roles:
+### Posting key
 
-| Key       | Use Case                         | Importance |
-|-----------|----------------------------------|------------|
-| **Owner** | Recovery, change other keys      | 🔒 Highest |
-| **Active**| Financial transactions           | 💰 Medium  |
-| **Posting**| Voting, commenting, posting     | ✍️ Daily use |
-| **Memo**  | Encrypt/decrypt memos in transfers | 🔐 Optional |
+The posting key covers social actions: posting, commenting, editing, voting, reblogging, following and muting. Profile updates, like your name, about text, avatar and cover image, also use posting authority. Most of the time, this is the only key you need. Because you use it often, it's deliberately limited: someone with only your posting key can't move your funds.
 
-> 🛡️ Keep your **owner key** extremely safe and offline. Use **posting key** for everyday tasks.
+### Active key
 
----
+The active key is for sensitive actions that involve funds or governance: transfers, powering up and down, HBD conversions, savings, market orders, delegations and votes for witnesses and proposals. Only enter it when an action needs it.
 
-## How to Create a Hive Account
+### Owner key
 
-There are several ways to create a Hive account:
+The owner key is the most powerful key. It can change every other key, including itself. It is also used to recover a compromised account. Store it offline and use it only when necessary. Browser extensions can't sign owner-level changes, so for those you enter your owner key or master password directly.
 
-- [Ecency Account Creation](https://ecency.com/signup)
-- [HiveOnBoard](https://hiveonboard.com/)
-- Purchase from other Hive users
-- Through invited services or DApps
+### Memo key
 
-Most services offer **free signups** with social verifications or optional paid accounts for faster access.
+The memo key encrypts and decrypts private memos. When you start a transfer memo with `#` in Ecency, the app encrypts it before sending so only you and the receiver can read it. Encryption happens in the wallet, not on the chain: other apps may send a `#` memo as plain public text, so check that your wallet supports encrypted memos before sending anything sensitive.
 
----
+### Master password
 
-## Managing Hive Keys
+Ecency signup generates your keys for you. The master password (or seed phrase) is used to derive all of your keys, including the owner key. Anyone with your master password can take your account and everything in it, so:
 
-You can access your Hive account using:
+- Save it somewhere safe and offline, like a password manager, an encrypted drive and a printed copy.
+- Never share it or paste it into a site you don't trust.
+- Log in with your posting key or a signing app for daily use. Keep the master password for emergencies.
 
-- [Hive Keychain](https://hive-keychain.com) – Browser extension and mobile app
-- [HiveSigner](https://hivesigner.com) – Web-based key authorization
-- Manual key import – used in Ecency apps or wallets
+To change or back up your keys, see [manage keys](/guides/manage-keys/).
 
-Always **back up your keys** and avoid storing them in unsecured places.
+## Signing in
 
----
+You can sign in to Ecency with a browser extension like Hive Keychain or Hive Keeper, with HiveSigner, with MetaMask, with HiveAuth on mobile, or with your key or seed file. See [login methods](/guides/login-methods/) for every option.
 
-## Resource Credits (RC)
+## Creating an account
 
-Hive uses a system called **Resource Credits** to avoid transaction fees. Every account has an RC balance based on their Hive Power.
+You can create a Hive account with [Ecency signup](https://ecency.com/signup) or follow the [account creation guide](/guides/create-account/). Other Hive apps and services can also create accounts.
 
-Actions like posting, voting, and transferring use small amounts of RC. If you run out, you must wait for RC to regenerate or receive a delegation.
+## Lost keys and account recovery
 
----
+If you lose your master password and owner key, nobody can recover your account. Keep offline backups in more than one place.
+
+If someone steals your account and changes your keys, your **recovery account** can help you get it back. This only works within **30 days** of the change. You also need an owner key that was valid during those 30 days. Act quickly. See the [account recovery playbook](/guides/recovery/).
 
 ## Summary
 
-- Hive accounts are **user-friendly, key-based identities**.
-- They are required to post, vote, and interact on Hive.
-- Use the right key for the right purpose.
-- Protect your keys and keep the owner key offline.
+- Hive accounts are permanent, human-readable identities.
+- Use the posting key for daily activity and the active key only for wallet and governance actions.
+- Keep the owner key and master password offline.
+- Recovery is only possible within 30 days, with a recent owner key.

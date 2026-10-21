@@ -1,79 +1,70 @@
 ---
 title: Ecency Points
-description: Learn how Ecency Points work and how to use them for Boost+ and Promote.
+description: How Ecency Points work, how to earn or buy them and what you can spend them on.
 ---
 
-# Ecency Points
+Ecency Points are Ecency's reward system for being active. You earn them by using Ecency apps and spend them on in-app services like Promote, Boost+ and AI tools.
 
-Ecency Points are a reward system built into the Ecency platform to encourage engagement and reward activity.
+Points are managed by Ecency, off-chain. They are not a token on the Hive blockchain and can't be traded outside Ecency. Transfers between users are still recorded on Hive as a custom_json operation, so they are public.
 
-These points are not stored on the Hive blockchain but are managed off-chain within the Ecency ecosystem.
+## How to earn Points
 
----
+You earn Points automatically when you use Ecency on the web or the mobile app:
 
-## How to Earn Points
+| Activity | Points |
+|---|---|
+| Publish a post | 15 |
+| Write a comment | 5 |
+| Reblog a post | 1 |
+| Vote | 0.01 x vote weight (100% vote = 1 Point) |
+| First login (one-time bonus) | 10 |
+| Check in (stay active in the app) | 0.25 |
+| Usage bonus for consistent use | 10 |
+| Delegate Hive Power to @ecency | about 100 per day for each 1,000 HP |
+| Publish in a registered community with Ecency apps | 20 per post (for the community) |
+| Invite friends | Referral reward, see [Referral](/get-started/referral/) |
 
-You can earn Ecency Points by:
+Post, comment, reblog and vote rewards get a little smaller with each repeat on the same day (UTC), so steady daily activity earns more than bursts. Delegation rewards pause if you haven't been active on Ecency for 90 days and resume when you come back.
 
-- Posting via Ecency (web, desktop, or mobile)
-- Commenting on others’ posts
-- Voting on posts using Ecency interface
-- Delegating Hive Power to @ecency account
-- Daily activity and engagement
-- Referring new users
+### Other ways to get Points
 
----
+- **Daily rewards:** complete daily quests, keep a check-in streak and spin the wheel. See [Daily rewards](/ecency/daily-rewards/).
+- **Buy Points:** by card, with HIVE or HBD, or in the mobile app. See [Buy Points](/ecency/buy-points/).
+- **Gifts:** anyone can send you Points or buy them for you as a gift.
 
-## How to Use Points
+## How to spend Points
 
-Ecency Points can be spent for:
+| Use | What it does |
+|---|---|
+| [Boost+](/ecency/boost-and-promote/) | A temporary Hive Power delegation to any account, for more RC and voting influence |
+| [Promote](/ecency/boost-and-promote/) | Show a post in the Promoted feed and across Ecency |
+| [RC top-up](/ecency/boost-and-promote/#rc-top-up) | A short-term Resource Credits boost so you can keep posting |
+| Streak freezes | Protect your check-in streak if you miss a day (300 Points each, free for [Ecency Pro](/ecency/ecency-pro/)) |
+| [AI assist](/ecency/ai-assist/) | Improve, summarize, check grammar, suggest titles and tags (a free use per action each day) |
+| [AI images](/ecency/ai-images/) | Generate images from a text prompt |
+| [Listen](/ecency/listen/) | Unlock an audio version of a post |
+| Gift | Send Points to another user |
 
-- **Boost+**: Request a temporary **Hive Power delegation** to your account.
-- **Promote**: Advertise your post in the promoted section of Ecency.
-- **Gifts**: Send points to other users as a tip or reward.
-- **Future Utilities**: Ecency is continually expanding use-cases for points.
+Prices for each service are shown in the app before you confirm.
 
----
+**Account Boost** is different: it is an in-app purchase in the mobile app and doesn't use Points. Extra daily spins are also bought in the mobile app. See [Boost and promote](/ecency/boost-and-promote/).
 
-## Boost+ vs Promote
+## Check your balance
 
-| Feature | Description |
-|--------|-------------|
-| **Boost+** | Grants temporary Hive Power delegation using your points. Can lead to curation rewards and more Resource Credits. |
-| **Promote** | Lists post in promoted sections (Web, Mobile) with no votes guaranteed. Lower cost. |
+1. Open Ecency on the web or in the mobile app.
+2. Go to your **Wallet**.
+3. Open **Points** to see your balance and history.
 
----
+## Send Points to someone
 
-## Check Your Balance
+1. Open your **Wallet** and select **Points**.
+2. Choose **Gift**.
+3. Enter the recipient, the amount and an optional memo, then confirm.
 
-To view your Ecency Points:
+To pay by card for Points that go straight to someone else, use **Gift Points** on the [Perks](https://ecency.com/perks) page.
 
-1. Open the Ecency web or mobile app.
-2. Go to your **profile** or **wallet**.
-3. You'll see **Points**, **Boosted**, and **Promoted** activity stats.
+## Learn more
 
----
-
-## Sending and Receiving Points
-
-You can send points to other users:
-
-- Go to their profile
-- Click on “Gift Points”
-- Enter the amount and optional memo
-
----
-
-## Notes
-
-- Points are **non-transferable** outside Ecency.
-- They are **not a token** on the Hive blockchain.
-- Ecency regularly supports promotions and airdrops based on activity.
-- Community does create extra utility on various self hosted games.
-- **Boost (Account Boost)** is a separate mobile-only feature purchased via in-app stores that provides a 30-day Hive Power delegation without using points.
-
----
-
-## Learn More
-
-- [Ecency Support](https://ecency.com/perks)
+- [Ecency Perks](https://ecency.com/perks)
+- [Buy Points](/ecency/buy-points/)
+- [Daily rewards](/ecency/daily-rewards/)

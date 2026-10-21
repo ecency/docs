@@ -1,13 +1,14 @@
 ---
 title: Reputation
+description: What your Hive reputation score means, how to improve it and why it can go down.
 ---
 
-Your reputation is an important indicator of your behavior and how the community perceives your work. When you join Hive, you begin with a reputation score of 25, which can change based on the number of upvotes you receive. The direction of this change is solely determined by your actions. By contributing high-quality content and engaging in meaningful discussions, you can increase your reputation and earn a good income. However, if your content involves abuse or plagiarism, receiving downvotes will inevitably lead to a decrease in your reputation.
+Your reputation score shows how the community has received your work. Every new Hive account starts at a reputation of **25**. The score changes based on the upvotes and downvotes you receive, so the direction is up to you. Quality content and meaningful discussions raise it. Abuse or plagiarism attracts downvotes, which lower it.
 
-## How to improve my Reputation score?
+## How do I improve my reputation score?
 
-The more upvotes you receive from users with high reputation, the higher your reputation score will be. Earning upvotes by giving value to the community is the greatest approach to improving your reputation score.
+Earn upvotes by adding value to the community. Upvotes from accounts with more Hive Power have more effect on your score. Votes from accounts with a negative reputation have no effect. A downvote only lowers your score if the voter's reputation is higher than yours. Consistent, original posts, helpful comments and good curation are the best ways to grow. See the [content guidelines](/common/posting/).
 
-## Why my Reputation score is going down?
+## Why is my reputation score going down?
 
-Your reputation score is affected by the upvotes and downvotes you receive. If a user with a higher reputation downvotes you, it can decrease your reputation score. However, if you have more upvotes than downvotes (taking into account the weight of each vote), your reputation score will still increase overall.
+Downvotes can lower your reputation, but only when they come from an account with a higher reputation than yours. If your upvotes outweigh your downvotes (counting the weight of each vote), your reputation still grows overall.

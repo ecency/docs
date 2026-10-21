@@ -1,103 +1,99 @@
 ---
-title: Using Ecency Mobile App
-description: Get started with the Ecency app on iOS and Android to interact with Hive anywhere.
+title: Using the Ecency mobile app
+description: Get started with the Ecency app on iOS and Android and use Hive anywhere.
 ---
 
-# Using the Ecency Mobile App
+The Ecency mobile app brings Hive to your phone. It is available for **Android** and **iOS** and lets you post, vote, comment, chat and manage your wallet on the go.
 
-The Ecency mobile app brings Hive to your fingertips. Available for **Android** and **iOS**, the app makes it easy to post, vote, comment, and manage your wallet - all on the go.
+## Download the app
 
----
-
-## Download the App
-
-- [Ecency on Android (Play Store)](https://android.ecency.com)
+- [Ecency on Android (Google Play)](https://android.ecency.com)
 - [Ecency on iOS (App Store)](https://ios.ecency.com)
 
-Also available at: [https://github.com/ecency/vision-mobile](https://github.com/ecency/vision-mobile/releases)
+Android releases are also available on [GitHub](https://github.com/ecency/vision-mobile/releases).
 
----
+## Getting started
 
-## Key Features
+1. Install and open the app.
+2. Sign in with one of these:
+   - Your username and password or private key
+   - HiveAuth / Keychain
+   - Hivesigner
+   - A QR code from the web: on ecency.com, open the menu, choose **Log in to Mobile** and scan the code with the app's QR scanner
+3. Use the tabs at the bottom: **Feed**, **Waves**, **Chats**, **Wallet** and **Notifications**.
 
-- Post and edit Hive content
-- Vote, comment, and reply
-- Use Boost+/Promote with Ecency Points
-- Purchase **Boost (Account Boost)** for 30-day HP delegation
-- View wallet and transaction history
-- Bookmark and draft posts
-- Real-time notifications
-- Manage multiple Hive accounts
+See [Login methods](/guides/login-methods/) for details on each option.
 
----
+## Key features
 
-## Getting Started
+- Read your [feed](/ecency/feed/) and post [Waves](/ecency/waves/about/)
+- Write, edit and schedule posts
+- Vote, comment and reply
+- Chat with other users in [Chats](/ecency/chats/)
+- Manage your [wallet](/ecency/wallets/about/) and Ecency Points
+- Get push notifications
+- Manage several Hive accounts
 
-1. Install and open the app
-2. Sign in using:
-    - Hive username and keys
-    - Hivesigner
-    - Hiveauth (if available)
-3. Start exploring the **Feed**, **Communities**, or **Notifications** tabs
+## Create a post
 
----
+1. Tap the create button.
+2. Write your title and body.
+3. Add tags and choose a community (optional).
+4. Attach images or videos, or create an image with AI.
+5. Set reward and beneficiary options.
+6. Publish, or schedule it for later.
 
-## Create a Post
+## AI image generator
 
-1. Tap the “+” or “pencil” icon
-2. Write your title and body
-3. Add tags and choose a community (optional)
-4. Attach images or videos
-5. Set reward/payout options
-6. Publish 🎉
+Describe the image you want and the app creates it for you, paid with Points. Insert it into a post, download it or share it. See [AI images](/ecency/ai-images/).
 
----
+## Listen to posts
+
+Listening to posts as audio is available on the web today and is coming to the mobile app in an upcoming release. See [Listen](/ecency/listen/).
 
 ## Wallet and Points
 
-- Access your wallet via the **profile tab**
-- Power up/down, send HIVE or HBD
-- Check Ecency Points, Boosted, and Promoted status
-- Check and enable Layer 2 tokens for quicker access
+- Open the **Wallet** tab to see your balances.
+- Power up or down and send HIVE or HBD.
+- Check your Ecency Points and add Hive Engine tokens for quick access.
 
----
+## Perks
 
-## Boost (Account Boost)
+Open **Perks** from the header to:
 
-- Available only on the mobile app via **in-app purchase**
-- Grants a **Hive Power delegation** for **30 days**
-- Doesn't spend your Ecency Points
+- Complete daily **quests** and keep your streak, with streak freezes to protect it
+- Take a **daily spin** to win Points
+- Use **Boost+**, **Promote a post**, **Account boost** or **Top up RC** when you're low on Resource Credits
 
----
+See [Daily rewards](/ecency/daily-rewards/) and [Boost and promote](/ecency/boost-and-promote/).
 
-## Switch Accounts
+## Explore Hive apps
 
-- Tap the **menu icon**
-- Go to **Switch ... → Accounts**
-- Add or switch between Hive accounts
+Tap **Explore** in the side menu to open the dApp browser. Browse other Hive apps inside Ecency. When an app asks you to log in with a browser extension like Keychain, Keeper or Peak Vault, choose that option and Ecency signs for you.
 
-> Ecency supports multiple accounts seamlessly, with no need to log out.
+## Email digests
 
----
+Get a regular email summary of a community, a creator or your own notifications. Manage your subscriptions in **Settings → Email digests**. See [Settings](/ecency/settings/).
 
-## Offline Use
+## Switch accounts
 
-- You can write posts or save drafts offline
-- Posts sync when you're back online
+1. Open the side menu.
+2. Tap the options icon next to your name.
+3. Pick another account, or tap **Add an existing account**.
 
----
+You don't need to log out to switch.
 
 ## Tips
 
-- Use biometric login for quick access
-- Encrypt your locally stored keys
-- Enable dark mode in settings
-- Swipe left/right to quickly navigate between tabs
-
----
+- Turn on **Finger Print / Face Unlock** in Settings for quick access.
+- Protect the app with a **PIN code**.
+- Change the **Appearance** in Settings to light, dark or your device setting.
 
 ## Support
 
 Need help?
-- Tap **Menu → Help**
-- Visit [https://discord.me/ecency](https://discord.me/ecency)
+
+- Open the side menu and tap **Docs**.
+- Use **Settings → Send Feedback** to email the team.
+- Ask in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel).
+- Read the [mobile app FAQ](/ecency/mobile-faq/).

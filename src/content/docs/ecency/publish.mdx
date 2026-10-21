@@ -1,122 +1,154 @@
 ---
 title: Publish page
+description: Write and publish posts on Ecency with the rich editor, media, polls, AI tools, scheduling and reward settings.
 ---
 
-import { Badge } from "@astrojs/starlight/components";
-
-The Ecency **Publish** page provides a rich editor for composing posts. You can drag and drop media, create polls, and style your content with a toolbar or Markdown.
+The Ecency **Publish** page at [ecency.com/publish](https://ecency.com/publish) is a rich editor for writing posts. You can format with the toolbar or keyboard shortcuts, drag and drop media, add polls and fine-tune rewards before you publish. Prefer Markdown? Use **Classic Editor** in the menu.
 
 ## Adding media
 
 ### Images
 
-- Drag and drop images or click the <Badge text="image" /> icon to upload from your device.
-- Paste an image link to embed from an external source.
+- Drag and drop images into the editor, or use the **Image** button to upload from your device, pick from your gallery, or add an image by link.
+- Use the **GIF** button to search for a GIF and **Emoji** to add emoji.
+- To create images with AI, use the **AI Image** button. See [AI images](/ecency/ai-images/).
 
 ### Videos
 
-- Paste a video URL (YouTube, 3Speak, etc.) and it will embed automatically.
-- Use the media upload to attach your own MP4 or WebM files.
+- **Upload a video:** use the **Video** button and choose **Upload and paste**. Your video is uploaded to 3Speak and embedded in the post. You can also record a clip with your camera.
+- **Add a video by link:** paste a YouTube, 3Speak, Twitch or Vimeo link and it is embedded automatically. Other videos can be added as a regular link.
+
+### Memes
+
+Use **Make a meme** to open the DecentMemes meme maker and drop a meme into your post. Adding a meme routes a small beneficiary reward to the meme creator, plus 1% to Ecency.
 
 ## Creating polls
 
-- Select the <Badge text="poll" /> option in the toolbar to insert a poll block.
-- Enter your question and up to five answer choices.
+1. Click the **Poll** button in the toolbar.
+2. Enter your question and add as many choices as you need (no duplicates).
+3. Optionally set an end time, a minimum account age for voters and how many choices each voter can pick.
+4. Click **Attach to post**.
+
+## Writing tools
+
+### AI assist
+
+Use **AI Assist** to improve your writing, check grammar, generate a title, suggest tags or write a short recap. You get free uses each day, then it costs Points. See [AI assist](/ecency/ai-assist/).
+
+### Dictation
+
+Use **Dictate** to speak your post and have it transcribed into the editor. Dictation costs Points based on the length of the recording. See [AI assist](/ecency/ai-assist/).
+
+### Translate
+
+Use the translate button to add a machine translation of your post to the end of it. Review and edit the translation before you publish.
+
+### Snippets and templates
+
+- **Snippets** are reusable pieces of text, like a signature or a footer. Insert one from the **Snippets** button in the toolbar.
+- **Templates** save a whole post (title, tags and settings) so you can start your next one from it. Use **Templates** in the menu, or **Save as template**.
+
+See [Snippets and templates](/ecency/snippets-templates/).
+
+### Location
+
+Use **Geo tag** to attach a place to your post. Search for a city or place, or use your current location, then fine-tune the pin on the map. This is done in collaboration with WorldMapPin.
 
 ## Importing content
 
-You can import an existing blog post or article into the editor instead of starting from scratch. This is useful when you want to republish your own content from another platform onto Hive.
+You can import an existing blog post or article into the editor instead of starting from scratch. This is useful when you want to republish your own content from another platform on Hive.
 
 ### How to import
 
-1. Open the [Import page](https://ecency.com/publish/import) directly, or click the <Badge text="import" /> icon in the Publish toolbar.
+1. Open the [Import page](https://ecency.com/publish/import) directly, or choose **Import** in the Publish menu.
 2. Paste the URL of the article you want to import.
-3. The content, title, images, and tags will be loaded into the editor where you can review and edit before publishing.
+3. The content, title, images and tags are loaded into the editor, where you can review and edit them before publishing.
 
 ### Supported sources
 
-- **Hive posts** - URLs from Ecency, PeakD, Hive.blog, and other Hive front-ends. The original markdown and tags are preserved.
-- **External articles** - URLs from any public website. The article text and images are extracted automatically, and a source attribution is appended at the end.
+- **Hive posts:** URLs from Ecency, PeakD, Hive.blog and other Hive front ends. The original Markdown and tags are preserved.
+- **External articles:** URLs from any public website. The article text and images are extracted automatically. A source attribution is added at the end.
 
 :::caution
 Only import content that you own or have permission to republish.
 :::
 
-## Formatting content
+## Before you publish
 
-- Use toolbar buttons for headings, lists, quotes, links, and more.
-- Switch to Markdown mode for precise control over formatting.
+Open the menu in the editor's top bar for more settings.
+
+### Rewards and beneficiaries
+
+- **Reward settings:** choose how your post rewards are paid out.
+- **Beneficiaries:** share part of your post rewards with other accounts. See [Custom beneficiary](/hive/custom-beneficiary/).
+- **Support Ecency:** on the final step you may see a chip that says **Add 5% beneficiary to support Ecency**. Click it to add @ecency as a beneficiary, or ignore it. You can set a default in your settings.
+
+Some communities ask for a share of post rewards. If a community asks for 25% or more, you'll see a notice before you publish.
+
+### Schedule a post
+
+Instead of publishing right away, open **Schedule settings** in the menu and pick a future date and time. See [Scheduled posts](/ecency/scheduled-posts/).
+
+### Drafts
+
+Your work is saved as a draft automatically. You can also **Save draft** at any time and find it later under **Drafts**. See [Notifications, drafts and bookmarks](/ecency/notifications-drafts-bookmarks/).
+
+## Share to a community
+
+Already published and want the post to reach another community? Open the post's three-dot menu and choose **Cross post**. Pick one of your communities and add a message. Rewards are automatically declined for cross posts. The discussion follows the host community's rules.
 
 ## Keyboard shortcuts
 
-Publish page supports basic keyboard shortcuts. List below.
+The editor supports these keyboard shortcuts.
 
 ### Basic actions
 
-| Command                  | Windows/Linux                 | macOS                     |     |     |
-| ------------------------ | ----------------------------- | ------------------------- | --- | --- |
-| Copy                     | Control + C                   | Cmd + C                   |     |     |
-| Cut                      | Control + X                   | Cmd + X                   |     |     |
-| Paste                    | Control + V                   | Cmd + V                   |     |     |
-| Paste without formatting | Control + Shift + V           | Cmd + Shift + V           |     |     |
-| Undo                     | Control + Z                   | Cmd + Z                   |     |     |
-| Redo                     | Control + Shift + Z           | Cmd + Shift + Z           |     |     |
-| Add a line break         | Shift + Enter Control + Enter | Shift + Enter Cmd + Enter |     |     |
+| Command                  | Windows/Linux                 | macOS                     |
+| ------------------------ | ----------------------------- | ------------------------- |
+| Copy                     | Control + C                   | Cmd + C                   |
+| Cut                      | Control + X                   | Cmd + X                   |
+| Paste                    | Control + V                   | Cmd + V                   |
+| Paste without formatting | Control + Shift + V           | Cmd + Shift + V           |
+| Undo                     | Control + Z                   | Cmd + Z                   |
+| Redo                     | Control + Shift + Z           | Cmd + Shift + Z           |
+| Add a line break         | Shift + Enter or Control + Enter | Shift + Enter or Cmd + Enter |
 
 ### Text formatting
 
-| Command          | Windows/Linux                 | macOS                     |     |     |
-| ---------------- | ----------------------------- | ------------------------- | --- | --- |
-| Bold             | Control + B                   | Cmd + B                   |     |     |
-| Italicize        | Control + I                   | Cmd + I                   |     |     |
-| Underline        | Control + U                   | Cmd + U                   |     |     |
-| Strikethrough    | Control + Shift + S           | Cmd + Shift + S           |     |     |
-| Highlight        | Control + Shift + H           | Cmd + Shift + H           |     |     |
-| Code             | Control + E                   | Cmd + E                   |     |     |
-| Add a line break | Shift + Enter Control + Enter | Shift + Enter Cmd + Enter |     |     |
+| Command          | Windows/Linux                 | macOS                     |
+| ---------------- | ----------------------------- | ------------------------- |
+| Bold             | Control + B                   | Cmd + B                   |
+| Italicize        | Control + I                   | Cmd + I                   |
+| Strikethrough    | Control + Shift + X           | Cmd + Shift + X           |
+| Code             | Control + E                   | Cmd + E                   |
+| Add a line break | Shift + Enter or Control + Enter | Shift + Enter or Cmd + Enter |
 
 ### Paragraph formatting
 
-| Command                 | Windows/Linux       | macOS           |     |     |
-| ----------------------- | ------------------- | --------------- | --- | --- |
-| Apply normal text style | Control + Alt + 0   | Cmd + Alt + 0   |     |     |
-| Apply heading style 1   | Control + Alt + 1   | Cmd + Alt + 1   |     |     |
-| Apply heading style 2   | Control + Alt + 2   | Cmd + Alt + 2   |     |     |
-| Apply heading style 3   | Control + Alt + 3   | Cmd + Alt + 3   |     |     |
-| Apply heading style 4   | Control + Alt + 4   | Cmd + Alt + 4   |     |     |
-| Apply heading style 5   | Control + Alt + 5   | Cmd + Alt + 5   |     |     |
-| Apply heading style 6   | Control + Alt + 6   | Cmd + Alt + 6   |     |     |
-| Ordered list            | Control + Shift + 7 | Cmd + Shift + 7 |     |     |
-| Bullet list             | Control + Shift + 8 | Cmd + Shift + 8 |     |     |
-| Task list               | Control + Shift + 9 | Cmd + Shift + 9 |     |     |
-| Blockquote              | Control + Shift + B | Cmd + Shift + B |     |     |
-| Left align              | Control + Shift + L | Cmd + Shift + L |     |     |
-| Center align            | Control + Shift + E | Cmd + Shift + E |     |     |
-| Right align             | Control + Shift + R | Cmd + Shift + R |     |     |
-| Justify                 | Control + Shift + J | Cmd + Shift + J |     |     |
-| Code block              | Control + Alt + C   | Cmd + Alt + C   |     |     |
-| Subscript               | Control + ,         | Cmd + ,         |     |     |
-| Superscript             | Control + .         | Cmd + .         |     |     |
+| Command                 | Windows/Linux       | macOS           |
+| ----------------------- | ------------------- | --------------- |
+| Apply normal text style | Control + Alt + 0   | Cmd + Alt + 0   |
+| Apply heading style 1   | Control + Alt + 1   | Cmd + Alt + 1   |
+| Apply heading style 2   | Control + Alt + 2   | Cmd + Alt + 2   |
+| Apply heading style 3   | Control + Alt + 3   | Cmd + Alt + 3   |
+| Apply heading style 4   | Control + Alt + 4   | Cmd + Alt + 4   |
+| Apply heading style 5   | Control + Alt + 5   | Cmd + Alt + 5   |
+| Apply heading style 6   | Control + Alt + 6   | Cmd + Alt + 6   |
+| Ordered list            | Control + Shift + 7 | Cmd + Shift + 7 |
+| Bullet list             | Control + Shift + 8 | Cmd + Shift + 8 |
+| Blockquote              | Control + Shift + B | Cmd + Shift + B |
+| Left align              | Control + Shift + L | Cmd + Shift + L |
+| Center align            | Control + Shift + E | Cmd + Shift + E |
+| Right align             | Control + Shift + R | Cmd + Shift + R |
+| Justify                 | Control + Shift + J | Cmd + Shift + J |
+| Code block              | Control + Alt + C   | Cmd + Alt + C   |
 
 ### Text selection
 
-| Command                                 | Windows/Linux       | macOS           |     |     |
-| --------------------------------------- | ------------------- | --------------- | --- | --- |
-| Select all                              | Control + A         | Cmd + A         |     |     |
-| Extend selection one character to left  | Shift + ←           | Shift + ←       |     |     |
-| Extend selection one character to right | Shift + →           | Shift + →       |     |     |
-| Extend selection one line up            | Shift + ↑           | Shift + ↑       |     |     |
-| Extend selection one line down          | Shift + ↓           | Shift + ↓       |     |     |
-| Apply heading style 5                   | Control + Alt + 5   | Cmd + Alt + 5   |     |     |
-| Apply heading style 6                   | Control + Alt + 6   | Cmd + Alt + 6   |     |     |
-| Ordered list                            | Control + Shift + 7 | Cmd + Shift + 7 |     |     |
-| Bullet list                             | Control + Shift + 8 | Cmd + Shift + 8 |     |     |
-| Task list                               | Control + Shift + 9 | Cmd + Shift + 9 |     |     |
-| Blockquote                              | Control + Shift + B | Cmd + Shift + B |     |     |
-| Left align                              | Control + Shift + L | Cmd + Shift + L |     |     |
-| Center align                            | Control + Shift + E | Cmd + Shift + E |     |     |
-| Right align                             | Control + Shift + R | Cmd + Shift + R |     |     |
-| Justify                                 | Control + Shift + J | Cmd + Shift + J |     |     |
-| Code block                              | Control + Alt + C   | Cmd + Alt + C   |     |     |
-| Subscript                               | Control + ,         | Cmd + ,         |     |     |
-| Superscript                             | Control + .         | Cmd + .         |     |     |
+| Command                                 | Windows/Linux       | macOS           |
+| --------------------------------------- | ------------------- | --------------- |
+| Select all                              | Control + A         | Cmd + A         |
+| Extend selection one character to left  | Shift + ←           | Shift + ←       |
+| Extend selection one character to right | Shift + →           | Shift + →       |
+| Extend selection one line up            | Shift + ↑           | Shift + ↑       |
+| Extend selection one line down          | Shift + ↓           | Shift + ↓       |
