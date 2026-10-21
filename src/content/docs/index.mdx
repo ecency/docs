@@ -1,12 +1,12 @@
 ---
 title: Welcome to Ecency documentation
-description: Create, earn, and explore the Hive blockchain - powered by Ecency.
+description: Guides and references for Ecency, the social app on the Hive blockchain where you create, earn and own your content.
 template: splash
 hero:
-  tagline: Create, earn, and explore the Hive blockchain - powered by Ecency.
+  tagline: Create, earn and explore the Hive blockchain with Ecency.
   actions:
     - text: Get started
-      link: /get-started/what-is-ecency
+      link: /get-started/what-is-ecency/
       icon: right-arrow
     - text: Visit Ecency
       link: https://ecency.com
@@ -18,30 +18,58 @@ import { Card, CardGrid } from "@astrojs/starlight/components";
 
 <CardGrid>
     <Card
+        title="Get started"
+        icon="star"
+    >
+        <a href="/get-started/what-is-ecency/">Learn what Ecency is, follow the first-week checklist and see how you earn.</a>
+    </Card>
+
+    <Card
         title="Hive basics"
         icon="open-book"
     >
-        <a href="/hive/what-is-hive">Learn how Hive accounts, tokens, rewards, and communities work.</a>
+        <a href="/hive/what-is-hive/">Learn how Hive accounts, keys, tokens, rewards and communities work.</a>
     </Card>
 
     <Card
         title="Using Ecency"
-        icon="information"
+        icon="pencil"
     >
-        <a href="/ecency/feed">Get started with publishing, wallet, points, and the mobile app.</a>
+        <a href="/ecency/publish/">Publish posts and Waves, chat, use AI tools and Listen, and manage your wallet and Points.</a>
     </Card>
 
     <Card
-        title="Developer Tools"
+        title="Earn and grow"
+        icon="heart"
+    >
+        <a href="/ecency/ecency-points/">Earn Points with daily rewards, boost your reach, go Pro and host your own blog.</a>
+    </Card>
+
+    <Card
+        title="Guides"
+        icon="list-format"
+    >
+        <a href="/guides/create-account/">Step-by-step guides for accounts, keys, login, delegations, savings and governance.</a>
+    </Card>
+
+    <Card
+        title="Developer tools"
         icon="rocket"
     >
-        <a href="/developers/sdk">Explore the Ecency SDK and developer resources to build on Hive.</a>
+        <a href="/developers/sdk/">Explore the Ecency SDK and developer resources to build on Hive.</a>
     </Card>
 
     <Card
-        title="Extra Services"
+        title="Extra services"
         icon="magnifier"
     >
-        <a href="/extra-services/hivesearcher">Discover tools like Hivesearcher, Hivesigner, and Hivexplorer.</a>
+        <a href="/extra-services/hivesearcher/">Discover tools like Hivesearcher, HiveSigner and Hivexplorer.</a>
+    </Card>
+
+    <Card
+        title="FAQ"
+        icon="information"
+    >
+        <a href="/faq/">Quick answers to common questions about Ecency and Hive.</a>
     </Card>
 </CardGrid>

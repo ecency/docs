@@ -1,72 +1,49 @@
 ---
-title: Ecency vs Other Frontends
-description: Compare Ecency with other Hive frontends like PeakD and Hive.blog.
+title: Why Ecency
+description: How Ecency differs from traditional social networks, how Hive frontends work, and what Ecency offers.
 ---
 
-# Ecency vs Other Hive Frontends
+Ecency is a social app built on the Hive blockchain. Unlike traditional social networks, your account and content live on a public blockchain, not on a company's servers. This page explains what that means and what Ecency offers.
 
-Hive has a rich ecosystem of frontends - apps and websites that let you interact with the blockchain. Ecency is one of the most feature-rich and modern options available, but it’s helpful to understand how it compares to others.
+## How Ecency differs from traditional social networks
 
----
+- **You own your account.** Your Hive account is controlled by your keys. Nobody else can post for you or take your account away.
+- **Your content is on the blockchain.** Posts are stored on Hive, so they stay accessible and censorship resistant.
+- **You can earn.** Posts, comments and votes can earn Hive tokens from the reward pool, and activity on Ecency earns [Ecency Points](/ecency/ecency-points/).
+- **It's open source.** Ecency's apps are developed in the open on [GitHub](https://github.com/ecency).
 
-## What is a Frontend?
+## What is a frontend?
 
-A **frontend** is an interface that connects to Hive’s decentralized backend. It allows users to:
+A **frontend** is an app or website that lets you use the Hive blockchain. With a frontend you can:
 
-- Read and post content
-- Vote, comment, and follow
-- Manage their Hive account
-- Interact with communities
+- Read and publish content
+- Vote, comment and follow
+- Manage your Hive account and wallet
+- Join communities
 
-Each frontend uses the same Hive blockchain data - but presents it differently.
+Ecency is one of several Hive frontends, including INLEO, PeakD and Hive.blog. They all read and write the **same Hive data**, so your account, posts, followers and rewards are the same in every one of them. You can use more than one and pick what fits you best.
 
----
+## What Ecency offers
 
-## Ecency Overview
+| Area | What you get on Ecency |
+| --- | --- |
+| Platforms | Web (installable as an app), Android and iOS |
+| Social | [Feed](/ecency/feed/), [Waves](/ecency/waves/about/), [communities](/hive/communities/), [chats](/ecency/chats/) and [decks](/ecency/decks/about/) |
+| Creating | A rich editor with drafts, [scheduled posts](/ecency/scheduled-posts/), [snippets and templates](/ecency/snippets-templates/), [AI assist](/ecency/ai-assist/) and [AI images](/ecency/ai-images/) |
+| Rewards | [Ecency Points](/ecency/ecency-points/), [daily rewards](/ecency/daily-rewards/) and a [referral program](/get-started/referral/) |
+| Growth | [Boost+, Promote and Account Boost](/ecency/boost-and-promote/) |
+| Wallet | A built-in [wallet](/ecency/wallets/about/) for HIVE, HBD, Hive Power, savings, [Engine tokens](/ecency/wallets/engine-tokens/) and [cross-chain wallets](/ecency/wallets/cross-chain-wallets/) |
+| Accounts | Many [login methods](/guides/login-methods/) and switching between multiple accounts |
+| Notifications | Real-time [notifications](/ecency/notifications-drafts-bookmarks/) on web and mobile |
+| Extras | [Ecency Pro](/ecency/ecency-pro/), [blog hosting](/ecency/blog-hosting/) and [Listen](/ecency/listen/) |
 
-| Feature            | Ecency                              |
-|--------------------|--------------------------------------|
-| Platforms          | Web, Desktop, iOS, Android           |
-| Boost+/Promote     | ✅ Yes (via Ecency Points)           |
-| Boost (Account Boost) | ✅ Mobile-only, in-app purchase delegation |
-| Wallet             | ✅ Built-in, with key import support |
-| Notifications      | ✅ Real-time, cross-device           |
-| Multi-account      | ✅ Seamless switching                |
-| Design             | ✨ Modern, intuitive                  |
-| Extra Rewards      | 🎁 Ecency Points bonus system        |
+## Is Ecency right for you?
 
----
+Ecency is a good fit if you want:
 
-## Comparison with Other Frontends
+- A modern app that works the same on web and mobile
+- Extra Points for being active
+- Tools to grow the reach of your content
+- An easy start if you are new to Hive
 
-| Feature        | **Ecency** | **PeakD** | **LeoFinance** | **Hive.blog** |
-|----------------|------------|-----------|----------------|---------------|
-| Multi-platform | ✅ Web, Mobile, Desktop | Web only | Web only | Web only |
-| Boost+ System  | ✅ Yes (Points) | ❌ | ❌ | ❌ |
-| Notifications  | ✅ Real-time  | ✅ via browser | ❌ | ❌ |
-| Community UI   | ✅ Yes       | ✅ Yes       | ✅ Focused | Basic         |
-| Editor         | ✍️ Rich + Markdown | Rich + Markdown | Basic | Markdown only |
-| Points System  | ✅ Ecency Points | ❌ | ❌ | ❌ |
-
----
-
-## Why Choose Ecency?
-
-- You want a **modern UI** and mobile support
-- You enjoy **earning extra points** for engagement
-- You want Boost+ or Promote tools, or Boost (Account Boost), to grow your content reach
-- You need a **smooth experience across devices**
-- You’re a beginner and want an easier onboarding
-
----
-
-## Final Thoughts
-
-All frontends access the **same Hive data**, so feel free to use more than one. Ecency is ideal for users who want:
-
-- Simplicity
-- Cross-platform access
-- Engagement rewards
-- Visual clarity
-
-Try it alongside other frontends and see what fits your needs best!
+To get started, see [what is Ecency](/get-started/what-is-ecency/) and the [onboarding checklist](/get-started/onboarding-checklist/).

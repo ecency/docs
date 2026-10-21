@@ -1,51 +1,56 @@
 ---
 title: What is Hive?
-description: Learn the basics of the Hive blockchain - a decentralized social platform powering dApps like Ecency.
+description: Learn the basics of the Hive blockchain, the fast, feeless and decentralized network that powers Ecency.
 ---
 
-# What is Hive?
+Hive is a fast, decentralized and censorship-resistant blockchain built for Web3 social apps. It launched in March 2020 as a community fork of the Steem blockchain, to keep the network decentralized and governed by its community.
 
-Hive is a fast, decentralized, and censorship-resistant blockchain built for web3 social applications. It was launched in March 2020 as a fork of the Steem blockchain by its community to preserve decentralization and community governance.
+## Key features
 
-## Key Features
+- **Decentralized**: run by a distributed set of witnesses, with no central authority.
+- **Fast and feeless**: 3-second block times and no transaction fees. Hive uses [Resource Credits](/hive/resource-credits/) instead.
+- **Permanent content**: once published, content is stored on-chain.
+- **Rewards**: content creators and curators earn tokens for taking part. See [curation and rewards](/hive/curation-and-rewards/).
+- **Web3 native**: built for social apps, games and communities.
 
-- **Decentralized**: Operated by a distributed set of witnesses, with no central authority.
-- **Fast and Scalable**: 3-second block times and feeless transactions.
-- **Immutable Content**: Once published, content is permanently stored on-chain.
-- **Rewards System**: Content creators and curators earn HIVE/HBD for participation.
-- **Web3 Native**: Built for social dApps, games, and communities.
+## The Hive ecosystem
 
-## Hive Ecosystem
+Hive powers many kinds of apps:
 
-Hive powers a variety of applications across different categories:
+- **Social apps** like Ecency, where you read, write and curate content
+- **Games** that use Hive accounts and tokens
+- **[Communities](/hive/communities/)**: topic-based groups with their own moderation
+- **Wallets and tools** like Hive Keychain, HiveSigner and Hivesearcher
 
-- **Social Media**: Ecency, PeakD, Actifit, Liketu
-- **Gaming**: Splinterlands, Ragnarok
-- **Communities**: Hive supports topic-based communities with moderation tools.
-- **Wallets and Tools**: Hive Keychain, HiveSigner, Hivesearcher
+Because every app uses the same blockchain, one Hive account works in all of them.
 
-## Hive Tokens
+## Hive tokens
 
-- **HIVE**: The main liquid token. Used for governance, power-ups, and trading.
-- **HBD (Hive Backed Dollars)**: A stablecoin aimed to stay close to $1 USD.
-- **Hive Power (HP)**: Staked HIVE that gives users influence and voting power.
+- **HIVE**: the main liquid token, used for trading, transfers and powering up.
+- **Hive Backed Dollars (HBD)**: a token designed to stay close to 1 US dollar.
+- **Hive Power (HP)**: staked HIVE that gives you influence, voting power and Resource Credits.
 
-## Hive Accounts & Keys
+Learn more in [Hive tokens](/common/hive-tokens/).
+
+## Hive accounts and keys
 
 Each Hive account has four keys:
-- **Owner**: Master key to recover or change other keys.
-- **Active**: Used for financial operations.
-- **Posting**: Used for social actions like posting, commenting, voting.
-- **Memo**: Used for encrypted/private memos in transfers.
 
-## How to Use Hive
+- **Owner**: the most powerful key, used to change other keys and recover the account.
+- **Active**: for wallet actions like transfers, and for governance votes.
+- **Posting**: for social actions like posting, commenting, voting and profile updates.
+- **Memo**: for encrypting and decrypting private memos in transfers.
 
-1. Create a Hive account (via Ecency, HiveOnBoard, etc.)
-2. Access your account using Hive Keychain or HiveSigner.
-3. Post, vote, comment, and earn rewards.
-4. Explore different dApps built on Hive.
+Learn more in [Hive accounts](/hive/hive-accounts/).
 
-## Learn More
+## How to use Hive
+
+1. [Create a Hive account](/guides/create-account/), for example with Ecency.
+2. Sign in with one of the [login methods](/guides/login-methods/).
+3. Post, vote, comment and earn rewards.
+4. Explore other apps built on Hive with the same account.
+
+## Learn more
 
 - [Hive.io](https://hive.io)
-- [Hive Whitepaper](https://hive.io/whitepaper.pdf)
+- [Governance participation](/hive/governance/)

@@ -1,42 +1,36 @@
 ---
-title: Curation and Rewards
-description: Explore how Hive rewards authors and curators through a reward pool.
+title: Curation and rewards
+description: How Hive rewards authors and curators, how to vote on Ecency, and how voting power and downvote mana work.
 ---
 
-Hive is a blockchain that rewards both **content creators** and **curators** through a shared reward pool system. When you publish content or vote on quality posts, you can **potentially** earn HIVE and HBD tokens from that reward pool.
+Hive rewards both **content creators** and **curators** from a shared reward pool. When you publish content or vote on posts, you can **potentially** earn HIVE, HBD or Hive Power from that pool.
 
----
+## Content rewards
 
-## Content Rewards
+Every post and comment on Hive can earn rewards based on:
 
-Every post or comment published on Hive is eligible for **potential** rewards based on:
+- The votes it receives
+- The vote weight and Hive Power of each voter
+- When the votes were cast
 
-- Community votes (curation)
-- Vote weight and Hive Power of voters
-- Timing of votes (early curation vs late)
+### Reward breakdown
 
-### Reward Breakdown
+- **50% to the author**
+- **50% to the curators** (the people who voted)
 
-- **50% to the author** (in HBD and/or Hive Power)
-- **50% to curators** (those who upvoted)
+The author half is normally paid half in HBD and half in Hive Power. The blockchain lowers the HBD print rate when there is a lot of HBD compared to the value of HIVE. When the print rate is reduced, part or all of the HBD half is paid as liquid HIVE instead. The print rate is currently 0, so that half is currently paid in HIVE. When you publish, you can choose the default 50% / 50% split, 100% Hive Power (shown as **Stake 100%**) or **Decline earnings**.
 
-This split applies after the 7-day payout window ends. Remember, rewards are only generated on payout. 
-Your content potentially could earn or not, it is **never guaranteed**, anything you see during 7-days period is estimation and potential reward (not guaranteed).
-Reward pool allocation of shares constantly changes as more content is created and curated. 
+Rewards are only paid at the end of the 7-day payout window. Until then, every amount you see is an estimate and can go up or down. Rewards are **never guaranteed**, and the reward pool changes constantly as more content is created and voted on.
 
----
+## Curation rewards
 
-## Curation Rewards
+Curators are people who **vote** on content. You earn curation rewards when you:
 
-Curators are users who **vote** on content. You earn rewards if:
+- Vote on content others also value
+- Vote **early**, before most of the votes arrive
+- Have more **Hive Power**, which makes your vote bigger
 
-- You vote on **high-quality content**
-- Your vote lands **early**
-- Your **Hive Power** is significant
-
-> Tip: Voting within the **24 hours window** after a post is published is often ideal for curation.
-
-### Understanding curation windows
+### Curation windows
 
 - **First 24 hours (linear rewards):** Votes cast in the first day share rewards proportionally, so two voters who use the same voting strength during this period earn the same percentage return, regardless of who voted first.
 - **24 to 72 hours (half weight):** Votes made after the first day but before 72 hours receive half the reward weight of a vote in the first window. Earlier voters keep their full share, so curators from the first window effectively gain a boost when later votes arrive.
@@ -44,55 +38,54 @@ Curators are users who **vote** on content. You earn rewards if:
 
 If no one votes during the first 24 hours, then votes placed during the second window earn the same return they would have received in the first. The same principle applies if both the first and second windows are empty: third-window voters earn as if they voted in the earliest window.
 
----
+### How curation rewards are split
 
-## Voting Power
+- Each vote adds **reward shares (rshares)** based on your Hive Power and vote weight.
+- At payout, the curation half is divided among voters **in proportion to their rshares**, adjusted by the curation windows above.
+- Example: if a post pays 10 HBD worth of curation rewards and your vote is 20% of the counted rshares, you receive about 2 HBD worth.
 
-Your ability to influence rewards depends on your **Hive Power**:
+## How to vote on Ecency
 
-- More HP = bigger vote = more potential curation reward
-- Voting uses **Voting Power**, which regenerates ~20% per day
-- You can vote ~10 full votes per day at 100% strength
+### Upvote
 
-> Use vote sliders to manage your vote weight and avoid depleting power.
+1. Click the **upvote** arrow under a post or comment.
+2. Use the slider to choose your vote weight. The slider shows an estimated value of your vote, which grows with your Hive Power.
+3. Click the upvote button to confirm.
 
----
+Upvotes add to the author's rewards and help good content reach [Trending](https://ecency.com/trending) and [Hot](https://ecency.com/hot). Receiving upvotes also raises the author's [reputation](/common/reputation/).
 
-## Reward Payout Timeline
+### Downvote
 
-- A post remains active for **7 days**
-- At the end of the window, rewards are calculated
-- Payout is sent to the author and curators
+Downvotes reduce the pending rewards of a post. Use them for spam, plagiarism, abuse or rewards you think are too high.
 
----
+1. Click the **downvote** arrow under the post or comment.
+2. Choose the downvote weight with the slider.
+3. Confirm.
 
-## Reward Types
+Downvoted rewards go back to the reward pool. Downvotes can also lower the author's reputation. Like upvotes, their strength depends on Hive Power.
 
-- **HBD** (Hive Backed Dollars) - stable value token
-- **Hive Power** - staked influence (non-liquid)
-- You can choose your preferred payout mode when posting
+## Voting power
 
-### How curator rewards are split
+Each vote uses some of your **voting power** (also called voting mana):
 
-- Each vote contributes **reward shares (rshares)** based on your Hive Power and vote weight.
-- When the 7-day payout concludes, the curation portion of the reward pool is divided among all voters **proportionally to their rshares**.
-- Earlier votes that accumulate rshares before large votes arrive tend to receive a bigger portion of the pool, because later votes are sharing the remaining pie.
-- Example: If a post awards 10 HBD to curators and your vote represents 20% of the total rshares on that post, you would receive roughly 2 HBD.
+- A full 100% upvote uses 2% of your voting power.
+- Voting power regenerates by **20% per day**.
+- So you can cast about **10 full votes per day** and stay at full power. You can vote more often, but each vote is worth less until your power recharges.
+- Lower vote weights use less voting power.
 
----
+### Downvote mana
 
-## Downvotes and Reward Redistribution
+Downvotes use a separate pool called **downvote mana**. It's **25%** of your voting power and regenerates over the same period. As long as you have downvote mana left, downvoting doesn't reduce your upvoting power.
 
-Hive also supports **downvotes**, which:
+## Reward payout timeline
 
-- Reduce the reward of low-quality/spam posts
-- Return rewards to the general pool
-- Cost a separate **downvote mana**, so they don’t harm normal voting capacity
-
----
+- A post or comment is open for votes for **7 days**.
+- At the end of the window, rewards are calculated and paid to the author, beneficiaries and curators.
+- Claim your rewards in your wallet with **Claim rewards**. See [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
 
 ## Summary
 
-- Hive rewards authors AND curators
-- Vote early on good content to earn curation rewards
-- Use your Hive Power wisely and consistently
+- Hive rewards authors and curators, 50% each.
+- Vote early on good content to earn more curation.
+- About 10 full votes per day keeps your voting power at its best.
+- Downvotes use their own mana, 25% of your voting power.

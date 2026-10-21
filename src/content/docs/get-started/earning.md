@@ -1,45 +1,61 @@
 ---
-title: How to Earn rewards on Ecency?
+title: How to earn rewards on Ecency
+description: The ways you can earn Hive tokens and Ecency Points on Ecency, and how and when rewards are paid.
 ---
 
-Ecency is powered by [Hive blockchain](https://hive.io). You can earn digital tokens on Ecency by:
+Ecency is built on the [Hive blockchain](https://hive.io), so your activity can earn real tokens. You can also earn Ecency Points for using the app.
 
-**Posting** - By sharing your content, you can earn upvotes from community members. Depending on the upvotes you receive, you may get a portion of the "rewards pool".
+## Ways to earn Hive tokens
 
-**Voting and curating** - If you discover a post and upvote it before it becomes popular, you can earn a curation reward. The reward amount will depend on the amount of Hive Power you have.
+- **Posting**: share content and receive upvotes from the community. Depending on the votes, you get a share of the reward pool.
+- **Voting and curating**: if you upvote a post before it becomes popular, you earn curation rewards. The amount depends on your Hive Power and how early you vote. See [curation and rewards](/hive/curation-and-rewards/).
+- **Staking (powering up)**: HIVE that you power up into Hive Power earns a small share of newly created HIVE.
+- **HBD savings interest**: Hive Backed Dollars (HBD) in savings earn interest. The rate is set by witnesses, currently about 10% APR. See [HBD savings interest](/guides/hbd-savings-interest/).
 
-**Purchasing** - Users can purchase Hive or Hive Dollar tokens directly through their Hive wallet using Bitcoin, Ethereum, or other cryptocurrency tokens. They are also available from other markets and exchanges including Binance.
+You can also buy HIVE or HBD on cryptocurrency exchanges and transfer them to your account.
 
-**Staking/Staking** - HIVE tokens that are staked (powered up) to Hive Power will earn a small amount of new tokens for holding.
+## How content rewards are split
 
-Content rewards (author, curation) are paid out after 7 days of publishing time, breakdown distribution of rewards: 
+Content rewards for posts and comments are paid 7 days after publishing:
 
-* 50% of the rewards you see in your local currency goes to curators/voters
-* 50% goes to author (25% as Hive Power, 25% as HBD)
+- **50%** goes to the curators (the voters).
+- **50%** goes to the author, normally half as Hive Power and half as HBD.
 
-In addition to Hive blockchain tokens, every interaction and activity on Ecency earns you Points which can be used within Ecency ecosystem.
+When the HBD print rate is reduced, the HBD part of the author reward is paid as liquid HIVE instead. The print rate is currently 0, so that part is currently paid in HIVE. Beneficiaries and your payout option, like **Stake 100%**, also change how the author reward is paid.
 
-## What kind of rewards do I have in my wallet?
+## Ecency Points
 
-There are three kinds of rewards shown in your wallet:
+Besides Hive tokens, many actions on Ecency earn [Ecency Points](/ecency/ecency-points/), which you can spend inside Ecency, for example to promote posts or boost your account.
 
-**Curation rewards** - The rewards earned for upvoting posts and comments.
+| Action | Points |
+| --- | --- |
+| Publish a post | 15 |
+| Write a comment | 5 |
+| Reblog a post | 1 |
+| Log in | 10 |
+| Check in (stay active in the app) | 0.25 |
+| Vote | 0.01 x vote weight |
+| Delegate Hive Power to @ecency | about 100 per day for each 1000 HP |
+| Register your community | 20 for each post published in it with Ecency apps |
+| Daily spin | up to 200 per day |
+| Invite friends | see the [referral program](/get-started/referral/) |
 
-**Author rewards** - The rewards earned by your own posts and comments.
+Regular use of the app also gives you extra chances to earn bonus Points. Daily check-ins, quests and the spin live on the [daily rewards](/ecency/daily-rewards/) page. You can also [buy Points](/ecency/buy-points/).
 
-**Points rewards** - Social actions and interactions like voting, commenting, posting, being active on the platform and etc, are also rewarded with Ecency points.
+## Rewards in your wallet
 
+Your wallet shows three kinds of rewards:
 
-## How do I see my post rewards?
+- **Author rewards**: earned by your own posts and comments.
+- **Curation rewards**: earned by upvoting posts and comments.
+- **Points**: earned for activity on Ecency, like posting, commenting, voting and checking in.
 
-In Wallet page (in top header on website and desktop app, bottom navigation bar on mobile app), you can see Curation rewards (the rewards earned for upvoting posts and comments) and Author rewards (the rewards earned by your own posts and comments)
+## How do I see my rewards?
 
-You can also view the same information for other users by visiting their wallet profile.
+On the website, open the **Wallet** tab on your profile. In the mobile app, open **Wallet** from the bottom navigation bar. You'll see your author and curation rewards there.
+
+You can view the same information for other users by visiting their wallet.
 
 ## When can I claim my rewards?
 
-Posts and comments remain active for 7 days and rewards are fluctuates depending on votes and market price of token, that is why rewards are approximated as pending reward. When the period is over, pending reward changes to actual reward and you are able to claim earned rewards. In your Wallet, click the Claim Rewards button to add the tokens to your account.
-
-## What is curation reward?
-
-Curators will have reward (Hive Power) from the post payout. As a result of the vote given by the curators, the post will have a certain amount of payout. The author and the curator(s) share the post payout in the ratio of 50:50. The post payout happens in 7 days. So at the end of the 7 days, the author's and curator's rewards are available for claim.
+Posts and comments stay open for votes for 7 days. During that time, the amount shown is only an estimate (pending payout), because votes and the token price can change. After 7 days, the pending payout becomes an actual reward. Click **Claim rewards** in your wallet to add the tokens to your account. If something looks stuck, see [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
