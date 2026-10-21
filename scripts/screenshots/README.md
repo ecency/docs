@@ -14,6 +14,18 @@ ECENCY_CAPTURE_UA="<user agent>" node scripts/screenshots/capture.mjs wallet    
 
 `ECENCY_CAPTURE_BASE` points the script at another host (default `https://ecency.com`).
 
+### Logged-in screens
+
+Shots marked `login: true` need a test account:
+
+```sh
+ECENCY_CAPTURE_USER="<test account>" ECENCY_CAPTURE_KEY="<its posting key>" ECENCY_CAPTURE_UA="<user agent>" node scripts/screenshots/capture.mjs chats
+```
+
+The script logs in through HiveSigner, so the account must already list `ecency.app` in its posting authority. If HiveSigner asks to grant anything new, the script stops. The session only lives in the headless browser and is never saved. Without these variables, login shots are skipped.
+
+Use a test account with no funds and a posting key, never a real account or an active or owner key.
+
 ## Add a screenshot
 
 1. Add an entry to `shots.mjs` (the fields are described at the top of that file).
@@ -29,7 +41,7 @@ import shotWallet from "../../../assets/screens/wallet.webp";
 
 ## Rules
 
-- Logged-out pages only, so no personal data ends up in the docs.
+- Logged-out pages, or the test account for screens that need a login, so no personal data ends up in the docs.
 - Use `blurImages` on any page that shows other people's posts or media.
 - Don't capture screens with bugs in them, such as raw translation keys. Crop around them or wait for the fix.
 - Write `alt` for people who can't see the image and keep `caption` to one point.

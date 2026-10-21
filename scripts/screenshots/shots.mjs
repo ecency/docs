@@ -10,6 +10,7 @@
 //   blurImages blur other people's photos and videos
 //   blurPosts  blur other people's post titles and text
 //   blur/hide  CSS selectors to blur or hide
+//   login      needs the test account (see README)
 //   docs       the docs page that shows it (for people updating screenshots)
 const top = (height) => ({ x: 0, y: 0, width: 1280, height });
 
@@ -162,5 +163,44 @@ export const shots = [
     docs: "ecency/profile",
     path: "/@ecency",
     clip: top(640),
+  },
+
+  // Logged-in screens, taken with the test account.
+  {
+    id: "chats",
+    docs: "ecency/chats",
+    path: "/chats",
+    login: true,
+    clip: top(640),
+  },
+  {
+    id: "settings",
+    docs: "ecency/settings",
+    path: "/@testers/settings",
+    login: true,
+    clip: top(800),
+  },
+  {
+    id: "permissions",
+    docs: "guides/manage-keys",
+    path: "/@testers/permissions",
+    login: true,
+    clip: top(800),
+    highlight: "text=Add/Manage keys",
+  },
+  {
+    id: "setup-external-wallets",
+    docs: "ecency/wallets/cross-chain-wallets",
+    path: "/wallet/setup-external",
+    login: true,
+    clip: top(440),
+  },
+  {
+    id: "decks-add-column",
+    docs: "ecency/decks/about",
+    path: "/decks",
+    login: true,
+    steps: [async (p) => p.getByText("Skip", { exact: true }).first().click().catch(() => {})],
+    clip: { x: 0, y: 0, width: 900, height: 800 },
   },
 ];
