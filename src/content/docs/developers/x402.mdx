@@ -1,25 +1,23 @@
 ---
-title: x402 Payments
-description: Monetize APIs and content with zero-fee HBD micropayments using the x402 payment protocol.
+title: x402 payments
+description: Charge for APIs and content with fee-free HBD micropayments using the x402 payment protocol on Hive.
 ---
 
-# x402 Payments
+The [`@hiveio/x402`](https://www.npmjs.com/package/@hiveio/x402) package brings the [x402 payment protocol](https://www.x402.org/) to Hive. Any API or content endpoint can ask for an **HBD micropayment** before it answers. Hive transfers have no fees and Hive produces a block every 3 seconds, so payments arrive in full and fast.
 
-The [`@hiveio/x402`](https://www.npmjs.com/package/@hiveio/x402) package brings the [x402 payment protocol](https://www.x402.org/) to Hive. It lets any API or content endpoint accept **HBD micropayments** - zero fees, 3-second finality, no credit cards.
-
-Published on [npm](https://www.npmjs.com/package/@hiveio/x402) under the MIT license. Source on [GitHub](https://github.com/ecency/hive-x402).
+The package is MIT licensed. The source is on [GitHub](https://github.com/ecency/hive-x402). This page describes version 0.2.x.
 
 ## How it works
 
-The x402 protocol uses HTTP status code **402 Payment Required** to negotiate payments between clients and servers:
+The protocol uses HTTP status **402 Payment Required** to negotiate a payment between a client and a server:
 
-1. Client requests a protected resource
-2. Server responds with **402** and payment requirements (amount, recipient, network)
-3. Client signs an HBD transfer transaction (without broadcasting)
-4. Client retries the request with the signed transaction in the `x-payment` header
-5. Server's middleware sends the transaction to a **facilitator** for verification and settlement
-6. Facilitator broadcasts the transaction on-chain and confirms payment
-7. Server delivers the content
+1. The client requests a protected resource.
+2. The server answers **402** with payment requirements (amount, recipient, network). They are in the JSON body and, base64 encoded, in the `x-payment` response header.
+3. The client builds and signs an HBD transfer, but does not broadcast it.
+4. The client retries the request with the signed transaction in the `x-payment` request header.
+5. The server middleware sends the payment to a **facilitator**, first to `/verify`, then to `/settle`.
+6. The facilitator checks the signature against the payer's on-chain active key, broadcasts the transfer and marks the nonce as spent.
+7. The server delivers the content and adds an `x-payment-response` header with the settlement result.
 
 ```
 Client                    Server                   Facilitator
@@ -35,20 +33,22 @@ Client                    Server                   Facilitator
   │                         │──── POST /settle ───────▶│
   │                         │◀─── { success, txId } ───│
   │◀─── 200 + content ──────│                          │
+  │     x-payment-response  │                          │
 ```
 
 ## At a glance
 
 | Feature | Details |
 |---|---|
-| Currency | HBD (Hive Backed Dollars) - pegged to ~$1 USD |
-| Transaction fees | **Zero** |
-| Finality | ~3 seconds (1 Hive block) |
+| Currency | HBD (Hive Backed Dollars), designed to track 1 USD |
+| Transaction fees | None |
+| Block time | 3 seconds |
+| Protocol versions | x402 v1 and v2 wire formats (middleware answers with v2 by default) |
 | Middleware | Express, Next.js App Router, Hono |
-| Client | Auto-pay fetch wrapper + standalone signing |
-| Facilitator | Hosted at `https://x402.ecency.com` |
-| Nonce storage | Redis (production) or SQLite (development) |
-| Node.js | >= 20 |
+| Client | Auto-pay fetch wrapper, standalone signing, browser building blocks |
+| Facilitator | Public instance at `https://x402.ecency.com`, or run your own |
+| Nonce storage | SQLite (default) or Redis |
+| Node.js | 20 or newer |
 
 ## Installation
 
@@ -58,18 +58,34 @@ npm install @hiveio/x402
 pnpm add @hiveio/x402
 ```
 
-The package uses **subpath exports** - import only what you need:
+**Dependencies.** The package installs `@hiveio/dhive`, `better-sqlite3` and `express`. `ioredis` is an optional dependency for the Redis nonce store.
+
+**Peer dependencies.** `express` (`^4.21.0 || ^5.0.0`) and `hono` (`^4.0.0`) are optional peers. Install the one your server uses.
+
+The package uses **subpath exports**, so you import only what you need:
 
 ```ts
-import { ... } from "@hiveio/x402/types";
-import { ... } from "@hiveio/x402/client";
-import { ... } from "@hiveio/x402/middleware";
-import { ... } from "@hiveio/x402/middleware/nextjs";
-import { ... } from "@hiveio/x402/middleware/hono";
-import { ... } from "@hiveio/x402/facilitator";
+import { ... } from "@hiveio/x402/types";             // constants, types, encode/decode helpers
+import { ... } from "@hiveio/x402/client";            // HiveX402Client, signing helpers
+import { ... } from "@hiveio/x402/middleware";        // Express paywall()
+import { ... } from "@hiveio/x402/middleware/nextjs"; // Next.js withPaywall()
+import { ... } from "@hiveio/x402/middleware/hono";   // Hono honoPaywall()
+import { ... } from "@hiveio/x402/facilitator";       // createFacilitator(), nonce stores
 ```
 
 ## Protect an API endpoint
+
+All three middlewares take the same options:
+
+| Option | Type | Description |
+|---|---|---|
+| `amount` | `string` or price function | HBD amount such as `"0.050 HBD"`, or a function that computes it per request |
+| `receivingAccount` | `string` | Hive account that receives the payment |
+| `facilitatorUrl` | `string` | Base URL of the facilitator |
+| `description` | `string` (optional) | Resource description shown to the payer |
+| `mimeType` | `string` (optional) | MIME type of the response |
+| `extra` | object or function (optional) | Extra fields included in the payment requirements |
+| `x402Version` | `1` or `2` (optional) | Wire format of the 402 response. Default: `2` |
 
 ### Express
 
@@ -88,8 +104,8 @@ app.get(
     description: "Premium API access",
   }),
   (req, res) => {
-    // req.payer  - the Hive account that paid
-    // req.txId   - the on-chain transaction ID
+    // req.payer: the Hive account that paid
+    // req.txId:  the on-chain transaction ID
     res.json({ message: "Premium content", payer: req.payer });
   }
 );
@@ -101,14 +117,8 @@ app.get(
 // app/api/premium/route.ts
 import { withPaywall } from "@hiveio/x402/middleware/nextjs";
 
-async function handler(
-  req: Request,
-  context: { payer: string; txId: string }
-) {
-  return Response.json({
-    message: "Premium content",
-    payer: context.payer,
-  });
+async function handler(req: Request, context: { payer: string; txId: string }) {
+  return Response.json({ message: "Premium content", payer: context.payer });
 }
 
 export const GET = withPaywall(
@@ -139,131 +149,318 @@ app.get(
   (c) => {
     const payer = c.get("payer");
     const txId = c.get("txId");
-    return c.json({ message: "Premium content", payer });
+    return c.json({ message: "Premium content", payer, txId });
   }
 );
+```
+
+### Dynamic pricing
+
+`amount` and `extra` also accept a function. It receives a `PricingContext` with the requested `resource` path and the framework's `raw` request (Express or Web `Request`, Hono `Context`). Async functions work too.
+
+```ts
+import { paywall } from "@hiveio/x402/middleware";
+import type { PricingContext } from "@hiveio/x402/types";
+import type { Request } from "express";
+
+app.get(
+  "/api/ai",
+  paywall({
+    amount: ({ raw: req }: PricingContext<Request>) =>
+      req.query.model === "premium" ? "0.500 HBD" : "0.050 HBD",
+    extra: { tiers: { basic: "0.050 HBD", premium: "0.500 HBD" } },
+    receivingAccount: "your-hive-account",
+    facilitatorUrl: "https://x402.ecency.com",
+  }),
+  handler
+);
+```
+
+The middleware computes the price again when the paid request comes in, so the facilitator always checks the payment against the server's price, not the client's.
+
+### Responses from the middleware
+
+| Status | When |
+|---|---|
+| `402` | No `x-payment` header (body and `x-payment` header carry the requirements), or verification or settlement failed (`{ error, reason }`) |
+| `400` | The `x-payment` header could not be decoded |
+| `502` | The facilitator returned an error or timed out |
+| `500` | Any other error while processing the payment |
+
+On success the handler runs and the response carries `x-payment-response`: the base64 encoded JSON `SettleResponse` (`success`, `txId`, `blockNum`, `payer`).
+
+```ts
+import { base64ToUtf8, type SettleResponse } from "@hiveio/x402/types";
+
+const header = res.headers.get("x-payment-response");
+if (header) {
+  const settlement: SettleResponse = JSON.parse(base64ToUtf8(header));
+  console.log(settlement.txId, settlement.blockNum);
+}
 ```
 
 ## Pay for a resource (client)
 
 ### Auto-pay client
 
-The `HiveX402Client` is a fetch wrapper that automatically handles 402 responses:
+`HiveX402Client` wraps `fetch` and handles 402 responses for you. It is meant for servers, scripts and AI agents that hold an active key.
 
 ```ts
 import { HiveX402Client } from "@hiveio/x402/client";
 
 const client = new HiveX402Client({
   account: "alice",
-  activeKey: "5K...", // WIF-format active key
-  maxPayment: 1.0, // max HBD per request (default: 1.000)
+  activeKey: "5K...", // WIF active key
+  maxPayment: 0.1,    // max HBD per request (default: 1.000)
 });
 
-// Transparently pays if the server returns 402
+// Pays transparently if the server returns 402
 const response = await client.fetch("https://api.example.com/premium");
 const data = await response.json();
 ```
 
+If the requested amount is above `maxPayment`, `fetch` throws instead of paying.
+
 ### Manual signing
 
-For more control, sign the payment yourself:
+For more control, parse the requirements and sign yourself:
 
 ```ts
-import { signPayment } from "@hiveio/x402/client";
+import { parseRequirements, signPayment } from "@hiveio/x402/client";
 import { HEADER_PAYMENT } from "@hiveio/x402/types";
 
-// 1. Make initial request
 const res = await fetch("https://api.example.com/premium");
 
 if (res.status === 402) {
-  // 2. Parse requirements from 402 response
-  const { accepts } = await res.json();
-  const requirements = accepts[0];
+  // Reads the x-payment header and detects v1 or v2
+  const { requirements, x402Version, resource } = parseRequirements(res);
+  if (!requirements) throw new Error("No Hive payment option offered");
 
-  // 3. Sign payment
   const paymentHeader = await signPayment({
     account: "alice",
     activeKey: "5K...",
     requirements,
+    x402Version,
+    resource,
   });
 
-  // 4. Retry with payment
   const paid = await fetch("https://api.example.com/premium", {
     headers: { [HEADER_PAYMENT]: paymentHeader },
   });
 }
 ```
 
-## Facilitator
+### Sign in the browser with a wallet extension
 
-The facilitator is a standalone service that verifies and settles payments on behalf of resource servers. Ecency hosts a public facilitator at **https://x402.ecency.com**.
+In a web app you should not ask for the user's active key. Build the unsigned transaction with `buildPaymentTransaction` (it uses Web Crypto, with no Node.js dependencies), have a Hive Keychain compatible extension sign it without broadcasting, then encode it with `encodePaymentPayload`.
 
-### API
-
-| Endpoint | Method | Description |
-|---|---|---|
-| `/verify` | POST | Verify a signed transaction without broadcasting |
-| `/settle` | POST | Verify and broadcast the transaction on-chain |
-| `/health` | GET | Health check |
-
-### Self-hosting
-
-To run your own facilitator:
+This follows the flow the open-source [Ecency blog app](/developers/self-hosted-blog/) uses for its hosting payments.
 
 ```ts
-import { createFacilitator } from "@hiveio/x402/facilitator";
+import {
+  parseRequirements,
+  buildPaymentTransaction,
+  encodePaymentPayload,
+} from "@hiveio/x402/client";
+import { HEADER_PAYMENT, isV1Requirements } from "@hiveio/x402/types";
+
+function signWithKeychain(username: string, tx: object): Promise<object> {
+  return new Promise((resolve, reject) => {
+    const keychain = (window as any).hive_keychain;
+    if (!keychain?.requestSignTx) {
+      reject(new Error("No extension with requestSignTx support found"));
+      return;
+    }
+    // Signs with the active key and returns the transaction, without broadcasting it
+    keychain.requestSignTx(username, tx, "Active", (resp: any) => {
+      if (!resp.success) return reject(new Error(resp.message || "Signing cancelled"));
+      resolve(typeof resp.result === "string" ? JSON.parse(resp.result) : resp.result);
+    });
+  });
+}
+
+export async function payAndFetch(url: string, username: string) {
+  const first = await fetch(url);
+  if (first.status !== 402) return first;
+
+  const { requirements, x402Version, resource } = parseRequirements(first);
+  if (!requirements) throw new Error("No Hive payment option offered");
+
+  // 1. Unsigned HBD transfer with a random nonce in the memo (x402:<nonce>)
+  const { transaction, nonce } = await buildPaymentTransaction({
+    account: username,
+    requirements,
+  });
+
+  // 2. The user approves the transfer in their wallet extension
+  const signedTransaction = await signWithKeychain(username, transaction);
+
+  // 3. Encode for the x-payment header (v2 echoes the accepted requirements back)
+  const header = encodePaymentPayload({
+    signedTransaction: signedTransaction as any,
+    nonce,
+    x402Version,
+    ...(isV1Requirements(requirements) ? {} : { accepted: requirements, resource }),
+  });
+
+  return fetch(url, { headers: { [HEADER_PAYMENT]: header } });
+}
+```
+
+A few things to know:
+
+- The signer must return the **exact** transaction it was given, plus signatures. Hive Keychain and Keychain compatible extensions do this with `requestSignTx`. Extensions without `requestSignTx` cannot be used.
+- HiveAuth is not supported by the Ecency blog app for x402: its protocol accepts operations, not a prebuilt transaction, so the signed result would not match the transaction built for the payment.
+- The transaction expires after 60 seconds, or earlier if the requirements say so, so sign promptly.
+- Show the amount (`getRequiredAmount(requirements)`) and the recipient (`requirements.payTo`) to the user before you call the extension.
+
+## Facilitator
+
+The facilitator verifies and settles payments for resource servers. It checks the secp256k1 signature against the payer's on-chain active keys, checks the amount, recipient, memo nonce and expiry, then broadcasts the transfer. Ecency runs a public facilitator at **https://x402.ecency.com**.
+
+### Endpoints
+
+| Method | Path | Description |
+|---|---|---|
+| GET | `/health` | Health check, returns `{ "status": "ok" }` |
+| GET | `/supported-networks` | Returns `{ "networks": ["hive:mainnet"] }` |
+| POST | `/verify` | Verify a signed payment without broadcasting. Body: `VerifyRequest`, returns `VerifyResponse` |
+| POST | `/settle` | Verify, broadcast and mark the nonce spent. Body: `SettleRequest`, returns `SettleResponse` |
+| GET | `/metrics`, `/stats` | Only when you enable metrics on your own facilitator (see below) |
+
+```sh
+curl https://x402.ecency.com/supported-networks
+# {"networks":["hive:mainnet"]}
+```
+
+### Run your own
+
+`createFacilitator()` returns an Express app:
+
+```ts
+import { createFacilitator, RedisNonceStore } from "@hiveio/x402/facilitator";
+import Redis from "ioredis";
 
 const app = createFacilitator({
-  // Optional: provide a custom Hive client
-  // hiveClient: new Client(["https://api.hive.blog"]),
-
-  // Optional: Redis URL for production nonce storage
-  // redisUrl: "redis://localhost:6379",
+  // All options are optional
+  nonceStore: new RedisNonceStore({ client: new Redis() }),
+  // dbPath: "nonces.db",       // SQLite file, used only when nonceStore is not set
+  // hiveClient: new Client([...]), // a dhive Client; by default a node pool with failover
+  rateLimit: { max: 60, windowMs: 60_000 }, // per IP; false disables it
+  // enableMetrics: true,       // adds /metrics (JSON) and /stats (HTML)
+  // metricsToken: "secret",    // Bearer token for those routes (or METRICS_TOKEN env)
 });
 
-app.listen(4020);
+app.listen(Number(process.env.FACILITATOR_PORT ?? 4020));
 ```
 
-Or use Docker Compose:
+| Option | Default | Description |
+|---|---|---|
+| `nonceStore` | SQLite store | Any object with `isSpent(nonce)` and `markSpent(nonce)` (sync or async) |
+| `dbPath` | `"nonces.db"` | SQLite path for the default store |
+| `hiveClient` | built-in node pool | A `@hiveio/dhive` `Client` to use instead |
+| `rateLimit` | `{ max: 60, windowMs: 60000 }` | In-memory per-IP limit, or `false` to disable |
+| `enableMetrics` | `false` | Serve `/metrics` and `/stats` |
+| `metricsToken` | `METRICS_TOKEN` env | Bearer token required for the metrics routes |
 
-```yaml
-services:
-  facilitator:
-    build: .
-    ports:
-      - "4020:4020"
-    environment:
-      - REDIS_URL=redis://redis:6379
-  redis:
-    image: redis:7-alpine
+When you run the facilitator module directly (`node node_modules/@hiveio/x402/dist/facilitator/index.js`), it listens on `FACILITATOR_PORT`, default **4020**.
+
+### Nonce stores
+
+Every payment memo carries a random nonce. The facilitator refuses a nonce it has already settled, which stops replays.
+
+```ts
+import { SqliteNonceStore, RedisNonceStore } from "@hiveio/x402/facilitator";
+
+// SQLite (default, zero config). Use ":memory:" for tests.
+const sqlite = new SqliteNonceStore("nonces.db");
+
+// Redis: works with ioredis or node-redis clients
+const redis = new RedisNonceStore({
+  client: redisClient,
+  prefix: "x402:nonce:", // default
+  ttlSeconds: 86400,     // default: 24 hours
+});
 ```
+
+Use Redis when you run more than one facilitator instance, so they share spent nonces.
 
 ## Types reference
 
-Key types exported from `@hiveio/x402/types`:
+The package supports both x402 wire formats. v1 keeps the amount, resource and expiry in each requirement. v2 moves the resource into the envelope and uses `amount` plus `maxTimeoutSeconds`.
 
 ```ts
-interface PaymentRequirements {
-  x402Version: number;
+// v1
+interface PaymentRequirementsV1 {
+  x402Version: 1;
   scheme: "exact";
   network: "hive:mainnet";
-  maxAmountRequired: string; // e.g. "0.050 HBD"
+  maxAmountRequired: string; // "0.050 HBD"
   resource: string;
-  payTo: string; // Hive account
-  validBefore: string; // ISO 8601
   description?: string;
   mimeType?: string;
+  payTo: string;             // Hive account
+  validBefore: string;       // ISO 8601
+  extra?: Record<string, unknown>;
 }
 
-interface PaymentPayload {
-  x402Version: number;
+interface PaymentRequiredV1 {
+  x402Version: 1;
+  accepts: PaymentRequirementsV1[];
+}
+
+// v2 (middleware default)
+interface PaymentRequirementsV2 {
   scheme: "exact";
   network: "hive:mainnet";
-  payload: {
-    signedTransaction: SignedTransaction;
-    nonce: string;
-  };
+  asset: string;             // "HBD"
+  amount: string;            // "0.050 HBD"
+  payTo: string;
+  maxTimeoutSeconds: number;
+  extra: Record<string, unknown>;
 }
+
+interface PaymentRequiredV2 {
+  x402Version: 2;
+  error?: string;
+  resource: { url: string; description?: string; mimeType?: string };
+  accepts: PaymentRequirementsV2[];
+  extensions?: Record<string, unknown>;
+}
+
+type PaymentRequirements = PaymentRequirementsV1 | PaymentRequirementsV2;
+type PaymentRequired = PaymentRequiredV1 | PaymentRequiredV2;
+
+// Sent in the x-payment request header (base64 JSON)
+interface PaymentPayloadV1 {
+  x402Version: 1;
+  scheme: "exact";
+  network: "hive:mainnet";
+  payload: { signedTransaction: SignedTransaction; nonce: string };
+}
+
+interface PaymentPayloadV2 {
+  x402Version: 2;
+  accepted: PaymentRequirementsV2;
+  resource?: { url: string; description?: string; mimeType?: string };
+  payload: { signedTransaction: SignedTransaction; nonce: string };
+  extensions?: Record<string, unknown>;
+}
+
+// Facilitator requests and responses
+interface VerifyRequest {
+  paymentPayload: PaymentPayload;
+  paymentRequirements: PaymentRequirements;
+  validBefore?: string; // for v2, since v2 requirements have no validBefore
+}
+
+interface VerifyResponse {
+  isValid: boolean;
+  invalidReason?: string;
+  payer?: string;
+}
+
+type SettleRequest = VerifyRequest;
 
 interface SettleResponse {
   success: boolean;
@@ -274,26 +471,35 @@ interface SettleResponse {
 }
 ```
 
-### Utility functions
+### Constants and helpers
 
 ```ts
 import {
+  HEADER_PAYMENT,          // "x-payment"
+  HEADER_PAYMENT_RESPONSE, // "x-payment-response"
+  HIVE_NETWORK,            // "hive:mainnet"
+  X402_VERSION,            // 1
+  X402_VERSION_V2,         // 2
   encodePayment,
   decodePayment,
+  encodePaymentRequired,
+  decodePaymentRequired,
+  getRequiredAmount,       // amount from v1 or v2 requirements
+  isV1Requirements,
+  isV1Payload,
+  isV2Payload,
   formatHBD,
   parseHBD,
 } from "@hiveio/x402/types";
 
-formatHBD(0.05); // "0.050 HBD"
+formatHBD(0.05);       // "0.050 HBD"
 parseHBD("0.050 HBD"); // 0.05
 ```
 
 ## Why HBD?
 
-HBD (Hive Backed Dollars) is ideal for micropayments:
-
-- **Zero transaction fees** - unlike EVM chains, Hive transfers cost nothing
-- **~$1 USD peg** - algorithmic stablecoin, no wrapping or bridging needed
-- **3-second finality** - one block confirmation
-- **No gas estimation** - predictable, simple transfers
-- **3-second block time** - fast enough for real-time API access
+- **No transaction fees.** Every micropayment arrives in full.
+- **Stable value.** HBD is designed to track 1 USD, with no wrapping or bridging.
+- **3-second blocks.** Fast enough for pay-per-request APIs.
+- **Readable accounts.** Payers and recipients are Hive account names, not hex addresses.
+- **No gas estimation.** A transfer is a transfer, so costs are predictable.

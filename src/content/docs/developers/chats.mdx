@@ -1,97 +1,230 @@
 ---
 title: Ecency chats
-description: Integrate Ecency-hosted chat endpoints into Hive applications without running your own Mattermost instance.
+description: Use Ecency's hosted chat API and websocket from your Hive app, or run the same stack on your own Mattermost server.
 ---
 
-# Chat integration guide
+Ecency chat runs on [Mattermost](https://mattermost.com/). The Ecency web app wraps it in a small API under `/api/mattermost/*` and a websocket proxy, so Hive apps can offer chat without running any chat servers. This page explains how to sign a user in, which routes you can call, and how to self-host the same setup.
 
-This document explains how Ecency's chat experience works and how other Hive applications can integrate with it. It focuses on how to consume the Ecency-hosted chat endpoints so Hive apps can embed chat without running their own Mattermost instance.
+## How it works
 
-## Architecture overview
+- **Hive identity.** A user signs in with a Hive access token. The bootstrap route checks that token with HiveSigner and creates (or finds) a chat user with the same Hive username.
+- **Personal chat token.** Bootstrap returns a chat token for that user. Every other route uses it to act as the user.
+- **Communities become channels.** Each Hive community maps to a public channel named after the community id (for example `hive-123`). Bootstrap joins the user to channels for the communities they subscribe to, unless they left a channel on purpose.
+- **Realtime.** A websocket proxy streams Mattermost events (new posts, reactions, typing) to the client.
 
-- **Mattermost as chat backend**: Ecency provisions users, teams, channels, and personal access tokens (PATs) in a Mattermost instance configured through environment variables.
-- **Next.js API wrappers**: The web app exposes `/api/mattermost/*` routes that handle authentication, bootstrap tasks, and proxy calls to Mattermost using user-scoped PATs stored in a secure cookie.
-- **Hive identity**: Users authenticate with their Hive account. The bootstrap API validates the Hive **`accessToken`** (the `refreshToken` is **not** consumed by bootstrap — your app refreshes its own `accessToken` and retries) before issuing a Mattermost PAT, so the chat identity is bound to — and must match — the Hive username.
-- **Community mapping**: Hive communities map to public Mattermost channels named after the community id (e.g., `hive-123`). The bootstrap flow can auto-join users to channels for the communities they subscribe to.
+## Who can call the API
 
-### Realtime transport
+The REST routes send no CORS headers, so a web page on another origin can't call them from the browser. These clients work:
 
-- **Websocket proxy**: `/api/mattermost/websocket` is a passthrough to Mattermost's websocket upgraded connection. It upgrades on the edge runtime, forwards all frames bi-directionally, and injects the authentication challenge upstream using the `mm_pat` cookie created during bootstrap.
-- **Auth flow**: The proxy authenticates using the PAT created during bootstrap. Cookies work for same-site contexts, and external clients can now pass the PAT via `Authorization: Bearer <token>` or `?token=<mm_pat>` if cookies are unavailable.
-- **Error handling**: Missing cookies receive `401 Unauthorized`; invalid upgrades respond with `400`; upstream issues (e.g., Mattermost unreachable) respond with `502`.
+- Native apps (mobile or desktop clients you build)
+- Browser extensions that have host permission for `ecency.com`
+- Your own server, acting for the user
 
-## Using Ecency-hosted chat endpoints
+The websocket checks the `Origin` header instead (see [Realtime websocket](#realtime-websocket)).
 
-Other Hive apps can call Ecency's `/api/mattermost/*` routes directly - **no Mattermost infrastructure required**. Key points:
+## Authentication
 
-- **Base URL**: Use the deployed Ecency web domain you target (e.g., `https://ecency.com/api/mattermost`). The same routes are available on staging instances for testing.
-- **Cookies vs token**: The routes use an httpOnly `mm_pat` cookie. From a same-origin browser context, use `credentials: "include"`. **Cross-origin clients (e.g. browser extensions) cannot rely on the cookie** — capture `token` from the bootstrap JSON response and send it as `Authorization: Bearer <token>` (or `?token=<token>` for the websocket) on subsequent `/api/mattermost/*` calls.
-- **Hive access tokens only**: Your app never needs Mattermost credentials. Provide the user's Hive `accessToken` and `username` to bootstrap (a `refreshToken` field is accepted for forward-compatibility but **not consumed** — bootstrap validates `accessToken` only); the Ecency backend handles PAT creation and all proxying.
+### Step 1: get a Hive access token
 
-## Quickstart for Hive app integrators
-
-1. **Collect Hive tokens**: Obtain the user's Ecency/Hive `accessToken` (JWT) plus the Hive `username` after login in your app. (Keep your `refreshToken` to mint a fresh `accessToken` when it expires — bootstrap itself only consumes `accessToken`.)
-2. **Bootstrap against Ecency**:
-   - `POST https://ecency.com/api/mattermost/bootstrap` with JSON `{ username, accessToken, displayName?, community?, communityTitle? }` and `credentials: "include"`. (A `refreshToken` field is accepted but ignored — bootstrap validates `accessToken` only.)
-   - The route validates the Hive `accessToken`, checks it belongs to `username`, creates/ensures the Mattermost user, and joins/creates the team and optional community channel.
-   - **Response (`200`)**: `{ ok: true, userId, channelId?, token }` and an `mm_pat` cookie scoped to Ecency. The `token` mirrors the PAT for clients that cannot use cookies.
-   - **Idempotent**: bootstrap is safe to call repeatedly and tolerates concurrent calls, but call it **once per session** then cache and reuse the `token`/cookie. Re-bootstrap only when the token is missing/expired. Firing parallel/repeat bootstraps per page-load is unnecessary and wasteful.
-   - **Status codes**:
-     - `400` — missing `username` or invalid JSON body.
-     - `401` — missing/invalid/expired `accessToken`, or the token's Hive account does not match `username`. Refresh your `accessToken` and retry.
-     - `503` — Ecency auth (HiveSigner) is temporarily unavailable. **Retryable** — back off and retry; do not force the user to re-login.
-     - `502` / `504` — the Mattermost backend is unreachable or timed out. Transient; retry with backoff.
-3. **Call chat endpoints with the cookie**: Subsequent requests to `https://ecency.com/api/mattermost/*` automatically include the PAT cookie when `credentials: "include"` is set, enabling channel lists, posting, reactions, searches, and direct messages.
-4. **Link back to your UI**: Use returned `channelId` or search endpoints to deep-link into chat surfaces within your app (e.g., from profiles or community pages).
-
-### Realtime websocket usage
-
-Use the websocket proxy to stream reactions, typing events, and post updates without exposing PATs to the browser:
+Bootstrap needs a HiveSigner-compatible `accessToken` for the user. If your app uses HiveSigner login, use the access token it gives you. If the user signs in with a posting key, you can build the token yourself by signing a small JSON message. This example uses the Ecency SDK's own crypto:
 
 ```ts
-// Requires the mm_pat cookie set by the bootstrap call above; same-origin
-// requests automatically include it and allow the edge function to auth upstream.
-const socket = new WebSocket("wss://ecency.com/api/mattermost/websocket");
+import { PrivateKey, sha256 } from "@ecency/sdk";
 
-socket.addEventListener("open", () => {
-  // Mattermost websocket protocol uses typed actions; you can immediately
-  // subscribe to channels or send ping frames after connect.
-  socket.send(JSON.stringify({ seq: 2, action: "ping" }));
+function buildAccessToken(appAccount: string, username: string, postingWif: string): string {
+  const payload: Record<string, unknown> = {
+    signed_message: { type: "posting", app: appAccount },
+    authors: [username],
+    timestamp: Math.floor(Date.now() / 1000),
+  };
+
+  // Sign the exact JSON string with the user's posting key.
+  const hash = sha256(JSON.stringify(payload));
+  const signature = PrivateKey.fromString(postingWif).sign(hash).toString();
+
+  payload.signatures = [signature];
+  return Buffer.from(JSON.stringify(payload)).toString("base64url");
+}
+```
+
+Set `app` to your own app's Hive account. With Keychain or HiveAuth, ask the wallet to sign the same JSON string with the posting key and attach the signature it returns.
+
+### Step 2: bootstrap
+
+```ts
+const res = await fetch("https://ecency.com/api/mattermost/bootstrap", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    username: "alice",
+    accessToken,
+    community: "hive-123", // optional: also join this community channel
+  }),
 });
+const { ok, userId, channelId, token } = await res.json();
+```
+
+Request body:
+
+| Field | Required | Notes |
+|---|---|---|
+| `username` | Yes | Hive username. Must match the account in `accessToken`. |
+| `accessToken` | Yes | HiveSigner-compatible access token (see step 1). |
+| `displayName` | No | Used as a fallback channel title. |
+| `community` | No | Community id to join. This also clears an earlier "left" mark for that channel. |
+| `communityTitle` | No | Title used if the community channel has to be created. |
+
+A refresh token is not used. If the access token has expired, refresh it in your app and call bootstrap again.
+
+Success (`200`) returns `{ ok: true, userId, channelId, token }` and sets an httpOnly `mm_pat` cookie on `ecency.com` that lasts 30 days. `channelId` is set only when you passed `community`.
+
+Bootstrap is idempotent and safe to repeat, but call it once per session and reuse the `token`. Call it again only when a route answers `401`.
+
+Status codes:
+
+| Status | Meaning | What to do |
+|---|---|---|
+| `400` | Invalid JSON or missing `username` | Fix the request. |
+| `401` | Access token missing, invalid, expired, or for a different account | Refresh the access token and retry. |
+| `403` | The user is banned from chat. The body has `bannedUntil` (epoch ms) and, when known, `reason`. | Show the user when the ban ends. Don't retry before then. |
+| `499` | The client disconnected before bootstrap finished | Nothing; retry if you still need it. |
+| `500` | Unexpected server error | Retry later. |
+| `502` | Chat service unavailable | Retry later with backoff. |
+| `503` | Temporary problem (for example the token check or chat service is busy) | Retry. Honor `Retry-After` when it's present. |
+| `504` | Bootstrap or the chat service timed out | Retry with backoff. Honor `Retry-After` when it's present. |
+
+`503` and `504` are temporary. Don't sign the user out because of them.
+
+### Step 3: send the token on every call
+
+Every route below needs the chat token. Send it one of two ways:
+
+- **`X-MM-Token: <token>` header.** Use this in native apps, extensions and servers.
+- **`mm_pat` cookie.** Browsers on `ecency.com` send it automatically.
+
+The REST routes don't read `Authorization: Bearer`. Bearer only works on the websocket.
+
+```ts
+const channels = await fetch("https://ecency.com/api/mattermost/channels", {
+  headers: { "X-MM-Token": token },
+}).then((r) => r.json());
+```
+
+A missing or expired token returns `401 { "error": "unauthorized" }`. Bootstrap again to get a new one.
+
+## API routes
+
+All paths are relative to `https://ecency.com/api/mattermost`. Request and response bodies are JSON. Errors look like `{ "error": "..." }`.
+
+### Channels
+
+| Method and path | Body or query | Description |
+|---|---|---|
+| `GET /channels` | | The user's channels with favorite and mute flags, unread counts and direct-message partner details. |
+| `GET /channels/unreads` | | Unread and mention counts across channels. |
+| `POST /channels/search` | `{ term, public?, private? }` | Search channels by name. Terms shorter than 2 characters return `{ channels: [] }`. |
+| `POST /channels/[id]/join` | | Join a channel. |
+| `POST /channels/[id]/leave` | | Leave a channel. If it's a community channel, bootstrap won't rejoin it automatically. |
+| `POST /channels/[id]/favorite` | `{ favorite: boolean }` | Add or remove from favorites. |
+| `POST /channels/[id]/mute` | `{ mute: boolean }` | Mute (mentions only) or unmute. |
+| `POST /channels/[id]/view` | | Mark the channel as read. |
+| `GET /channels/[id]/members` | Mattermost paging query, such as `?page=0&per_page=60` | Channel members, returned as `{ members }`. |
+| `PUT /channels/[id]/name` | `{ name }` | Name a group conversation, or clear the name with `""`. Only the person who started the group can do this. |
+| `GET /channels/[id]/pinned` | | Pinned posts as `{ posts, users }`. |
+
+### Messages
+
+| Method and path | Body or query | Description |
+|---|---|---|
+| `GET /channels/[id]/posts` | `before`, `around`, `thread`, `per_page` (default 40), `include_online=1` | Posts plus a user map, channel, membership, community, moderation flags, `hasMore` and `memberCount`. |
+| `POST /channels/[id]/posts` | `{ message, rootId?, props?, pendingPostId? }` | Send a message, or a reply when `rootId` is set. Returns `{ post }`. |
+| `PATCH /channels/[id]/posts/[postId]` | `{ message }` | Edit your own message. |
+| `DELETE /channels/[id]/posts/[postId]` | | Delete your own message. Community moderators can delete any message in their community channel. |
+| `POST /channels/[id]/posts/[postId]/reactions` | `{ emoji }` | Add a reaction. Returns the reaction. |
+| `DELETE /channels/[id]/posts/[postId]/reactions` | `{ emoji }` | Remove your reaction. |
+| `POST /channels/[id]/posts/[postId]/pin` | | Pin a message. In community channels only moderators can pin. A channel holds at most 5 pinned messages. |
+| `DELETE /channels/[id]/posts/[postId]/pin` | | Unpin a message. |
+| `POST /search/posts` | `{ term }` | Search messages. Returns `{ posts }`. |
+
+Notes on sending messages:
+
+- `props` keeps only these string fields: `parent_id`, `parent_username`, `parent_message` (reply context) and `link_url`, `link_title`, `link_summary`, `link_image` (link preview). Anything else is dropped.
+- `pendingPostId` is your own id for the message. It comes back on the created post and on the websocket `posted` event, so you can match it to your optimistic copy.
+- A banned user gets `403` with `bannedUntil` and `reason`. Channel-wide mentions (such as `@all`) are refused with `403` for users who aren't allowed to use them.
+- If the user starts conversations with too many people in a short time, the route answers `429` with `Retry-After`.
+
+### Direct messages and groups
+
+| Method and path | Body | Description |
+|---|---|---|
+| `POST /direct` | `{ username }` | Open or create a direct message with a Hive user. Returns `{ channelId }`. |
+| `POST /group` | `{ usernames: string[] }` | Open or create a group conversation with 2 to 7 other people. Returns `{ channelId }`. |
+| `GET /me/dm-privacy` | | The user's direct-message setting: `{ privacy }`. |
+| `PUT /me/dm-privacy` | `{ privacy: "all" \| "followers" \| "none" }` | Choose who can message the user. |
+
+`/direct` and `/group` return `404` when someone isn't on Ecency chat (or isn't a Hive account) and `403` when someone's privacy setting doesn't allow the message. The `403` body explains who and why.
+
+### Users
+
+| Method and path | Body or query | Description |
+|---|---|---|
+| `GET /users/search?q=` | | Search users for mentions and new messages. Returns `{ users }`. |
+| `POST /users/ids` | `{ ids: string[] }` | Look up up to 200 user ids, for example a user you first see in a websocket event. Unknown ids are left out. Returns `{ users }`. |
+| `GET /users/[userId]/image` | | The user's profile image. Needs the token like every other route. |
+
+## Realtime websocket
+
+Connect to `wss://ecency.com/api/mattermost/websocket`. The proxy opens a connection to Mattermost, sends the authentication challenge for you, and then forwards frames in both directions.
+
+How the proxy checks a connection:
+
+- **Origin.** If the request has an `Origin` header, it must be on the allowlist: `https://ecency.com`, local development origins, and any extra origins the server operator adds with `MATTERMOST_WS_ALLOWED_ORIGINS`. Any other origin is closed with code `1008` ("Origin not allowed"). Clients that send no `Origin` (most native apps) are allowed.
+- **Token.** The proxy reads the token from `Authorization: Bearer <token>`, then the `?token=` query parameter, then the `mm_pat` cookie. Browser `WebSocket` can't set headers, so use `?token=` there. The `X-MM-Token` header is not read here. With no token the socket opens and is then closed with `1008` ("Unauthorized").
+- **Plain HTTP.** A normal `GET` without an upgrade gets `426 Upgrade Required`.
+- **Upstream problems** close the socket with `1011`.
+
+The route runs on the Node.js runtime.
+
+```ts
+const socket = new WebSocket(
+  `wss://ecency.com/api/mattermost/websocket?token=${encodeURIComponent(token)}`
+);
 
 socket.addEventListener("message", (event) => {
-  const data = JSON.parse(event.data as string);
+  const frame = JSON.parse(event.data as string);
 
-  if (data.event === "posted") {
-    // Handle new post payloads and update your UI accordingly.
+  if (frame.event === "hello") {
+    // Authenticated. Mattermost is ready to send events.
+  }
+
+  if (frame.event === "posted") {
+    const post = JSON.parse(frame.data.post); // post is a JSON string
+    // Add post to the channel (or to a thread when post.root_id is set).
   }
 });
 
-socket.addEventListener("close", () => {
-  // Implement your own reconnection strategy as needed.
+socket.addEventListener("close", (event) => {
+  if (event.code === 1008) {
+    // Bad origin or missing/expired token: bootstrap again, then reconnect.
+  }
+  // Otherwise reconnect with backoff.
 });
 ```
 
-**Notes**:
+### Events you'll use most
 
-- Preferred same-site flow: rely on the `mm_pat` cookie and let the proxy run the `authentication_challenge` upstream for you.
-- External-origin flow: call `POST /api/mattermost/bootstrap`, read `token` from the JSON response, then connect to `wss://ecency.com/api/mattermost/websocket?token=<mm_pat>` (or send `Authorization: Bearer <token>`) so browsers without cookie access can still authenticate.
-- If the PAT cookie or token is missing or expired, the request returns `401` before upgrading. Re-run the bootstrap route to refresh it.
-- The websocket endpoint is same-origin, so use `wss://<your-ecency-host>/api/mattermost/websocket` for staging or production as appropriate. Third-party origins should keep using the Ecency host while passing the token explicitly.
+Each frame is a JSON object with `event`, `data` and `broadcast`. The full list is in the [Mattermost websocket reference](https://developers.mattermost.com/api-documentation/#/#websocket-events).
 
-#### What websocket events look like
+- **`hello`**: sent once after authentication succeeds.
+- **`posted`**: a new message or reply. `data.post` is a JSON string. Parse it to read `message`, `root_id` (thread parent) and `pending_post_id`.
+- **`post_edited`** and **`post_deleted`**: a message changed or was removed. Use `post.id` to find it.
+- **`reaction_added`** and **`reaction_removed`**: a reaction changed. The reaction has `user_id`, `post_id` and `emoji_name`.
+- **`typing`**: someone is typing. Includes `user_id` and `parent_id` for threads. It has no `post`.
+- **`user_updated`**: a profile change, for example a new avatar.
 
-Mattermost emits typed events over the websocket. Each frame is a JSON object with an `event` name, a `data` payload, and per-event metadata (full schema in the [Mattermost websocket reference](https://developers.mattermost.com/api-documentation/#/#websocket-events)). Some of the most useful events for in-app chat surfaces:
+`broadcast.channel_id` tells you which channel the event belongs to.
 
-- **`posted`**: A new post or reply was created. The payload includes the `post` object (stringified JSON), `channel_display_name`, and `team_id`. Parse the `post` field to get message text, attachments, and `root_id` (thread parent).
-- **`post_edited`**: A user updated an existing message. Merge the `post` JSON with your existing message state.
-- **`post_deleted`**: A message was deleted. The `data` includes `post` and `channel_display_name`; rely on `post.id` to remove it from the UI.
-- **`reaction_added` / `reaction_removed`**: Reaction toggles with `user_id`, `emoji_name`, `post_id`, and `channel_id`.
-- **`typing`**: Indicates a user is typing in a channel. Includes `user_id`, `channel_id`, and `parent_id` for thread typing.
-- **`user_updated`**: Profile or status changes that may affect avatars or presence indicators.
-- **`hello`**: Sent once after authentication; contains server connection info and session id. Useful to confirm the connection succeeded.
-
-Example `posted` event payload structure (fields trimmed for brevity):
+Example `posted` frame, trimmed:
 
 ```json
 {
@@ -101,124 +234,44 @@ Example `posted` event payload structure (fields trimmed for brevity):
     "channel_display_name": "hive-123",
     "channel_type": "O",
     "post": "{\"id\":\"abc123\",\"channel_id\":\"...\",\"message\":\"hello world\",\"root_id\":\"\"}",
-    "sender_name": "alice",
-    "team_id": "team123"
+    "sender_name": "alice"
   },
-  "broadcast": {
-    "channel_id": "CHANNEL_ID",
-    "team_id": "team123"
-  }
+  "broadcast": { "channel_id": "CHANNEL_ID" }
 }
 ```
 
-Notes when consuming events:
+## Integration checklist
 
-- `data.post` is a JSON string; parse it before use. The `message` and `root_id` fields are where you decide whether to update the main channel timeline or a thread.
-- `broadcast` hints which channel or team should receive the update; you can use it to filter events if you maintain multiple channel tabs.
-- Some events (e.g., `typing`) do not include a `post` body. Handle them separately from message mutations.
+1. After the user signs in, get a Hive access token and call `POST /bootstrap` once.
+2. Store the returned `token` securely for the session.
+3. Send `X-MM-Token` on every REST call. Bootstrap again on `401`.
+4. Open the websocket with `?token=` (or `Authorization: Bearer` where you can set headers).
+5. Handle `403` with `bannedUntil` by showing when the user can chat again.
+6. Retry `503` and `504` with backoff and honor `Retry-After`.
 
-### How Ecency access tokens are issued
+## Self-hosting
 
-Ecency always mints the same JWT `accessToken`/`refreshToken` pair regardless of the login provider. Hivesigner users obtain them via the OAuth callback, while other methods (Keychain, HiveAuth, or manual posting-key sign-in) go through the Ecency auth API, which returns the tokens after verifying a signed login challenge tied to the Hive posting authority.
+You only need this if you run your own copy of the Ecency web app. Apps that call `ecency.com/api/mattermost` don't need any of it.
 
-Otherwise, you can mint an `accessToken` yourself by signing the standard Hivesigner-style challenge locally with the user's posting private key during your app's login flow. Any app can create the payload, sign it, base64url-encode it, and use that as `accessToken`. A minimal example inspired by our production implementation:
+Set these variables for the web app (see `apps/web/.env.template` in the [vision-web repo](https://github.com/ecency/vision-web)):
 
-```ts
-import { PrivateKey, cryptoUtils } from "@hiveio/dhive";
+| Variable | Description |
+|---|---|
+| `MATTERMOST_BASE_URL` | Mattermost REST base, for example `https://chat.example.com/api/v4`. The websocket URL is derived from it. |
+| `MATTERMOST_ADMIN_TOKEN` | Admin personal access token. It creates users, teams and channels, and never leaves the server. |
+| `MATTERMOST_TEAM_ID` | The team that holds the chat channels. |
+| `MATTERMOST_WS_ALLOWED_ORIGINS` | Optional. Extra origins allowed to open the websocket, comma-separated, for example `https://app.example.com,https://example.com`. |
 
-function buildHsCode(
-  hsClientId: string,
-  username: string,
-  postingWif: string
-): string {
-  const timestamp = Math.floor(Date.now() / 1000);
-
-  // Hivesigner-style payload: your app id/account, authors, and a timestamp.
-  const payload = {
-    signed_message: { type: "code", app: hsClientId },
-    authors: [username],
-    timestamp,
-  };
-
-  const message = JSON.stringify(payload);
-  const hash = cryptoUtils.sha256(message);
-
-  // Sign the hashed message with the user's posting key.
-  const signature = PrivateKey.fromString(postingWif).sign(hash).toString();
-
-  // Attach signature and base64url-encode the payload; HiveAuth signers can
-  // also return a pre-built signedToken that you can reuse here.
-  payload.signatures = [signature];
-  return Buffer.from(JSON.stringify(payload)).toString("base64url");
-}
-
-```
-
-## Available chat API routes
-
-All routes live under `/api/mattermost` and expect the `mm_pat` cookie set by the bootstrap step.
-
-### Channel and membership
-- `GET /channels`: Lists channels for the current user, enriched with favorite/mute flags, unread counts, and direct-message partner metadata.
-- `POST /channels/[id]/join`: Joins the user to a channel.
-- `POST /channels/[id]/leave`: Leaves a channel.
-- `POST /channels/[id]/favorite`: `{ favorite: boolean }` toggles favorite state.
-- `POST /channels/[id]/mute`: `{ mute: boolean }` sets mute/mentions-only state.
-- `POST /channels/[id]/view`: Marks the channel as viewed to reset unread counters.
-- `GET /channels/unreads`: Returns aggregate unread/mention counts across channels.
-- `POST /channels/search`: `{ term }` searches channels by name.
-
-### Messaging
-- `GET /channels/[id]/posts`: Fetches posts, user map, member info, and moderation context for a channel.
-- `POST /channels/[id]/posts`: `{ message, rootId? }` sends a message or reply.
-- `PATCH /channels/[id]/posts/[postId]`: `{ message }` edits a post.
-- `DELETE /channels/[id]/posts/[postId]`: Deletes a post (user-scoped; admins can moderate community channels server-side).
-- `POST /channels/[id]/posts/[postId]/reactions`: `{ emoji, add }` toggles a reaction.
-- `POST /search/posts`: `{ term }` searches messages.
-
-### Direct messages and user search
-- `POST /direct`: `{ username }` opens/creates a direct message channel with a user by Hive username.
-- `GET /users/search?q=`: Searches users by username/full name for mentions/DMs.
-- `GET /users/[userId]/image`: Proxies Mattermost profile images using configured base URL (no auth cookie needed).
-
-## Community-specific behavior
-
-- During bootstrap, Ecency pulls the user's Hive community subscriptions and ensures corresponding Mattermost channels exist, adding the user to each. This keeps chat channels aligned with Hive community membership automatically.
-- Moderation context for community channels is resolved via the Hive bridge API so moderators (owner/admin/mod roles) can delete chat posts using server-side admin privileges.
-
-## Integration checklist for other Hive apps
-
-- Use Ecency's production or staging base (`https://ecency.com/api/mattermost`) rather than hosting Mattermost yourself.
-- After Hive login, call the bootstrap endpoint with `credentials: "include"` so the PAT cookie is set in the browser.
-- Issue all chat requests against Ecency's `/api/mattermost/*` routes; they proxy to Mattermost and enforce authorization via the cookie.
-- Use channel search and direct message endpoints to link chat features from profiles, community pages, or content detail screens without handling Mattermost tokens directly.
-- If you manage Hive community subscriptions, pass `community` to the bootstrap call so users land directly in the relevant channel after sign-in.
-
-## Security notes
-
-- PAT cookies are httpOnly, `sameSite=lax`, and secured in production. Avoid exposing admin tokens client-side; all Mattermost admin operations stay server-side.
-- Hive JWT validation ensures only the authenticated Hive account can bootstrap and obtain a chat PAT tied to their username.
-
-## Self-host / Ecency instances
-
-If you self-host Ecency, set these variables in your `.env` (see `apps/web/.env.template`):
-
-- `MATTERMOST_BASE_URL`: Mattermost server REST base (e.g., `https://mattermost.example.com/api/v4`).
-- `MATTERMOST_ADMIN_TOKEN`: Admin personal access token used to provision users, teams, and channels.
-- `MATTERMOST_TEAM_ID`: Team id where chat channels live.
-
-If you're self-hosting the Mattermost **Team Edition (community edition)** for development, you can start with a simple `docker-compose.yml` like:
+A minimal Mattermost Team Edition setup with Postgres and Traefik for TLS:
 
 ```yaml
-version: '3.8'
-
 services:
   db:
     image: postgres:15
     restart: always
     environment:
       POSTGRES_USER: mattermost
-      POSTGRES_PASSWORD: chat_password
+      POSTGRES_PASSWORD: change_me
       POSTGRES_DB: mattermost
     volumes:
       - db_data:/var/lib/postgresql/data
@@ -228,30 +281,26 @@ services:
     restart: always
     depends_on:
       - db
-    ports:
-      - "8065:8065"
     environment:
       MM_SQLSETTINGS_DRIVERNAME: postgres
-      MM_SQLSETTINGS_DATASOURCE: postgres://mattermost:chat_password@db:5432/mattermost?sslmode=disable&connect_timeout=10
-      MM_SERVICESETTINGS_SITEURL: https://chat.ecency.com
+      MM_SQLSETTINGS_DATASOURCE: postgres://mattermost:change_me@db:5432/mattermost?sslmode=disable&connect_timeout=10
+      MM_SERVICESETTINGS_SITEURL: https://chat.example.com
       MM_SERVICESETTINGS_LISTENADDRESS: :8065
       MM_LOGSETTINGS_ENABLECONSOLE: "true"
       MM_FILESETTINGS_DRIVERNAME: local
       MM_FILESETTINGS_DIRECTORY: /mattermost/data
-      MM_EMAILSETTINGS_SMTPSERVER: mail.ecency.com
+      MM_EMAILSETTINGS_SMTPSERVER: smtp.example.com
       MM_EMAILSETTINGS_SMTPPORT: "587"
-      MM_EMAILSETTINGS_SMTPUSERNAME: noreply@ecency.com
-      MM_EMAILSETTINGS_SMTPPASSWORD: email_password
+      MM_EMAILSETTINGS_SMTPUSERNAME: chat@example.com
+      MM_EMAILSETTINGS_SMTPPASSWORD: change_me
       MM_EMAILSETTINGS_ENABLESMTPAUTH: "true"
       MM_EMAILSETTINGS_ENABLESECURESMTP: "true"
       MM_EMAILSETTINGS_REQUIREEMAILVERIFICATION: "false"
-      MM_SERVICESETTINGS_ENABLEGIFS: "false"
-      MM_SERVICESETTINGS_ENABLEOPENGRAPH: "false"
     volumes:
       - app_data:/mattermost/data
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.mm.rule=Host(`chat.ecency.com`)"
+      - "traefik.http.routers.mm.rule=Host(`chat.example.com`)"
       - "traefik.http.routers.mm.entrypoints=websecure"
       - "traefik.http.routers.mm.tls=true"
       - "traefik.http.routers.mm.tls.certresolver=le"
@@ -266,7 +315,7 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.le.acme.httpchallenge=true"
       - "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.le.acme.email=hello@ecency.com"
+      - "--certificatesresolvers.le.acme.email=admin@example.com"
       - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
     ports:
       - "80:80"
@@ -274,8 +323,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - traefik_data:/letsencrypt
-    labels:
-      - "traefik.enable=true"
 
 volumes:
   db_data:
@@ -283,6 +330,4 @@ volumes:
   traefik_data:
 ```
 
-Update `MM_SERVICESETTINGS_SITEURL`, SMTP values, and Traefik host/ACME email to match your environment. The exposed `8065` port allows direct Mattermost access; you can remove it if you only want Traefik handling ingress.
-
-THESE ARE REQUIRED ONLY when running the Ecency API/instance yourself; consumers of `ecency.com/api/mattermost` or **Hive app integrators** DO NOT NEED them.
+Replace every `example.com` value and every `change_me` password with your own. Then create a team in Mattermost, create an admin personal access token, and put both into the web app's environment.

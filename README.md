@@ -1,37 +1,39 @@
 # Ecency Documentation
 
-This repository contains the source for the [Ecency](https://ecency.com) documentation site.  The site is built with [Astro](https://astro.build) using the [Starlight](https://starlight.astro.build) theme.
+Source for [docs.ecency.com](https://docs.ecency.com), the documentation for [Ecency](https://ecency.com). The site is
+built with [Astro](https://astro.build) and the [Starlight](https://starlight.astro.build) docs theme.
 
-## Project Structure
+## Project structure
 
-Documentation content lives in [`src/content/docs`](src/content/docs).  Each Markdown (`.md`/`.mdx`) file in that directory becomes a page in the generated site.  Static assets can be placed in `public/` and referenced with relative links.
+- `src/content/docs/`: the pages. Each `.md` or `.mdx` file becomes a page, and its path is its URL
+  (for example `src/content/docs/developers/sdk.mdx` is `/developers/sdk/`).
+- `astro.config.mjs`: site config, sidebar and redirects.
+- `public/`: static files served as is.
+
+Every page starts with frontmatter that has a `title` and a one-sentence `description`.
 
 ## Development
 
-Install dependencies and start a local development server:
+You need Node.js 20 (the version the deploy workflow uses) and Yarn.
 
 ```bash
 yarn install
 yarn dev
 ```
 
-The site will be available at `http://localhost:4321` and hot–reloads as you edit files.
+The site runs at `http://localhost:4321` and reloads as you edit.
 
-## Build and Preview
-
-To create a production build, run:
+## Build and preview
 
 ```bash
 yarn build
-```
-
-The static site is output to the `dist/` folder.  You can preview the build locally with:
-
-```bash
 yarn preview
 ```
 
+The static site is written to `dist/`. Pushes to `main` are built and deployed to GitHub Pages by
+`.github/workflows/deploy.yml` (`withastro/action`).
+
 ## Contributing
 
-Improvements and additions are welcome!  Fork this repository, create your changes in `src/content/docs`, and open a pull request.  For more information see the [contribution guide](src/content/docs/contribution.md).
-
+Fork the repository, edit or add pages under `src/content/docs/`, and open a pull request. See the
+[contribution guide](https://docs.ecency.com/contribution/) for more.
