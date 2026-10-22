@@ -3,7 +3,7 @@ title: "Exchanges: deposit and withdraw"
 description: Send HIVE from Ecency to an exchange with the right memo, withdraw HIVE from an exchange to your Hive account, and what to do when a deposit goes missing.
 ---
 
-You can buy and sell HIVE on many crypto exchanges, such as Binance, Upbit or Gate. Moving HIVE between an exchange and your Hive account is a normal Hive transfer: it arrives in seconds and has no fee.
+You can buy and sell HIVE on many crypto exchanges, such as Binance, Upbit or Gate. Moving HIVE between an exchange and your Hive account uses a normal Hive transfer. The transfer itself has no blockchain fee and lands in seconds, but the exchange sets its own terms: it can charge a withdrawal fee and take time to process a withdrawal or credit a deposit. Check the fee and limits on the exchange's withdrawal page.
 
 ## Send HIVE to an exchange
 
@@ -29,9 +29,9 @@ Good to know:
 1. On the exchange, open **Withdraw** and pick **HIVE** on the **Hive** network.
 2. Enter your **Hive username** as the address (without `@`).
 3. Leave the memo empty, unless you are withdrawing to another exchange, which then needs its own deposit memo.
-4. Confirm. The HIVE arrives as liquid HIVE in your Ecency wallet.
+4. Check the withdrawal fee the exchange shows, then confirm. After the exchange processes the request, the HIVE arrives as liquid HIVE in your Ecency wallet.
 
-From there you can [power up](/guides/power-up-down/), [put HBD in savings](/guides/hbd-savings-interest/) or swap on the [Market](/ecency/market/).
+From there you can [power up](/guides/power-up-down/) or swap HIVE for HBD on the [Market](/ecency/market/). To earn [HBD savings interest](/guides/hbd-savings-interest/), swap to HBD first, then move the HBD to savings.
 
 ## My deposit didn't arrive
 
