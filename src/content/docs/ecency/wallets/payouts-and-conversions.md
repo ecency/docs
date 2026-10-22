@@ -36,7 +36,7 @@ On the web, press **Collect all** in your wallet, or the claim button on a token
 - **Downvotes reduce it.** A downvote, even late, takes value away.
 - **Late upvotes don't count.** In the last 12 hours before payout, new upvotes can't raise it.
 - **Votes depend on the voters' Hive Power and voting power.** The same voter's vote is worth less when they vote a lot.
-- **Delegation rewards are separate.** Points or HIVE you get for delegating to @ecency change with your delegation and your activity. See [Ecency Points](/ecency/ecency-points/#why-does-my-daily-delegation-reward-change).
+- **Delegation rewards are separate.** Points for delegating to @ecency change with your delegation and pause after 90 days without activity. The daily HIVE curation share changes with Ecency's curation rewards that day and the holdback you chose. See [Ecency Points](/ecency/ecency-points/#why-does-my-daily-delegation-reward-change).
 
 ### Troubleshooting payouts
 

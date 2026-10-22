@@ -16,7 +16,11 @@ Tips are transfers, so they need your **active** key or a signer such as Keychai
 
 The number next to the gift icon is how many tips a post got. On the web, clicking it on a post that already has tips shows the totals per token and a **Send a tip** button. On waves you tipped, the gift icon's tooltip says **You tipped this**. In the mobile app the list shows **Tips Received**.
 
-## Errors in the mobile app
+## Errors
+
+On the web, a tip uses the normal transfer form, so you see the usual transfer messages, such as **Insufficient funds**. See [Common errors and fixes](/common/errors/#rewards-and-wallet).
+
+In the mobile app, for any token including **POINTS**:
 
 - **Failed to send tip**: the transfer didn't go through. Check your balance and try again.
 - **Please enter a valid amount**: enter a number above zero, with no more decimals than the token allows.
