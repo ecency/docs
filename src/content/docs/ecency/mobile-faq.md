@@ -54,8 +54,21 @@ Open the side menu and tap **Drafts** or **Bookmarks**. Drafts are saved to your
 
 Your accounts stay saved, so you don't need to log out to switch.
 
+## The app is slow, keeps crashing or won't post. What can I try?
+
+Try these in order:
+
+1. **Update the app.** Open the App Store or Google Play page for Ecency and install the latest version. If the store shows no update, it may still be rolling out to your region. Try again in a day or two.
+2. **Check your phone's date and time.** Turn on automatic date and time. A wrong clock makes Hive transactions fail with **We noticed that your device has incorrect date or time**.
+3. **Switch the API server.** Open **Settings > Server**, pick another server and restart the app. This fixes **Connection issue, change server and restart**. **Server not available** means the server you picked is down, so pick another.
+4. **Log out and back in** if you see **Corrupt app state, please relogin to reset state.**
+5. **Check your Resource Credits** if posting, voting or commenting fails. See [RC troubleshooting](/common/resource-credits/troubleshooting/).
+6. **Use the website meanwhile.** Everything works on [ecency.com](https://ecency.com) in your phone's browser.
+
+For other messages, see [Common errors and fixes](/common/errors/).
+
 ## How can I report a bug or get support?
 
 - In the app, open the side menu and tap **Docs** for the documentation.
 - Use **Settings → Send Feedback** to email the team.
-- Ask in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel) or open an issue on [GitHub](https://github.com/ecency/vision-mobile/issues).
+- Ask in the [Ecency Town Square chat](https://ecency.com/chats/hive-125125/channel) or open an issue on [GitHub](https://github.com/ecency/vision-mobile/issues).

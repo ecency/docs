@@ -59,4 +59,4 @@ Your first action on Ecency should take less than a minute. [Waves](/ecency/wave
 - Claim rewards weekly and consider **powering up** a portion for more RC and influence.
 - Vote on **witnesses** and **DHF proposals** using the [governance participation guide](/hive/governance/).
 - Back up your keys any time you rotate them and bookmark the [account recovery playbook](/guides/recovery/).
-- Stay connected via the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel) for support and updates.
+- Stay connected via the [Ecency Town Square chat](https://ecency.com/chats/hive-125125/channel) for support and updates.

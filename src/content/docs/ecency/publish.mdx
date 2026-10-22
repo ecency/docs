@@ -84,11 +84,34 @@ Open the menu in the editor's top bar for more settings.
 
 ### Rewards and beneficiaries
 
-- **Reward settings:** choose how your post rewards are paid out.
+- **Reward settings:** choose how your post rewards are paid out. See [Reward options](#reward-options) below.
 - **Beneficiaries:** share part of your post rewards with other accounts. See [Custom beneficiary](/hive/custom-beneficiary/).
 - **Support Ecency:** on the final step you may see a chip that says **Add 5% beneficiary to support Ecency**. Click it to add @ecency as a beneficiary, or ignore it. You can set a default in your settings.
 
 Some communities ask for a share of post rewards. If a community asks for 25% or more, you'll see a notice before you publish.
+
+### Reward options
+
+On the web, open **Reward settings** in the editor menu. In the mobile app, tap the gear icon at the top of the editor to open **Post Options**, then pick **Reward**. There are three choices:
+
+| Web label | Mobile label | What you get |
+|---|---|---|
+| **Default 50% / 50%** | **Stake 50%** | Half of your author reward is paid as Hive Power and half as liquid tokens (HBD, or HIVE when the HBD print rate is reduced). This is the default. |
+| **Stake 100%** | **Stake 100%** | Your whole author reward is paid as Hive Power. Choose this to grow your stake, votes and Resource Credits faster. |
+| **Decline Earnings** | **Decline Reward** | The post pays nothing from the reward pool. Votes still count toward ranking and trending, but neither you nor the curators who vote are paid. |
+
+When to use each option:
+
+- **Default:** you want some liquid tokens you can spend, save or send.
+- **Stake 100%:** you are building your account and don't need liquid tokens yet. Hive Power can be [powered down](/guides/power-up-down/) later over 13 weeks.
+- **Decline:** announcements, giveaways, contest results, fundraisers or posts where you don't want to take from the shared reward pool.
+
+Good to know:
+
+- The choice applies to that post only, and Ecency sets it when you publish. Hive only allows making it stricter later, so a declined post can never be switched back to paying.
+- Curators always receive their half as Hive Power, whatever you pick (unless you decline).
+- Replies to a declined post can still earn rewards.
+- Rewards are paid 7 days after publishing. See [Curation and rewards](/hive/curation-and-rewards/) and [Payouts and conversions](/ecency/wallets/payouts-and-conversions/).
 
 ### Schedule a post
 
@@ -97,6 +120,19 @@ Instead of publishing right away, open **Schedule settings** in the menu and pic
 ### Drafts
 
 Your work is saved as a draft automatically. You can also **Save draft** at any time and find it later under **Drafts**. See [Notifications, drafts and bookmarks](/ecency/notifications-drafts-bookmarks/).
+
+## Edit and delete posts
+
+**Edit:** open your post's three-dot menu and choose **Edit** (or **Classic Edit** for the Markdown editor). You can edit a post or comment at any time, also after it has paid out. Editing doesn't change its rewards. Every earlier version stays on the blockchain and anyone can see it in **Edit History**. See [Edit history](/common/posting/#edit-history).
+
+**Delete:** **Delete** shows in the menu only when Hive allows it. A post or comment can be deleted only when all of these are true:
+
+- It is yours.
+- It has no replies.
+- Its votes add up to zero or less (no net upvotes).
+- It hasn't paid out yet (it is less than 7 days old).
+
+Otherwise Hive refuses with messages like **Cannot delete a content with replies.**, **Cannot delete a content with positive pending rewards.** or **Content after their payout cannot be deleted.** In that case, edit the post instead, for example to remove the text. A deleted post also disappears from Ecency, but blockchain explorers still keep the original data.
 
 ## Share to a community
 

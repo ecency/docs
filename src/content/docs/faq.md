@@ -46,9 +46,13 @@ Yes. Add `/rss` (or `/rss.xml`) to these pages:
 - A tag feed: `https://ecency.com/trending/photography/rss`, with `trending`, `hot`, `created` or `payout`
 - A community: `https://ecency.com/trending/hive-125125/rss`, with the community's ID
 
+### I got an error message. What does it mean?
+
+Look it up in [Common errors and fixes](/common/errors/), which lists Ecency and Hive error messages with what to do for each.
+
 ### Where can I get help?
 
-Ask in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel), where the team and community answer questions. These docs and this FAQ cover most common topics.
+Ask in the [Ecency Town Square chat](https://ecency.com/chats/hive-125125/channel), where the team and community answer questions. These docs and this FAQ cover most common topics.
 
 ## Accounts and security
 
@@ -120,11 +124,15 @@ Ecency supports cross-chain wallets for **BTC, ETH, BNB and SOL**. See [cross-ch
 
 ### What are the dollar amounts next to posts and comments?
 
-They estimate the pending payout, which is paid seven days after publishing. Rewards are explained in [curation and rewards](/hive/curation-and-rewards/).
+They estimate the pending payout, which is paid seven days after publishing. A crossed-out amount means the author declined rewards for that post. Rewards are explained in [curation and rewards](/hive/curation-and-rewards/).
 
 ### How are author and curation rewards split?
 
 At payout, authors and curators each receive 50% of the rewards, unless beneficiaries are set or rewards are declined.
+
+### How do I decline rewards or get paid 100% in Hive Power?
+
+Pick a reward option before you publish: **Default 50% / 50%**, **Stake 100%** (all Hive Power) or **Decline Earnings** (no payout). See [Reward options](/ecency/publish/#reward-options).
 
 ### What is voting power?
 
@@ -132,13 +140,17 @@ Voting power (also called voting mana) goes down with each vote and regenerates 
 
 ### When can I claim my rewards?
 
-Rewards become claimable seven days after the post or comment is published. Use **Collect all** in your web wallet, or **Claim Reward** in the mobile app. If claims or conversions look stuck, see [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
+Rewards become claimable seven days after the post or comment is published. Use **Collect all** in your web wallet. In the mobile app, tap the button showing your unclaimed amount on the token's card. If claims or conversions look stuck, see [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
 
 ## Wallet and tokens
 
 ### What is the difference between HIVE and Hive Backed Dollars (HBD)?
 
 HIVE is the native liquid token. Hive Backed Dollars (HBD) are designed to stay close to 1 US dollar. Learn more in [Hive tokens](/common/hive-tokens/).
+
+### How do I send HIVE to an exchange or withdraw from one?
+
+Send liquid HIVE to the exchange's deposit account with the exact memo the exchange gives you. To withdraw, use your Hive username as the address. See [Exchanges: deposit and withdraw](/guides/exchanges/).
 
 ### How do I convert between HIVE and HBD?
 

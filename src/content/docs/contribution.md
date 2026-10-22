@@ -54,11 +54,11 @@ Please report security issues privately to security@ecency.com instead of in a p
 
 ## Ideas and feedback
 
-Share ideas, ask questions or just say hi in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel).
+Share ideas, ask questions or just say hi in the [Ecency Town Square chat](https://ecency.com/chats/hive-125125/channel).
 
 ## Recognizing contributors
 
 We celebrate community members on [ecency.com/contributors](https://ecency.com/contributors). If you contributed but
-don't see your name, let the team know in the Help chat.
+don't see your name, let the team know in the Town Square chat.
 
 Thank you for helping Ecency grow!
