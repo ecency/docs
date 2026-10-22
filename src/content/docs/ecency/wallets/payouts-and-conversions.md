@@ -7,20 +7,33 @@ If rewards or conversions look stuck, use this guide to understand the timelines
 
 ## Reward payouts
 
-- **Pending rewards:** posts and comments pay out after **7 days**. The amount shown before then is an estimate that changes as votes come in.
+### When do I get paid for my post?
+
+Posts and comments pay out **7 days** after you publish them. Until then the amount shown is an estimate (pending payout) that changes as votes come in. After the payout, the rewards wait in your wallet until you claim them.
+
 - **Split:** rewards are shared between the author and the curators who voted, 50/50. Beneficiaries take their share out of the author part.
-- **Claiming:** after the payout, your rewards wait in your wallet until you claim them. Press **Collect all** in your wallet, or the claim button on a token's page.
-- **Where they go:** the author share is normally half Hive Power and half HBD, unless you chose **100% Hive Power** for the post. Curation rewards are paid in Hive Power.
+- **Where they go:** the author share is normally half Hive Power and half HBD, unless you chose **Stake 100%** for the post (see [Reward options](/ecency/publish/#reward-options)). Curation rewards are paid in Hive Power.
 
 :::note
 The HBD half of author rewards depends on the chain's HBD print rate. While that rate is 0 (as it is now), the HBD half is paid as liquid HIVE instead. You can check the current value as `hbd_print_rate` on any Hive block explorer.
 :::
 
+### How do I claim my rewards?
+
+On the web, press **Collect all** in your wallet, or the claim button on a token's page. In the mobile app, tap the button showing your unclaimed amount (for example `0.512 HP +`) on the token's card in the wallet. Claiming needs your **posting** authority and a little RC.
+
+### My payout is still pending after 7 days
+
+- Check the post's age: the 7 days count from when it was published, not from when you last edited it.
+- Payouts go to your wallet as rewards to claim, not straight into your balance. Look for the claim button.
+- Make sure you're signed in with the account that wrote the post.
+- Payouts below 0.020 HBD in value are not paid at all, so tiny pending amounts can disappear at payout.
+
 ### Troubleshooting payouts
 
-- **I don't see anything to claim:** wait until the post is at least 7 days old. Check that you're signed in with the right account.
+- **I don't see anything to claim:** wait until the post is at least 7 days old. Check that you're signed in with the right account. The message **Pending rewards already claimed.** means there is nothing left to claim.
 - **Claim failed:** claiming rewards needs your **posting** authority. Sign in again with your posting key, Keychain, HiveSigner or the mobile app, then try again.
-- **Rewards are lower than expected:** late downvotes or a lower token price reduce the payout. Check the post's votes.
+- **Rewards are lower than expected:** late downvotes or a lower HIVE price reduce the payout. In the last 12 hours before payout, new upvotes can't raise it, but downvotes still count. Check the post's votes.
 - **Not enough RC:** claiming is a blockchain transaction and needs Resource Credits. See [RC troubleshooting](/common/resource-credits/troubleshooting/).
 
 ## Conversions between HIVE and HBD

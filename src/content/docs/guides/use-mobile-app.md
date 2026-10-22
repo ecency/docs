@@ -95,5 +95,5 @@ Need help?
 
 - Open the side menu and tap **Docs**.
 - Use **Settings → Send Feedback** to email the team.
-- Ask in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel).
+- Ask in the [Ecency Town Square chat](https://ecency.com/chats/hive-125125/channel).
 - Read the [mobile app FAQ](/ecency/mobile-faq/).

@@ -52,4 +52,4 @@ Costs change with network usage and the size of the transaction. The estimate on
 - You see errors signing transactions even though you have RC.
 - You suspect unusual RC use from a compromised key. In that case, also see [manage keys](/guides/manage-keys/).
 
-Ask in the [Ecency Help chat](https://ecency.com/chats/hive-125126/channel) with a screenshot of your Resource Credits panel.
+Ask in the [Ecency Town Square chat](https://ecency.com/chats/hive-125125/channel) with a screenshot of your Resource Credits panel.
