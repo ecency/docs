@@ -9,7 +9,7 @@ Ecency Pro is an annual membership that adds premium perks to your regular Ecenc
 
 - **Verified Pro badge.** A badge next to your name across Ecency on web and mobile, so readers can recognize you as a Pro member.
 - **A free blog.** Your own hosted blog at `yourname.blogs.ecency.com`, included with Pro. Claim it from the Ecency Pro card on the Perks page after you upgrade. See [Blog hosting](/ecency/blog-hosting/).
-- **Email newsletters to your readers.** Send one of your own posts to the readers who subscribed to your posts by email, using **Send to email subscribers** on the post.
+- **Email newsletters to your readers.** Send one of your own posts, or a digest you put together, to the readers who subscribed to your posts by email. See [Email newsletters](/ecency/newsletters/).
 - **Insights for any creator.** View traffic insights (views, unique views, time on page) for any profile, not just your own. Your own Insights are always free.
 - **A larger AI free allowance.** Five free uses per day of each [AI assist](/ecency/ai-assist/) action (regular accounts get one), one free standard-tier [AI image](/ecency/ai-images/) per day, plus one free 30-second block of dictation per day.
 - **Free streak freezes.** Protect your daily check-in streak without spending Points.
@@ -35,4 +35,8 @@ Payments are handled by our payment provider. Your membership is tied to your Hi
 
 **Where does my badge appear?** Next to your username on posts, comments and your profile, on both the website and the mobile app.
 
-**What are Insights?** Insights show how much traffic a profile's posts receive. With Pro you can also open the Insights tab on other creators' profiles.
+**What are Insights?** Insights show how much traffic a profile's posts receive on ecency.com (views on other Hive apps aren't counted). With Pro you can also open the Insights tab on other creators' profiles. See [Insights](/ecency/profile/#insights).
+
+**Are my posts found on Google and other search engines?** Yes, Ecency lets search engines index posts. Posts from new or low-reputation accounts aren't indexed until the account builds a track record. NSFW posts and very short posts aren't indexed at all. Pro doesn't change this.
+
+**How do newsletters work?** See [Email newsletters](/ecency/newsletters/).

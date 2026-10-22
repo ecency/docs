@@ -46,6 +46,14 @@ Yes. Add `/rss` (or `/rss.xml`) to these pages:
 - A tag feed: `https://ecency.com/trending/photography/rss`, with `trending`, `hot`, `created` or `payout`
 - A community: `https://ecency.com/trending/hive-125125/rss`, with the community's ID
 
+### Can an AI help me with my question?
+
+Yes. Message [Esie](/ecency/esie/), Ecency's AI helper, in chat. A few questions a day are free.
+
+### What are comments like !PIZZA, !LADY or !BEER?
+
+They are commands for third-party Hive bots that send small community tokens or badges, for example as a thank-you. Ecency shows them as normal comments and isn't involved with these bots. Check each bot's own posts for how it works.
+
 ### I got an error message. What does it mean?
 
 Look it up in [Common errors and fixes](/common/errors/), which lists Ecency and Hive error messages with what to do for each.

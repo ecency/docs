@@ -41,6 +41,26 @@ Every Hive account has four keys. Each key gives a different level of access, ca
   />
 </Figure>
 
+### Which key does Ecency ask for?
+
+| Action on Ecency | Key needed |
+| --- | --- |
+| Post, comment, edit, delete, vote, reblog, follow, poll votes, profile updates | Posting |
+| Claim rewards (also Hive Engine rewards) | Posting |
+| Community actions: subscribe, roles, mute, pin, settings | Posting |
+| Transfer HIVE or HBD, power up, power down, savings, conversions, claim savings interest | Active |
+| Delegate Hive Power | Active |
+| Delegate Resource Credits (RC) | Posting |
+| Witness votes, witness proxy, proposal votes and creating proposals | Active |
+| Market orders and Hive Engine transfers, staking, delegations and orders | Active |
+| Transfer Points, Promote and Boost+ | Active |
+| Give or remove an app's posting permission | Active |
+| Change keys or password, change your recovery account | Owner |
+| Read an encrypted (`#`) memo | Memo |
+| Send an encrypted memo with a transfer | Memo and Active |
+
+Give third-party apps the weakest key they need, usually posting, or better, sign through a wallet such as Hive Keychain or HiveAuth so the app never sees your key.
+
 ### Posting key
 
 The posting key covers social actions: posting, commenting, editing, voting, reblogging, following and muting. Profile updates, like your name, about text, avatar and cover image, also use posting authority. Most of the time, this is the only key you need. Because you use it often, it's deliberately limited: someone with only your posting key can't move your funds.

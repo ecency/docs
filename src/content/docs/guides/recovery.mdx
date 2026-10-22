@@ -8,6 +8,16 @@ import Sequence from "../../../components/visuals/Sequence.astro";
 
 You can recover a Hive account, but only if you still have an **owner key that was valid in the last 30 days** and your **recovery account** can vouch for you. Act as soon as you suspect a problem.
 
+## My account was hacked: first steps
+
+1. **Act now.** Recovery only works within 30 days of the key change.
+2. **Try your owner key or master password first.** If it still works, [reset your keys](#reset-keys-with-your-owner-key) right away. That replaces the keys the attacker had, but it keeps any **accounts** listed in your posting, active or owner authority. An attacker could have added their own account there, and active access is enough to move your funds even after you change keys. Check all three:
+   - **Posting:** **Posting active sessions** on your Permissions page. **Revoke** any account you don't know.
+   - **Active and owner:** Ecency's Permissions page doesn't list accounts with active or owner access. Open your account on [HiveXplorer](https://hivexplorer.com) and look under **Profile details**, which shows every authority. If you see an account you don't know, ask in the [Town Square chat](https://ecency.com/chats/hive-125125/channel) and the team will help you remove it. Do this before you move funds back into the account.
+3. **If your keys were changed,** find your **old** owner key or master password and [request a recovery](#request-a-recovery-within-30-days). Your recovery account (often the app that created your account, like Ecency) confirms it's you.
+4. **Don't trust "support" messages.** Nobody from Ecency will ask for your keys. Ask in the [Town Square chat](https://ecency.com/chats/hive-125125/channel) if you aren't sure.
+5. **After you're back in,** remember that a recovery account change takes 30 days to take effect. An attacker's change can be pending while your Permissions page still shows your old recovery account, so if you're unsure, ask in the [Town Square chat](https://ecency.com/chats/hive-125125/channel) for help checking. Also check your wallet for open power downs, savings withdrawals, delegations and recurrent transfers that you didn't set up, and cancel them.
+
 ## Quick triage
 
 - **You still have your current owner key (or master password):** go to [Reset keys with your owner key](#reset-keys-with-your-owner-key).
@@ -77,7 +87,7 @@ Never share your previous owner key in a chat. You only use it to sign the recov
 
 ## Change your recovery account
 
-On your Permissions page, go to **Account recovery** and click **Edit** to set a new recovery account. The change takes effect after **30 days**. Until then, your current recovery account stays in charge, which protects you if an attacker tries to change it.
+On your Permissions page, go to **Account recovery** (**Change Recovery Agent**). Type the account in **New Recovery Agent** and click **Update**, then sign with your owner key, master password or seed phrase. You can't set your own account. If you pick **ecency**, also enter an email: Ecency stores that email and your account's public keys to verify you during a recovery. The change takes effect after **30 days**. Until then, your current recovery account stays in charge, which protects you if an attacker tries to change it.
 
 ## Prevention checklist
 
