@@ -67,6 +67,20 @@ Try these in order:
 
 For other messages, see [Common errors and fixes](/common/errors/).
 
+## Where did SPK Network go? Can I still upload video?
+
+App 3.5.8 removed SPK Network wallet support (the SPK and LARYNX tokens). Video upload still works: videos go to 3Speak as before. See [Videos](/ecency/publish/#videos).
+
+## I forgot my PIN code
+
+The PIN protects the app on your phone, not your Hive account. After 2 wrong tries the app warns **User data will be wiped on next failed attempt**. The 3rd wrong PIN logs out every account in the app and removes the PIN. Tapping **Oh, I forgot it...** does the same after you confirm.
+
+Your Hive account and funds are safe either way. Log in again with your keys, master password, HiveSigner or HiveAuth, then set a new PIN. Make sure you have your keys before you try to guess.
+
+## What is "Enable Faster Posting"?
+
+If you log in with HiveAuth or HiveSigner, the app may offer **Enable Faster Posting**. It gives the `ecency.app` account posting permission on your account, so you can post, comment and vote without approving each action in your wallet app. With a HiveSigner login it is needed to post at all: until you grant it, posting fails. It can't transfer funds or change keys. To remove it later, open your Permissions page on ecency.com and click **Revoke** next to `ecency.app` under **Posting active sessions**. See [Manage keys](/guides/manage-keys/).
+
 ## How can I report a bug or get support?
 
 - In the app, open the side menu and tap **Docs** for the documentation.

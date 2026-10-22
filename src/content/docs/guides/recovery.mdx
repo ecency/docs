@@ -8,6 +8,14 @@ import Sequence from "../../../components/visuals/Sequence.astro";
 
 You can recover a Hive account, but only if you still have an **owner key that was valid in the last 30 days** and your **recovery account** can vouch for you. Act as soon as you suspect a problem.
 
+## My account was hacked: first steps
+
+1. **Act now.** Recovery only works within 30 days of the key change.
+2. **Try your owner key or master password first.** If it still works, [reset your keys](#reset-keys-with-your-owner-key) right away. This locks the attacker out.
+3. **If your keys were changed,** find your **old** owner key or master password and [request a recovery](#request-a-recovery-within-30-days). Your recovery account (often the app that created your account, like Ecency) confirms it's you.
+4. **Don't trust "support" messages.** Nobody from Ecency will ask for your keys. Ask in the [Town Square chat](https://ecency.com/chats/hive-125125/channel) if you aren't sure.
+5. **After you're back in,** check on your Permissions page that your recovery account is still the one you chose (attackers sometimes try to change it), and check your wallet for open power downs, savings withdrawals, delegations and recurrent transfers that you didn't set up, and cancel them.
+
 ## Quick triage
 
 - **You still have your current owner key (or master password):** go to [Reset keys with your owner key](#reset-keys-with-your-owner-key).
@@ -77,7 +85,7 @@ Never share your previous owner key in a chat. You only use it to sign the recov
 
 ## Change your recovery account
 
-On your Permissions page, go to **Account recovery** and click **Edit** to set a new recovery account. The change takes effect after **30 days**. Until then, your current recovery account stays in charge, which protects you if an attacker tries to change it.
+On your Permissions page, go to **Account recovery** (**Change Recovery Agent**). Type the account in **New Recovery Agent** and click **Update**, then sign with your owner key, master password or seed phrase. You can't set your own account. If you pick **ecency**, also enter an email: Ecency stores that email and your account's public keys to verify you during a recovery. The change takes effect after **30 days**. Until then, your current recovery account stays in charge, which protects you if an attacker tries to change it.
 
 ## Prevention checklist
 

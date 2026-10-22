@@ -20,7 +20,7 @@ Downvotes or moderation actions may follow these behaviors. Repeat offenders can
 
 - **Be original**: Add your own commentary, photos, or insights.
 - **Cite sources**: Link to references when quoting or using others’ work.
-- **Use relevant tags**: Pick a few tags that match your topic, like `travel`, `photography` or `introduction`. Ecency lets you add up to 10. Keep them lowercase. Hyphens are allowed.
+- **Use relevant tags**: Pick a few tags that match your topic, like `travel`, `photography` or `introduction`. Ecency lets you add up to 10, each up to 24 characters. Keep them lowercase. One hyphen per tag is allowed. See [Tags, title and limits](/ecency/publish/#tags-title-and-limits).
 - **Format for readability**: Use headings, lists and images to break up text.
 - **Set fair beneficiaries** if sharing rewards with collaborators.
 - **Respect community rules**: Many communities have their own posting standards, so read them before submitting.
