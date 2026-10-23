@@ -1,6 +1,6 @@
 ---
 title: Esie, the Ecency AI helper
-description: Ask Esie, Ecency's AI helper in chat, about Ecency and Hive. What Esie can do, how to reach it, free questions and Points, and safety.
+description: Ask Esie, Ecency's AI helper in chat, about Ecency and Hive. What Esie can do, how to reach it, free questions and Points, safety and your data.
 ---
 
 Esie is Ecency's AI helper. It answers questions about Ecency and Hive from these guides, and it can look at your own Hive account (read-only) to help you understand what's going on, for example why you can't post or where your rewards went.
@@ -45,6 +45,12 @@ Locked out, hacked or lost your keys? Questions about getting back into your acc
 - **Esie never asks for your keys, password, seed phrase or funds.** Nobody from Ecency does. Anyone who asks is a scammer.
 - If you paste something that looks like a private key or master password, Esie removes it before reading your message and warns you. If it was a real key, [change your keys](/guides/manage-keys/) now.
 - In channels, other people can read Esie's answers, so Esie doesn't list your balances there unless you asked about them.
+
+## Your data
+
+- Esie keeps a copy of your conversations with it for 30 days, then deletes it.
+- To delete it sooner, send **!forget** (or **delete my data**) to Esie in a direct message. Esie confirms when it's done. This works only in a direct message, not in a channel.
+- Your messages stay in the chat until you delete them yourself. Records of your free questions and Points spent stay in your [Points history](/ecency/ecency-points/).
 
 ## Feedback
 
