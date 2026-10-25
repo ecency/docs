@@ -51,7 +51,7 @@ A crossed-out payout means the author declined rewards for that post, or it is a
 
 ### "Pending rewards already claimed."
 
-There is nothing left to claim. The rewards were already claimed, maybe from another app or device. Refresh your wallet to see the updated balance.
+There is nothing left to claim. The rewards were already claimed, maybe from another app or device. Refresh your wallet to see the updated balance. For Hive Engine tokens the update can take a couple of minutes. See [Hive Engine troubleshooting](/ecency/wallets/engine-tokens/#troubleshooting).
 
 ### "Insufficient funds" or "Insufficient Funds"
 

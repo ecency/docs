@@ -55,6 +55,22 @@ If a token has rewards waiting for you, a claim button appears with the amount, 
 
 Claiming uses your posting key. Each token is claimed separately.
 
+## Troubleshooting
+
+### A claim or balance doesn't update
+
+Hive Engine is a second-layer service on top of Hive. It processes transactions on its own nodes, so updates can take longer than for HIVE or HBD. If a claim button still shows after you claimed, or a balance hasn't changed after a transfer:
+
+1. Wait a couple of minutes.
+2. Refresh your wallet, or close and reopen the app.
+3. Open the token's page and check its history to see whether the claim or transfer went through.
+
+Don't claim or send again right away, since the first one may still be on its way. If you see "Pending rewards already claimed.", the claim already worked. See [Common errors](/common/errors/).
+
+### A token doesn't work as expected
+
+Anyone can create a Hive Engine token. Tokens are made and run by their communities or projects, not by Ecency. Some are no longer maintained, have rewards that stopped, or have no buyers on the market. Then a claim, a sale or the estimated value may not work as you expect. Ecency can't fix that. Check the token's community or project for news before you buy or stake it.
+
 ## Trade tokens
 
 On the web, the **Trade tokens** button on your wallet opens the market. The **Hive Engine market** lets you trade Hive Engine tokens with limit orders, priced in SWAP.HIVE. It shows buy and sell orders, recent trades and your open orders. You need to be signed in to trade. See [Market](/ecency/market/) for more.

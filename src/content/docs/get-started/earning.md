@@ -60,3 +60,7 @@ You can view the same information for other users by visiting their wallet.
 ## When can I claim my rewards?
 
 Posts and comments stay open for votes for 7 days. During that time, the amount shown is only an estimate (pending payout), because votes and the token price can change. After 7 days, the pending payout becomes an actual reward. Click **Collect all** in your web wallet (or **Claim Reward** in the mobile app) to add the tokens to your account. If something looks stuck, see [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
+
+## Grow your audience
+
+More readers usually means more votes. For tips on content, engagement, communities, contests and promotion, see [Grow your audience](/guides/grow-your-audience/).
