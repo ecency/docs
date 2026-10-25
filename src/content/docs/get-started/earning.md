@@ -7,7 +7,7 @@ Ecency is built on the [Hive blockchain](https://hive.io), so your activity can 
 
 ## Start earning: first steps
 
-You don't need to invest anything to start. A free account can earn from day one.
+You don't need to invest anything to start. A free account can start earning right away. How much depends on the votes your posts and comments get.
 
 1. **Secure your account.** Save your keys before anything else. See [Create account](/guides/create-account/#save-your-keys).
 2. **Introduce yourself.** Write a short introduction post with the `introduction` tag. Members often welcome and vote on new people.
@@ -45,7 +45,7 @@ There is no fixed answer. Rewards come from people and curators voting on what t
 - **Posts that fit an active community**, where interested readers and curators already look.
 - **Authors who show up:** they post steadily and answer their readers.
 
-Posts that earn little or get downvoted: copied or recycled content, image-only posts, unrelated tags, the same content posted in many places or reward farming. Curators look for the same things. See [How authors get curated](/ecency/curation-desk/#how-authors-get-curated).
+Posts that earn little or get downvoted: copied or recycled content, image-only posts, tag or community abuse (for example unrelated tags or the wrong community) or reward farming. These are the same red flags the curators use. See [How authors get curated](/ecency/curation-desk/#how-authors-get-curated).
 
 To see what is earning right now, open a community feed and sort by **Payouts**. See [Feed](/ecency/feed/#sorts).
 
@@ -57,7 +57,7 @@ This is normal for new accounts. Common reasons:
 - **Small votes.** A vote's value depends on the voter's Hive Power. Votes from new accounts are worth very little.
 - **Very small payouts are not paid.** Hive doesn't pay out a post or comment whose total reward is below 0.020 HBD in value.
 - **Rewards were declined** for the post, or it's a cross post. See [Reward options](/ecency/publish/#reward-options).
-- **The post was muted or downvoted.** Esie can check a post's status for you: send it the link in [chat](/ecency/esie/).
+- **The post was downvoted or hidden.** Downvotes show in the post's vote list. Esie can tell you whether a post is grayed out or hidden, when it pays out and whether rewards were declined: send it the link in [chat](/ecency/esie/).
 
 The payout shown on a post is an estimate until the 7-day voting window ends. See [When can I claim my rewards?](#when-can-i-claim-my-rewards)
 
@@ -65,7 +65,7 @@ The payout shown on a post is an estimate until the 7-day voting window ends. Se
 
 Both earn, but in different ways:
 
-- **Posting and commenting** pay the most for a new account, because author rewards depend on the votes you get, not your own Hive Power.
+- **Posting and commenting** are usually the better earner for a new account, because author rewards depend on the votes you get, not your own Hive Power.
 - **Curation** pays a share of each post's rewards to its voters. It depends on your Hive Power, so it's small at first and grows as you power up.
 
 Most people do both: they post and comment, vote on good content and power up part of what they earn.
