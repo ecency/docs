@@ -63,9 +63,9 @@ Hive Engine is a second-layer service on top of Hive. It processes transactions 
 
 1. Wait a couple of minutes.
 2. Refresh your wallet, or close and reopen the app.
-3. Open the token's page and check its history to see whether the claim or transfer went through.
+3. On the web, open the token's page and check its history to see whether the claim or transfer went through.
 
-Don't claim or send again right away, since the first one may still be on its way. If you see "Pending rewards already claimed.", the claim already worked. See [Common errors](/common/errors/).
+Don't claim or send again right away, since the first one may still be on its way.
 
 ### A token doesn't work as expected
 

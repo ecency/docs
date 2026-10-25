@@ -57,7 +57,7 @@ Communities and accounts on Hive often run contests and challenges, for example 
 
 - **Post sharing channel:** share a link to your post with a short description in the [Post sharing](https://ecency.com/chats/hive-125126/channel) chat channel, so more readers and communities see it.
 - **Share outside Hive:** copy the post's ecency.com link and share it on your other social accounts. The link opens the app if it's installed and the website if not. See [Deep links](/developers/deep-links/).
-- **Cross post to a community:** open the post menu and choose **Cross post** to show a post in another community you are subscribed to. Rewards are declined for cross posts. See [Cross-post to another community](/hive/communities/#cross-post-to-another-community).
+- **Cross post to a community:** open the post menu and choose **Cross post** to show a post you published in a community in another community you are subscribed to. Posts published only to your blog can't be cross posted. Rewards are declined for cross posts. See [Cross-post to another community](/hive/communities/#cross-post-to-another-community).
 
 ## Promote and boost with Points
 
@@ -73,7 +73,7 @@ You earn Points for activity on Ecency and from [daily rewards](/ecency/daily-re
 
 ## Use your stats
 
-Open **Insights** on your profile to see views, unique views and time on page. The eye icon on a post shows its own stats. Look at which posts readers find and stay on, then do more of what works. See [Insights](/ecency/profile/#insights).
+On the web, open **Insights** on your profile to see **Views**, **Unique views** and **Minutes** (average visit length). The eye icon on a post shows its own stats. Look at which posts readers find and stay on, then do more of what works. See [Insights](/ecency/profile/#insights).
 
 ## Get noticed by curators
 

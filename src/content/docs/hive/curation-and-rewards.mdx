@@ -101,7 +101,7 @@ Downvotes use a separate pool called **downvote mana**. It's **25%** of your vot
 
 ## Voting trails and auto-vote services
 
-A voting trail, also called a curation trail, votes for you automatically. You follow a curator on an outside service, for example [hive.vote](https://hive.vote). Every time that curator votes, the service casts the same vote from your account. Other services vote automatically on posts from authors you pick.
+A voting trail, also called a curation trail, votes for you automatically. You follow a curator on an outside service, for example [hive.vote](https://hive.vote). Every time that curator votes, the service casts the same vote from your account. Services can also vote automatically on new posts from authors you pick. hive.vote calls this a fanbase.
 
 To do this, the service needs **posting permission** on your account. For hive.vote this is the account `steemauto`. The votes it casts come from your account and use your voting power, like any vote you cast yourself.
 
@@ -112,7 +112,7 @@ Ecency doesn't run auto-vote services for users. The trail on the [curation desk
 You can stop auto-votes in two ways. Use both if you want to be sure.
 
 1. **Turn it off on the service.** Log in to the service, open the trails or authors you follow and unfollow or disable them.
-2. **Revoke the service's posting permission.** On Ecency, open your [Permissions page](/guides/manage-keys/#revoke-app-permissions) (`ecency.com/@yourname/permissions`). Under **Posting active sessions**, find the service account, for example `steemauto` for hive.vote, select **Revoke** and sign. Without that permission the service can't vote for you at all, on any trail.
+2. **Revoke the service's posting permission.** On Ecency, open your [Permissions page](/guides/manage-keys/#revoke-app-permissions) (`ecency.com/@yourname/permissions`). Under **Posting active sessions**, find the service account, for example `steemauto` for hive.vote, select **Revoke** and sign. Without that permission the service can't vote for you on any trail. If you ever gave a service your private posting key instead, revoking isn't enough: [change your keys](/guides/manage-keys/#add-a-new-key-set).
 
 Revoking needs your active key. Leave `ecency.app` in place: Ecency adds it when you log in with an active key, master password or seed. If you see an account you don't recognize, you can revoke it too.
 
