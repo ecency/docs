@@ -69,7 +69,7 @@ Don't claim or send again right away, since the first one may still be on its wa
 
 ### A token doesn't work as expected
 
-Anyone can create a Hive Engine token. Tokens are made and run by their communities or projects, not by Ecency. Some are no longer maintained, have rewards that stopped, or have no buyers on the market. Then a claim, a sale or the estimated value may not work as you expect. Ecency can't fix that. Check the token's community or project for news before you buy or stake it.
+Anyone can create a Hive Engine token. Tokens are made and run by their communities or projects, not by Ecency. Some are no longer maintained or have stopped offering rewards, so claims may not work. Others have no buyers on the market, so you may not be able to sell them and the estimated value may be wrong. Ecency can't fix that. Check the token's community or project for news before you buy or stake it.
 
 ## Trade tokens
 

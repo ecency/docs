@@ -116,6 +116,8 @@ Posts and comments stay open for votes for 7 days. During that time, the amount 
 
 Whether you can then withdraw to a bank account depends on the exchange and your country.
 
+**Ecency Points can't be cashed out.** They are spent inside Ecency, mostly on growth: [Promote](/ecency/boost-and-promote/), [Boost+](/ecency/boost-and-promote/), RC top-ups and other [perks](/ecency/ecency-points/#what-can-i-use-points-for). You can also [tip](/ecency/tips/) other creators with Points to support them and help them grow.
+
 ## Grow your audience
 
 More readers usually means more votes. For tips on content, engagement, communities, contests and promotion, see [Grow your audience](/guides/grow-your-audience/).

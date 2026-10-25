@@ -42,7 +42,7 @@ Engagement is the fastest way to grow.
 - **Comment on other posts** with something useful to say. Thoughtful comments get you noticed and raise your [reputation](/common/reputation/).
 - **Follow people with similar interests.** Use [Search](/ecency/search/) to find posts on your topic, then follow the authors you enjoy. The Following feed shows their new posts.
 - **Vote and reblog** good posts. Votes earn you [curation rewards](/hive/curation-and-rewards/) and [reblogs](/common/reblog/) share a post with your followers.
-- **Send a tip** to say thanks for a post you liked. See [Tips](/ecency/tips/).
+- **Send a tip** to say thanks for a post you liked. Tipping with Points is an easy way to support other creators and help them grow. See [Tips](/ecency/tips/).
 - **Join community chats.** Many communities have a chat channel where members talk every day. See [Chats](/ecency/chats/).
 
 ## Join contests
@@ -63,11 +63,11 @@ Communities and accounts on Hive often run contests and challenges, for example 
 
 [Ecency Points](/ecency/ecency-points/) pay for perks that help your posts reach more people.
 
-- **Promote:** show a post or a wave in the Promoted feed and across Ecency for the time you pick.
+- **Promote:** a promoted post shows in the Promoted feed and across Ecency. A promoted wave shows in the Waves feed. You pick how long it runs.
 - **Boost+:** a temporary Hive Power delegation that gives you more Resource Credits and voting influence.
 - **RC top-up:** a short Resource Credits boost so you can keep posting and commenting.
 
-See [Boost and Promote](/ecency/boost-and-promote/) to compare them.
+Find them all on the **Perks** page: [ecency.com/perks](https://ecency.com/perks) on the web, or **Perks** in the mobile app. The mobile app also has **Account Boost**, a temporary Hive Power delegation you buy as an in-app purchase instead of with Points. See [Boost and Promote](/ecency/boost-and-promote/) to compare them.
 
 You earn Points for activity on Ecency and from [daily rewards](/ecency/daily-rewards/) (check-in, quests and the daily spin). You can also [buy Points](/ecency/buy-points/) by card, with HIVE or HBD, or in the mobile app.
 
