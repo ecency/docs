@@ -60,3 +60,4 @@ Your first action on Ecency should take less than a minute. [Waves](/ecency/wave
 - Vote on **witnesses** and **DHF proposals** using the [governance participation guide](/hive/governance/).
 - Back up your keys any time you rotate them and bookmark the [account recovery playbook](/guides/recovery/).
 - Stay connected via the [Ecency Town Square chat](https://ecency.com/chats/hive-125125/channel) for support and updates.
+- Want more readers? See [Grow your audience](/guides/grow-your-audience/).

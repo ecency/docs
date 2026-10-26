@@ -133,6 +133,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             { label: "Create account", slug: "guides/create-account" },
+            { label: "Grow your audience", slug: "guides/grow-your-audience" },
             { label: "Login methods", slug: "guides/login-methods" },
             { label: "Manage keys", slug: "guides/manage-keys" },
             { label: "Account recovery", slug: "guides/recovery" },
