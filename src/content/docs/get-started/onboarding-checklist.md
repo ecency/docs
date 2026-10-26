@@ -56,7 +56,7 @@ Your first action on Ecency should take less than a minute. [Waves](/ecency/wave
 
 - **Wave daily, post weekly**: short Waves keep you visible and connected between longer posts.
 - Keep your **daily streak** alive by using Ecency every day (check-ins are automatic). Streaks compound into Points and habits. See [daily rewards](/ecency/daily-rewards/).
-- **Recommend good posts** from friends and your community to the curators. It's free and helps them get noticed. See [Recommend a post to the curators](/ecency/curation-desk/#recommend-a-post-to-the-curators).
+- **Recommend good posts** from friends and your community to the curators (on the web). It's free and helps them get noticed. See [Recommend a post to the curators](/ecency/curation-desk/#recommend-a-post-to-the-curators).
 - Claim rewards weekly and consider **powering up** a portion for more RC and influence.
 - Vote on **witnesses** and **DHF proposals** using the [governance participation guide](/hive/governance/).
 - Back up your keys any time you rotate them and bookmark the [account recovery playbook](/guides/recovery/).
