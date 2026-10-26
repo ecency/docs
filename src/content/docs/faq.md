@@ -144,7 +144,7 @@ Pick a reward option before you publish: **Default 50% / 50%**, **Stake 100%** (
 
 ### What is voting power?
 
-Voting power (also called voting mana) goes down with each vote and regenerates by about 20% per day. See [curation and rewards](/hive/curation-and-rewards/#voting-power).
+Voting power (also called voting mana) goes down with each vote and regenerates by about 20% per day. A full vote always carries its full value, as long as you have enough voting power for it. See [curation and rewards](/hive/curation-and-rewards/#voting-power).
 
 ### When can I claim my rewards?
 
