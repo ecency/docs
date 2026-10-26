@@ -10,7 +10,7 @@ The Ecency mobile app brings Hive to your phone. It is available for **Android**
 - [Ecency on Android (Google Play)](https://android.ecency.com)
 - [Ecency on iOS (App Store)](https://ios.ecency.com)
 
-Android releases are also available on [GitHub](https://github.com/ecency/vision-mobile/releases).
+Not using Google Play? Each Android release is also on [GitHub](https://github.com/ecency/vision-mobile/releases). Download **Ecency-APK.zip** from the release, unzip it and install the APK inside. The first time, Android asks you to allow installs from that source. App stores that use Google Play, such as Aurora Store, install the same app.
 
 ## Getting started
 

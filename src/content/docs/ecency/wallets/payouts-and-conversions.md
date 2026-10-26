@@ -34,15 +34,15 @@ On the web, press **Collect all** in your wallet, or the claim button on a token
 - **The pending amount is only an estimate.** It changes with every vote until payout, and with the HIVE price.
 - **Curators get half.** The payout shown on a post is the total. You get the author half, minus any beneficiaries.
 - **Downvotes reduce it.** A downvote, even late, takes value away.
-- **Late upvotes don't count.** In the last 12 hours before payout, new upvotes can't raise it.
-- **Votes depend on the voters' Hive Power and voting power.** The same voter's vote is worth less when they vote a lot.
+- **Late votes count for progressively less.** In the last 12 hours before payout, a vote's strength shrinks steadily toward zero: with 11 hours left it keeps about 92%, with 1 hour left about 8%.
+- **Votes depend on the voters' Hive Power and vote weight.** A smaller account or a lower vote weight gives a smaller vote.
 - **Delegation rewards are separate.** Points for delegating to @ecency change with your delegation and pause after 90 days without activity. The daily HIVE curation share changes with Ecency's curation rewards that day and the holdback you chose. See [Ecency Points](/ecency/ecency-points/#why-does-my-daily-delegation-reward-change).
 
 ### Troubleshooting payouts
 
 - **I don't see anything to claim:** wait until the post is at least 7 days old. Check that you're signed in with the right account. The message **Pending rewards already claimed.** means there is nothing left to claim.
 - **Claim failed:** claiming rewards needs your **posting** authority. Sign in again with your posting key, Keychain, HiveSigner or the mobile app, then try again.
-- **Rewards are lower than expected:** late downvotes or a lower HIVE price reduce the payout. In the last 12 hours before payout, new upvotes can't raise it, but downvotes still count. Check the post's votes.
+- **Rewards are lower than expected:** late downvotes or a lower HIVE price reduce the payout. In the last 12 hours before payout, upvotes and downvotes are both scaled down toward zero. Check the post's votes.
 - **Not enough RC:** claiming is a blockchain transaction and needs Resource Credits. See [RC troubleshooting](/common/resource-credits/troubleshooting/).
 
 ## Conversions between HIVE and HBD

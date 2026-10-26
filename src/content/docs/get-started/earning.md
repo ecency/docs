@@ -77,7 +77,7 @@ Besides Hive tokens, many actions on Ecency earn [Ecency Points](/ecency/ecency-
 | Action | Points |
 | --- | --- |
 | Publish a post | 15 |
-| Write a comment | 5 |
+| Write a comment or a wave | 5 |
 | Reblog a post | 1 |
 | First login (one-time bonus) | 10 |
 | Check in (stay active in the app) | 0.25 |

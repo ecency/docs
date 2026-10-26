@@ -30,7 +30,7 @@ Rewards are only paid at the end of the 7-day payout window. Until then, every a
 Curators are people who **vote** on content. You earn curation rewards when you:
 
 - Vote on content others also value
-- Vote **early**, before most of the votes arrive
+- Vote in the **first 24 hours** of a post, when your vote gets full curation weight
 - Have more **Hive Power**, which makes your vote bigger
 
 ### Curation windows
@@ -41,15 +41,24 @@ Curators are people who **vote** on content. You earn curation rewards when you:
 
 If no one votes during the first 24 hours, then votes placed during the second window earn the same return they would have received in the first. The same principle applies if both the first and second windows are empty: third-window voters earn as if they voted in the earliest window.
 
-In the **last 12 hours** before payout, new upvotes (or raising an existing vote) are no longer accepted. Downvotes still are, so a post can't be pushed up at the last minute.
+In the **last 12 hours** before payout, every vote counts for less: its strength shrinks steadily toward zero as payout gets closer. This applies to upvotes and downvotes alike, so a post can't be pushed up or down much at the last minute.
 
-<Figure caption="Curation weight by vote time across the 7-day payout window. Vote in the first 24 hours for full weight. New upvotes stop 12 hours before payout.">
+### Best time to vote
+
+- **Within the first 24 hours** of a post. Every vote in this window gets full curation weight. The order doesn't matter: a vote in the first minute earns the same return for its size as a vote at hour 23.
+- **24 to 72 hours** still earns curation, at half weight.
+- **After 72 hours** earns one eighth of the weight.
+- **In the last 12 hours** before payout, your vote's strength shrinks steadily: it keeps about 92% of its strength with 11 hours left, about 50% with 6 hours left and about 8% with 1 hour left. Its curation weight is also only one eighth, as for any vote after 72 hours, so curation earns very little this late.
+
+There's no best time of day. What counts is the post's age. Vote on posts other people will also value. On the [curation desk](/ecency/curation-desk/) each post shows which window it is in. Found a good post from someone else? [Recommend it to the curators](/ecency/curation-desk/#recommend-a-post-to-the-curators) while it's still under 24 hours old. It's free.
+
+<Figure caption="Curation weight by vote time across the 7-day payout window. Vote in the first 24 hours for full weight. In the last 12 hours before payout, votes count for less and less.">
   <Timeline
     spans={[
       { size: 24, label: "0 to 24 hours", detail: "Full curation weight", tag: "Full", tone: "accent" },
       { size: 48, label: "24 to 72 hours", detail: "Half the curation weight", tag: "Half", tone: "mid" },
       { size: 84, label: "72 hours to day 6.5", detail: "One eighth of the curation weight", tag: "One eighth", tone: "low" },
-      { size: 12, label: "Last 12 hours", detail: "No new upvotes. Downvotes still count.", tone: "stop" },
+      { size: 12, label: "Last 12 hours", detail: "Every vote scaled down toward zero", tone: "stop" },
     ]}
     ticks={[
       { at: 0, label: "Post" },
@@ -90,9 +99,10 @@ Downvoted rewards go back to the reward pool. Downvotes can also lower the autho
 
 Each vote uses some of your **voting power** (also called voting mana):
 
-- A full 100% upvote uses 2% of your voting power.
+- A full 100% upvote uses 2% of your full voting power. A 50% vote uses 1%.
 - Voting power regenerates by **20% per day**.
-- So you can cast about **10 full votes per day** and stay at full power. You can vote more often, but each vote is worth less until your power recharges.
+- A vote's value doesn't depend on how much voting power you have left. Since Hive's hardfork 28 (November 2025), a 100% vote always carries its full value, as long as you have enough voting power for it. When you run out, you can't vote until it recharges.
+- So you can cast about **10 full votes per day** and stay where you are. Voting more uses up your power faster.
 - Lower vote weights use less voting power.
 
 ### Downvote mana
@@ -125,6 +135,6 @@ Revoking needs your active key. Leave `ecency.app` in place: Ecency adds it when
 ## Summary
 
 - Hive rewards authors and curators, 50% each.
-- Vote early on good content to earn more curation.
-- About 10 full votes per day keeps your voting power at its best.
+- Vote on good content in its first 24 hours for full curation weight.
+- A full vote is always worth its full value. About 10 full votes per day matches how fast voting power regenerates.
 - Downvotes use their own mana, 25% of your voting power.
