@@ -146,6 +146,10 @@ Pick a reward option before you publish: **Default 50% / 50%**, **Stake 100%** (
 
 Voting power (also called voting mana) goes down with each vote and regenerates by about 20% per day. A full vote always carries its full value, as long as you have enough voting power for it. See [curation and rewards](/hive/curation-and-rewards/#voting-power).
 
+### How can I help a friend's post get curated?
+
+Recommend it to the Ecency curators: open the post menu (the three dots) and choose **Recommend to curators**. Anyone can recommend posts by other people, for free (it uses only a little Resource Credits). It's a good way to support friends and your community. Recommend while the post is less than 24 hours old, when a curation vote counts in full. See [Recommend a post to the curators](/ecency/curation-desk/#recommend-a-post-to-the-curators).
+
 ### When can I claim my rewards?
 
 Rewards become claimable seven days after the post or comment is published. Use **Collect all** in your web wallet. In the mobile app, tap the button showing your unclaimed amount on the token's card. If claims or conversions look stuck, see [payouts and conversions](/ecency/wallets/payouts-and-conversions/).
