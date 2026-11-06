@@ -108,6 +108,10 @@ If someone changed your keys, account recovery is possible within 30 days, as lo
 
 Yes, Ecency has Android and iOS apps. See the [mobile app guide](/guides/use-mobile-app/) for download links and the [mobile FAQ](/ecency/mobile-faq/) for common questions.
 
+### What if ecency.com is blocked where I live?
+
+Use the Ecency mobile app and log in there with your keys or master password. It reads and posts through Hive API nodes, and you can switch nodes in **Settings > Server** if one doesn't load. If posts load without images, try **Settings > Image Server > Hive Images (Alternative)**. Your account, posts and wallet are on the Hive blockchain, so they work the same in the app. Not using Google Play? Get the Android app from [GitHub](https://github.com/ecency/vision-mobile/releases), see the [mobile app guide](/guides/use-mobile-app/). Features that run on Ecency's own servers, such as chat and drafts, may still not load.
+
 ### What are Ecency Points and how do I earn them?
 
 Points reward activity on Ecency. You can spend them to promote posts, boost your account and more. Earning methods are listed on the [Ecency Points page](/ecency/ecency-points/) and in [how to earn](/get-started/earning/).

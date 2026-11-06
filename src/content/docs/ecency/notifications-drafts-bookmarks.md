@@ -37,10 +37,12 @@ You can:
 - Search your drafts by title
 - Open a draft, keep editing and publish when ready
 
+There's no fixed limit on the number of drafts. The list loads in pages; on the web, use **Load More** to see older ones. Search covers only the drafts already loaded.
+
 ### Where to find them
 
-- **Web:** open the user menu (your avatar) and choose **Drafts**.
-- **Mobile:** open the side menu and tap **Drafts**.
+- **Web:** open the user menu (your avatar) and choose **Drafts**. You can also type "my drafts" in the search box and pick **My drafts**.
+- **Mobile:** open the side menu and tap **Drafts**. The same screen has **Schedules** and **Templates** tabs.
 
 Want to publish at a set time instead? See [Scheduled posts](/ecency/scheduled-posts/). For reusable pieces of text, see [Snippets and templates](/ecency/snippets-templates/).
 
