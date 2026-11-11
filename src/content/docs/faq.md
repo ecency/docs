@@ -100,7 +100,7 @@ Blockchain transactions can't be reversed. Funds in Hive Power or savings are be
 
 ### How can I recover a lost account?
 
-If someone changed your keys, account recovery is possible within 30 days, as long as you still have an owner key that was valid during that time. Follow the [account recovery playbook](/guides/recovery/).
+If someone changed your keys, account recovery is possible within 30 days, as long as you still have an owner key that was valid during that time. If you signed up through Ecency, you can do it yourself at [ecency.com/recover-account](https://ecency.com/recover-account) (see [Recover on Ecency](/guides/recovery/#recover-on-ecency)). Otherwise follow the [account recovery playbook](/guides/recovery/).
 
 ## Using Ecency
 
