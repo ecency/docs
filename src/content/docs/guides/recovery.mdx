@@ -14,14 +14,14 @@ You can recover a Hive account, but only if you still have an **owner key that w
 2. **Try your owner key or master password first.** If it still works, [reset your keys](#reset-keys-with-your-owner-key) right away. That replaces the keys the attacker had, but it keeps any **accounts** listed in your posting, active or owner authority. An attacker could have added their own account there, and active access is enough to move your funds even after you change keys. Check all three:
    - **Posting:** **Posting active sessions** on your Permissions page. **Revoke** any account you don't know.
    - **Active and owner:** Ecency's Permissions page doesn't list accounts with active or owner access. Open your account on [HiveXplorer](https://hivexplorer.com) and look under **Profile details**, which shows every authority. If you see an account you don't know, ask in the [Town Square chat](https://ecency.com/chats/hive-125125/channel) and the team will help you remove it. Do this before you move funds back into the account.
-3. **If your keys were changed,** find your **old** owner key or master password and [request a recovery](#request-a-recovery-within-30-days). Your recovery account (often the app that created your account, like Ecency) confirms it's you.
+3. **If your keys were changed,** find your **old** owner key or master password. If you signed up through Ecency, [recover it yourself on Ecency](#recover-on-ecency). Otherwise [ask your recovery account](#request-a-recovery-within-30-days) (often the app that created your account) to confirm it's you.
 4. **Don't trust "support" messages.** Nobody from Ecency will ask for your keys. Ask in the [Town Square chat](https://ecency.com/chats/hive-125125/channel) if you aren't sure.
 5. **After you're back in,** remember that a recovery account change takes 30 days to take effect. An attacker's change can be pending while your Permissions page still shows your old recovery account, so if you're unsure, ask in the [Town Square chat](https://ecency.com/chats/hive-125125/channel) for help checking. Also check your wallet for open power downs, savings withdrawals, delegations and recurrent transfers that you didn't set up, and cancel them.
 
 ## Quick triage
 
 - **You still have your current owner key (or master password):** go to [Reset keys with your owner key](#reset-keys-with-your-owner-key).
-- **Someone changed your keys in the last 30 days and you still have the old owner key:** go to [Request a recovery](#request-a-recovery-within-30-days).
+- **Someone changed your keys in the last 30 days and you still have the old owner key:** if you signed up through Ecency, go to [Recover on Ecency](#recover-on-ecency). Otherwise go to [Request a recovery](#request-a-recovery-within-30-days).
 - **The keys changed more than 30 days ago:** recovery is no longer possible. Create a new account and move any funds you can still reach.
 
 Keep your owner key offline. Never paste it into chats or screenshots.
@@ -39,9 +39,36 @@ If you still have your **current owner key** or master password, you can replace
 
 This locks out anyone who had your old keys. See [Manage keys](/guides/manage-keys/) for the full walkthrough.
 
+## Recover on Ecency
+
+If you created your account through Ecency signup and someone changed your password or owner key in the last 30 days, you can take it back yourself at [ecency.com/recover-account](https://ecency.com/recover-account). You can also get there from the **Account taken over? Recover it** link in the login dialog, or from **Account recovery** on your Permissions page.
+
+You need:
+
+- An **old password or owner key** that worked before the account was taken.
+- Access to the **email you signed up with**. The code goes there. If Ecency has no signup email for your account, a recovery email you saved on Ecency may qualify instead, but only if you saved it before you set the old password or key you'll use to prove ownership, and never changed it since. The page shows where the code was sent.
+
+Everything that involves your keys happens in your browser. Your old and new passwords are never sent to Ecency.
+
+1. Enter your username and pass the human check. If your account isn't supported, the page tells you and points you to support.
+2. Ecency creates a **new master password** for you. Download the key file and keep it safe. Nobody can restore it for you.
+3. Enter your **old password or owner key**. The page checks it against your account history.
+4. Enter the **6 digit code** from your email. The page shows where it was sent, partly hidden. The code expires after 15 minutes.
+5. Wait while your recovery account submits the recovery request. This usually takes a minute or two. **Keep the page open**: if you close it, you have to start again.
+6. Choose which apps and accounts keep access:
+   - **Posting access (apps):** kept by default. Anything added shortly before or after you lost access is marked and unchecked. Only tick it if you added it yourself.
+   - **Active access:** unchecked. Only tick accounts you added yourself.
+   - **Owner access:** always removed.
+7. Click **Replace all keys**. The page recovers your account and then replaces every other key, so no old key keeps access.
+8. Undo wallet changes you didn't make, such as a power down, savings withdrawal, recurring transfer or open order.
+
+When it's done, every key on your account comes from your new master password. Log in with it.
+
+If the page says your account can't be recovered here, it tells you why. If your recovery account is no longer Ecency, the page names the account that can recover it: contact them as described in [Request a recovery](#request-a-recovery-within-30-days). Otherwise contact Ecency support from that page. A recovery for an account can only be in progress once at a time, so if you closed the page, the page tells you when you can start again.
+
 ## Request a recovery (within 30 days)
 
-If an attacker changed your keys and you still have an owner key that was valid in the last 30 days:
+If [Recover on Ecency](#recover-on-ecency) doesn't apply to you and an attacker changed your keys and you still have an owner key that was valid in the last 30 days:
 
 1. Contact your **recovery account**. This is usually the account that created yours, such as `ecency`. You can see it on your Permissions page under **Account recovery**.
 2. Tell them your username, roughly when you lost control and that you still have a previous owner key.
