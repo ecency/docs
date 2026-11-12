@@ -3,6 +3,8 @@ title: Ecency SDK
 description: Use @ecency/sdk to read Hive data and broadcast transactions with built-in signing, RPC failover and React Query support.
 ---
 
+import { Aside } from "@astrojs/starlight/components";
+
 The Ecency SDK (`@ecency/sdk`) is the Hive library that powers the Ecency web and mobile apps. It bundles a
 transaction engine (signing, serialization, broadcasting), a multi-node RPC client with failover plus a large set of
 [React Query](https://tanstack.com/query) option builders and mutation hooks. You can use it in browsers, React
@@ -10,7 +12,7 @@ Native and Node.js.
 
 It is published on [npm](https://www.npmjs.com/package/@ecency/sdk) under the MIT license. The source lives in
 the [ecency/vision-web](https://github.com/ecency/vision-web/tree/develop/packages/sdk) monorepo under
-`packages/sdk`.
+`packages/sdk`. This page describes version 2.6.
 
 ## At a glance
 
@@ -24,7 +26,8 @@ the [ecency/vision-web](https://github.com/ecency/vision-web/tree/develop/packag
 | Cache keys | Central `QueryKeys` object, one source of truth for cache keys |
 | Auth methods | Private key, Keychain (and other extensions), HiveSigner, HiveAuth, custom broadcaster |
 | Platforms | Web, React Native, Node.js (SSR) |
-| Builds | Browser ESM plus Node ESM and CJS, with a lean `@ecency/sdk/hive` entry |
+| Builds | Browser ESM plus Node ESM and CJS |
+| Entry points | `@ecency/sdk` (main SDK), `@ecency/sdk/hive` (lean chain layer), `@ecency/sdk/wallets` (wallets and multi-chain) |
 
 The transaction engine is built on an improved version of [hive-tx](https://github.com/mahdiyari/hive-tx) by
 Mahdi Yari.
@@ -32,11 +35,11 @@ Mahdi Yari.
 ## Installation
 
 ```sh
-npm install @ecency/sdk hivesigner
+npm install @ecency/sdk hivesigner @tanstack/react-query react
 # or
-yarn add @ecency/sdk hivesigner
+yarn add @ecency/sdk hivesigner @tanstack/react-query react
 # or
-pnpm add @ecency/sdk hivesigner
+pnpm add @ecency/sdk hivesigner @tanstack/react-query react
 ```
 
 Peer dependencies:
@@ -44,11 +47,15 @@ Peer dependencies:
 | Package | Version | Required |
 |---|---|---|
 | `hivesigner` | `^4.0.0` | Yes |
-| `@tanstack/react-query` | `>=5` | Optional, needed for the query builders and hooks |
-| `react` | `>=18` | Optional, needed for the mutation hooks |
+| `@tanstack/react-query` | `>=5` | Yes for `@ecency/sdk` and `@ecency/sdk/wallets` (imported when the entry loads); not for `@ecency/sdk/hive` |
+| `react` | `>=18` | Yes for `@ecency/sdk` and `@ecency/sdk/wallets` (needed by React Query); not for `@ecency/sdk/hive` |
+| `@solana/web3.js` | `^1` | Optional, only for SOL transfers in `@ecency/sdk/wallets` |
+| `@wallet-standard/app` | `^1` | Optional, only for MetaMask multichain discovery and SOL transfers in `@ecency/sdk/wallets` |
 
-Without React, you can still use the transaction engine, RPC helpers and request functions in server jobs or
-scripts.
+`@ecency/sdk` and `@ecency/sdk/wallets` import React Query when they load, so both packages must be installed even
+if you only call plain functions. The SDK lists them as optional peers, so npm doesn't add them for you. For server
+jobs, scripts or CLIs without React, use the [`@ecency/sdk/hive`](#the-ecencysdkhive-entry) entry, which loads without
+either.
 
 ## Quick start
 
@@ -71,6 +78,19 @@ function Profile({ username }: { username: string }) {
 
 `makeQueryClient()` returns a `QueryClient` with `refetchOnWindowFocus` and `refetchOnMount` turned off. Pass your
 own client if you want different defaults.
+
+## Entry points
+
+The package has three entry points:
+
+| Import from | What it contains |
+|---|---|
+| `@ecency/sdk` | The main SDK: configuration, query option builders, mutation hooks, `QueryKeys`, types and helpers. Wallet-only code (token prices, external chains, MetaMask, key derivation) is not here; import it from `@ecency/sdk/wallets`. |
+| `@ecency/sdk/hive` | Only the chain layer (transactions, keys, RPC calls). Loads without React or React Query. Meant for servers, scripts and CLIs. |
+| `@ecency/sdk/wallets` | Wallet and multi-chain code: asset queries, token prices, external chain balances, MetaMask transfers and Hive key derivation. See [Ecency wallets](/developers/wallets/). |
+
+`@ecency/sdk/wallets` replaces the separate `@ecency/wallets` package, which is deprecated on npm. If you used it,
+change the import path to `@ecency/sdk/wallets` (see [Migrating from @ecency/wallets](/developers/wallets/#migrating-from-ecencywallets)).
 
 ## The `@ecency/sdk/hive` entry
 
@@ -229,6 +249,76 @@ const { data: authorAccount } = useQuery({
 
 For server rendering, prefetch with `queryClient.prefetchQuery(...)` and hydrate on the client. Mutation hooks
 (`use*`) are client-only; in the Next.js App Router keep them in `"use client"` components.
+
+## Entries and votes
+
+Posts and comments come back as `Entry` objects. The SDK reads them with the vote-free hivemind bridge methods
+(`bridge.get_post_v2`, `get_ranked_posts_v2`, `get_account_posts_v2` and `get_discussion_v2`). A node that doesn't
+serve them yet is asked with the v1 method (`bridge.get_post` and so on) instead, and the answer is turned into the
+same shape.
+
+<Aside type="caution" title="Breaking change in 2.5.0">
+  `Entry` no longer has `active_votes`. The SDK's post reads remove it from every entry, also when they fall back to a v1
+  method that still returns it. Code that counted votes or looked for the user's vote in `active_votes` needs to
+  move to the fields below.
+</Aside>
+
+| Field or helper | What it gives you |
+|---|---|
+| `entry.stats.total_votes` | The number of votes (`stats` can be `null`). |
+| `entry.top_votes` | The strongest voters as `{ voter, rshares, percent }`, when present. Single post reads ask for 5; on a v1 fallback up to 10 are derived from the v1 voter list. |
+| `entry.observer_vote` | The vote of the account in `observer_vote_for` as `{ rshares, percent }`, or `null` if that account hasn't voted. Either number can be `null`: `percent` when the source didn't say, `rshares` for a vote just cast that the chain hasn't reported yet. |
+| `entry.observer_vote_for` | The account the entry was read for (the observer), or `null` when that is unknown. When it is `null`, `observer_vote` tells you nothing. |
+| `entryVoteOf(entry, username)` | The user's vote from the entry: the vote, `null` (not voted) or `undefined` (the entry can't tell, look it up). |
+| `getEntryVoteQueryOptions(author, permlink, voter, enabled?)` | Looks up one account's vote on one post. Lookups made at the same time are sent as one batch. |
+| `getEntryActiveVotesQueryOptions(entry)` | The full voter list, loaded on demand. It pages `bridge.list_votes` (or `database_api.list_votes` on nodes without it), so it isn't capped at 1000 voters. |
+| `isCastVote(vote)` / `voteDirection(vote)` | Whether a vote counts as cast, and `"up"`, `"down"` or `null`. |
+| `normalizeEntry(raw, observer, options?)` | Turns a raw post from any source (bridge v1 or v2, condenser) into the `Entry` shape. Only needed if you call the node yourself. For condenser `get_content` / `get_content_replies`, which send the whole voter list, pass `{ completeVoteList: true }`. |
+
+Pass the logged-in user as the observer so the entry can carry their vote. The post query is cached per post, not per
+observer, so an entry read earlier for someone else (or for nobody) won't know this user's vote; the lookup below covers
+that case:
+
+```tsx
+import { useQuery } from "@tanstack/react-query";
+import {
+  getPostQueryOptions,
+  getEntryVoteQueryOptions,
+  getEntryActiveVotesQueryOptions,
+  entryVoteOf,
+  voteDirection,
+} from "@ecency/sdk";
+
+type Props = { author: string; permlink: string; username?: string; showVoters: boolean };
+
+function Votes({ author, permlink, username, showVoters }: Props) {
+  const { data: entry } = useQuery(getPostQueryOptions(author, permlink, username));
+
+  // Vote count
+  const count = entry?.stats?.total_votes ?? 0;
+
+  // Has the user voted? Use the entry when it knows, otherwise look it up.
+  const fromEntry = entryVoteOf(entry, username);
+  const { data: lookedUp } = useQuery(
+    getEntryVoteQueryOptions(author, permlink, username, !!entry && fromEntry === undefined)
+  );
+  const myVote = fromEntry !== undefined ? fromEntry : lookedUp;
+  // A finished lookup gives the vote or null. undefined means unknown (loading or failed):
+  // don't render it as "not voted". A logged-out viewer has no vote to show.
+  const direction = !username ? null : myVote !== undefined ? voteDirection(myVote) : undefined;
+
+  // Full voter list, only when the user opens it
+  const { data: voters } = useQuery({
+    ...getEntryActiveVotesQueryOptions(entry ?? undefined),
+    enabled: showVoters && !!entry,
+  });
+
+  // ...
+}
+```
+
+Never treat `undefined` from `entryVoteOf` as "not voted": it means the entry was read for another account, or for
+none.
 
 ## Mutations
 
@@ -431,6 +521,7 @@ error means another signing method might succeed.
 
 ```text
 src/hive-tx/          Transaction engine (signing, serialization, RPC, cryptography)
+src/wallets/          The @ecency/sdk/wallets entry (assets, external chains, MetaMask, key derivation)
 
 src/modules/
   accounts/           Account data, follows and mutes, profile updates, bookmarks, favorites
@@ -466,11 +557,11 @@ src/modules/
 
 ## TypeScript
 
-The SDK is written in TypeScript and ships its types. Useful ones include `Entry`, `Draft`, `Schedule`,
+The SDK is written in TypeScript and ships its types. Useful ones include `Entry`, `ObserverVote`, `EntryTopVote`, `Vote`, `Draft`, `Schedule`,
 `Fragment`, `WaveEntry`, `FullAccount`, `AccountProfile`, `AuthContextV2`, `PlatformAdapter`, `AuthMethod`,
 `TransactionConfirmation` and `BroadcastMode`.
 
 ## Related
 
-- [Ecency Wallets](/developers/wallets/) builds on the SDK for multi-chain wallets and asset queries.
+- [Ecency wallets](/developers/wallets/) covers the `@ecency/sdk/wallets` entry for multi-chain wallets and asset queries.
 - [Render helper](/developers/render-helper/) turns post Markdown into safe HTML.

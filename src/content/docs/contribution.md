@@ -12,7 +12,7 @@ All of Ecency's main projects are on [github.com/ecency](https://github.com/ecen
 
 | Repository | What it is |
 |---|---|
-| [ecency/vision-web](https://github.com/ecency/vision-web) | The web app at ecency.com plus the shared packages (`@ecency/sdk`, `@ecency/wallets`, `@ecency/render-helper`, `@ecency/ui`) and the self-hosted blog app. A pnpm monorepo. |
+| [ecency/vision-web](https://github.com/ecency/vision-web) | The web app at ecency.com plus the shared packages (`@ecency/sdk`, which includes the `@ecency/sdk/wallets` entry, `@ecency/render-helper` and `@ecency/ui`) and the self-hosted blog app. A pnpm monorepo. |
 | [ecency/vision-mobile](https://github.com/ecency/vision-mobile) | The iOS and Android apps (React Native). |
 | [ecency/docs](https://github.com/ecency/docs) | This documentation site. |
 
