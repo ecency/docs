@@ -35,11 +35,11 @@ Mahdi Yari.
 ## Installation
 
 ```sh
-npm install @ecency/sdk hivesigner
+npm install @ecency/sdk hivesigner @tanstack/react-query react
 # or
-yarn add @ecency/sdk hivesigner
+yarn add @ecency/sdk hivesigner @tanstack/react-query react
 # or
-pnpm add @ecency/sdk hivesigner
+pnpm add @ecency/sdk hivesigner @tanstack/react-query react
 ```
 
 Peer dependencies:
@@ -47,13 +47,15 @@ Peer dependencies:
 | Package | Version | Required |
 |---|---|---|
 | `hivesigner` | `^4.0.0` | Yes |
-| `@tanstack/react-query` | `>=5` | Optional, needed for the query builders and hooks |
-| `react` | `>=18` | Optional, needed for the mutation hooks |
+| `@tanstack/react-query` | `>=5` | Yes for `@ecency/sdk` and `@ecency/sdk/wallets` (imported when the entry loads); not for `@ecency/sdk/hive` |
+| `react` | `>=18` | Yes for `@ecency/sdk` and `@ecency/sdk/wallets` (needed by React Query); not for `@ecency/sdk/hive` |
 | `@solana/web3.js` | `^1` | Optional, only for SOL transfers in `@ecency/sdk/wallets` |
 | `@wallet-standard/app` | `^1` | Optional, only for MetaMask multichain discovery and SOL transfers in `@ecency/sdk/wallets` |
 
-Without React, you can still use the transaction engine, RPC helpers and request functions in server jobs or
-scripts.
+`@ecency/sdk` and `@ecency/sdk/wallets` import React Query when they load, so both packages must be installed even
+if you only call plain functions. The SDK lists them as optional peers, so npm doesn't add them for you. For server
+jobs, scripts or CLIs without React, use the [`@ecency/sdk/hive`](#the-ecencysdkhive-entry) entry, which loads without
+either.
 
 ## Quick start
 
@@ -84,7 +86,7 @@ The package has three entry points:
 | Import from | What it contains |
 |---|---|
 | `@ecency/sdk` | The main SDK: configuration, query option builders, mutation hooks, `QueryKeys`, types and helpers. Wallet-only code (token prices, external chains, MetaMask, key derivation) is not here; import it from `@ecency/sdk/wallets`. |
-| `@ecency/sdk/hive` | Only the chain layer (transactions, keys, RPC calls), without React Query. Meant for servers, scripts and CLIs. |
+| `@ecency/sdk/hive` | Only the chain layer (transactions, keys, RPC calls). Loads without React or React Query. Meant for servers, scripts and CLIs. |
 | `@ecency/sdk/wallets` | Wallet and multi-chain code: asset queries, token prices, external chain balances, MetaMask transfers and Hive key derivation. See [Ecency wallets](/developers/wallets/). |
 
 `@ecency/sdk/wallets` replaces the separate `@ecency/wallets` package, which is deprecated on npm. If you used it,

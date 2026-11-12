@@ -21,11 +21,15 @@ It is part of the [`@ecency/sdk`](https://www.npmjs.com/package/@ecency/sdk) pac
 
 ## Installation
 
-There is no separate package to install. Install the SDK and HiveSigner:
+There is no separate package to install. Install the SDK with HiveSigner, React Query and React:
 
 ```sh
-npm install @ecency/sdk hivesigner
+npm install @ecency/sdk hivesigner @tanstack/react-query react
 ```
+
+The wallets entry imports React Query when it loads, so the import fails without `@tanstack/react-query` and
+`react`, even if you only use the plain functions. The SDK lists both as optional peers, so npm doesn't add them
+for you.
 
 Then import wallet code from the `@ecency/sdk/wallets` subpath:
 
@@ -38,8 +42,8 @@ Peer dependencies of `@ecency/sdk`:
 | Package | Version | Required |
 |---|---|---|
 | `hivesigner` | `^4.0.0` | Yes |
-| `react` | `>=18` | Optional, needed for the hooks |
-| `@tanstack/react-query` | `>=5` | Optional, needed for the query options and hooks |
+| `@tanstack/react-query` | `>=5` | Yes for `@ecency/sdk/wallets` (imported when the entry loads) |
+| `react` | `>=18` | Yes for `@ecency/sdk/wallets` (needed by React Query) |
 | `@solana/web3.js` | `^1` | Optional, only for SOL transfers |
 | `@wallet-standard/app` | `^1` | Optional, only for MetaMask multichain discovery and SOL transfers |
 
@@ -228,7 +232,7 @@ deprecated on npm ("Moved to @ecency/sdk/wallets"). The exports are the same, so
 
 ```sh
 npm uninstall @ecency/wallets
-npm install @ecency/sdk@^2.6.0 hivesigner
+npm install @ecency/sdk@^2.6.0 hivesigner @tanstack/react-query react
 ```
 
 ```diff
