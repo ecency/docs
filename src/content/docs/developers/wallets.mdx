@@ -44,8 +44,8 @@ Peer dependencies of `@ecency/sdk`:
 | `@wallet-standard/app` | `^1` | Optional, only for MetaMask multichain discovery and SOL transfers |
 
 The Solana and Wallet Standard packages are loaded only when you call a function that needs them. You can leave
-them out if you use neither SOL transfers nor MetaMask multichain discovery. Without `@wallet-standard/app`,
-discovery still works but returns only the EVM address (no SOL or BTC).
+them out if you use neither SOL transfers nor MetaMask multichain discovery. At runtime, without
+`@wallet-standard/app`, discovery returns only the EVM address (no SOL or BTC).
 
 Configure the SDK first (at least `ConfigManager.setQueryClient`), as described on the [SDK page](/developers/sdk/).
 

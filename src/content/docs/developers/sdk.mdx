@@ -297,13 +297,13 @@ function Votes({ author, permlink, username, showVoters }: Props) {
 
   // Has the user voted? Use the entry when it knows, otherwise look it up.
   const fromEntry = entryVoteOf(entry, username);
-  const { data: lookedUp, isPending: lookingUp } = useQuery(
+  const { data: lookedUp } = useQuery(
     getEntryVoteQueryOptions(author, permlink, username, !!entry && fromEntry === undefined)
   );
   const myVote = fromEntry !== undefined ? fromEntry : lookedUp;
-  // While the lookup is pending the vote is unknown: don't render it as "not voted" yet.
-  const voteKnown = fromEntry !== undefined || (!!username && !lookingUp);
-  const direction = voteKnown ? voteDirection(myVote) : undefined; // "up", "down", null or unknown
+  // A finished lookup gives the vote or null. undefined means unknown (loading or failed):
+  // don't render it as "not voted". A logged-out viewer has no vote to show.
+  const direction = !username ? null : myVote !== undefined ? voteDirection(myVote) : undefined;
 
   // Full voter list, only when the user opens it
   const { data: voters } = useQuery({
