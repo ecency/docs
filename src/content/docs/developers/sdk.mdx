@@ -27,7 +27,7 @@ the [ecency/vision-web](https://github.com/ecency/vision-web/tree/develop/packag
 | Auth methods | Private key, Keychain (and other extensions), HiveSigner, HiveAuth, custom broadcaster |
 | Platforms | Web, React Native, Node.js (SSR) |
 | Builds | Browser ESM plus Node ESM and CJS |
-| Entry points | `@ecency/sdk` (everything), `@ecency/sdk/hive` (lean chain layer), `@ecency/sdk/wallets` (wallets and multi-chain) |
+| Entry points | `@ecency/sdk` (main SDK), `@ecency/sdk/hive` (lean chain layer), `@ecency/sdk/wallets` (wallets and multi-chain) |
 
 The transaction engine is built on an improved version of [hive-tx](https://github.com/mahdiyari/hive-tx) by
 Mahdi Yari.
@@ -83,7 +83,7 @@ The package has three entry points:
 
 | Import from | What it contains |
 |---|---|
-| `@ecency/sdk` | The full SDK: configuration, query option builders, mutation hooks, `QueryKeys`, types and helpers. |
+| `@ecency/sdk` | The main SDK: configuration, query option builders, mutation hooks, `QueryKeys`, types and helpers. Wallet-only code (token prices, external chains, MetaMask, key derivation) is not here; import it from `@ecency/sdk/wallets`. |
 | `@ecency/sdk/hive` | Only the chain layer (transactions, keys, RPC calls), without React Query. Meant for servers, scripts and CLIs. |
 | `@ecency/sdk/wallets` | Wallet and multi-chain code: asset queries, token prices, external chain balances, MetaMask transfers and Hive key derivation. See [Ecency wallets](/developers/wallets/). |
 
@@ -256,7 +256,7 @@ serve them yet is asked with the v1 method (`bridge.get_post` and so on) instead
 same shape.
 
 <Aside type="caution" title="Breaking change in 2.5.0">
-  `Entry` no longer has `active_votes`. The field is removed from every entry, also when the SDK falls back to a v1
+  `Entry` no longer has `active_votes`. The SDK's post reads remove it from every entry, also when they fall back to a v1
   method that still returns it. Code that counted votes or looked for the user's vote in `active_votes` needs to
   move to the fields below.
 </Aside>
@@ -265,15 +265,17 @@ same shape.
 |---|---|
 | `entry.stats.total_votes` | The number of votes (`stats` can be `null`). |
 | `entry.top_votes` | The strongest voters as `{ voter, rshares, percent }`, when present. Single post reads ask for 5; on a v1 fallback up to 10 are derived from the v1 voter list. |
-| `entry.observer_vote` | The vote of the account in `observer_vote_for` as `{ rshares, percent }`, or `null` if that account hasn't voted. `percent` is `null` when the source didn't say. |
+| `entry.observer_vote` | The vote of the account in `observer_vote_for` as `{ rshares, percent }`, or `null` if that account hasn't voted. Either number can be `null`: `percent` when the source didn't say, `rshares` for a vote just cast that the chain hasn't reported yet. |
 | `entry.observer_vote_for` | The account the entry was read for (the observer), or `null` when that is unknown. When it is `null`, `observer_vote` tells you nothing. |
 | `entryVoteOf(entry, username)` | The user's vote from the entry: the vote, `null` (not voted) or `undefined` (the entry can't tell, look it up). |
 | `getEntryVoteQueryOptions(author, permlink, voter, enabled?)` | Looks up one account's vote on one post. Lookups made at the same time are sent as one batch. |
 | `getEntryActiveVotesQueryOptions(entry)` | The full voter list, loaded on demand. It pages `bridge.list_votes` (or `database_api.list_votes` on nodes without it), so it isn't capped at 1000 voters. |
 | `isCastVote(vote)` / `voteDirection(vote)` | Whether a vote counts as cast, and `"up"`, `"down"` or `null`. |
-| `normalizeEntry(raw, observer)` | Turns a raw post from any source (bridge v1 or v2, condenser) into the `Entry` shape. Only needed if you call the node yourself. |
+| `normalizeEntry(raw, observer, options?)` | Turns a raw post from any source (bridge v1 or v2, condenser) into the `Entry` shape. Only needed if you call the node yourself. For condenser `get_content` / `get_content_replies`, which send the whole voter list, pass `{ completeVoteList: true }`. |
 
-Pass the logged-in user as the observer so the entry carries their vote:
+Pass the logged-in user as the observer so the entry can carry their vote. The post query is cached per post, not per
+observer, so an entry read earlier for someone else (or for nobody) won't know this user's vote; the lookup below covers
+that case:
 
 ```tsx
 import { useQuery } from "@tanstack/react-query";
@@ -295,11 +297,13 @@ function Votes({ author, permlink, username, showVoters }: Props) {
 
   // Has the user voted? Use the entry when it knows, otherwise look it up.
   const fromEntry = entryVoteOf(entry, username);
-  const { data: lookedUp } = useQuery(
+  const { data: lookedUp, isPending: lookingUp } = useQuery(
     getEntryVoteQueryOptions(author, permlink, username, !!entry && fromEntry === undefined)
   );
   const myVote = fromEntry !== undefined ? fromEntry : lookedUp;
-  const direction = voteDirection(myVote); // "up", "down" or null
+  // While the lookup is pending the vote is unknown: don't render it as "not voted" yet.
+  const voteKnown = fromEntry !== undefined || (!!username && !lookingUp);
+  const direction = voteKnown ? voteDirection(myVote) : undefined; // "up", "down", null or unknown
 
   // Full voter list, only when the user opens it
   const { data: voters } = useQuery({
@@ -515,6 +519,7 @@ error means another signing method might succeed.
 
 ```text
 src/hive-tx/          Transaction engine (signing, serialization, RPC, cryptography)
+src/wallets/          The @ecency/sdk/wallets entry (assets, external chains, MetaMask, key derivation)
 
 src/modules/
   accounts/           Account data, follows and mutes, profile updates, bookmarks, favorites
