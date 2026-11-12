@@ -1,12 +1,12 @@
 ---
 title: Ecency wallets
-description: Use @ecency/wallets for Hive, Hive Engine, Points and external chain asset queries, MetaMask transfers and Hive key derivation.
+description: Use the @ecency/sdk/wallets entry for Hive, Hive Engine, Points and external chain asset queries, MetaMask transfers and Hive key derivation.
 ---
 
 import { Aside } from "@astrojs/starlight/components";
 
-The `@ecency/wallets` package (currently 6.x) is the wallet layer of the Ecency web and mobile apps. It builds on
-the [Ecency SDK](/developers/sdk/) and gives you:
+The `@ecency/sdk/wallets` entry point is the wallet layer of the Ecency web app. It ships inside the
+[Ecency SDK](/developers/sdk/) (from version 2.6.0) and gives you:
 
 - Asset queries for Hive (HIVE, HP, HBD), Hive Engine tokens and Ecency Points, re-exported from the SDK.
 - Token price and token list queries.
@@ -15,35 +15,36 @@ the [Ecency SDK](/developers/sdk/) and gives you:
 - Hive key derivation from a BIP44 seed or a master password.
 - Helpers to save linked wallet addresses to the Hive profile.
 
-It is published on [npm](https://www.npmjs.com/package/@ecency/wallets) under the MIT license. The source is in
-[ecency/vision-web](https://github.com/ecency/vision-web/tree/develop/packages/wallets) under `packages/wallets`.
+It is part of the [`@ecency/sdk`](https://www.npmjs.com/package/@ecency/sdk) package (MIT license). The source is in
+[ecency/vision-web](https://github.com/ecency/vision-web/tree/develop/packages/sdk/src/wallets) under
+`packages/sdk/src/wallets`.
 
 ## Installation
 
-Install it together with the SDK and HiveSigner:
+There is no separate package to install. Install the SDK and HiveSigner:
 
 ```sh
-npm install --legacy-peer-deps @ecency/wallets @ecency/sdk hivesigner
+npm install @ecency/sdk hivesigner
 ```
 
-<Aside type="caution" title="Known packaging issue">
-The current release declares its `@ecency/sdk` peer dependency in a form that npm can't resolve, so a plain
-`npm install` stops with `EUNSUPPORTEDPROTOCOL`. Until a future release fixes this, install with `--legacy-peer-deps`
-as shown above. To make later installs in the same project work too, add `legacy-peer-deps=true` to the project's
-`.npmrc`. With this flag npm doesn't add peer dependencies for you, so list the ones you need (from the table below)
-in the install command.
-</Aside>
+Then import wallet code from the `@ecency/sdk/wallets` subpath:
 
-Peer dependencies:
+```ts
+import { getTokenPriceQueryOptions, EcencyWalletCurrency } from "@ecency/sdk/wallets";
+```
+
+Peer dependencies of `@ecency/sdk`:
 
 | Package | Version | Required |
 |---|---|---|
-| `@ecency/sdk` | latest | Yes, install it alongside |
 | `hivesigner` | `^4.0.0` | Yes |
 | `react` | `>=18` | Optional, needed for the hooks |
 | `@tanstack/react-query` | `>=5` | Optional, needed for the query options and hooks |
-| `@solana/web3.js` | `>=1` | Optional, only for SOL transfers |
-| `@wallet-standard/app` | `>=1` | Optional, only for MetaMask multichain discovery and SOL |
+| `@solana/web3.js` | `^1` | Optional, only for SOL transfers |
+| `@wallet-standard/app` | `^1` | Optional, only for MetaMask multichain discovery and SOL transfers |
+
+The Solana and Wallet Standard packages are loaded only when you call a function that needs them, so you can leave
+them out if you don't use SOL.
 
 Configure the SDK first (at least `ConfigManager.setQueryClient`), as described on the [SDK page](/developers/sdk/).
 
@@ -61,8 +62,8 @@ The `EcencyWalletCurrency` enum has the values `BTC`, `ETH`, `BNB` and `SOL`. `E
 
 ## Asset queries
 
-These query option builders come from the SDK and are re-exported by `@ecency/wallets`, so you can import them from
-either package.
+These query option builders live in the main SDK and are re-exported by `@ecency/sdk/wallets`, so you can import
+them from either `@ecency/sdk` or `@ecency/sdk/wallets`.
 
 ### Hive
 
@@ -105,14 +106,14 @@ Points mutation: `useClaimPoints(username, accessToken, onSuccess?, onError?)` c
 
 ```tsx
 import { useQuery } from "@tanstack/react-query";
-import { getAccountWalletAssetInfoQueryOptions, useWalletOperation, AssetOperation } from "@ecency/wallets";
+import { getAccountWalletAssetInfoQueryOptions, useWalletOperation, AssetOperation } from "@ecency/sdk/wallets";
 
 const { data: hive } = useQuery(getAccountWalletAssetInfoQueryOptions("alice", "HIVE"));
 
 const transfer = useWalletOperation("alice", "HIVE", AssetOperation.Transfer, auth);
 ```
 
-## Wallet package queries
+## Wallet queries
 
 | Function | Returns |
 |---|---|
@@ -124,7 +125,7 @@ const transfer = useWalletOperation("alice", "HIVE", AssetOperation.Transfer, au
 
 ```ts
 import { useQuery } from "@tanstack/react-query";
-import { getTokenPriceQueryOptions, useGetExternalWalletBalanceQuery, EcencyWalletCurrency } from "@ecency/wallets";
+import { getTokenPriceQueryOptions, useGetExternalWalletBalanceQuery, EcencyWalletCurrency } from "@ecency/sdk/wallets";
 
 const { data: ethUsd } = useQuery(getTokenPriceQueryOptions("ETH"));
 const { data: balance } = useGetExternalWalletBalanceQuery(EcencyWalletCurrency.ETH, "0x...");
@@ -133,7 +134,7 @@ const { data: balance } = useGetExternalWalletBalanceQuery(EcencyWalletCurrency.
 ## MetaMask discovery
 
 ```ts
-import { discoverMetaMaskWallets, installHiveSnap, getHivePublicKeys } from "@ecency/wallets";
+import { discoverMetaMaskWallets, installHiveSnap, getHivePublicKeys } from "@ecency/sdk/wallets";
 
 // Discover ETH, BNB, SOL and BTC addresses from MetaMask
 const addresses = await discoverMetaMaskWallets();
@@ -152,7 +153,7 @@ Related helpers: `fetchMultichainAddresses()` and `fetchEvmAddress()`.
 `useExternalTransfer(currency)` is a mutation that signs with MetaMask. It accepts `ETH`, `BNB` or `SOL`.
 
 ```tsx
-import { useExternalTransfer, EcencyWalletCurrency } from "@ecency/wallets";
+import { useExternalTransfer, EcencyWalletCurrency } from "@ecency/sdk/wallets";
 
 function SendEthButton({ linkedAddress }: { linkedAddress: string }) {
   const transfer = useExternalTransfer(EcencyWalletCurrency.ETH);
@@ -192,7 +193,7 @@ Lower-level helpers: `sendEvmTransfer(to, amountWei, currency, expectedFrom?)`, 
 ## Hive key derivation
 
 ```ts
-import { deriveHiveKeys, deriveHiveMasterPasswordKeys, detectHiveKeyDerivation } from "@ecency/wallets";
+import { deriveHiveKeys, deriveHiveMasterPasswordKeys, detectHiveKeyDerivation } from "@ecency/sdk/wallets";
 
 // From a BIP44 seed phrase
 const keys = deriveHiveKeys(mnemonic); // { owner, active, posting, memo, ownerPubkey, ... }
@@ -218,3 +219,26 @@ list to the user's Hive profile (`profile.tokens`). Ecency's apps read the visib
   token picker list), any token you leave out is removed from the profile. A list with only external chain
   entries keeps the other entries.
 </Aside>
+
+## Migrating from @ecency/wallets
+
+Wallet code used to ship as the separate `@ecency/wallets` package. It now lives in the SDK, and `@ecency/wallets` is
+deprecated on npm ("Moved to @ecency/sdk/wallets"). The exports are the same, so migrating is an import path change:
+
+```sh
+npm uninstall @ecency/wallets
+npm install @ecency/sdk@^2.6.0 hivesigner
+```
+
+```diff
+- import { useExternalTransfer, EcencyWalletCurrency } from "@ecency/wallets";
++ import { useExternalTransfer, EcencyWalletCurrency } from "@ecency/sdk/wallets";
+```
+
+You no longer need `--legacy-peer-deps` or `legacy-peer-deps=true` in `.npmrc` for this; a plain install works.
+
+The last release of `@ecency/wallets` (7.0.1) is a thin shim that re-exports `@ecency/sdk/wallets` and depends on
+`@ecency/sdk` `^2.6.0`, so existing code keeps working while you switch. No further releases are planned.
+
+Upgrading to SDK 2.6.0 also brings the vote-free post shape from 2.5.0. See
+[Entries and votes](/developers/sdk/#entries-and-votes) on the SDK page if your code reads `active_votes`.
