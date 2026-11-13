@@ -20,6 +20,8 @@ Subscribers to a creator get a digest of that creator's posts from the period. W
 
 A tag digest needs at least 5 different authors posting in that tag in the last 30 days. Otherwise you'll see a message that the tag is too quiet.
 
+Every creator has a list: readers can subscribe from **Email digest** on any creator's profile, with or without Ecency Pro. To invite readers, share your profile link with `?subscribe=digest` at the end, for example `https://ecency.com/@yourname?subscribe=digest`. It opens the subscribe form on your profile.
+
 ## For creators with Ecency Pro
 
 [Ecency Pro](/ecency/ecency-pro/) creators can send their own posts to their subscribers instead of waiting for the automatic digest:
@@ -27,7 +29,7 @@ A tag digest needs at least 5 different authors posting in that tag in the last 
 - **One post:** open your own post and use **Send to email subscribers**. It works on your own top-level posts that have a title and aren't NSFW or hidden.
 - **A digest you put together:** use **Compose email digest**, pick 2 to 10 of your posts, add a subject (up to 120 characters) and an intro (up to 500 characters).
 
-Ecency shows your subscriber count and a **Copy subscribe link** button you can share to grow your list. A send replaces that period's automatic digest, so subscribers still get only one email. You can send once per period for each schedule (weekly and monthly are separate).
+Pro creators also see their subscriber count and a **Copy subscribe link** button for that link. A send replaces that period's automatic digest, so subscribers still get only one email. You can send once per period for each schedule (weekly and monthly are separate).
 
 Lists that get too many spam complaints or bounced emails are suspended automatically to protect delivery for everyone, until the Ecency team reviews them.
 
