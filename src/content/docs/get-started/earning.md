@@ -22,7 +22,7 @@ For a day-by-day plan, see the [onboarding checklist](/get-started/onboarding-ch
 ## Ways to earn Hive tokens
 
 - **Posting**: share content and receive upvotes from the community. Depending on the votes, you get a share of the reward pool.
-- **Voting and curating**: if you upvote a post before it becomes popular, you earn curation rewards. The amount depends on your Hive Power and how early you vote. See [curation and rewards](/hive/curation-and-rewards/).
+- **Voting and curating**: when you upvote a post, you earn a share of its curation rewards. The amount depends on your Hive Power and the post's age when you vote: every vote in the first 24 hours gets full curation weight, whatever its order. Curation rewards go to voters and don't change the author's share. See [curation and rewards](/hive/curation-and-rewards/).
 - **Staking (powering up)**: HIVE that you power up into Hive Power earns a small share of newly created HIVE.
 - **HBD savings interest**: Hive Backed Dollars (HBD) in savings earn interest. The rate is set by witnesses, currently about 10% APR. See [HBD savings interest](/guides/hbd-savings-interest/).
 
