@@ -263,16 +263,23 @@ same shape.
   move to the fields below.
 </Aside>
 
+<Aside type="caution" title="Changed in 2.7.0">
+  A removed vote is no longer `null`. After an unvote, `observer_vote`, `entryVoteOf` and the vote lookup return
+  `{ rshares, percent: 0 }`, and `null` means the account never voted. Code that checks `if (entry.observer_vote)` or
+  `vote !== null` now treats a removed vote as cast: use `isCastVote(vote)` or `voteDirection(vote)` instead.
+</Aside>
+
 | Field or helper | What it gives you |
 |---|---|
-| `entry.stats.total_votes` | The number of votes (`stats` can be `null`). |
+| `entry.stats.total_votes` | The number of votes (`stats` can be `null`). A removed vote stays in it, so an unvote doesn't lower the count. |
 | `entry.top_votes` | The strongest voters as `{ voter, rshares, percent }`, when present. Single post reads ask for 5; on a v1 fallback up to 10 are derived from the v1 voter list. |
-| `entry.observer_vote` | The vote of the account in `observer_vote_for` as `{ rshares, percent }`, or `null` if that account hasn't voted. Either number can be `null`: `percent` when the source didn't say, `rshares` for a vote just cast that the chain hasn't reported yet. |
+| `entry.observer_vote` | The vote of the account in `observer_vote_for` as `{ rshares, percent }`, or `null` if that account never voted. A vote that was removed comes back as a row with `percent: 0`. Either number can be `null`: `percent` when the source didn't say, `rshares` for a vote just cast that the chain hasn't reported yet. |
 | `entry.observer_vote_for` | The account the entry was read for (the observer), or `null` when that is unknown. When it is `null`, `observer_vote` tells you nothing. |
-| `entryVoteOf(entry, username)` | The user's vote from the entry: the vote, `null` (not voted) or `undefined` (the entry can't tell, look it up). |
-| `getEntryVoteQueryOptions(author, permlink, voter, enabled?)` | Looks up one account's vote on one post. Lookups made at the same time are sent as one batch. |
+| `entryVoteOf(entry, username)` | The user's vote from the entry: the vote (a `percent: 0` row if it was removed), `null` (never voted) or `undefined` (the entry can't tell, look it up). |
+| `getEntryVoteQueryOptions(author, permlink, voter, enabled?)` | Looks up one account's vote on one post: the vote, a `percent: 0` row if it was removed, or `null` if the account never voted. Lookups made at the same time are sent as one batch. |
 | `getEntryActiveVotesQueryOptions(entry)` | The full voter list, loaded on demand. It pages `bridge.list_votes` (or `database_api.list_votes` on nodes without it), so it isn't capped at 1000 voters. |
-| `isCastVote(vote)` / `voteDirection(vote)` | Whether a vote counts as cast, and `"up"`, `"down"` or `null`. |
+| `isCastVote(vote)` / `voteDirection(vote)` | Whether a vote counts as cast, and `"up"`, `"down"` or `null`. Use these to tell whether the user has voted, never a null or truthiness check. |
+| `isRemovedVote(vote)` | Whether the vote is a removed one (`percent: 0`): not cast, but still in `stats.total_votes`. |
 | `normalizeEntry(raw, observer, options?)` | Turns a raw post from any source (bridge v1 or v2, condenser) into the `Entry` shape. Only needed if you call the node yourself. For condenser `get_content` / `get_content_replies`, which send the whole voter list, pass `{ completeVoteList: true }`. |
 
 Pass the logged-in user as the observer so the entry can carry their vote. The post query is cached per post, not per
@@ -303,8 +310,9 @@ function Votes({ author, permlink, username, showVoters }: Props) {
     getEntryVoteQueryOptions(author, permlink, username, !!entry && fromEntry === undefined)
   );
   const myVote = fromEntry !== undefined ? fromEntry : lookedUp;
-  // A finished lookup gives the vote or null. undefined means unknown (loading or failed):
-  // don't render it as "not voted". A logged-out viewer has no vote to show.
+  // A finished lookup gives the vote, a percent 0 row (removed) or null (never voted); voteDirection
+  // reads both of the last two as no vote. undefined means unknown (loading or failed): don't render
+  // it as "not voted". A logged-out viewer has no vote to show.
   const direction = !username ? null : myVote !== undefined ? voteDirection(myVote) : undefined;
 
   // Full voter list, only when the user opens it
