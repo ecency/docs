@@ -264,8 +264,8 @@ same shape.
 </Aside>
 
 <Aside type="caution" title="Changed in 2.7.0">
-  A removed vote is no longer `null`. After an unvote, `observer_vote`, `entryVoteOf` and the vote lookup return
-  `{ rshares, percent: 0 }`, and `null` means the account never voted. Code that checks `if (entry.observer_vote)` or
+  A removed vote is no longer `null`. After an unvote, `observer_vote` and `entryVoteOf` (when the entry knows the
+  user's vote) and the vote lookup return `{ rshares, percent: 0 }`, and `null` means the account never voted. Code that checks `if (entry.observer_vote)` or
   `vote !== null` now treats a removed vote as cast: use `isCastVote(vote)` or `voteDirection(vote)` instead.
 </Aside>
 
@@ -278,7 +278,7 @@ same shape.
 | `entryVoteOf(entry, username)` | The user's vote from the entry: the vote (a `percent: 0` row if it was removed), `null` (never voted) or `undefined` (the entry can't tell, look it up). |
 | `getEntryVoteQueryOptions(author, permlink, voter, enabled?)` | Looks up one account's vote on one post: the vote, a `percent: 0` row if it was removed, or `null` if the account never voted. Lookups made at the same time are sent as one batch. |
 | `getEntryActiveVotesQueryOptions(entry)` | The full voter list, loaded on demand. It pages `bridge.list_votes` (or `database_api.list_votes` on nodes without it), so it isn't capped at 1000 voters. |
-| `isCastVote(vote)` / `voteDirection(vote)` | Whether a vote counts as cast, and `"up"`, `"down"` or `null`. Use these to tell whether the user has voted, never a null or truthiness check. |
+| `isCastVote(vote)` / `voteDirection(vote)` | Whether a vote counts as cast, and `"up"`, `"down"` or `null`. Use these to tell whether the user has voted, never a null or truthiness check (still handle `undefined` from `entryVoteOf` as unknown). |
 | `isRemovedVote(vote)` | Whether the vote is a removed one (`percent: 0`): not cast, but still in `stats.total_votes`. |
 | `normalizeEntry(raw, observer, options?)` | Turns a raw post from any source (bridge v1 or v2, condenser) into the `Entry` shape. Only needed if you call the node yourself. For condenser `get_content` / `get_content_replies`, which send the whole voter list, pass `{ completeVoteList: true }`. |
 

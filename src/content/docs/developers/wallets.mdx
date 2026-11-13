@@ -245,5 +245,6 @@ You no longer need `--legacy-peer-deps` or `legacy-peer-deps=true` in `.npmrc` f
 The last release of `@ecency/wallets` (7.0.1) is a thin shim that re-exports `@ecency/sdk/wallets` and depends on
 `@ecency/sdk` `^2.6.0`, so existing code keeps working while you switch. No further releases are planned.
 
-Upgrading to SDK 2.6.0 also brings the vote-free post shape from 2.5.0. See
-[Entries and votes](/developers/sdk/#entries-and-votes) on the SDK page if your code reads `active_votes`.
+Upgrading to SDK 2.6.0 also brings the vote-free post shape from 2.5.0, and `^2.6.0` resolves to 2.7.0 or later, where a
+removed vote is a `percent: 0` row instead of `null`. See [Entries and votes](/developers/sdk/#entries-and-votes) on
+the SDK page if your code reads `active_votes` or null checks `observer_vote`.
