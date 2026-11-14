@@ -214,15 +214,104 @@ Single-role versions are `deriveHiveKey(mnemonic, role, accountIndex?)` and
 `deriveHiveMasterPasswordKey(username, password, role)`. See the [seed phrase migration guide](/guides/seed-phrase-migration/)
 for what this means for users.
 
-## Saving wallet addresses to the profile
+## Profile tokens format
+
+Ecency stores a user's linked wallet addresses and wallet token list on chain, in the account's
+`posting_json_metadata` under `profile.tokens`. Any Hive frontend can read it to show a user's external wallet
+addresses (for example a "Send BTC" or "Receive ETH" button on a profile) without calling an Ecency API.
+
+```json
+{
+  "profile": {
+    "name": "Alice",
+    "about": "...",
+    "version": 2,
+    "tokens": [
+      {
+        "symbol": "BTC",
+        "type": "CHAIN",
+        "meta": {
+          "address": "1848UG3vGSaRP94NxdYtyCMbfsSJha48BC",
+          "publicKey": "03e4928405fd277ac60b08b74783dcec1aeeb9505d75031484cab97b9982507fe9",
+          "show": true
+        }
+      },
+      {
+        "symbol": "ETH",
+        "type": "CHAIN",
+        "meta": { "address": "0x436a9ff8053c5ab90b24656da84ba81d071f3da3", "show": true }
+      },
+      { "symbol": "HIVE", "type": "HIVE", "meta": { "show": true } },
+      { "symbol": "LEO", "type": "ENGINE", "meta": { "show": true } }
+    ]
+  }
+}
+```
+
+`profile.tokens` is an array of `{ symbol, type, meta }` entries:
+
+| Field | Description |
+|---|---|
+| `symbol` | Uppercase ticker of the chain or token, for example `BTC`, `ETH`, `BNB`, `SOL` or a Hive Engine symbol. A symbol appears at most once. |
+| `type` | `CHAIN` for an external blockchain wallet, `ENGINE` for a Hive Engine token the user picked for their wallet, `HIVE` for the basic Hive assets (`HIVE`, `HP`, `HBD`, `POINTS`). |
+| `meta.address` | `CHAIN` only. The user's public receive address on that chain. |
+| `meta.publicKey` | `CHAIN` only, optional. The public key behind the address. Present on wallets created by the older seed phrase flow. |
+| `meta.show` | Whether the user wants the entry shown in their wallet. Ecency shows a `CHAIN` or `ENGINE` entry only when this is `true`, so a missing value counts as hidden. The basic Hive assets are always shown. |
+| `meta.watchOnly` | `CHAIN` only, optional. `true` when the user typed the address in by hand (Watch Wallet) instead of linking it through MetaMask. |
+
+Accounts created before the switch to MetaMask can also hold `CHAIN` entries for chains Ecency no longer supports,
+such as `TRX`, `TON` and `APT`. Show them or skip them as you see fit.
+
+### Reading tokens
+
+```ts
+import { parseProfileMetadata } from "@ecency/sdk";
+
+const profile = parseProfileMetadata(account.posting_json_metadata);
+const tokens = Array.isArray(profile.tokens) ? profile.tokens : [];
+
+// Same visibility rule as the Ecency wallet: shown only when meta.show is true.
+const addresses = tokens.filter(
+  (t) => t?.type === "CHAIN" && typeof t.meta?.address === "string" && t.meta.show === true
+);
+// [{ symbol: "BTC", type: "CHAIN", meta: { address: "1848UG...", ... } }, ...]
+```
+
+Without the SDK, parse the metadata yourself and fall back to an empty list. The metadata is user written, so it can
+be empty, invalid JSON, have no `profile`, or hold a non-array `tokens` or `null` entries:
+
+```ts
+function readProfileTokens(postingJsonMetadata?: string) {
+  try {
+    const tokens = JSON.parse(postingJsonMetadata || "{}")?.profile?.tokens;
+    return Array.isArray(tokens) ? tokens : [];
+  } catch {
+    return [];
+  }
+}
+```
+
+Keep the `t?.` guard from the filter above when you read the entries.
+
+### Writing tokens
 
 `useSaveWalletInformationToMetadata(username, auth?, options?)` writes linked wallet addresses and the wallet token
-list to the user's Hive profile (`profile.tokens`). Ecency's apps read the visible wallet tokens from there.
+list to `profile.tokens` and handles the rules below for you. If you broadcast `account_update2` yourself:
+
+- Merge into the current `posting_json_metadata`. Keep every other `profile` field and every other top level key.
+  `buildPostingJsonMetadata` from `@ecency/sdk` does this.
+- Set `profile.version` to `2`.
+- Set `meta.show` to `true` on entries you want shown, since Ecency hides entries without it. To hide a `CHAIN` entry,
+  set `meta.show` to `false` instead of removing it.
+- Never write private keys, seed phrases or anything secret into `meta`. The metadata is public. The SDK strips
+  `privateKey` and `username` from `meta` before broadcasting.
 
 <Aside type="caution">
-  `profile.tokens` is written as a whole. If you pass a list that includes non-chain entries (for example, the
-  token picker list), any token you leave out is removed from the profile. A list with only external chain
-  entries keeps the other entries.
+  `profile.tokens` is written as a whole, so any entry missing from the array you broadcast is deleted from the
+  profile. Keep the entries you don't manage. `useSaveWalletInformationToMetadata` always keeps existing `CHAIN`
+  entries and merges the ones you pass into them, so omitting a `CHAIN` entry does not remove it (set `meta.show` to
+  `false` to hide it). For non-chain entries, a list that includes any (for example, the token picker list) removes
+  every `ENGINE` and `HIVE` entry you left out, while a list with only `CHAIN` entries keeps them.
 </Aside>
 
 ## Migrating from @ecency/wallets
