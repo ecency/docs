@@ -256,7 +256,7 @@ addresses (for example a "Send BTC" or "Receive ETH" button on a profile) withou
 | `type` | `CHAIN` for an external blockchain wallet, `ENGINE` for a Hive Engine token the user picked for their wallet, `HIVE` for the basic Hive assets (`HIVE`, `HP`, `HBD`, `POINTS`). |
 | `meta.address` | `CHAIN` only. The user's public receive address on that chain. |
 | `meta.publicKey` | `CHAIN` only, optional. The public key behind the address. Present on wallets created by the older seed phrase flow. |
-| `meta.show` | Whether the user wants the entry shown in their wallet. Treat `false` as hidden. |
+| `meta.show` | Whether the user wants the entry shown in their wallet. Ecency shows a `CHAIN` or `ENGINE` entry only when this is `true`, so a missing value counts as hidden. The basic Hive assets are always shown. |
 | `meta.watchOnly` | `CHAIN` only, optional. `true` when the user typed the address in by hand (Watch Wallet) instead of linking it through MetaMask. |
 
 Accounts created before the switch to MetaMask can also hold `CHAIN` entries for chains Ecency no longer supports,
@@ -270,14 +270,28 @@ import { parseProfileMetadata } from "@ecency/sdk";
 const profile = parseProfileMetadata(account.posting_json_metadata);
 const tokens = Array.isArray(profile.tokens) ? profile.tokens : [];
 
+// Same visibility rule as the Ecency wallet: shown only when meta.show is true.
 const addresses = tokens.filter(
-  (t) => t.type === "CHAIN" && typeof t.meta?.address === "string" && t.meta.show !== false
+  (t) => t?.type === "CHAIN" && typeof t.meta?.address === "string" && t.meta.show === true
 );
 // [{ symbol: "BTC", type: "CHAIN", meta: { address: "1848UG...", ... } }, ...]
 ```
 
-Without the SDK, `JSON.parse(account.posting_json_metadata).profile.tokens` gives the same array. Check that it
-is an array: the metadata is user written, so some accounts hold other shapes there.
+Without the SDK, parse the metadata yourself and fall back to an empty list. The metadata is user written, so it can
+be empty, invalid JSON, have no `profile`, or hold a non-array `tokens` or `null` entries:
+
+```ts
+function readProfileTokens(postingJsonMetadata?: string) {
+  try {
+    const tokens = JSON.parse(postingJsonMetadata || "{}")?.profile?.tokens;
+    return Array.isArray(tokens) ? tokens : [];
+  } catch {
+    return [];
+  }
+}
+```
+
+Keep the `t?.` guard from the filter above when you read the entries.
 
 ### Writing tokens
 
@@ -287,15 +301,17 @@ list to `profile.tokens` and handles the rules below for you. If you broadcast `
 - Merge into the current `posting_json_metadata`. Keep every other `profile` field and every other top level key.
   `buildPostingJsonMetadata` from `@ecency/sdk` does this.
 - Set `profile.version` to `2`.
-- To hide a `CHAIN` entry, set `meta.show` to `false` instead of removing it.
+- Set `meta.show` to `true` on entries you want shown, since Ecency hides entries without it. To hide a `CHAIN` entry,
+  set `meta.show` to `false` instead of removing it.
 - Never write private keys, seed phrases or anything secret into `meta`. The metadata is public. The SDK strips
   `privateKey` and `username` from `meta` before broadcasting.
 
 <Aside type="caution">
   `profile.tokens` is written as a whole, so any entry missing from the array you broadcast is deleted from the
-  profile. Keep the entries you don't manage. With `useSaveWalletInformationToMetadata`, a list that includes
-  non-chain entries (for example, the token picker list) replaces the whole list, while a list with only `CHAIN`
-  entries keeps the other entries.
+  profile. Keep the entries you don't manage. `useSaveWalletInformationToMetadata` always keeps existing `CHAIN`
+  entries and merges the ones you pass into them, so omitting a `CHAIN` entry does not remove it (set `meta.show` to
+  `false` to hide it). For non-chain entries, a list that includes any (for example, the token picker list) removes
+  every `ENGINE` and `HIVE` entry you left out, while a list with only `CHAIN` entries keeps them.
 </Aside>
 
 ## Migrating from @ecency/wallets
