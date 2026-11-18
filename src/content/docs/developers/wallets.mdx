@@ -293,6 +293,40 @@ function readProfileTokens(postingJsonMetadata?: string) {
 
 Keep the `t?.` guard from the filter above when you read the entries.
 
+To find where to send one coin to a user, for example for a tip button, look the symbol up in the list:
+
+```ts
+function receiveAddress(tokens: any[], symbol: string): string | undefined {
+  const wanted = symbol.toUpperCase();
+  const address = tokens.find(
+    (t) => t?.type === "CHAIN" && String(t.symbol).toUpperCase() === wanted
+  )?.meta?.address;
+  return typeof address === "string" && address.trim() ? address.trim() : undefined;
+}
+
+receiveAddress(readProfileTokens(account.posting_json_metadata), "BTC");
+```
+
+Ecency's own transfer and tip dialogs use this rule: every `CHAIN` entry with a non-empty `meta.address` is offered
+as a destination. `meta.show` only decides what the user sees in their own wallet.
+
+### Why a list of entries
+
+A map keyed by symbol, such as `{ "btc": "bc1..." }`, is shorter to read when all an app needs is one receive
+address per coin. `profile.tokens` is a list of `{ symbol, type, meta }` entries because it backs a wallet, which
+needs more than an address:
+
+- **One place for every kind of token.** `type` tells a reader what an entry is (`CHAIN`, `ENGINE` or `HIVE`)
+  without a table of known tickers, so external addresses and the Hive Engine tokens a user picked sit in the same
+  list.
+- **More than one value per entry.** `meta` is an open object. It holds `address`, `publicKey`, `show` and
+  `watchOnly` today, and a new field can be added later without changing the format. Readers should ignore `meta`
+  keys they do not know.
+- **Hidden is not the same as removed.** `meta.show` lets a user keep an address linked while hiding it from their
+  wallet, and lets a holder of many Hive Engine tokens show only the ones they care about.
+
+The cost is the lookup above: one `find` call where a map would be a property read.
+
 ### Writing tokens
 
 `useSaveWalletInformationToMetadata(username, auth?, options?)` writes linked wallet addresses and the wallet token
