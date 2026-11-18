@@ -297,8 +297,9 @@ To find where to send one coin to a user, for example for a tip button, look the
 
 ```ts
 function receiveAddress(tokens: any[], symbol: string): string | undefined {
+  const wanted = symbol.toUpperCase();
   const address = tokens.find(
-    (t) => t?.type === "CHAIN" && String(t.symbol).toUpperCase() === symbol
+    (t) => t?.type === "CHAIN" && String(t.symbol).toUpperCase() === wanted
   )?.meta?.address;
   return typeof address === "string" && address.trim() ? address.trim() : undefined;
 }
